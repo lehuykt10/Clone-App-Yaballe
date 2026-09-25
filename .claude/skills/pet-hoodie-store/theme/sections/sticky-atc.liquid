@@ -1,0 +1,108 @@
+{%- comment -%}
+  Sticky add-to-cart bar for product pages. Appears once the main
+  "Add to cart" button scrolls out of view. Clicking it presses the main
+  button, so variant, quantity breaks and Dawn's cart drawer keep working.
+{%- endcomment -%}
+
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign image = variant.featured_media | default: product.featured_media
+-%}
+
+{%- if product != blank -%}
+  <sticky-atc
+    class="sticky-atc{% if section.settings.mobile_only %} sticky-atc--mobile-only{% endif %} color-{{ section.settings.color_scheme }}"
+    data-section="{{ section.id }}"
+    data-currency="{{ cart.currency.iso_code }}"
+    data-locale="{{ request.locale.iso_code }}"
+    hidden
+  >
+    <div class="sticky-atc__inner page-width">
+      {%- if image != blank -%}
+        {{
+          image
+          | image_url: width: 120
+          | image_tag: class: 'sticky-atc__image', loading: 'lazy', widths: '60,120', sizes: '60px', alt: product.title
+        }}
+      {%- endif -%}
+      <div class="sticky-atc__info">
+        <p class="sticky-atc__title">{{ product.title }}</p>
+        <p class="sticky-atc__price" data-price>{{ variant.price | money }}</p>
+      </div>
+      <button type="button" class="button sticky-atc__button" data-button>
+        {{ section.settings.button_label }}
+      </button>
+    </div>
+  </sticky-atc>
+{%- endif -%}
+
+{%- style -%}
+  .sticky-atc {
+    background: rgb(var(--color-background));
+    bottom: 0;
+    box-shadow: 0 -0.4rem 1.6rem rgba(0, 0, 0, 0.12);
+    left: 0;
+    padding: 1rem 0 calc(1rem + env(safe-area-inset-bottom));
+    position: fixed;
+    right: 0;
+    transform: translateY(0);
+    transition: transform 0.25s ease;
+    z-index: 3;
+  }
+  .sticky-atc[hidden] { display: block; transform: translateY(110%); visibility: hidden; }
+  @media screen and (min-width: 750px) {
+    .sticky-atc--mobile-only { display: none !important; }
+  }
+  .sticky-atc__inner { align-items: center; display: flex; gap: 1.2rem; }
+  .sticky-atc__image { border-radius: 0.6rem; height: 4.8rem; object-fit: cover; width: 4.8rem; }
+  .sticky-atc__info { flex: 1; min-width: 0; }
+  .sticky-atc__title { font-size: 1.4rem; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .sticky-atc__price { font-weight: 600; margin: 0; }
+  .sticky-atc__button { flex-shrink: 0; min-height: 4.4rem; }
+{%- endstyle -%}
+
+<script>
+  if (!customElements.get('sticky-atc')) {
+    customElements.define(
+      'sticky-atc',
+      class StickyAtc extends HTMLElement {
+        connectedCallback() {
+          this.mainButton = document.querySelector('product-form form button[name="add"]');
+          if (!this.mainButton) return;
+          this.money = new Intl.NumberFormat(this.dataset.locale, { style: 'currency', currency: this.dataset.currency });
+          this.querySelector('[data-button]').addEventListener('click', () => this.mainButton.click());
+          this.observer = new IntersectionObserver(([entry]) => {
+            this.hidden = entry.isIntersecting || entry.boundingClientRect.top > 0;
+          });
+          this.observer.observe(this.mainButton);
+          if (typeof subscribe === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
+            this.unsubscribe = subscribe(PUB_SUB_EVENTS.variantChange, (event) => {
+              const variant = event.data.variant;
+              if (!variant) return;
+              this.querySelector('[data-price]').textContent = this.money.format(variant.price / 100);
+              this.querySelector('[data-button]').disabled = !variant.available;
+            });
+          }
+        }
+
+        disconnectedCallback() {
+          if (this.observer) this.observer.disconnect();
+          if (this.unsubscribe) this.unsubscribe();
+        }
+      }
+    );
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Sticky add to cart",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Add to cart" },
+    { "type": "checkbox", "id": "mobile_only", "label": "Show on mobile only", "default": false },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "presets": [{ "name": "Sticky add to cart" }]
+}
+{% endschema %}

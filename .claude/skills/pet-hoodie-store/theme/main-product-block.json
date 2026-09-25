@@ -1,0 +1,24 @@
+{
+  "type": "quantity_breaks",
+  "name": "Quantity breaks",
+  "limit": 1,
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Bundle & save" },
+    { "type": "range", "id": "default_tier", "min": 1, "max": 3, "step": 1, "label": "Pre-selected tier", "default": 2 },
+    { "type": "header", "content": "Tier 1" },
+    { "type": "range", "id": "tier_1_qty", "min": 0, "max": 10, "step": 1, "label": "Quantity (0 hides the tier)", "default": 1 },
+    { "type": "range", "id": "tier_1_percent", "min": 0, "max": 50, "step": 1, "unit": "%", "label": "Discount", "default": 0 },
+    { "type": "text", "id": "tier_1_label", "label": "Label", "default": "Buy 1" },
+    { "type": "text", "id": "tier_1_badge", "label": "Badge" },
+    { "type": "header", "content": "Tier 2" },
+    { "type": "range", "id": "tier_2_qty", "min": 0, "max": 10, "step": 1, "label": "Quantity (0 hides the tier)", "default": 2 },
+    { "type": "range", "id": "tier_2_percent", "min": 0, "max": 50, "step": 1, "unit": "%", "label": "Discount", "default": 10 },
+    { "type": "text", "id": "tier_2_label", "label": "Label", "default": "Buy 2" },
+    { "type": "text", "id": "tier_2_badge", "label": "Badge", "default": "Most popular" },
+    { "type": "header", "content": "Tier 3" },
+    { "type": "range", "id": "tier_3_qty", "min": 0, "max": 10, "step": 1, "label": "Quantity (0 hides the tier)", "default": 3 },
+    { "type": "range", "id": "tier_3_percent", "min": 0, "max": 50, "step": 1, "unit": "%", "label": "Discount", "default": 15 },
+    { "type": "text", "id": "tier_3_label", "label": "Label", "default": "Buy 3" },
+    { "type": "text", "id": "tier_3_badge", "label": "Badge", "default": "Best value" }
+  ]
+}

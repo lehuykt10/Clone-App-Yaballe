@@ -1,0 +1,169 @@
+{%- comment -%}
+  Quantity breaks ("Buy 1 / Buy 2 save 10% / Buy 3 save 15%") for Dawn's main-product.
+  Replaces the quantity_selector block: it owns the form's `quantity` input.
+
+  The prices shown are display only. The real discount must exist as an
+  automatic discount per tier (see references/store-blueprint.md → Discounts),
+  with the same percentages.
+
+  Params: block, product, product_form_id, section_id
+{%- endcomment -%}
+
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign tiers = ''
+  for i in (1..3)
+    assign qty_key = 'tier_' | append: i | append: '_qty'
+    assign qty = block.settings[qty_key]
+    if qty > 0
+      assign tiers = tiers | append: i | append: ','
+    endif
+  endfor
+  assign tiers = tiers | split: ','
+  assign default_tier = block.settings.default_tier
+-%}
+
+<quantity-breaks
+  class="quantity-breaks"
+  data-section="{{ section_id }}"
+  data-currency="{{ cart.currency.iso_code }}"
+  data-locale="{{ request.locale.iso_code }}"
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.heading != blank -%}
+    <p class="quantity-breaks__heading">{{ block.settings.heading }}</p>
+  {%- endif -%}
+
+  <input type="hidden" name="quantity" value="1" form="{{ product_form_id }}">
+
+  <fieldset class="quantity-breaks__options">
+    <legend class="visually-hidden">{{ block.settings.heading | default: 'Choose a bundle' | strip_html }}</legend>
+    {%- for i in tiers -%}
+      {%- liquid
+        assign qty_key = 'tier_' | append: i | append: '_qty'
+        assign pct_key = 'tier_' | append: i | append: '_percent'
+        assign label_key = 'tier_' | append: i | append: '_label'
+        assign badge_key = 'tier_' | append: i | append: '_badge'
+        assign qty = block.settings[qty_key]
+        assign pct = block.settings[pct_key]
+        assign full = variant.price | times: qty
+        assign discounted = 100 | minus: pct | times: full | divided_by: 100
+        assign tier_num = i | plus: 0
+      -%}
+      <label class="quantity-breaks__option">
+        <input
+          type="radio"
+          name="quantity-break-{{ section_id }}"
+          value="{{ qty }}"
+          data-percent="{{ pct }}"
+          {% if tier_num == default_tier %}
+            checked
+          {% endif %}
+        >
+        <span class="quantity-breaks__body">
+          <span class="quantity-breaks__label">
+            {{ block.settings[label_key] }}
+            {%- if pct > 0 %} <span class="quantity-breaks__save">−{{ pct }}%</span>{% endif -%}
+          </span>
+          <span class="quantity-breaks__price">
+            <span data-price>{{ discounted | money }}</span>
+            {%- if pct > 0 -%}
+              <s class="quantity-breaks__compare" data-compare>{{ full | money }}</s>
+            {%- endif -%}
+          </span>
+        </span>
+        {%- if block.settings[badge_key] != blank -%}
+          <span class="quantity-breaks__badge">{{ block.settings[badge_key] }}</span>
+        {%- endif -%}
+      </label>
+    {%- endfor -%}
+  </fieldset>
+</quantity-breaks>
+
+{%- style -%}
+  .quantity-breaks { margin: 1.6rem 0; }
+  .quantity-breaks__heading { font-weight: 600; margin: 0 0 0.8rem; }
+  .quantity-breaks__options { border: 0; display: grid; gap: 0.8rem; margin: 0; padding: 0; }
+  .quantity-breaks__option {
+    align-items: center;
+    border: 0.15rem solid rgba(var(--color-foreground), 0.15);
+    border-radius: var(--inputs-radius-outset, 0.8rem);
+    cursor: pointer;
+    display: flex;
+    gap: 1.2rem;
+    padding: 1.2rem 1.4rem;
+    position: relative;
+  }
+  .quantity-breaks__option:has(input:checked) {
+    border-color: rgb(var(--color-button));
+    background: rgba(var(--color-button), 0.06);
+  }
+  .quantity-breaks__option input { accent-color: rgb(var(--color-button)); height: 1.8rem; margin: 0; width: 1.8rem; }
+  .quantity-breaks__body { display: flex; flex: 1; flex-wrap: wrap; gap: 0.4rem 1.2rem; justify-content: space-between; }
+  .quantity-breaks__label { font-weight: 600; }
+  .quantity-breaks__save {
+    background: rgb(var(--color-button));
+    border-radius: 2rem;
+    color: rgb(var(--color-button-text));
+    font-size: 1.2rem;
+    margin-left: 0.4rem;
+    padding: 0.1rem 0.8rem;
+  }
+  .quantity-breaks__price { font-weight: 600; }
+  .quantity-breaks__compare { font-weight: 400; margin-left: 0.6rem; opacity: 0.6; }
+  .quantity-breaks__badge {
+    background: rgb(var(--color-foreground));
+    border-radius: 2rem;
+    color: rgb(var(--color-background));
+    font-size: 1.1rem;
+    padding: 0.2rem 1rem;
+    position: absolute;
+    right: 1.2rem;
+    top: -1rem;
+  }
+{%- endstyle -%}
+
+<script>
+  if (!customElements.get('quantity-breaks')) {
+    customElements.define(
+      'quantity-breaks',
+      class QuantityBreaks extends HTMLElement {
+        connectedCallback() {
+          this.qtyInput = this.querySelector('input[name="quantity"]');
+          this.radios = [...this.querySelectorAll('input[type="radio"]')];
+          this.money = new Intl.NumberFormat(this.dataset.locale, { style: 'currency', currency: this.dataset.currency });
+          this.radios.forEach((r) => r.addEventListener('change', () => this.sync()));
+          if (!this.radios.some((r) => r.checked) && this.radios[0]) this.radios[0].checked = true;
+          this.sync();
+          if (typeof subscribe === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
+            this.unsubscribe = subscribe(PUB_SUB_EVENTS.variantChange, (event) => {
+              if (event.data.sectionId !== this.dataset.section || !event.data.variant) return;
+              this.updatePrices(event.data.variant.price);
+            });
+          }
+        }
+
+        disconnectedCallback() {
+          if (this.unsubscribe) this.unsubscribe();
+        }
+
+        sync() {
+          const checked = this.radios.find((r) => r.checked);
+          if (checked) this.qtyInput.value = checked.value;
+        }
+
+        // Variant price arrives in cents from Dawn's variant-change event.
+        updatePrices(priceCents) {
+          this.radios.forEach((r) => {
+            const option = r.closest('.quantity-breaks__option');
+            const full = (priceCents * Number(r.value)) / 100;
+            const discounted = (full * (100 - Number(r.dataset.percent))) / 100;
+            option.querySelector('[data-price]').textContent = this.money.format(discounted);
+            const compare = option.querySelector('[data-compare]');
+            if (compare) compare.textContent = this.money.format(full);
+          });
+        }
+      }
+    );
+  }
+</script>
