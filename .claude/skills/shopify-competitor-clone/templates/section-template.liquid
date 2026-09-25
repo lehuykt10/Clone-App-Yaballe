@@ -1,0 +1,107 @@
+{%- comment -%}
+  Custom section starter (Dawn-compatible). Copy to theme/sections/<name>.liquid,
+  rename the schema, and adapt blocks. Example below: benefits grid.
+{%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .benefits {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .benefits {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} .benefits__grid {
+    display: grid;
+    gap: 2.4rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    list-style: none;
+    margin: 3rem 0 0;
+    padding: 0;
+  }
+  @media screen and (min-width: 990px) {
+    #shopify-section-{{ section.id }} .benefits__grid {
+      grid-template-columns: repeat({{ section.settings.columns_desktop }}, minmax(0, 1fr));
+    }
+  }
+  #shopify-section-{{ section.id }} .benefits__item { text-align: center; }
+  #shopify-section-{{ section.id }} .benefits__icon { margin: 0 auto 1.2rem; max-width: 6.4rem; }
+  #shopify-section-{{ section.id }} .benefits__icon img { height: auto; width: 100%; }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="benefits page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="{{ section.settings.heading_size }} center">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    <ul class="benefits__grid" role="list">
+      {%- for block in section.blocks -%}
+        <li class="benefits__item" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != blank -%}
+            <div class="benefits__icon">
+              {{
+                block.settings.icon
+                | image_url: width: 128
+                | image_tag: loading: 'lazy', widths: '64,128', sizes: '64px', alt: block.settings.icon.alt
+              }}
+            </div>
+          {%- endif -%}
+          {%- if block.settings.title != blank -%}
+            <h3 class="h4">{{ block.settings.title }}</h3>
+          {%- endif -%}
+          {%- if block.settings.text != blank -%}
+            <div class="rte">{{ block.settings.text }}</div>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Benefits grid",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Why customers choose us" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1"
+    },
+    { "type": "range", "id": "columns_desktop", "min": 2, "max": 4, "step": 1, "label": "Columns on desktop", "default": 4 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Top padding", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Bottom padding", "default": 36 }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Benefit title" },
+        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Explain the benefit in one short sentence.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits grid",
+      "blocks": [{ "type": "benefit" }, { "type": "benefit" }, { "type": "benefit" }, { "type": "benefit" }]
+    }
+  ]
+}
+{% endschema %}
