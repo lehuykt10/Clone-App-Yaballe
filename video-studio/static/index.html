@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Studio</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>🎬 Video Studio</h1>
+    <span id="mode-badge" class="badge"></span>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <button id="btn-new" class="primary full">+ Project mới</button>
+      <h3>Projects</h3>
+      <ul id="project-list"></ul>
+    </aside>
+
+    <main>
+      <!-- New project -->
+      <section id="view-new" class="card hidden">
+        <h2>1. Tạo project</h2>
+        <form id="form-new">
+          <label>Tên sản phẩm *
+            <input name="product_name" required placeholder="VD: Zenligo Eye Massager">
+          </label>
+          <label>Mô tả / điểm bán hàng
+            <textarea name="product_description" rows="3" placeholder="Chất liệu, tính năng, lợi ích chính, đối tượng khách…"></textarea>
+          </label>
+          <label>Ảnh sản phẩm * (1–9 ảnh, nền sạch, nhiều góc)
+            <input type="file" name="product_images" accept="image/*" multiple required>
+          </label>
+          <fieldset>
+            <legend>Video mẫu (reference) — không bắt buộc</legend>
+            <label>Link TikTok / Reels / YouTube Shorts
+              <input name="reference_url" placeholder="https://www.tiktok.com/@.../video/...">
+            </label>
+            <label>hoặc upload file video
+              <input type="file" name="reference_video" accept="video/*">
+            </label>
+          </fieldset>
+          <div class="row">
+            <label>Thời lượng (giây)
+              <input type="number" name="target_duration" value="12" min="4" max="60">
+            </label>
+            <label>Nhạc nền (tuỳ chọn)
+              <input type="file" name="music" accept="audio/*">
+            </label>
+          </div>
+          <button class="primary" type="submit">Tạo project &amp; phân tích →</button>
+        </form>
+      </section>
+
+      <!-- Project -->
+      <section id="view-project" class="hidden">
+        <div class="card">
+          <div class="row between">
+            <h2 id="p-name"></h2>
+            <span id="p-status" class="status"></span>
+          </div>
+          <p id="p-progress" class="muted"></p>
+          <p id="p-error" class="error hidden"></p>
+          <div class="row">
+            <button id="btn-analyze">Phân tích lại video mẫu</button>
+            <span class="muted" id="p-spent"></span>
+          </div>
+        </div>
+
+        <div id="analysis" class="card hidden">
+          <h2>Phân tích video mẫu</h2>
+          <dl id="analysis-body"></dl>
+        </div>
+
+        <div id="storyboard" class="card hidden">
+          <div class="row between">
+            <h2>2. Storyboard <small class="muted" id="sb-duration"></small></h2>
+            <div>
+              <button id="btn-add-shot">+ Thêm cảnh</button>
+              <button id="btn-save-sb" class="primary">Lưu storyboard</button>
+            </div>
+          </div>
+          <input id="sb-title" class="title-input">
+          <div id="shots"></div>
+        </div>
+
+        <div id="render" class="card hidden">
+          <h2>3. Render</h2>
+          <div class="row wrap">
+            <label>Model <select id="r-model"></select></label>
+            <label>Độ phân giải <select id="r-resolution"></select></label>
+            <label>Khung hình
+              <select id="r-aspect"><option>9:16</option><option>1:1</option><option>16:9</option></select>
+            </label>
+            <label>Giọng đọc <select id="r-voice"></select></label>
+            <label class="check"><input type="checkbox" id="r-voiceover" checked> Giọng đọc</label>
+            <label class="check"><input type="checkbox" id="r-subtitles" checked> Phụ đề</label>
+          </div>
+          <p class="muted" id="r-model-notes"></p>
+          <div id="estimate" class="estimate"></div>
+          <button id="btn-render" class="primary">Render video →</button>
+          <p class="muted small">Mẹo: render nháp bằng <b>Seedance 2.0 Fast + 480p</b>, ưng prompt rồi mới render bản 720p.</p>
+        </div>
+
+        <div id="segments" class="card hidden">
+          <h2>Các clip</h2>
+          <div id="segment-list"></div>
+        </div>
+
+        <div id="final" class="card hidden">
+          <h2>🎉 Video hoàn chỉnh</h2>
+          <video id="final-video" controls playsinline></video>
+          <p><a id="final-download" class="button primary" download>Tải video (.mp4)</a></p>
+        </div>
+      </section>
+
+      <section id="view-empty" class="card">
+        <h2>Chào anh 👋</h2>
+        <p>Quy trình: <b>ảnh sản phẩm + video mẫu viral</b> → Claude phân tích &amp; viết storyboard → anh duyệt/sửa → Seedance tạo clip → ghép giọng đọc, phụ đề → tải video.</p>
+        <p>Bấm <b>+ Project mới</b> để bắt đầu.</p>
+      </section>
+    </main>
+  </div>
+
+  <template id="tpl-shot">
+    <div class="shot">
+      <div class="row between">
+        <strong class="shot-no"></strong>
+        <button class="link danger btn-remove">Xoá</button>
+      </div>
+      <div class="row wrap">
+        <label>Giây <input type="number" step="0.5" min="1" max="15" class="f-duration"></label>
+        <label>Vai trò <input class="f-purpose"></label>
+        <label>Copy chuyển động từ video mẫu (giây)
+          <span class="row"><input type="number" step="0.5" min="0" class="f-ref-start" placeholder="từ"> <input type="number" step="0.5" min="0" class="f-ref-end" placeholder="đến"></span>
+        </label>
+      </div>
+      <label>Prompt (tiếng Anh) <textarea rows="3" class="f-prompt"></textarea></label>
+      <label>Voiceover <input class="f-voiceover"></label>
+    </div>
+  </template>
+
+  <script src="/app.js"></script>
+</body>
+</html>
