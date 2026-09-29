@@ -1,0 +1,182 @@
+{
+  "type": "bundle_picker",
+  "name": "Bundle picker",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Choose your bundle"
+    },
+    {
+      "type": "range",
+      "id": "default_tier",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Pre-selected tier",
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "discount_type",
+      "label": "Discount type",
+      "options": [
+        {
+          "value": "amount",
+          "label": "Fixed amount off each unit"
+        },
+        {
+          "value": "percent",
+          "label": "Percent off each unit"
+        }
+      ],
+      "default": "amount",
+      "info": "Must match the automatic discounts in Shopify Admin \u2192 Discounts."
+    },
+    {
+      "type": "text",
+      "id": "save_label",
+      "label": "Savings label",
+      "default": "Save"
+    },
+    {
+      "type": "header",
+      "content": "Tier 1"
+    },
+    {
+      "type": "range",
+      "id": "tier_1_qty",
+      "min": 0,
+      "max": 6,
+      "step": 1,
+      "label": "Units (0 hides the tier)",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "tier_1_discount",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Discount per unit ($ or %)",
+      "default": 0
+    },
+    {
+      "type": "text",
+      "id": "tier_1_label",
+      "label": "Label",
+      "default": "Buy 1"
+    },
+    {
+      "type": "text",
+      "id": "tier_1_sublabel",
+      "label": "Sub-label",
+      "default": "Try it out"
+    },
+    {
+      "type": "text",
+      "id": "tier_1_badge",
+      "label": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "tier_1_perks",
+      "label": "Included line",
+      "default": "Free shipping \u00b7 30-day guarantee"
+    },
+    {
+      "type": "header",
+      "content": "Tier 2"
+    },
+    {
+      "type": "range",
+      "id": "tier_2_qty",
+      "min": 0,
+      "max": 6,
+      "step": 1,
+      "label": "Units (0 hides the tier)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "tier_2_discount",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Discount per unit ($ or %)",
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "tier_2_label",
+      "label": "Label",
+      "default": "Buy 2"
+    },
+    {
+      "type": "text",
+      "id": "tier_2_sublabel",
+      "label": "Sub-label",
+      "default": "Most popular choice"
+    },
+    {
+      "type": "text",
+      "id": "tier_2_badge",
+      "label": "Badge",
+      "default": "Most popular"
+    },
+    {
+      "type": "text",
+      "id": "tier_2_perks",
+      "label": "Included line",
+      "default": "Free shipping \u00b7 30-day guarantee"
+    },
+    {
+      "type": "header",
+      "content": "Tier 3"
+    },
+    {
+      "type": "range",
+      "id": "tier_3_qty",
+      "min": 0,
+      "max": 6,
+      "step": 1,
+      "label": "Units (0 hides the tier)",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "tier_3_discount",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Discount per unit ($ or %)",
+      "default": 8
+    },
+    {
+      "type": "text",
+      "id": "tier_3_label",
+      "label": "Label",
+      "default": "Buy 3"
+    },
+    {
+      "type": "text",
+      "id": "tier_3_sublabel",
+      "label": "Sub-label",
+      "default": "Best price per unit"
+    },
+    {
+      "type": "text",
+      "id": "tier_3_badge",
+      "label": "Badge",
+      "default": "Best value"
+    },
+    {
+      "type": "text",
+      "id": "tier_3_perks",
+      "label": "Included line",
+      "default": "Free shipping \u00b7 30-day guarantee"
+    }
+  ]
+}

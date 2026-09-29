@@ -1,0 +1,151 @@
+{
+  "brand": {
+    "name": "Brewly",
+    "tagline": "Café-quality coffee, at your kitchen counter.",
+    "description": "Simple pour-over coffee sets for slow mornings.",
+    "support_email": "support@brewly.com",
+    "reply_time": "within 1 business day"
+  },
+  "colors": {
+    "background": "#FBF8F3",
+    "surface": "#F1E9DD",
+    "text": "#2A241F",
+    "primary": "#9C4A2F",
+    "primary_text": "#FFFFFF",
+    "dark": "#2F3B34",
+    "dark_text": "#FBF8F3",
+    "accent": "#D9B26F",
+    "accent_text": "#2A241F"
+  },
+  "fonts": { "heading": "lora_n7", "body": "nunito_sans_n4" },
+  "style": { "radius": "rounded" },
+
+  "announcements": [
+    "Free shipping on every order",
+    "30-day money-back guarantee",
+    "Secure checkout"
+  ],
+
+  "hero": {
+    "image": "",
+    "heading": "Slow down. Brew better.",
+    "text": "Everything you need for a smooth, rich pour-over in one beautiful set. No machine, no pods, no waste.",
+    "button": "Shop the set"
+  },
+
+  "product": {
+    "handle": "brewly-pour-over-set",
+    "button_label": "Add to cart",
+    "bullets": [
+      "☕ Glass dripper, carafe and reusable steel filter",
+      "🌱 No paper filters, no pods: less waste every morning",
+      "⏱️ A great cup in 4 minutes, even for beginners",
+      "🎁 Gift-ready box with a printed brew guide"
+    ],
+    "tabs": [
+      { "heading": "What's in the box", "icon": "box", "content": "<ul><li>Borosilicate glass dripper</li><li>600 ml glass carafe</li><li>Stainless steel mesh filter</li><li>Measuring scoop</li><li>Brew guide</li></ul>" },
+      { "heading": "Size & care", "icon": "ruler", "content": "Carafe 600 ml (makes 1–4 cups). Glass parts are dishwasher safe; rinse the steel filter after each use." },
+      { "heading": "Shipping", "icon": "truck", "content": "Free shipping. Most orders arrive in 7–12 days in the US, with tracking. <a href=\"/pages/shipping-policy\">Shipping policy</a>" },
+      { "heading": "Our guarantee", "icon": "heart", "content": "Not in love with your coffee? Tell us within 30 days of delivery and we'll make it right." }
+    ]
+  },
+
+  "bundle": {
+    "enabled": true,
+    "heading": "Choose your set",
+    "default_tier": 2,
+    "discount_type": "amount",
+    "save_label": "Save",
+    "tiers": [
+      { "qty": 1, "discount": 0, "label": "1 Set", "sublabel": "For your kitchen", "badge": "", "perks": "Free shipping · 30-day guarantee" },
+      { "qty": 2, "discount": 5, "label": "2 Sets", "sublabel": "One to keep, one to gift", "badge": "Most popular", "perks": "Free shipping · 30-day guarantee" },
+      { "qty": 3, "discount": 8, "label": "3 Sets", "sublabel": "Home, office and a gift", "badge": "Best value", "perks": "Free shipping · 30-day guarantee" }
+    ]
+  },
+
+  "delivery": {
+    "enabled": true,
+    "free_shipping": true,
+    "default": { "min": 12, "max": 25 },
+    "rules": [
+      { "countries": ["US"], "min": 7, "max": 12 },
+      { "countries": ["CA", "GB", "AU"], "min": 10, "max": 20 },
+      { "countries": "AFRICA_SOUTH_AMERICA", "min": 15, "max": 35 }
+    ],
+    "note": "Tracked shipping, updates by email",
+    "payment_icons": true
+  },
+
+  "trust": [
+    { "icon": "truck", "text": "Free shipping" },
+    { "icon": "heart", "text": "30-day guarantee" },
+    { "icon": "lock", "text": "Secure checkout" }
+  ],
+
+  "how_it_works": {
+    "heading": "How it works",
+    "steps": [
+      ["Heat", "Boil water and let it rest for 30 seconds."],
+      ["Bloom", "Pour a little water over the grounds and wait 30 seconds."],
+      ["Pour", "Pour slowly in circles until the carafe reaches the line."],
+      ["Enjoy", "Lift the dripper and serve. Rinse the filter and you're done."]
+    ]
+  },
+
+  "benefits": {
+    "heading": "Why coffee lovers switch",
+    "items": [
+      ["Richer taste", "The steel filter keeps the coffee's natural oils."],
+      ["Less waste", "No paper filters or pods to throw away."],
+      ["Beginner friendly", "A printed guide and a scoop for the right dose."],
+      ["Looks great", "Clear glass and steel that suit any kitchen."]
+    ]
+  },
+
+  "comparison": {
+    "heading": "Better than a pod machine",
+    "us_label": "Brewly set",
+    "them_label": "Pod machines",
+    "rows": [
+      ["No pods to buy", true, false],
+      ["Works with any coffee", true, false],
+      ["No electricity needed", true, false],
+      ["Easy to clean", true, false]
+    ]
+  },
+
+  "stories": [
+    { "image": "", "heading": "Made for slow mornings", "text": "Five quiet minutes, one great cup. Brewing by hand turns coffee into a small daily ritual.", "layout": "image_first" },
+    { "image": "", "heading": "A gift they'll use every day", "text": "Gift-ready packaging and a brew guide inside. Perfect for birthdays, housewarmings and holidays.", "layout": "text_first" }
+  ],
+
+  "size_guide": null,
+
+  "faq": [
+    ["What grind size should I use?", "Medium-fine, like table salt. Pre-ground filter coffee works too."],
+    ["Do I need paper filters?", "No. The stainless steel filter is reusable."],
+    ["Is the glass heat resistant?", "Yes. It's borosilicate glass, made for hot water."],
+    ["How long does shipping take?", "Most US orders arrive in 7–12 days, with tracking."],
+    ["What if something arrives broken?", "Send us a photo within 30 days and we'll send a replacement or refund you."]
+  ],
+
+  "closing": {
+    "heading": "Your better morning starts here",
+    "text": "Café-quality coffee at home, no machine, no pods, no fuss."
+  },
+
+  "home": {
+    "featured_text": "Free shipping · 30-day guarantee · Save with 2–3 sets",
+    "featured_button": "Choose your set",
+    "faq_indexes": [0, 1, 3, 4]
+  },
+
+  "newsletter": {
+    "heading": "Join the Brewly club",
+    "text": "Brew tips, new recipes and 10% off your first order.",
+    "welcome_code": "WELCOME10",
+    "code_label": "Your 10% off code"
+  },
+
+  "header": { "country_selector": true }
+}

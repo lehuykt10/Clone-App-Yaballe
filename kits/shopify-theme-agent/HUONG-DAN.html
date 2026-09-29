@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hướng dẫn AI Agent Shopify</title><style>
+:root{--bg:#fbf9f6;--panel:#ffffff;--text:#1f2328;--muted:#5b6470;--line:#e4e0da;--accent:#2f6f5e;--accent-bg:#e7f2ee;--code:#f3f0eb;--warn:#fff6e0}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#15171a;--panel:#1c1f23;--text:#e8e6e3;--muted:#a3a9b1;--line:#30343a;--accent:#7cc7b0;--accent-bg:#1f332d;--code:#23272c;--warn:#3a3220}}
+:root[data-theme=dark]{--bg:#15171a;--panel:#1c1f23;--text:#e8e6e3;--muted:#a3a9b1;--line:#30343a;--accent:#7cc7b0;--accent-bg:#1f332d;--code:#23272c;--warn:#3a3220}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.wrap{display:grid;grid-template-columns:280px minmax(0,1fr);gap:40px;max-width:1240px;margin:0 auto;padding:32px 24px}
+nav{position:sticky;top:24px;align-self:start;max-height:calc(100vh - 48px);overflow:auto;font-size:14px}
+nav .toc ul{list-style:none;padding-left:0;margin:0}
+nav .toc ul ul{padding-left:14px}
+nav a{color:var(--muted);text-decoration:none;display:block;padding:3px 0}
+nav a:hover{color:var(--accent)}
+nav .brand{font-weight:700;color:var(--text);margin-bottom:12px;font-size:15px}
+main{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:40px 48px}
+h1{font-size:30px;line-height:1.25;margin-top:0}
+h2{font-size:23px;margin-top:48px;padding-top:12px;border-top:1px solid var(--line)}
+h3{font-size:18px;margin-top:32px}
+a{color:var(--accent)}
+hr{display:none}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:15px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--accent-bg)}
+code{background:var(--code);padding:2px 6px;border-radius:5px;font-size:.92em;font-family:ui-monospace,Consolas,Menlo,monospace}
+pre{background:var(--code);padding:14px 16px;border-radius:10px;overflow-x:auto;position:relative}
+pre code{background:none;padding:0}
+blockquote{margin:16px 0;padding:10px 16px;background:var(--warn);border-left:4px solid #d9a23a;border-radius:6px}
+blockquote p{margin:6px 0}
+details{background:var(--code);border-radius:10px;padding:10px 16px;margin:16px 0}
+summary{cursor:pointer;font-weight:600}
+.copy{position:absolute;top:8px;right:8px;font-size:12px;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:6px;padding:3px 8px;cursor:pointer}
+.theme-toggle{margin-top:16px;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:6px;padding:4px 10px;cursor:pointer}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;padding:16px}nav{position:static;max-height:none;border:1px solid var(--line);border-radius:12px;padding:12px 16px;background:var(--panel)}main{padding:24px 18px}}
+</style></head>
+<body><div class="wrap"><nav><div class="brand">AI Agent Thiết Kế Theme Shopify</div><div class="toc">
+<ul>
+<li><a href="#phan-1-chuan-bi-tai-khoan">Phần 1. Chuẩn bị tài khoản</a></li>
+<li><a href="#phan-2-cai-at-lam-1-lan-cho-moi-may">Phần 2. Cài đặt (làm 1 lần cho mỗi máy)</a><ul>
+<li><a href="#21-giai-nen-bo-agent">2.1. Giải nén bộ Agent</a></li>
+<li><a href="#22-cai-phan-mem-tu-ong">2.2. Cài phần mềm tự động</a></li>
+<li><a href="#23-ang-nhap-claude-code">2.3. Đăng nhập Claude Code</a></li>
+<li><a href="#24-ang-nhap-shopify-cli">2.4. Đăng nhập Shopify CLI</a></li>
+<li><a href="#25-tuy-chon-nen-lam-ket-noi-shopify-cho-claude">2.5. (Tuỳ chọn, nên làm) Kết nối Shopify cho Claude</a></li>
+</ul>
+</li>
+<li><a href="#phan-3-lam-website-tu-a-en-z">Phần 3. Làm website từ A đến Z</a><ul>
+<li><a href="#buoc-1-bat-dau">Bước 1. /bat-dau</a></li>
+<li><a href="#buoc-2-phan-tich-doi-thu">Bước 2. /phan-tich-doi-thu</a></li>
+<li><a href="#buoc-3-thuong-hieu">Bước 3. /thuong-hieu</a></li>
+<li><a href="#buoc-4-dung-theme-va-tai-anh">Bước 4. /dung-theme và tải ảnh</a></li>
+<li><a href="#buoc-5-xem-truoc">Bước 5. /xem-truoc</a></li>
+<li><a href="#buoc-6-du-lieu-store">Bước 6. /du-lieu-store</a></li>
+<li><a href="#buoc-7-chinh-sach">Bước 7. /chinh-sach</a></li>
+<li><a href="#buoc-8-kiem-tra">Bước 8. /kiem-tra</a></li>
+</ul>
+</li>
+<li><a href="#phan-4-sua-website-sau-khi-a-xuat-ban">Phần 4. Sửa website sau khi đã xuất bản</a></li>
+<li><a href="#phan-5-loi-thuong-gap">Phần 5. Lỗi thường gặp</a></li>
+<li><a href="#phan-6-quy-tac-bat-buoc-e-khong-bi-khoa-tai-khoan">Phần 6. Quy tắc bắt buộc (để không bị khoá tài khoản)</a></li>
+<li><a href="#phan-7-cau-hoi-thuong-gap">Phần 7. Câu hỏi thường gặp</a></li>
+<li><a href="#phan-8-cau-truc-thu-muc">Phần 8. Cấu trúc thư mục</a></li>
+</ul>
+</div>
+
+<button class="theme-toggle" type="button">Sáng / Tối</button></nav>
+<main><h1 id="huong-dan-su-dung-ai-agent-thiet-ke-theme-shopify">Hướng dẫn sử dụng AI Agent Thiết Kế Theme Shopify</h1>
+<p>Bộ AI Agent này chạy trong <strong>Claude Code</strong> trên máy tính của bạn. Bạn đưa link website
+đối thủ và thông tin sản phẩm, Agent sẽ:</p>
+<ol>
+<li>Phân tích website đối thủ: bố cục, giá, combo, app, tốc độ, điểm yếu</li>
+<li>Lập kế hoạch làm tốt hơn đối thủ, <strong>chờ bạn duyệt</strong></li>
+<li>Tạo màu sắc, font chữ và toàn bộ nội dung riêng cho thương hiệu của bạn</li>
+<li>Dựng theme Shopify hoàn chỉnh: trang chủ, trang sản phẩm có <strong>combo mua nhiều giảm giá</strong>,
+   chọn màu/size từng sản phẩm, <strong>thời gian giao hàng theo nước của khách</strong>, thanh "Add to cart"
+   bám theo màn hình, FAQ chuẩn Google, bảng so sánh, bảng size…</li>
+<li>Đưa theme lên store của bạn ở dạng <strong>bản nháp</strong> để bạn xem trước</li>
+<li>Tạo sản phẩm, trang, menu, mã giảm giá (nếu kết nối Shopify)</li>
+<li>Viết các trang chính sách chuẩn quảng cáo Facebook và Google</li>
+<li>Kiểm tra toàn bộ website, chấm điểm so với đối thủ, liệt kê việc còn phải làm</li>
+</ol>
+<p>Dùng được cho <strong>mọi ngách</strong>: thú cưng, làm đẹp, thời trang, trang sức, nhà cửa, bếp, đồ công
+nghệ, thể thao, mẹ &amp; bé, du lịch, ô tô, quà cá nhân hoá… và cả ngách khác.</p>
+<blockquote>
+<p><strong>Bạn luôn là người quyết định.</strong> Agent dừng lại xin ý kiến ở các bước quan trọng và
+<strong>không bao giờ tự xuất bản (Publish) theme</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="phan-1-chuan-bi-tai-khoan">Phần 1. Chuẩn bị tài khoản</h2>
+<table>
+<thead>
+<tr>
+<th>Tài khoản</th>
+<th>Bắt buộc?</th>
+<th>Ghi chú</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Claude</strong> (claude.ai) gói <strong>Pro</strong> hoặc <strong>Max</strong></td>
+<td>Bắt buộc</td>
+<td>Claude Code cần gói trả phí (hoặc tài khoản API Anthropic Console)</td>
+</tr>
+<tr>
+<td><strong>Shopify</strong></td>
+<td>Bắt buộc</td>
+<td>Store đang dùng thử hoặc có gói. Nên đổi <strong>tiền tệ</strong> (Settings → Store details → Store currency) <strong>trước</strong> khi tạo sản phẩm</td>
+</tr>
+<tr>
+<td>GitHub</td>
+<td>Không bắt buộc</td>
+<td>Để sao lưu dự án lên mạng</td>
+</tr>
+</tbody>
+</table>
+<p>Máy tính: <strong>Windows 10/11</strong> hoặc <strong>macOS 12 trở lên</strong>, còn trống khoảng 5 GB, có Internet.</p>
+<hr />
+<h2 id="phan-2-cai-at-lam-1-lan-cho-moi-may">Phần 2. Cài đặt (làm 1 lần cho mỗi máy)</h2>
+<h3 id="21-giai-nen-bo-agent">2.1. Giải nén bộ Agent</h3>
+<ol>
+<li>Tạo thư mục <strong>không dấu, không khoảng trắng</strong>, không nằm trong OneDrive. Ví dụ:
+   - Windows: <code>C:\Shopify\ten-thuong-hieu</code>
+   - macOS: <code>~/Shopify/ten-thuong-hieu</code></li>
+<li>Giải nén file <code>shopify-theme-agent.zip</code> vào đó. Trong thư mục phải thấy trực tiếp các file
+   <code>CLAUDE.md</code>, <code>HUONG-DAN.html</code> và thư mục <code>.claude</code> (thư mục ẩn), <code>setup</code>.</li>
+</ol>
+<blockquote>
+<p>Mỗi thương hiệu / store nên dùng <strong>một thư mục riêng</strong>: giải nén lại file zip vào thư mục mới.
+Giữ file zip gốc để dùng cho dự án sau.</p>
+<p><strong>Thư mục <code>.claude</code> bị ẩn?</strong> Windows: File Explorer → View → Show → Hidden items.
+macOS: trong Finder bấm <code>Cmd + Shift + .</code></p>
+</blockquote>
+<h3 id="22-cai-phan-mem-tu-ong">2.2. Cài phần mềm tự động</h3>
+<p><strong>Windows</strong></p>
+<ol>
+<li>Mở thư mục dự án trong File Explorer.</li>
+<li>Bấm vào thanh địa chỉ phía trên, gõ <code>powershell</code> rồi Enter. Cửa sổ PowerShell mở đúng thư mục đó.</li>
+<li>Dán lệnh sau rồi Enter:
+   <code>powershell
+   powershell -ExecutionPolicy Bypass -File setup\setup-windows.ps1</code></li>
+<li>Nếu Windows hỏi "Do you want to allow this app to make changes…", chọn <strong>Yes</strong>.
+   Quá trình cài mất 5–15 phút (Node.js, Python, Git, Shopify CLI, trình duyệt Chromium, Claude Code).</li>
+<li>Cài xong, <strong>đóng PowerShell và mở lại</strong> (bước 1–2) để máy nhận phần mềm mới.</li>
+<li>Kiểm tra lại:
+   <code>powershell
+   powershell -ExecutionPolicy Bypass -File setup\setup-windows.ps1 -CheckOnly</code>
+   Tất cả phải hiện <code>[OK]</code>.</li>
+</ol>
+<p><strong>macOS</strong></p>
+<ol>
+<li>Mở <strong>Terminal</strong> (Cmd + Space, gõ Terminal).</li>
+<li>Gõ <code>cd</code> (có dấu cách), kéo thư mục dự án thả vào cửa sổ Terminal, Enter.</li>
+<li>Chạy:
+   <code>bash
+   bash setup/setup-mac.sh</code>
+   Máy có thể hỏi mật khẩu đăng nhập Mac (gõ không hiện chữ, cứ gõ rồi Enter).</li>
+<li>Mở cửa sổ Terminal mới, kiểm tra: <code>bash setup/setup-mac.sh --check</code></li>
+</ol>
+<details>
+<summary>Cài tay (nếu script lỗi)</summary>
+
+| Phần mềm | Tải | Kiểm tra |
+|---|---|---|
+| Node.js LTS (≥ 20) | https://nodejs.org | `node -v` |
+| Python 3.10+ (Windows: tích **Add python.exe to PATH**) | https://www.python.org | `py --version` / `python3 --version` |
+| Git | https://git-scm.com | `git --version` |
+| Shopify CLI | `npm install -g @shopify/cli@latest` | `shopify version` |
+| Playwright + Chromium | `npm install -g playwright` rồi `npx playwright install chromium` | `npx playwright --version` |
+| Claude Code | https://claude.com/claude-code (hoặc `npm install -g @anthropic-ai/claude-code`) | `claude --version` |
+</details>
+
+<h3 id="23-ang-nhap-claude-code">2.3. Đăng nhập Claude Code</h3>
+<p>Trong PowerShell / Terminal, đang ở thư mục dự án, gõ:</p>
+<pre><code class="language-bash">claude
+</code></pre>
+<p>Lần đầu Claude Code mở trình duyệt để đăng nhập tài khoản claude.ai. Đăng nhập xong quay lại
+cửa sổ lệnh. Nếu được hỏi <strong>"Do you trust the files in this folder?"</strong> chọn <strong>Yes</strong>.</p>
+<p>Kiểm tra Agent đã nhận: gõ <code>/tro-giup</code> → phải hiện bảng lệnh tiếng Việt.
+Gõ <code>/agents</code> → phải thấy 4 agent: competitor-analyst, brand-copywriter, theme-builder, store-auditor.</p>
+<h3 id="24-ang-nhap-shopify-cli">2.4. Đăng nhập Shopify CLI</h3>
+<p>Mở <strong>cửa sổ lệnh thứ hai</strong> ở thư mục dự án (giữ Claude Code ở cửa sổ đầu), gõ
+(thay <code>ten-store</code> bằng store của bạn, xem trong Shopify Admin → Settings → Domains):</p>
+<pre><code class="language-bash">shopify theme list --store ten-store.myshopify.com
+</code></pre>
+<p>Trình duyệt mở ra → đăng nhập tài khoản <strong>chủ store</strong> (hoặc nhân viên có quyền Themes) →
+quay lại, thấy danh sách theme là xong.</p>
+<h3 id="25-tuy-chon-nen-lam-ket-noi-shopify-cho-claude">2.5. (Tuỳ chọn, nên làm) Kết nối Shopify cho Claude</h3>
+<p>Để Agent <strong>tự tạo</strong> sản phẩm, trang, menu, mã giảm giá:
+1. Vào https://claude.ai → ảnh đại diện → <strong>Settings</strong> → <strong>Connectors</strong>.
+2. Tìm <strong>Shopify</strong> → <strong>Connect</strong> → đăng nhập store → cho phép.
+3. Trong Claude Code gõ <code>/mcp</code> → thấy Shopify ở trạng thái connected.</p>
+<p>Không kết nối cũng được: Agent sẽ hướng dẫn bạn bấm từng bước trong Shopify Admin.</p>
+<hr />
+<h2 id="phan-3-lam-website-tu-a-en-z">Phần 3. Làm website từ A đến Z</h2>
+<p>Mở Claude Code trong thư mục dự án (<code>claude</code>), rồi đi lần lượt các lệnh. Có thể gõ yêu cầu
+bằng tiếng Việt bình thường thay cho lệnh.</p>
+<table>
+<thead>
+<tr>
+<th>Bước</th>
+<th>Gõ lệnh</th>
+<th>Agent làm gì</th>
+<th>Bạn làm gì</th>
+<th>Thời gian</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>/bat-dau</code></td>
+<td>Kiểm tra máy, hỏi thông tin, tạo hồ sơ thương hiệu</td>
+<td>Trả lời câu hỏi</td>
+<td>10 phút</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>/phan-tich-doi-thu https://…</code></td>
+<td>Chụp và phân tích web đối thủ, lập kế hoạch vượt</td>
+<td><strong>Duyệt kế hoạch</strong></td>
+<td>10–20 phút</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>/thuong-hieu</code></td>
+<td>Màu, font, nội dung, cấu hình combo, thời gian giao</td>
+<td><strong>Duyệt màu và nội dung</strong></td>
+<td>10–20 phút</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>/dung-theme</code></td>
+<td>Dựng theme hoàn chỉnh, kiểm tra lỗi</td>
+<td>Tải ảnh lên Shopify (Agent báo tên file)</td>
+<td>5–10 phút</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>/xem-truoc</code></td>
+<td>Đưa theme lên store dạng bản nháp, gửi link</td>
+<td><strong>Xem trên điện thoại và máy tính</strong></td>
+<td>5 phút</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>/du-lieu-store</code></td>
+<td>Sản phẩm, trang, menu, mã giảm giá khớp combo</td>
+<td>Duyệt sản phẩm</td>
+<td>10–20 phút</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>/chinh-sach</code></td>
+<td>4 trang chính sách + checklist quảng cáo</td>
+<td>Cung cấp địa chỉ, tên pháp lý; dán vào Settings → Policies</td>
+<td>10 phút</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>/kiem-tra</code></td>
+<td>Chấm điểm so với đối thủ, danh sách việc cần sửa</td>
+<td>Quyết định sửa gì</td>
+<td>10 phút</td>
+</tr>
+<tr>
+<td>–</td>
+<td><code>/sua &lt;yêu cầu&gt;</code></td>
+<td>Sửa bất kỳ thứ gì</td>
+<td>–</td>
+<td>tuỳ</td>
+</tr>
+<tr>
+<td>–</td>
+<td><code>/tro-giup</code></td>
+<td>Xem đang ở bước nào, bước tiếp theo</td>
+<td>–</td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
+<p>Agent ghi tiến độ vào file <code>PROGRESS.md</code>. Hôm sau mở lại <code>claude</code>, gõ <code>/tro-giup</code> là
+Agent biết làm tiếp từ đâu.</p>
+<h3 id="buoc-1-bat-dau">Bước 1. <code>/bat-dau</code></h3>
+<p>Ví dụ:</p>
+<pre><code>/bat-dau https://www.doi-thu.com/products/san-pham
+</code></pre>
+<p>Chuẩn bị sẵn để trả lời:
+- Tên thương hiệu, tên miền (nếu có), địa chỉ <code>ten-store.myshopify.com</code>
+- Sản phẩm: tên, giá bán, các biến thể (màu, size), link nhà cung cấp
+- Thị trường (Mỹ, châu Âu, toàn thế giới…), tiền tệ
+- <strong>Thời gian giao của nhà cung cấp</strong> theo nước (ví dụ Mỹ 7–14 ngày)
+- Thuế nhập khẩu: đã gồm trong giá hay khách tự trả
+- Ảnh/video sản phẩm bạn có quyền dùng</p>
+<h3 id="buoc-2-phan-tich-doi-thu">Bước 2. <code>/phan-tich-doi-thu</code></h3>
+<p>Agent mở web đối thủ bằng trình duyệt ẩn, chụp màn hình máy tính và điện thoại, đo tốc độ,
+đọc cấu trúc từng trang và app họ dùng. Kết quả nằm trong thư mục <code>teardown/</code>.</p>
+<p>Bạn nhận được bản tóm tắt: đối thủ mạnh gì, yếu gì, <strong>10 điểm mình sẽ làm tốt hơn</strong>, sơ đồ
+trang. Trả lời "Duyệt" hoặc yêu cầu sửa.</p>
+<blockquote>
+<p>Nếu web đối thủ chặn: Agent sẽ nhờ bạn chụp màn hình (máy tính + điện thoại) trang chủ,
+trang sản phẩm và kéo thả ảnh vào Claude Code.</p>
+</blockquote>
+<h3 id="buoc-3-thuong-hieu">Bước 3. <code>/thuong-hieu</code></h3>
+<p>Agent đề xuất bảng màu, font chữ, kiểu bo góc, câu tiêu đề, nội dung trang sản phẩm, FAQ,
+và <strong>combo</strong> (ví dụ Mua 1 / Mua 2 tiết kiệm $10 / Mua 3 tiết kiệm $24). Mọi thứ được lưu vào
+file <code>brand/brand.json</code>. Bạn có thể nói: "đổi màu nút sang xanh lá", "combo 2 giảm 15%"…</p>
+<p>Những chỗ đánh dấu ❓ là thông tin Agent phải giả định: hãy trả lời để nội dung chính xác.</p>
+<h3 id="buoc-4-dung-theme-va-tai-anh">Bước 4. <code>/dung-theme</code> và tải ảnh</h3>
+<p>Agent tải theme <strong>Dawn</strong> (theme chính thức, miễn phí, nhanh nhất của Shopify), cài thêm
+các section bán hàng và dựng toàn bộ trang.</p>
+<p><strong>Tải ảnh lên Shopify:</strong> Shopify Admin → <strong>Content</strong> → <strong>Files</strong> → <strong>Upload files</strong>.
+Đặt tên file không dấu, ví dụ <code>hero-1.jpg</code>. Gửi tên file cho Agent, Agent sẽ gắn vào đúng chỗ.
+Kích thước gợi ý: ảnh đầu trang 2400×1200, ảnh sản phẩm vuông 2048×2048, ảnh minh hoạ 1600×1200.</p>
+<p>Ảnh sản phẩm (gallery) thì tải trong <strong>Products</strong> → chọn sản phẩm → <strong>Media</strong>.</p>
+<h3 id="buoc-5-xem-truoc">Bước 5. <code>/xem-truoc</code></h3>
+<p>Agent đẩy theme lên store ở dạng <strong>Unpublished</strong> (khách không thấy) và gửi link dạng
+<code>https://ten-store.myshopify.com/?preview_theme_id=123456</code>.</p>
+<p>Kiểm tra trên điện thoại: bấm chọn combo, đổi màu từng sản phẩm, bấm Add to cart, xem giỏ hàng,
+xem dòng thời gian giao hàng, mở FAQ.</p>
+<p><strong>Xuất bản:</strong> khi đã hài lòng, vào <strong>Online Store</strong> → <strong>Themes</strong> → ở theme mới bấm <strong>…</strong> →
+<strong>Publish</strong>. (Agent không bao giờ tự làm bước này.)</p>
+<h3 id="buoc-6-du-lieu-store">Bước 6. <code>/du-lieu-store</code></h3>
+<ul>
+<li>Tạo/cập nhật sản phẩm đúng đường dẫn (handle) mà theme dùng</li>
+<li><strong>Tạo mã giảm giá tự động khớp combo</strong>. Rất quan trọng: combo trên trang chỉ <em>hiển thị</em> giá;
+  nếu không có mã giảm giá tự động, giỏ hàng sẽ tính <strong>giá đầy đủ</strong></li>
+<li>Mã chào mừng (ví dụ <code>WELCOME10</code>) hiện ra ngay sau khi khách đăng ký email ở trang chủ</li>
+<li>Trang About, FAQ, How it works, Contact, Track order + menu</li>
+</ul>
+<p>Nên tự bật thêm: <strong>Marketing</strong> → <strong>Automations</strong> → <strong>Welcome new subscribers</strong> (gửi mã qua email).</p>
+<h3 id="buoc-7-chinh-sach">Bước 7. <code>/chinh-sach</code></h3>
+<p>Agent viết 4 trang: Refund, Shipping, Terms of Service, Contact information, khớp đúng với
+cài đặt ship, thuế, thời gian giao. Sau đó bạn dán từng nội dung vào
+<strong>Settings</strong> → <strong>Policies</strong> (bấm nút <code>&lt;&gt;</code> trong khung soạn thảo trước khi dán).</p>
+<h3 id="buoc-8-kiem-tra">Bước 8. <code>/kiem-tra</code></h3>
+<p>Agent kiểm tra như một chuyên gia: tốc độ, hiển thị trên điện thoại, SEO, câu chữ có vi phạm
+chính sách quảng cáo không, thông tin có mâu thuẫn không, và chấm điểm so với đối thủ. Kết quả:
+🔴 phải sửa trước khi chạy quảng cáo · 🟡 giúp tăng tỷ lệ mua · ⚪ nên làm thêm.</p>
+<hr />
+<h2 id="phan-4-sua-website-sau-khi-a-xuat-ban">Phần 4. Sửa website sau khi đã xuất bản</h2>
+<p>Không sửa trực tiếp theme đang chạy. Làm theo 4 bước:
+1. <strong>Online Store</strong> → <strong>Themes</strong> → theme đang chạy → <strong>…</strong> → <strong>Duplicate</strong> (tạo bản sao).
+2. Trong Claude Code: <code>/sua đổi thời gian giao Mỹ thành 8–15 ngày</code> (hoặc yêu cầu bất kỳ).
+3. <code>/xem-truoc</code> → Agent đẩy lên <strong>bản sao</strong> và gửi link xem trước.
+4. Hài lòng thì <strong>Publish</strong> bản sao.</p>
+<p>Ví dụ yêu cầu:
+- <code>/sua thêm combo 4 sản phẩm giảm 30%</code>
+- <code>/sua đổi tông màu sang pastel hồng, bo góc tròn hơn</code>
+- <code>/sua thêm bảng size cho áo: S, M, L, XL với số đo ngực và dài áo</code>
+- <code>/sua thêm câu hỏi FAQ: có giao hàng đến Canada không?</code>
+- <code>/sua bỏ phần so sánh, thêm section video hướng dẫn</code></p>
+<hr />
+<h2 id="phan-5-loi-thuong-gap">Phần 5. Lỗi thường gặp</h2>
+<table>
+<thead>
+<tr>
+<th>Lỗi</th>
+<th>Cách xử lý</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>running scripts is disabled on this system</code></td>
+<td>Dùng đúng lệnh <code>powershell -ExecutionPolicy Bypass -File setup\setup-windows.ps1</code></td>
+</tr>
+<tr>
+<td><code>'claude' / 'shopify' / 'node' is not recognized</code></td>
+<td>Đóng hết cửa sổ lệnh, mở lại. Vẫn lỗi: khởi động lại máy</td>
+</tr>
+<tr>
+<td>Gõ <code>python</code> mở Microsoft Store</td>
+<td>Dùng <code>py</code> thay cho <code>python</code>. Hoặc Settings → Apps → Advanced app settings → App execution aliases → tắt python.exe và python3.exe</td>
+</tr>
+<tr>
+<td><code>SSL ... bad record mac</code> hoặc lỗi mạng khi <code>shopify theme push</code></td>
+<td>Tắt VPN/phần mềm diệt virus quét HTTPS rồi thử lại. Vẫn lỗi: Agent tạo file <code>dist/theme.zip</code>, bạn tải lên ở <strong>Online Store</strong> → <strong>Themes</strong> → <strong>Add theme</strong> → <strong>Upload zip file</strong></td>
+</tr>
+<tr>
+<td>Shopify CLI đăng nhập nhầm tài khoản</td>
+<td><code>shopify auth logout</code> rồi chạy lại lệnh <code>shopify theme list --store …</code></td>
+</tr>
+<tr>
+<td><code>Cannot find module 'playwright'</code> / thiếu trình duyệt</td>
+<td><code>npm install -g playwright</code> rồi <code>npx playwright install chromium</code></td>
+</tr>
+<tr>
+<td>Web đối thủ chặn, ảnh chụp trắng</td>
+<td>Tự chụp màn hình trang đối thủ và kéo thả vào Claude Code</td>
+</tr>
+<tr>
+<td>Giỏ hàng không trừ tiền combo</td>
+<td>Chưa có mã giảm giá tự động khớp combo → <code>/du-lieu-store</code></td>
+</tr>
+<tr>
+<td>Ảnh không hiện trên trang</td>
+<td>Tên file trong brand.json phải trùng tên trong Content → Files (kể cả .jpg/.png)</td>
+</tr>
+<tr>
+<td>Thời gian giao không đổi theo nước</td>
+<td>Bật Markets cho các nước đó và giữ "country selector" ở header</td>
+</tr>
+<tr>
+<td>Link sản phẩm báo 404</td>
+<td>Handle sản phẩm phải trùng <code>product.handle</code> trong brand.json; không dùng ký tự ™ hay dấu</td>
+</tr>
+<tr>
+<td>Thư mục nằm trong OneDrive, lỗi đường dẫn</td>
+<td>Chuyển dự án ra <code>C:\Shopify\...</code></td>
+</tr>
+<tr>
+<td>Claude Code hỏi quyền chạy lệnh</td>
+<td>Đọc lệnh; lệnh an toàn chọn <strong>Yes</strong>. Lệnh <code>shopify theme push/publish</code> luôn được hỏi lại để bảo vệ bạn</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="phan-6-quy-tac-bat-buoc-e-khong-bi-khoa-tai-khoan">Phần 6. Quy tắc bắt buộc (để không bị khoá tài khoản)</h2>
+<ol>
+<li><strong>Chỉ học bố cục và chiến lược bán hàng của đối thủ.</strong> Không sao chép chữ, ảnh, video, logo,
+   đánh giá, code của họ: dễ bị DMCA gỡ store, khoá tài khoản quảng cáo và cổng thanh toán.</li>
+<li><strong>Không đánh giá giả</strong>, không "10.000 khách hàng" khi chưa có, không đồng hồ đếm ngược giả,
+   không giá gạch (compare-at) chưa từng bán.</li>
+<li><strong>Không nói quá công dụng</strong> (chữa bệnh, giảm cân, an toàn tuyệt đối…) khi không có giấy tờ.
+   Agent có danh sách từ cấm theo từng ngách.</li>
+<li><strong>Thời gian giao hàng</strong> = thời gian nhà cung cấp + 2–3 ngày dự phòng, ghi giống nhau ở
+   trang sản phẩm, FAQ và chính sách.</li>
+<li>Không gửi mật khẩu, mã <code>shptka_…</code> hay file <code>.env</code> cho ai, không đưa lên GitHub.</li>
+</ol>
+<hr />
+<h2 id="phan-7-cau-hoi-thuong-gap">Phần 7. Câu hỏi thường gặp</h2>
+<p><strong>Chi phí?</strong> Gói Claude Pro/Max + gói Shopify. Theme Dawn và bộ Agent miễn phí.</p>
+<p><strong>Dùng cho theme trả phí khác Dawn được không?</strong> Phân tích đối thủ, nội dung, chính sách,
+kiểm tra thì được. Phần tự dựng theme (combo, thời gian giao…) được thiết kế cho Dawn; với theme
+khác Agent sẽ hướng dẫn làm tương tự bằng tay.</p>
+<p><strong>Store nhiều sản phẩm?</strong> Được. Theme áp dụng cho mọi sản phẩm; trang chủ nổi bật 1 sản phẩm
+chính (có thể đổi trong theme editor thành bộ sưu tập).</p>
+<p><strong>Bán thị trường không nói tiếng Anh?</strong> Nói với Agent ở <code>/bat-dau</code> (ví dụ: bán ở Đức, tiếng Đức).
+Nội dung sẽ viết bằng ngôn ngữ đó.</p>
+<p><strong>Sửa bằng tay trong Theme Editor được không?</strong> Được, nhưng lần sau Agent dựng lại từ
+<code>brand/brand.json</code> sẽ ghi đè nội dung các trang. Tốt nhất: nói với Agent để sửa trong brand.json.</p>
+<p><strong>Làm store thứ hai?</strong> Giải nén file zip vào thư mục mới và bắt đầu lại từ <code>/bat-dau</code>.</p>
+<hr />
+<h2 id="phan-8-cau-truc-thu-muc">Phần 8. Cấu trúc thư mục</h2>
+<pre><code>ten-thuong-hieu/
+├── CLAUDE.md            &quot;bộ não&quot; của Agent (quy trình, quy tắc)
+├── HUONG-DAN.html       tài liệu này
+├── PROGRESS.md          tiến độ dự án (Agent tự ghi)
+├── setup/               script cài đặt Windows / macOS
+├── brand/               hồ sơ thương hiệu, nội dung, brand.json, chính sách
+├── teardown/            phân tích đối thủ, kế hoạch, bảng điểm
+├── theme/               theme Shopify (Agent tạo ở bước 4)
+├── dist/                file theme.zip để tải lên tay (khi cần)
+└── .claude/
+    ├── agents/          4 agent chuyên môn
+    ├── commands/        10 lệnh tắt tiếng Việt
+    ├── skills/          kiến thức: quy trình clone, bộ theme, playbook ngách, chính sách
+    └── settings.json    quyền chạy lệnh an toàn
+</code></pre></main></div><script>
+document.querySelectorAll('pre').forEach(function(pre){var b=document.createElement('button');b.className='copy';b.textContent='Copy';
+b.onclick=function(){navigator.clipboard.writeText(pre.innerText.replace(/^Copy\n?/,'')).then(function(){b.textContent='Da copy';setTimeout(function(){b.textContent='Copy'},1500)})};pre.appendChild(b)});
+var t=document.querySelector('.theme-toggle');t.onclick=function(){var r=document.documentElement;var dark=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches);r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('theme',r.dataset.theme)}catch(e){}};
+try{var s=localStorage.getItem('theme');if(s)document.documentElement.dataset.theme=s}catch(e){}
+</script></body></html>

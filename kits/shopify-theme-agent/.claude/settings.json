@@ -1,0 +1,45 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python .claude/skills/shopify-theme-kit/scripts/new_theme.py:*)",
+      "Bash(python .claude/skills/shopify-theme-kit/scripts/install_kit.py:*)",
+      "Bash(python .claude/skills/shopify-theme-kit/scripts/build_store.py:*)",
+      "Bash(python .claude/skills/shopify-theme-kit/scripts/zip_theme.py:*)",
+      "Bash(python3 .claude/skills/shopify-theme-kit/scripts/new_theme.py:*)",
+      "Bash(python3 .claude/skills/shopify-theme-kit/scripts/install_kit.py:*)",
+      "Bash(python3 .claude/skills/shopify-theme-kit/scripts/build_store.py:*)",
+      "Bash(python3 .claude/skills/shopify-theme-kit/scripts/zip_theme.py:*)",
+      "Bash(py .claude/skills/shopify-theme-kit/scripts/new_theme.py:*)",
+      "Bash(py .claude/skills/shopify-theme-kit/scripts/install_kit.py:*)",
+      "Bash(py .claude/skills/shopify-theme-kit/scripts/build_store.py:*)",
+      "Bash(py .claude/skills/shopify-theme-kit/scripts/zip_theme.py:*)",
+      "Bash(node .claude/skills/shopify-competitor-clone/scripts/capture_site.mjs:*)",
+      "Bash(shopify theme check:*)",
+      "Bash(shopify theme list:*)",
+      "Bash(shopify version)",
+      "Bash(node -v)",
+      "Bash(python --version)",
+      "Bash(py --version)",
+      "Bash(python3 --version)",
+      "Bash(git --version)",
+      "Bash(npx playwright --version)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git init)",
+      "WebSearch"
+    ],
+    "ask": [
+      "Bash(shopify theme push:*)",
+      "Bash(shopify theme publish:*)",
+      "Bash(shopify theme delete:*)",
+      "Bash(git push:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)"
+    ]
+  }
+}

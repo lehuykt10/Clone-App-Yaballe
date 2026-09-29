@@ -1,0 +1,51 @@
+{%- comment -%}
+  Outputs a CSS colour for a variant's first option value (used by bundle-picker),
+  or nothing when the option is not a colour (e.g. Size), so no chip is shown.
+  Order: Shopify's native swatch colour (Admin → product → option values) →
+  the name map below → nothing. Add your own colour names to the map.
+{%- endcomment -%}
+{%- liquid
+  assign value = variant.options.first
+  assign swatch = ''
+  for option_value in variant.product.options_with_values.first.values
+    if option_value.name == value and option_value.swatch.color
+      assign swatch = option_value.swatch.color
+    endif
+  endfor
+  if swatch == ''
+    assign key = value | downcase | strip
+    case key
+      when 'black', 'jet black', 'midnight black', 'onyx'
+        assign swatch = '#1F1F1F'
+      when 'white', 'cloud white', 'snow', 'ivory', 'off white', 'cream'
+        assign swatch = '#FAFAF7'
+      when 'grey', 'gray', 'heather grey', 'charcoal', 'silver'
+        assign swatch = '#9A9A9A'
+      when 'beige', 'sand', 'khaki', 'nude', 'tan', 'camel'
+        assign swatch = '#D8C3A5'
+      when 'brown', 'walnut', 'chocolate', 'coffee', 'mocha'
+        assign swatch = '#5B3A29'
+      when 'wood', 'natural', 'natural wood', 'oak', 'natural oak', 'bamboo'
+        assign swatch = '#C8A27A'
+      when 'red', 'burgundy', 'wine', 'cherry'
+        assign swatch = '#B3261E'
+      when 'pink', 'rose', 'blush', 'baby pink'
+        assign swatch = '#F4B6C2'
+      when 'orange', 'coral', 'peach', 'terracotta'
+        assign swatch = '#E07A4F'
+      when 'yellow', 'mustard', 'lemon'
+        assign swatch = '#F2C94C'
+      when 'gold', 'champagne'
+        assign swatch = '#C9A646'
+      when 'green', 'sage', 'olive', 'mint', 'forest green', 'emerald'
+        assign swatch = '#6E9B7A'
+      when 'blue', 'navy', 'sky blue', 'light blue', 'royal blue', 'denim'
+        assign swatch = '#3B5B8C'
+      when 'purple', 'lavender', 'lilac', 'violet'
+        assign swatch = '#9B87C5'
+      when 'clear', 'transparent'
+        assign swatch = 'linear-gradient(135deg, #fff 45%, #ddd 50%, #fff 55%)'
+    endcase
+  endif
+-%}
+{{- swatch -}}

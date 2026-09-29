@@ -1,0 +1,8 @@
+.env
+.env.*
+node_modules/
+dist/
+.shopify/
+teardown/**/screens/
+.DS_Store
+Thumbs.db
