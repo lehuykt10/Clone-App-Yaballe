@@ -47,7 +47,8 @@ Unknown handles fall back to the default font; check in the theme editor
 List of 1–3 short lines for the rotating top bar. Only true offers.
 
 ## hero (required: heading, text)
-`image` (file name from Admin → Content → Files, empty = text-only hero), `heading`, `text`, `button`.
+`image` (file name from Admin → Content → Files, empty = text-only hero), `heading`, `text`, `button`,
+`link` (default: the product page; multi-product stores use `/collections/all`).
 Best hero image: wide 16:9 or 3:2 lifestyle photo, product in use, no text baked in.
 
 ## product (required: handle)
@@ -57,6 +58,7 @@ Best hero image: wide 16:9 or 3:2 lifestyle photo, product in use, no text baked
 | `button_label` | Sticky bar button |
 | `bullets` | 3–5 benefit lines under the title (an emoji at the start is fine) |
 | `tabs` | `[{heading, icon, content}]` collapsible tabs: what's in the box, size/specs, shipping, guarantee, care |
+| `description` | `true` adds each product's own description (from Shopify Admin) under the title. Use for multi-product stores, where `bullets` would be the same on every product |
 | `dynamic_checkout` | `true` shows Shop Pay/PayPal buttons (off by default: they skip the bundle picker) |
 
 ## bundle
@@ -100,7 +102,7 @@ stopwatch truck washing. (Same list for `product.tabs[].icon`.)
 | `size_guide` | `{heading, intro, columns: [4 headers], rows: [[4 values]], note}` | Product |
 | `faq` | `[[question, answer], …]` 6–12 | Product, /pages/faq, home subset |
 | `closing` | `{heading, text}` | Dark banner near the bottom |
-| `home` | `{featured_text, featured_button, faq_indexes: [0,1,3]}` | Home page |
+| `home` | `{featured_text, featured_button, faq_indexes: [0,1,3], featured_product: true, collection: {handle, heading, count}}` | Home page. `collection` adds a product grid (handle `all` = every product); `featured_product: false` hides the single-product block |
 | `newsletter` | `{heading, text, welcome_code?, code_label?}` | Home. Create the code in Shopify first |
 | `header` | `{country_selector: true}` | Needed for the per-country delivery estimate |
 

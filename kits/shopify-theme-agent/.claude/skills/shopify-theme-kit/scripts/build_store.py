@@ -318,6 +318,11 @@ def product_template():
             s[f"heading_{i}"] = item["text"]
         blocks["trust"] = {"type": "icon-with-text", "settings": s}
         order.append("trust")
+    if get("product.description", False):
+        # Each product's own description from Shopify Admin (multi-product stores),
+        # below the buy box so Add to cart stays high on mobile.
+        blocks["description"] = {"type": "description"}
+        order.append("description")
     for i, tab in enumerate(get("product.tabs", []), 1):
         blocks[f"tab-{i}"] = {"type": "collapsible_tab", "settings": {
             "heading": tab["heading"], "icon": tab.get("icon", "check_mark"), "content": para(tab["content"])}}
@@ -370,14 +375,24 @@ def index_template():
                             "blocks": {"h": {"type": "heading", "settings": {"heading": hero["heading"], "heading_size": "h0"}},
                                        "t": {"type": "text", "settings": {"text": para(hero["text"])}},
                                        "b": {"type": "button", "settings": {"button_label": hero.get("button", "Shop now"),
-                                                                            "button_link": product_link(),
+                                                                            "button_link": hero.get("link", product_link()),
                                                                             "button_style_secondary": False}}},
                             "block_order": ["h", "t", "b"],
                             "settings": {"desktop_content_position": "center", "content_alignment": "center",
                                          "color_scheme": "scheme-2", "full_width": True,
                                          "padding_top": 72, "padding_bottom": 72}}
     featured_text = get("home.featured_text", "")
-    sections["product"] = {
+    collection = get("home.collection")
+    if collection:
+        sections["collection"] = {
+            "type": "featured-collection",
+            "settings": {"collection": collection.get("handle", "all"), "title": collection.get("heading", "Shop all"),
+                         "heading_size": "h1", "products_to_show": collection.get("count", 8),
+                         "columns_desktop": 4, "columns_mobile": "2", "show_view_all": True, "view_all_style": "solid",
+                         "image_ratio": "square", "show_secondary_image": True, "show_rating": False,
+                         "quick_add": "none", "color_scheme": "scheme-1", "padding_top": 48, "padding_bottom": 48}}
+    if get("home.featured_product", True):
+        sections["product"] = {
         "type": "featured-product",
         "blocks": {"title": {"type": "title", "settings": {"heading_size": "h1"}},
                    "price": {"type": "price"},

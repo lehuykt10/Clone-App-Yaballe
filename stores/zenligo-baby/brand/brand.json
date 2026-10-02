@@ -1,0 +1,134 @@
+{
+  "brand": {
+    "name": "Zenligo",
+    "tagline": "Calm little moments, every day.",
+    "description": "Thoughtful baby essentials for little ones and the grown-ups who love them.",
+    "support_email": "support@zenligo.com",
+    "reply_time": "within 1 business day"
+  },
+  "colors": {
+    "background": "#FFFBF7",
+    "surface": "#F3EEE7",
+    "text": "#2E2A27",
+    "primary": "#4F7A66",
+    "primary_text": "#FFFFFF",
+    "dark": "#33463D",
+    "dark_text": "#FFFBF7",
+    "accent": "#F7DCD3",
+    "accent_text": "#2E2A27"
+  },
+  "fonts": { "heading": "quicksand_n7", "body": "nunito_sans_n4" },
+  "style": { "radius": "rounded" },
+
+  "announcements": [
+    "Free shipping on every order",
+    "30-day happiness guarantee",
+    "Friendly support, fast replies"
+  ],
+
+  "hero": {
+    "image": "",
+    "heading": "Calm little moments, every day.",
+    "text": "Thoughtful essentials for little ones and the grown-ups who love them. Simple designs, soft colors, free shipping.",
+    "button": "Shop baby essentials",
+    "link": "/collections/all"
+  },
+
+  "product": {
+    "handle": "zenligo-baby-essential",
+    "button_label": "Add to cart",
+    "description": true,
+    "tabs": [
+      { "heading": "Shipping", "icon": "truck", "content": "Free shipping on every order, with tracking. Delivery time for your country is shown above. <a href=\"/pages/shipping-policy\">Shipping policy</a>" },
+      { "heading": "30-day happiness guarantee", "icon": "heart", "content": "If your order arrives damaged or isn't right, contact us within 30 days of delivery and we'll make it right. <a href=\"/pages/refund-policy\">Refund policy</a>" },
+      { "heading": "Safety & care", "icon": "check_mark", "content": "Please read the age range, materials and safety notes for this item before use, and always supervise your little one. Questions? Email <a href=\"mailto:support@zenligo.com\">support@zenligo.com</a>." }
+    ]
+  },
+
+  "bundle": {
+    "enabled": true,
+    "heading": "Buy more, save more",
+    "default_tier": 2,
+    "discount_type": "percent",
+    "save_label": "Save",
+    "tiers": [
+      { "qty": 1, "discount": 0, "label": "Buy 1", "sublabel": "For your little one", "badge": "", "perks": "Free shipping · 30-day guarantee" },
+      { "qty": 2, "discount": 10, "label": "Buy 2", "sublabel": "One to keep, one to gift", "badge": "Most popular", "perks": "Free shipping · 30-day guarantee" },
+      { "qty": 3, "discount": 15, "label": "Buy 3", "sublabel": "Home, grandma's, daycare", "badge": "Best value", "perks": "Free shipping · 30-day guarantee" }
+    ]
+  },
+
+  "delivery": {
+    "enabled": true,
+    "free_shipping": true,
+    "default": { "min": 12, "max": 25 },
+    "rules": [
+      { "countries": ["US"], "min": 9, "max": 17 },
+      { "countries": ["CA", "GB", "AU"], "min": 10, "max": 20 },
+      { "countries": "AFRICA_SOUTH_AMERICA", "min": 15, "max": 35 }
+    ],
+    "note": "Tracked shipping, updates by email",
+    "payment_icons": true
+  },
+
+  "trust": [
+    { "icon": "truck", "text": "Free shipping" },
+    { "icon": "heart", "text": "30-day guarantee" },
+    { "icon": "lock", "text": "Secure checkout" }
+  ],
+
+  "how_it_works": {
+    "heading": "Shopping with Zenligo",
+    "steps": [
+      ["Choose", "Pick the essentials your family needs. Bundle 2 or 3 and save."],
+      ["We ship it free", "Every order ships free, with a tracking link by email."],
+      ["Enjoy", "Use it, love it, share it with friends who are expecting."],
+      ["We're here", "Something not right? Tell us within 30 days and we'll make it right."]
+    ]
+  },
+
+  "benefits": {
+    "heading": "Why parents shop with us",
+    "items": [
+      ["Simple, soft designs", "Calm colors and clean shapes that fit any nursery."],
+      ["Free shipping", "On every order, with tracking all the way to your door."],
+      ["30-day guarantee", "Damaged or not right? We'll replace it or refund you."],
+      ["Real people, fast replies", "Email us any time. We answer within 1 business day."]
+    ]
+  },
+
+  "comparison": null,
+  "stories": [],
+  "size_guide": null,
+
+  "faq": [
+    ["How long does shipping take?", "Shipping is free. Orders to the US usually arrive in 9–17 days, Canada, the UK and Australia in 10–20 days, and most other countries in 12–25 days. You'll get a tracking link by email."],
+    ["How do I track my order?", "Use the tracking link in your shipping confirmation email, or visit our <a href=\"/pages/track-order\">Track your order</a> page."],
+    ["What if my order arrives damaged?", "Send a photo to support@zenligo.com within 30 days of delivery and we'll send a replacement or refund you."],
+    ["Can I return an item?", "Yes. Unused items in their original packaging can be returned within 30 days of delivery. See our <a href=\"/pages/refund-policy\">Refund policy</a>."],
+    ["Is this product right for my baby's age?", "Each product page lists the age range, materials and safety notes. Please read them before use and always supervise your little one."],
+    ["How do bundle savings work?", "Choose 2 or 3 items on the product page and the discount is applied automatically in your cart."],
+    ["Which payment methods do you accept?", "All major cards, plus the wallets shown at checkout. Payments are processed securely and we never see your full card details."],
+    ["How can I contact you?", "Email support@zenligo.com. We reply within 1 business day, Monday to Friday."]
+  ],
+
+  "closing": {
+    "heading": "Here for the little moments",
+    "text": "Parenting is full of tiny moments worth slowing down for. We're here to make the everyday a little calmer."
+  },
+
+  "home": {
+    "featured_product": false,
+    "collection": { "handle": "all", "heading": "Baby essentials", "count": 8 },
+    "faq_indexes": [0, 2, 3, 4, 5]
+  },
+
+  "newsletter": {
+    "heading": "Join the Zenligo family",
+    "text": "Tips for calmer days, new arrivals and 10% off your first order.",
+    "welcome_code": "WELCOME10",
+    "code_label": "Your 10% off code"
+  },
+
+  "header": { "country_selector": true }
+}
