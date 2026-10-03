@@ -46,6 +46,7 @@ Update this section as features are completed:
 - `backend/api/ebay/client.py` — eBay API wrapper
 - `backend/jobs/monitor.py` — Inventory monitor job
 - `frontend/app/dashboard/` — Main dashboard
+- `.claude/skills/winning-product-research/` — Skill research sản phẩm winning (viral video, biến thể, case study)
 
 ## If You Get Stuck
 1. Check SKILL.md for the relevant skill/pattern
