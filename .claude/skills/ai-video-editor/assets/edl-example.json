@@ -1,0 +1,22 @@
+{
+  "output": "out/sp01_v1_hook-van-de.mp4",
+  "format": "9:16",
+  "fps": 30,
+  "clips": [
+    {"src": "clips/hook_ai.mp4", "in": 0.0, "out": 2.2, "zoom": 1.08},
+    {"src": "clips/ncc_unbox.mp4", "in": 3.5, "out": 6.0, "fit": "blur", "mute": true},
+    {"src": "clips/demo_ai.mp4", "in": 0.3, "out": 4.0, "speed": 1.25},
+    {"src": "img/san_pham_trang.png", "duration": 2.0, "kenburns": "in"},
+    {"src": "clips/real_cuoi.mp4", "in": 0.0, "out": 1.2}
+  ],
+  "texts": [
+    {"text": "Ước gì mình biết\ncái này sớm hơn 😭", "start": 0, "end": 2.2, "position": "top"},
+    {"text": "Link ở bio", "start": 9.5, "end": 11.0, "position": "center", "size": 64}
+  ],
+  "captions": "captions.ass",
+  "voiceover": {"src": "audio/vo.mp3", "start": 0.1, "volume": 1.0},
+  "music": {"src": "audio/nhac_nen.mp3", "volume": 0.15, "duck": true},
+  "clip_audio_volume": 0.6,
+  "watermark": {"src": "brand/logo.png", "position": "top-right", "scale": 0.14, "opacity": 0.85},
+  "loudness": -14
+}
