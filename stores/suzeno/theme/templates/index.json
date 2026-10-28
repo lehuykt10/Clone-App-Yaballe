@@ -1,0 +1,490 @@
+{
+    "sections": {
+        "hero": {
+            "type": "image-with-text",
+            "blocks": {
+                "h": {
+                    "type": "heading",
+                    "settings": {
+                        "heading": "Christmas starts with the cutest outfit",
+                        "heading_size": "h1"
+                    }
+                },
+                "t": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<p>Cat pouch hoodies for you, hooded tree capes for your pup. Free worldwide shipping, all taxes and duties included.</p>",
+                        "text_style": "body"
+                    }
+                },
+                "b": {
+                    "type": "button",
+                    "settings": {
+                        "button_label": "Shop Christmas",
+                        "button_link": "shopify://collections/christmas",
+                        "button_style_secondary": false
+                    }
+                }
+            },
+            "block_order": [
+                "h",
+                "t",
+                "b"
+            ],
+            "settings": {
+                "image": "shopify://shop_images/tree-cape3.png",
+                "height": "adapt",
+                "desktop_image_width": "medium",
+                "layout": "image_first",
+                "image_behavior": "none",
+                "content_layout": "no-overlap",
+                "desktop_content_position": "middle",
+                "desktop_content_alignment": "left",
+                "mobile_content_alignment": "left",
+                "section_color_scheme": "scheme-2",
+                "color_scheme": "scheme-2",
+                "padding_top": 36,
+                "padding_bottom": 36
+            }
+        },
+        "trust": {
+            "type": "benefits-grid",
+            "blocks": {
+                "b-1": {
+                    "type": "benefit",
+                    "settings": {
+                        "title": "Free worldwide shipping",
+                        "text": "<p>Tracked delivery on every order.</p>"
+                    }
+                },
+                "b-2": {
+                    "type": "benefit",
+                    "settings": {
+                        "title": "Taxes & duties included",
+                        "text": "<p>The price at checkout is the final price.</p>"
+                    }
+                },
+                "b-3": {
+                    "type": "benefit",
+                    "settings": {
+                        "title": "30-day guarantee",
+                        "text": "<p>Damaged or not right? We'll make it right.</p>"
+                    }
+                },
+                "b-4": {
+                    "type": "benefit",
+                    "settings": {
+                        "title": "Friendly support",
+                        "text": "<p>Real people, replies within 1 business day.</p>"
+                    }
+                }
+            },
+            "block_order": [
+                "b-1",
+                "b-2",
+                "b-3",
+                "b-4"
+            ],
+            "settings": {
+                "heading": "",
+                "heading_size": "h1",
+                "columns_desktop": 4,
+                "color_scheme": "scheme-1",
+                "padding_top": 48,
+                "padding_bottom": 48
+            }
+        },
+        "products": {
+            "type": "featured-collection",
+            "settings": {
+                "collection": "shop-all",
+                "products_to_show": 12,
+                "title": "More pet favorites",
+                "heading_size": "h1",
+                "description": "",
+                "show_description": false,
+                "description_style": "body",
+                "columns_desktop": 4,
+                "enable_desktop_slider": false,
+                "full_width": false,
+                "show_view_all": true,
+                "view_all_style": "solid",
+                "color_scheme": "scheme-1",
+                "image_ratio": "square",
+                "image_shape": "default",
+                "show_secondary_image": true,
+                "show_vendor": false,
+                "show_rating": false,
+                "quick_add": "none",
+                "columns_mobile": "2",
+                "swipe_on_mobile": false,
+                "padding_top": 24,
+                "padding_bottom": 48
+            }
+        },
+        "categories": {
+            "type": "collection-list",
+            "blocks": {
+                "xmas": {
+                    "type": "featured_collection",
+                    "settings": {
+                        "collection": "christmas"
+                    }
+                },
+                "cat": {
+                    "type": "featured_collection",
+                    "settings": {
+                        "collection": "cat-toys"
+                    }
+                },
+                "keep": {
+                    "type": "featured_collection",
+                    "settings": {
+                        "collection": "pet-keepsakes"
+                    }
+                }
+            },
+            "block_order": [
+                "xmas",
+                "cat",
+                "keep"
+            ],
+            "settings": {
+                "title": "Shop by category",
+                "heading_size": "h1",
+                "image_ratio": "square",
+                "columns_desktop": 3,
+                "color_scheme": "scheme-2",
+                "show_view_all": false,
+                "columns_mobile": "2",
+                "swipe_on_mobile": false,
+                "padding_top": 48,
+                "padding_bottom": 48
+            }
+        },
+        "promise": {
+            "type": "rich-text",
+            "blocks": {
+                "h": {
+                    "type": "heading",
+                    "settings": {
+                        "heading": "Made for the pets who make us smile",
+                        "heading_size": "h1"
+                    }
+                },
+                "t": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<p>Suzeno is a small online pet shop. We choose every product for real everyday moments: play time, quiet time and the memories in between. Every order ships free worldwide with tracking, all taxes and duties are included, and if something isn't right, we'll make it right within 30 days.</p>"
+                    }
+                }
+            },
+            "block_order": [
+                "h",
+                "t"
+            ],
+            "settings": {
+                "desktop_content_position": "center",
+                "content_alignment": "center",
+                "color_scheme": "scheme-1",
+                "full_width": true,
+                "padding_top": 48,
+                "padding_bottom": 48
+            }
+        },
+        "faq": {
+            "type": "faq-accordion",
+            "blocks": {
+                "q-1": {
+                    "type": "question",
+                    "settings": {
+                        "question": "How long does shipping take?",
+                        "answer": "<p>Shipping is free worldwide. Orders to the US usually arrive in 9–17 days, Canada, the UK and Australia in 10–20 days, and most other countries in 12–25 days. You'll get a tracking link by email.</p>"
+                    }
+                },
+                "q-2": {
+                    "type": "question",
+                    "settings": {
+                        "question": "Will I pay customs fees or taxes?",
+                        "answer": "<p>No. Our prices include all taxes and import duties, so the price at checkout is the final price. If a carrier ever asks you for a fee, contact us before paying and we'll take care of it.</p>"
+                    }
+                },
+                "q-3": {
+                    "type": "question",
+                    "settings": {
+                        "question": "How do I track my order?",
+                        "answer": "<p>Use the tracking link in your shipping confirmation email, or visit our <a href=\"/pages/track-order\">Track your order</a> page.</p>"
+                    }
+                },
+                "q-4": {
+                    "type": "question",
+                    "settings": {
+                        "question": "What if my order arrives damaged?",
+                        "answer": "<p>Send a photo to support@suzeno.com within 30 days of delivery and we'll send a replacement or refund you.</p>"
+                    }
+                },
+                "q-5": {
+                    "type": "question",
+                    "settings": {
+                        "question": "Can I return an item?",
+                        "answer": "<p>Yes. Contact us within 30 days of delivery and we'll help. See our <a href=\"/pages/refund-policy\">Refund policy</a>.</p>"
+                    }
+                },
+                "q-6": {
+                    "type": "question",
+                    "settings": {
+                        "question": "How can I contact you?",
+                        "answer": "<p>Email support@suzeno.com. We reply within 1 business day.</p>"
+                    }
+                }
+            },
+            "block_order": [
+                "q-1",
+                "q-2",
+                "q-3",
+                "q-4",
+                "q-5",
+                "q-6"
+            ],
+            "settings": {
+                "heading": "Good to know",
+                "heading_size": "h1",
+                "open_first": true,
+                "color_scheme": "scheme-2",
+                "padding_top": 48,
+                "padding_bottom": 48
+            }
+        },
+        "newsletter": {
+            "type": "newsletter",
+            "blocks": {
+                "h": {
+                    "type": "heading",
+                    "settings": {
+                        "heading": "Join the Suzeno family",
+                        "heading_size": "h1"
+                    }
+                },
+                "p": {
+                    "type": "paragraph",
+                    "settings": {
+                        "text": "<p>Pet tips, new arrivals and 10% off your first order.</p>"
+                    }
+                },
+                "f": {
+                    "type": "email_form",
+                    "settings": {}
+                }
+            },
+            "block_order": [
+                "h",
+                "p",
+                "f"
+            ],
+            "settings": {
+                "color_scheme": "scheme-3",
+                "full_width": true,
+                "padding_top": 48,
+                "padding_bottom": 56
+            }
+        },
+        "welcome_code": {
+            "type": "custom-liquid",
+            "settings": {
+                "custom_liquid": "<script>document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.newsletter-form__message--success').forEach(function(el){el.insertAdjacentHTML('afterend','<p class=\"suzeno-welcome\">Your 10% off code: <strong>WELCOME10</strong><br>Enter it at checkout on your first order.</p>');});});</script><style>.suzeno-welcome{margin:1rem auto 0;padding:1rem 1.6rem;border:2px dashed currentColor;border-radius:1rem;max-width:36rem;text-align:center;font-size:1.6rem}</style>",
+                "color_scheme": "scheme-3",
+                "padding_top": 0,
+                "padding_bottom": 0
+            }
+        },
+        "hoodie": {
+            "type": "featured-product",
+            "blocks": {
+                "title": {
+                    "type": "title",
+                    "settings": {
+                        "heading_size": "h1"
+                    }
+                },
+                "price": {
+                    "type": "price",
+                    "settings": {}
+                },
+                "text": {
+                    "type": "text",
+                    "settings": {
+                        "text": "Cat pouch hoodie · 4 festive designs · Sizes XXS–XXL · Buy 2, save $10",
+                        "text_style": "body"
+                    }
+                },
+                "xmas": {
+                    "type": "custom_liquid",
+                    "settings": {
+                        "custom_liquid": "{%- liquid\n  assign cc = localization.country.iso_code\n  assign key = ',' | append: cc | append: ','\n  assign cut = '-11-28'\n  if cc == 'US'\n    assign cut = '-12-05'\n  elsif ',CA,GB,AU,' contains key\n    assign cut = '-12-02'\n  endif\n  assign cut_date = 'now' | date: '%Y' | append: cut\n  assign cut_s = cut_date | append: ' 23:59:59' | date: '%s' | plus: 0\n  assign now_s = 'now' | date: '%s' | plus: 0\n  assign left = cut_s | minus: now_s | divided_by: 86400 | plus: 1\n  assign slow = false\n  if ',DZ,AO,BJ,BW,BF,BI,CM,CV,CF,TD,KM,CG,CD,CI,DJ,EG,GQ,ER,SZ,ET,GA,GM,GH,GN,GW,KE,LS,LR,LY,MG,MW,ML,MR,MU,YT,MA,MZ,NA,NE,NG,RE,RW,SH,ST,SN,SC,SL,SO,ZA,SS,SD,TZ,TG,TN,UG,EH,ZM,ZW,AC,TA,IO,TF,AR,BO,BR,CL,CO,EC,FK,GF,GY,PY,PE,SR,UY,VE,GS,' contains key\n    assign slow = true\n  endif\n-%}{%- if cut_s > now_s and slow == false -%}<p class=\"suzeno-xmas\">🎄 Order by <strong>{{ cut_date | date: '%B %-d' }}</strong> for Christmas delivery to {{ localization.country.name }}{%- if left <= 14 %} · only {{ left }} day{% if left > 1 %}s{% endif %} left{% endif -%}</p><style>.suzeno-xmas{background:#F3E9E4;border-radius:.8rem;padding:.8rem 1.2rem;margin:.4rem 0 1rem;font-size:1.4rem;text-align:center}</style>{%- endif -%}"
+                    }
+                },
+                "cta": {
+                    "type": "custom_liquid",
+                    "settings": {
+                        "custom_liquid": "{%- assign scope = '#shopify-section-' | append: section.id -%}{%- render 'media-ratio', product: section.settings.product, scope: scope -%}<a class=\"button button--full-width\" href=\"{{ section.settings.product.url }}\">Choose design & size</a>"
+                    }
+                }
+            },
+            "block_order": [
+                "title",
+                "price",
+                "text",
+                "xmas",
+                "cta"
+            ],
+            "settings": {
+                "product": "cuddle-hoodie",
+                "color_scheme": "scheme-1",
+                "secondary_background": false,
+                "media_size": "medium",
+                "constrain_to_viewport": true,
+                "media_fit": "cover",
+                "media_position": "left",
+                "image_zoom": "none",
+                "hide_variants": true,
+                "enable_video_looping": true,
+                "padding_top": 48,
+                "padding_bottom": 24
+            }
+        },
+        "hoodie_designs": {
+            "type": "multicolumn",
+            "blocks": {
+                "c-1": {
+                    "type": "column",
+                    "settings": {
+                        "image": "shopify://shop_images/03_MAIN_Wreath_Green.jpg",
+                        "title": "Holly Wreath",
+                        "text": "<p>Classic holly and red berries.</p>",
+                        "link_label": "Shop Holly Wreath",
+                        "link": "/products/cuddle-hoodie?variant=44403578142779"
+                    }
+                },
+                "c-2": {
+                    "type": "column",
+                    "settings": {
+                        "image": "shopify://shop_images/01_MAIN_Pink.jpg",
+                        "title": "Candy Pink",
+                        "text": "<p>Soft pink for a sweeter Christmas.</p>",
+                        "link_label": "Shop Candy Pink",
+                        "link": "/products/cuddle-hoodie?variant=44403578372155"
+                    }
+                },
+                "c-3": {
+                    "type": "column",
+                    "settings": {
+                        "image": "shopify://shop_images/02_MAIN_Santa_Red.jpg",
+                        "title": "Santa Red",
+                        "text": "<p>The festive favorite.</p>",
+                        "link_label": "Shop Santa Red",
+                        "link": "/products/cuddle-hoodie?variant=44403578601531"
+                    }
+                },
+                "c-4": {
+                    "type": "column",
+                    "settings": {
+                        "image": "shopify://shop_images/04_MAIN_Tree_Green.jpg",
+                        "title": "Christmas Tree",
+                        "text": "<p>Evergreen with a cozy holiday feel.</p>",
+                        "link_label": "Shop Christmas Tree",
+                        "link": "/products/cuddle-hoodie?variant=44403578830907"
+                    }
+                }
+            },
+            "block_order": [
+                "c-1",
+                "c-2",
+                "c-3",
+                "c-4"
+            ],
+            "settings": {
+                "title": "4 festive hoodie designs",
+                "heading_size": "h1",
+                "image_width": "full",
+                "image_ratio": "square",
+                "button_label": "",
+                "columns_desktop": 4,
+                "column_alignment": "center",
+                "background_style": "none",
+                "color_scheme": "scheme-1",
+                "columns_mobile": "2",
+                "swipe_on_mobile": false,
+                "padding_top": 24,
+                "padding_bottom": 48
+            }
+        },
+        "star": {
+            "type": "featured-product",
+            "blocks": {
+                "title": {
+                    "type": "title",
+                    "settings": {
+                        "heading_size": "h1"
+                    }
+                },
+                "price": {
+                    "type": "price",
+                    "settings": {}
+                },
+                "text": {
+                    "type": "text",
+                    "settings": {
+                        "text": "Tree Green or Santa Red · Sizes S–L by pet weight · Buy 2, save $10",
+                        "text_style": "body"
+                    }
+                },
+                "xmas": {
+                    "type": "custom_liquid",
+                    "settings": {
+                        "custom_liquid": "{%- liquid\n  assign cc = localization.country.iso_code\n  assign key = ',' | append: cc | append: ','\n  assign cut = '-11-28'\n  if cc == 'US'\n    assign cut = '-12-05'\n  elsif ',CA,GB,AU,' contains key\n    assign cut = '-12-02'\n  endif\n  assign cut_date = 'now' | date: '%Y' | append: cut\n  assign cut_s = cut_date | append: ' 23:59:59' | date: '%s' | plus: 0\n  assign now_s = 'now' | date: '%s' | plus: 0\n  assign left = cut_s | minus: now_s | divided_by: 86400 | plus: 1\n  assign slow = false\n  if ',DZ,AO,BJ,BW,BF,BI,CM,CV,CF,TD,KM,CG,CD,CI,DJ,EG,GQ,ER,SZ,ET,GA,GM,GH,GN,GW,KE,LS,LR,LY,MG,MW,ML,MR,MU,YT,MA,MZ,NA,NE,NG,RE,RW,SH,ST,SN,SC,SL,SO,ZA,SS,SD,TZ,TG,TN,UG,EH,ZM,ZW,AC,TA,IO,TF,AR,BO,BR,CL,CO,EC,FK,GF,GY,PY,PE,SR,UY,VE,GS,' contains key\n    assign slow = true\n  endif\n-%}{%- if cut_s > now_s and slow == false -%}<p class=\"suzeno-xmas\">🎄 Order by <strong>{{ cut_date | date: '%B %-d' }}</strong> for Christmas delivery to {{ localization.country.name }}{%- if left <= 14 %} · only {{ left }} day{% if left > 1 %}s{% endif %} left{% endif -%}</p><style>.suzeno-xmas{background:#F3E9E4;border-radius:.8rem;padding:.8rem 1.2rem;margin:.4rem 0 1rem;font-size:1.4rem;text-align:center}</style>{%- endif -%}"
+                    }
+                },
+                "cta": {
+                    "type": "custom_liquid",
+                    "settings": {
+                        "custom_liquid": "{%- assign scope = '#shopify-section-' | append: section.id -%}{%- render 'media-ratio', product: section.settings.product, scope: scope -%}<a class=\"button button--full-width\" href=\"{{ section.settings.product.url }}\">Choose color & size</a>"
+                    }
+                }
+            },
+            "block_order": [
+                "title",
+                "price",
+                "text",
+                "xmas",
+                "cta"
+            ],
+            "settings": {
+                "product": "star-cape",
+                "color_scheme": "scheme-2",
+                "secondary_background": false,
+                "media_size": "medium",
+                "constrain_to_viewport": true,
+                "media_fit": "cover",
+                "media_position": "left",
+                "image_zoom": "none",
+                "hide_variants": true,
+                "enable_video_looping": true,
+                "padding_top": 48,
+                "padding_bottom": 48
+            }
+        }
+    },
+    "order": [
+        "hero",
+        "trust",
+        "hoodie",
+        "hoodie_designs",
+        "star",
+        "products",
+        "categories",
+        "promise",
+        "faq",
+        "newsletter",
+        "welcome_code"
+    ]
+}
