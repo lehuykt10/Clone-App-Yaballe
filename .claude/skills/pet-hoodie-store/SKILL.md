@@ -1,6 +1,6 @@
 ---
 name: pet-hoodie-store
-description: Niche playbook for building a one-product Shopify store selling a pet carrier hoodie (hoodie with a front pouch for cats and small dogs), modelled on and built to beat huggiecat.com and thehuggiez.com. Ships ready-made Dawn sections (quantity breaks, sticky add-to-cart, size guide, comparison table, FAQ with JSON-LD), an installer, the store blueprint and the competitor teardown. Use together with shopify-competitor-clone whenever the user mentions huggiecat, pet/cat carrier hoodie, pet pouch hoodie, or wants a store "like huggiecat but better".
+description: Niche playbook for building a one-product Shopify store selling a pet carrier hoodie (hoodie with a front pouch for cats and small dogs), modelled on and built to beat huggiecat.com and thehuggiez.com, with the brand-story look of doggypocket.com. Ships ready-made Dawn sections (quantity breaks, sticky add-to-cart, size guide, comparison table, FAQ with JSON-LD), an installer, the store blueprint and the competitor teardown. Use together with shopify-competitor-clone whenever the user mentions huggiecat, doggypocket, pet/cat carrier hoodie, pet pouch hoodie, or wants a store "like huggiecat but better".
 ---
 
 # 🐱 Pet Carrier Hoodie Store: niche playbook
@@ -11,7 +11,7 @@ skill's phases and use this one for the niche-specific parts:
 
 | Phase (shopify-competitor-clone) | Use from this skill |
 |---|---|
-| 1–2 Capture and teardown | `references/competitor-huggiecat.md` (start here, complete it after capture) |
+| 1–2 Capture and teardown | `references/competitor-huggiecat.md` (start here, complete it after capture), `references/competitor-doggypocket.md` (brand-look reference) |
 | 2 Plan | `references/store-blueprint.md` (sitemap, section order, beat-them targets) |
 | 3 Brand and copy | Blueprint → "Copy angles" and "Compliance" |
 | 5 Build theme | `scripts/install_sections.py` + `theme/` sections |
@@ -22,6 +22,9 @@ Talk to the owner in **Vietnamese**. Store content is in **English**.
 ## Competitors
 - Main: https://huggiecat.com/products/pet-tote-carier-hoodie
 - Secondary: https://www.thehuggiez.com/products/huggiez-pet-hoodie
+- Brand-look reference: https://doggypocket.com/ → `references/competitor-doggypocket.md`.
+  Use its calm, editorial layout via `shopify-competitor-clone/references/brand-story-layout.md`;
+  do **not** copy its fake review counts, rolling countdown or "as seen on" claims
 - Price anchors: Amazon/Etsy/Walmart "cat carrier hoodie"
 
 The teardown is **partial**: the cloud network policy blocked the site. First

@@ -77,6 +77,10 @@ Fill `references/teardown-template.md` into `teardown/<host>/teardown.md`:
 - Apps detected (reviews, upsell, subscriptions, pop-ups) and what each does
 - **Weaknesses**: score the competitor with `references/beat-them-checklist.md`
 
+If the owner says a competitor "looks like a real brand" (editorial, calm,
+premium), score it against `references/brand-story-layout.md` §1 and use its
+page blueprint (§2) as the starting section order.
+
 Then write `teardown/plan.md`:
 1. **Keep**: patterns worth reproducing (why they convert)
 2. **Beat**: at least 10 concrete improvements with measurable targets
@@ -95,7 +99,9 @@ Create `brand/`:
 - `design-tokens.md`: palette (primary, accent, text, background, sale,
   success; check contrast ≥ 4.5:1), heading/body fonts (Shopify font library
   or Google-free alternatives), radius, spacing, button style. **Must differ
-  visibly from the competitor.**
+  visibly from the competitor.** For a brand-story look, follow
+  `references/brand-story-layout.md` §3 (palette of 3 neutrals + 1 brand
+  colour, display serif + humanist sans, pill buttons, 12px image radius)
 - `copy/`: original copy for each page, written from the brand brief and plan
   (headlines, benefits, FAQ, product descriptions, policies). Never paraphrase
   the competitor's text line by line; write from the product facts.
@@ -119,7 +125,9 @@ Follow `references/shopify-build.md` → "Build":
 2. Rebuild each template from the plan: reuse Dawn sections where they fit;
    create custom sections from `templates/section-template.liquid` for
    anything Dawn lacks (comparison table, bundle picker, benefits grid, UGC
-   strip, sticky ATC...). Every section has a `{% schema %}` with settings and
+   strip, sticky ATC...). For the brand-story layout, install
+   `templates/brand-story/story-steps.liquid` and `photo-grid.liquid`
+   (both pass Shopify's upload validation). Every section has a `{% schema %}` with settings and
    presets so the owner can edit it in the theme editor
 3. Put page content into `templates/*.json` section settings, not hard-coded
    in Liquid
@@ -178,6 +186,9 @@ migrating), test order, remove password page.
 | `references/beat-them-checklist.md` | Scoring rubric + targets + launch checklist |
 | `references/shopify-build.md` | Theme setup, CLI, section patterns, Shopify connector/GraphQL recipes |
 | `references/legal-guardrails.md` | What may and may not be copied |
+| `references/brand-story-layout.md` | "Looks like a real brand" pattern (from doggypocket.com): 8 rules, page blueprint, tokens, copy rules, what NOT to copy |
+| `templates/brand-story/story-steps.liquid` | Section: image → step title → one line, ×3 (mobile stacked, desktop columns) |
+| `templates/brand-story/photo-grid.liquid` | Section: dark band, icon + heading, 2×2 / 4-up portrait photo grid |
 | `templates/brand-brief.md` | Owner input form |
 | `templates/section-template.liquid` | Starting point for custom sections |
 
