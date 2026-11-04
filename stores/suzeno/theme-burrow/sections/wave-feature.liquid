@@ -1,0 +1,89 @@
+{%- comment -%}
+  Suzeno wave feature: a colored band with a wavy top edge, an image in a soft frame,
+  a small eyebrow line, a heading with one hand-circled word, text and an optional button.
+  Image first on mobile; side by side on desktop.
+{%- endcomment -%}
+<div class="wave color-{{ section.settings.color_scheme }}">
+  <svg class="wave__edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path class="wave__soft" d="M0 60 C240 20 480 20 720 45 C960 70 1200 70 1440 30 L1440 90 L0 90 Z"/>
+    <path class="wave__solid" d="M0 75 C260 40 520 40 760 60 C1000 80 1220 78 1440 50 L1440 90 L0 90 Z"/>
+  </svg>
+  <div class="wave__band gradient">
+    <div class="page-width wave__grid section-{{ section.id }}-padding{% if section.settings.image_right %} wave__grid--right{% endif %}">
+      <div class="wave__frame">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '375,550,750,1100,1400', sizes: '(min-width: 990px) 50vw, calc(100vw - 6rem)', class: 'wave__img' }}
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'wave__img placeholder-svg' }}
+        {%- endif -%}
+      </div>
+      <div class="wave__text">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="wave__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        <h2 class="wave__heading {{ section.settings.heading_size }}">
+          {{- section.settings.heading_before | escape -}}
+          {%- if section.settings.highlight != blank %} <span class="wave__circle">{{ section.settings.highlight | escape }}<svg viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M18 46 C14 18 70 6 112 8 C160 10 192 24 188 44 C184 66 130 76 90 74 C46 72 12 62 16 40 C19 26 40 16 70 12"/></svg></span>{%- endif -%}
+          {%- if section.settings.heading_after != blank %} {{ section.settings.heading_after | escape }}{%- endif -%}
+        </h2>
+        {%- if section.settings.text != blank -%}
+          <div class="wave__body rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <a class="button button--primary wave__btn" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label | escape }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- style -%}
+  .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px; padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px; }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; }
+  }
+  .wave { background: transparent; }
+  .wave__edge { display: block; width: 100%; height: 5rem; margin-bottom: -1px; }
+  .wave__soft { fill: rgb(var(--color-background)); opacity: .35; }
+  .wave__solid { fill: rgb(var(--color-background)); }
+  .wave__band { background: rgb(var(--color-background)); }
+  .wave__grid { display: grid; gap: 3.2rem; grid-template-columns: minmax(0, 1fr); align-items: center; }
+  @media screen and (min-width: 990px) {
+    .wave__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6rem; }
+    .wave__grid--right .wave__frame { order: 2; }
+  }
+  .wave__frame { padding: 1.6rem; border-radius: 4rem; background: rgba(var(--color-foreground), .08); border: 1px solid rgba(var(--color-foreground), .2); box-shadow: 0 1.6rem 4rem rgba(0, 0, 0, .18); }
+  .wave__img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 2.8rem; }
+  .wave__eyebrow { display: flex; align-items: center; gap: 1.4rem; margin: 0 0 1.4rem; font-size: 1.4rem; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; opacity: .9; }
+  .wave__eyebrow::before { content: ""; width: 4rem; height: 2px; background: currentColor; }
+  .wave__heading { margin: 0; line-height: 1.15; }
+  .wave__circle { position: relative; display: inline-block; font-family: Georgia, "Times New Roman", serif; font-style: italic; font-weight: 400; padding: 0 .3em; }
+  .wave__circle svg { position: absolute; inset: -18% -8%; width: 116%; height: 136%; fill: none; stroke: currentColor; stroke-width: 3; overflow: visible; }
+  .wave__body { margin-top: 1.6rem; font-size: 1.7rem; opacity: .95; }
+  .wave__btn { margin-top: 2.4rem; }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "Wave feature",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "checkbox", "id": "image_right", "default": false, "label": "Image on the right (desktop)" },
+    { "type": "text", "id": "eyebrow", "default": "Made for two", "label": "Small line above the heading" },
+    { "type": "text", "id": "heading_before", "default": "Designed for", "label": "Heading: text before the circled word" },
+    { "type": "text", "id": "highlight", "default": "cozy", "label": "Heading: circled word" },
+    { "type": "text", "id": "heading_after", "default": "moments together", "label": "Heading: text after the circled word" },
+    { "type": "select", "id": "heading_size", "default": "h1", "label": "Heading size",
+      "options": [ { "value": "h2", "label": "Small" }, { "value": "h1", "label": "Medium" }, { "value": "h0", "label": "Large" } ] },
+    { "type": "richtext", "id": "text", "default": "<p>Your pet stays close and warm while you cuddle on the couch.</p>", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "color_scheme", "id": "color_scheme", "default": "scheme-6", "label": "Color scheme" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36, "label": "Top padding" },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 60, "label": "Bottom padding" }
+  ],
+  "presets": [ { "name": "Wave feature" } ]
+}
+{% endschema %}
