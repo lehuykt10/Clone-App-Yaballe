@@ -24,3 +24,8 @@ Created 2026-11-04 as **DRAFT** via the Shopify Admin API.
 | XL | 130 | 77 | 66 |
 | 2XL | 136 | 78 | 67 |
 | 3XL | 142 | 79 | 68 |
+
+## 2026-11-04: new model photos
+Replaced in place (fileUpdate originalSource, same file IDs and filenames, so variant images and
+theme references keep working): Cream, Sky Blue, Olive, Heather Grey, Dusty Pink → 1122×1402 (4:5).
+Still the old square photos: Burgundy, Black (waiting for the owner's new files).
