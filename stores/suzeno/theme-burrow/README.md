@@ -17,3 +17,7 @@ Outside rating (AliExpress etc.) is turned off for Suzeno; review source choices
 Reviews come from the metaobject `suzeno_review` (Content → Metaobjects → Customer review),
 linked on the product via the metafield `suzeno.reviews` (list of Customer review).
 Only real reviews; no hard-coded rating counts, fake "people shopping" counters or fake compare-at prices.
+
+2026-11-04 (later): the owner published `145501257787`. New unpublished copy `145511710779`
+"Suzeno staging (logo + photos)": logo width 90 → 150 px, color grids (home and product) image ratio
+square → portrait for the new 4:5 photos. Owner's own edits (logo, favicon, gift-card setting) kept.

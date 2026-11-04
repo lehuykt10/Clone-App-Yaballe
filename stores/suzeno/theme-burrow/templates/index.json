@@ -136,7 +136,8 @@
                 "buy_buttons": {
                     "type": "buy_buttons",
                     "settings": {
-                        "show_dynamic_checkout": false
+                        "show_dynamic_checkout": false,
+                        "show_gift_card_recipient": true
                     }
                 },
                 "timeline": {
@@ -320,8 +321,9 @@
                 "title": "Pick their favorite color",
                 "heading_size": "h1",
                 "image_width": "full",
-                "image_ratio": "square",
+                "image_ratio": "portrait",
                 "button_label": "",
+                "button_link": "",
                 "columns_desktop": 4,
                 "column_alignment": "center",
                 "background_style": "none",
