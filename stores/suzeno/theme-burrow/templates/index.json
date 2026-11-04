@@ -116,7 +116,7 @@
                 "text": {
                     "type": "text",
                     "settings": {
-                        "text": "Plush sherpa-style fleece outside, a cozy pouch up front, and your little one snuggled right where they love to be: with you.",
+                        "text": "Plush sherpa-style fleece outside, a zip-up pouch up front, and your little one snuggled right where they love to be: with you.",
                         "text_style": "body"
                     }
                 },
@@ -351,7 +351,7 @@
                     "type": "question",
                     "settings": {
                         "question": "How does the pet pouch work?",
-                        "answer": "<p>Your pet climbs into the roomy front pouch and pops their head out through the round, soft-edged opening, while you support them from below with your arms.</p>"
+                        "answer": "<p>Unzip the curved zip at the top of the front pouch and let your pet climb in. Their head pops out through the round, soft-edged opening, then zip it back so they stay snug against you. Always support them from below with your arms.</p>"
                     }
                 },
                 "q-2": {

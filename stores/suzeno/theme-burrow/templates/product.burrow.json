@@ -20,7 +20,7 @@
                 "pitch": {
                     "type": "text",
                     "settings": {
-                        "text": "Plush sherpa-style fleece outside, a cozy pouch up front, and your little one snuggled right where they love to be: with you.",
+                        "text": "Plush sherpa-style fleece outside, a zip-up pouch up front, and your little one snuggled right where they love to be: with you.",
                         "text_style": "body"
                     }
                 },
@@ -240,22 +240,22 @@
                 "b-1": {
                     "type": "benefit",
                     "settings": {
-                        "title": "1. Put it on",
-                        "text": "<p>Slip it on like any cozy hoodie.</p>"
+                        "title": "1. Unzip",
+                        "text": "<p>Open the curved zip at the top of the front pouch.</p>"
                     }
                 },
                 "b-2": {
                     "type": "benefit",
                     "settings": {
                         "title": "2. Pet in",
-                        "text": "<p>Let your pet settle into the front pouch, supported by your arms.</p>"
+                        "text": "<p>Let your pet settle into the pouch, supported by your arms.</p>"
                     }
                 },
                 "b-3": {
                     "type": "benefit",
                     "settings": {
                         "title": "3. Peek-a-boo",
-                        "text": "<p>Their head pops out of the round opening, right under your chin.</p>"
+                        "text": "<p>Their head pops out of the round opening. Zip back and cuddle up.</p>"
                     }
                 }
             },
@@ -408,7 +408,7 @@
                     "type": "question",
                     "settings": {
                         "question": "How does the pet pouch work?",
-                        "answer": "<p>Your pet climbs into the roomy front pouch and pops their head out through the round, soft-edged opening, while you support them from below with your arms.</p>"
+                        "answer": "<p>Unzip the curved zip at the top of the front pouch and let your pet climb in. Their head pops out through the round, soft-edged opening, then zip it back so they stay snug against you. Always support them from below with your arms.</p>"
                     }
                 },
                 "q-2": {
