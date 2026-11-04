@@ -13,6 +13,7 @@ duplicated from the live theme on 2026-11-04. JSON here is pretty-printed; Shopi
 - `config/settings_data.json`: adds scheme-6 (red) and scheme-7 (blush); buttons red
 - `sections/header-group.json`: announcement links to the product; cart upsell removed (single product)
 
+Outside rating (AliExpress etc.) is turned off for Suzeno; review source choices are "Verified buyer" and "Received a free product".
 Reviews come from the metaobject `suzeno_review` (Content → Metaobjects → Customer review),
 linked on the product via the metafield `suzeno.reviews` (list of Customer review).
 Only real reviews; no hard-coded rating counts, fake "people shopping" counters or fake compare-at prices.

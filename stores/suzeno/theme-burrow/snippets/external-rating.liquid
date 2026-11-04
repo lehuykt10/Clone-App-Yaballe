@@ -1,36 +1,4 @@
 {%- comment -%}
-  Suzeno outside rating: "★ 4.8 from 1,240 ratings on AliExpress", typed by the owner in
-  Product → Metafields (suzeno.ext_rating, ext_rating_count, ext_rating_source, ext_rating_url).
-  Always names the source; renders nothing unless rating, count and source are all filled.
-  Use only the real rating of this same product on that platform.
-  Usage: {% render 'external-rating', product: product %}
+  Outside rating: turned off for Suzeno (owner choice, 2026-11-04). Only reviews entered
+  in Content → Metaobjects → Customer review are shown. Kept empty so existing render calls stay valid.
 {%- endcomment -%}
-{%- liquid
-  assign m = product.metafields.suzeno
-  assign er = m.ext_rating.value
-  assign ec = m.ext_rating_count.value
-  assign es = m.ext_rating_source.value
-  assign eu = m.ext_rating_url.value
--%}
-{%- if er != blank and ec != blank and es != blank -%}
-  {%- liquid
-    assign er_full = er | round
-    assign ec_txt = ec | append: ''
-    if ec >= 1000
-      assign th = ec | divided_by: 1000
-      assign rest = ec | modulo: 1000 | prepend: '00'
-      assign rest = rest | slice: -3, 3
-      assign ec_txt = th | append: ',' | append: rest
-    endif
-  -%}
-  <p class="ext-rate">
-    <span class="ext-rate__stars" aria-hidden="true">{%- for i in (1..5) -%}{%- if i <= er_full -%}★{%- else -%}☆{%- endif -%}{%- endfor -%}</span>
-    <span><b>{{ er | round: 1 }}</b> from {{ ec_txt }} ratings on {{ es | escape }}</span>
-    {%- if eu != blank -%}<a class="ext-rate__link" href="{{ eu }}" target="_blank" rel="noopener nofollow">See ratings</a>{%- endif -%}
-  </p>
-  <style>
-    .ext-rate { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .8rem; margin: .2rem 0 .6rem; font-size: 1.4rem; }
-    .ext-rate__stars { color: #F5B301; letter-spacing: .15rem; font-size: 1.7rem; }
-    .ext-rate__link { color: inherit; opacity: .75; }
-  </style>
-{%- endif -%}
