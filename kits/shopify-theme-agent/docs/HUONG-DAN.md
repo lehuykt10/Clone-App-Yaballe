@@ -288,6 +288,18 @@ khác Agent sẽ hướng dẫn làm tương tự bằng tay.
 **Store nhiều sản phẩm?** Được. Theme áp dụng cho mọi sản phẩm; trang chủ nổi bật 1 sản phẩm
 chính (có thể đổi trong theme editor thành bộ sưu tập).
 
+**Hiện đánh giá, số sao như đối thủ mà không cần app?** Được. Nói với Claude "thêm phần review
+cho sản phẩm" (Agent dùng `references/reviews-and-ratings.md`). Có 2 cách nhập, đều gõ tay:
+- *Review thật từng khách*: Shopify admin → Content → Metaobjects → **Customer review** → điền
+  tên, sao, nội dung, ảnh, nguồn → Active; rồi vào sản phẩm → Metafields → **Customer reviews**
+  chọn các review đó. Sao dưới tên sản phẩm, câu review dưới nút mua và khung "What our
+  customers say" tự hiện, điểm trung bình tự tính.
+- *Điểm của chính mẫu đó trên nền tảng khác*: sản phẩm → Metafields → **Outside rating** (số sao,
+  số lượt, tên nguồn). Trang hiện "★ 4.8 from 1,240 ratings on AliExpress" (luôn ghi nguồn).
+
+Không có ô gõ số review/số sao tuỳ ý không kèm nguồn: luật FTC (Mỹ) phạt số đánh giá không có
+thật dù khách đến từ quảng cáo hay Instagram/TikTok organic.
+
 **Bán thị trường không nói tiếng Anh?** Nói với Agent ở `/bat-dau` (ví dụ: bán ở Đức, tiếng Đức).
 Nội dung sẽ viết bằng ngôn ngữ đó.
 

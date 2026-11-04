@@ -433,6 +433,16 @@ kiểm tra thì được. Phần tự dựng theme (combo, thời gian giao…) 
 khác Agent sẽ hướng dẫn làm tương tự bằng tay.</p>
 <p><strong>Store nhiều sản phẩm?</strong> Được. Theme áp dụng cho mọi sản phẩm; trang chủ nổi bật 1 sản phẩm
 chính (có thể đổi trong theme editor thành bộ sưu tập).</p>
+<p><strong>Hiện đánh giá, số sao như đối thủ mà không cần app?</strong> Được. Nói với Claude "thêm phần review
+cho sản phẩm" (Agent dùng <code>references/reviews-and-ratings.md</code>). Có 2 cách nhập, đều gõ tay:
+- <em>Review thật từng khách</em>: Shopify admin → Content → Metaobjects → <strong>Customer review</strong> → điền
+  tên, sao, nội dung, ảnh, nguồn → Active; rồi vào sản phẩm → Metafields → <strong>Customer reviews</strong>
+  chọn các review đó. Sao dưới tên sản phẩm, câu review dưới nút mua và khung "What our
+  customers say" tự hiện, điểm trung bình tự tính.
+- <em>Điểm của chính mẫu đó trên nền tảng khác</em>: sản phẩm → Metafields → <strong>Outside rating</strong> (số sao,
+  số lượt, tên nguồn). Trang hiện "★ 4.8 from 1,240 ratings on AliExpress" (luôn ghi nguồn).</p>
+<p>Không có ô gõ số review/số sao tuỳ ý không kèm nguồn: luật FTC (Mỹ) phạt số đánh giá không có
+thật dù khách đến từ quảng cáo hay Instagram/TikTok organic.</p>
 <p><strong>Bán thị trường không nói tiếng Anh?</strong> Nói với Agent ở <code>/bat-dau</code> (ví dụ: bán ở Đức, tiếng Đức).
 Nội dung sẽ viết bằng ngôn ngữ đó.</p>
 <p><strong>Sửa bằng tay trong Theme Editor được không?</strong> Được, nhưng lần sau Agent dựng lại từ

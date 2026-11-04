@@ -1,0 +1,59 @@
+{%- comment -%}
+  Suzeno review quotes: a small swipeable carousel of up to 3 real reviews under the
+  Add to cart button (photo, quote, name, stars). Reads metafield suzeno.reviews.
+  Renders nothing when there are no reviews.
+  Usage: {% render 'review-quotes', product: product, id: block.id %}
+{%- endcomment -%}
+{%- assign reviews = product.metafields.suzeno.reviews.value -%}
+{%- if reviews.size > 0 -%}
+  <div class="rq" id="rq-{{ id }}">
+    <div class="rq__track" role="list">
+      {%- for r in reviews limit: 3 -%}
+        <figure class="rq__item" role="listitem">
+          {%- if r.photo.value != blank -%}
+            {{ r.photo.value | image_url: width: 160, height: 160, crop: 'center' | image_tag: class: 'rq__photo', loading: 'lazy', alt: r.author.value }}
+          {%- endif -%}
+          <div class="rq__body">
+            <blockquote class="rq__quote">{{ r.body.value | escape | truncatewords: 40 }}</blockquote>
+            <figcaption class="rq__who">
+              <span>{{ r.author.value | escape }}</span>
+              <span class="rq__stars" aria-label="{{ r.rating.value }} out of 5 stars">{%- for i in (1..5) -%}{%- if i <= r.rating.value -%}★{%- else -%}☆{%- endif -%}{%- endfor -%}</span>
+            </figcaption>
+          </div>
+        </figure>
+      {%- endfor -%}
+    </div>
+    {%- if reviews.size > 1 -%}
+      <div class="rq__dots" aria-hidden="true">
+        {%- for r in reviews limit: 3 -%}<span class="rq__dot{% if forloop.first %} is-on{% endif %}"></span>{%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+  <style>
+    .rq { margin: 1.6rem 0 .4rem; }
+    .rq__track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 1.2rem; }
+    .rq__track::-webkit-scrollbar { display: none; }
+    .rq__item { flex: 0 0 100%; scroll-snap-align: start; display: flex; gap: 1.4rem; align-items: flex-start; margin: 0; }
+    .rq__photo { width: 6.4rem; height: 6.4rem; border-radius: 50%; object-fit: cover; flex: 0 0 auto; }
+    .rq__body { min-width: 0; flex: 1; }
+    .rq__quote { margin: 0; font-weight: 700; font-size: 1.6rem; line-height: 1.45; border-bottom: 1px solid rgba(var(--color-foreground), .12); padding-bottom: .8rem; }
+    .rq__who { display: flex; gap: .8rem; align-items: center; margin-top: .6rem; font-style: italic; opacity: .85; }
+    .rq__stars { color: #F5B301; font-style: normal; letter-spacing: .1rem; }
+    .rq__dots { display: flex; justify-content: center; gap: .6rem; margin-top: 1rem; }
+    .rq__dot { width: .8rem; height: .8rem; border-radius: 50%; background: rgba(var(--color-foreground), .25); }
+    .rq__dot.is-on { background: rgb(var(--color-foreground)); }
+  </style>
+  <script>
+    (function () {
+      var root = document.getElementById('rq-{{ id }}');
+      if (!root) return;
+      var track = root.querySelector('.rq__track');
+      var dots = root.querySelectorAll('.rq__dot');
+      if (!dots.length) return;
+      track.addEventListener('scroll', function () {
+        var i = Math.round(track.scrollLeft / track.clientWidth);
+        dots.forEach(function (d, n) { d.classList.toggle('is-on', n === i); });
+      }, { passive: true });
+    })();
+  </script>
+{%- endif -%}

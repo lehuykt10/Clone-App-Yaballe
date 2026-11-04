@@ -42,7 +42,7 @@ page are effectively the same long landing page. Section order, top to bottom:
 | 8 | Statement | 3-beat serif headline on white, nothing else | Dawn `rich-text`, heading h0, left-aligned |
 | 9 | Story steps | 3× (rounded image → H2 step title → one line). Verb-first: open, settle, go | **`templates/brand-story/story-steps.liquid`** |
 | 10 | Social photo grid | Dark section, icon + heading + one line, 2×2 portrait grid | **`templates/brand-story/photo-grid.liquid`** |
-| 11 | Reviews | Heading, rating pill (white inside brown), cards with photo left and stars + quote + first name and initial | Judge.me "Cards" or "Testimonials" widget (real reviews only) |
+| 11 | Reviews | Heading, rating pill (white inside brown), cards with photo left and stars + quote + first name and initial | `templates/reviews/review-cards.liquid` (no app; see `reviews-and-ratings.md`) or Judge.me "Cards" widget. Real reviews only |
 | 12 | CTA band | Mid-brown full-width band, centred 3-line serif line, white pill button | Dawn `rich-text` with a brown colour scheme + button block |
 | 13 | FAQ | Centred heading, 4–6 short Q&As covering safety, pet size, how it works, order changes | `faq-accordion` (with FAQPage JSON-LD) |
 | 14 | Footer | Cream, brand tagline as H2 + one line, minimal links, round back-to-top button | Dawn footer with a brand-info block |

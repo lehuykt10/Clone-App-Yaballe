@@ -1,0 +1,37 @@
+{%- comment -%}
+  Suzeno review summary: average stars + count, computed from the product's real
+  Customer review entries (metafield suzeno.reviews), then the sourced outside rating if set.
+  Renders nothing when there are neither.
+  Usage: {% render 'review-summary', product: product %}
+{%- endcomment -%}
+{%- liquid
+  assign reviews = product.metafields.suzeno.reviews.value
+  assign count = 0
+  assign total = 0
+  for r in reviews
+    assign count = count | plus: 1
+    assign total = total | plus: r.rating.value
+  endfor
+-%}
+{%- if count > 0 -%}
+  {%- liquid
+    assign avg_x10 = total | times: 10 | divided_by: count
+    assign avg_int = avg_x10 | divided_by: 10
+    assign avg_dec = avg_x10 | modulo: 10
+    assign full = total | times: 1.0 | divided_by: count | round
+  -%}
+  <a class="rv-sum" href="#reviews" aria-label="Rated {{ avg_int }}.{{ avg_dec }} out of 5 from {{ count }} review{% if count > 1 %}s{% endif %}">
+    <span class="rv-sum__stars" aria-hidden="true">
+      {%- for i in (1..5) -%}{%- if i <= full -%}★{%- else -%}☆{%- endif -%}{%- endfor -%}
+    </span>
+    <span class="rv-sum__text">{{ avg_int }}.{{ avg_dec }} · {{ count }} review{% if count > 1 %}s{% endif %}</span>
+  </a>
+  <style>
+    .rv-sum { display: inline-flex; align-items: center; gap: .8rem; text-decoration: none; color: rgb(var(--color-foreground)); font-size: 1.5rem; margin: .2rem 0 .6rem; }
+    .rv-sum__stars { color: #F5B301; letter-spacing: .2rem; font-size: 1.8rem; }
+    .rv-sum__text { font-weight: 700; }
+  </style>
+{%- elsif request.design_mode -%}
+  <p style="font-size:1.3rem;opacity:.6;margin:.2rem 0">Review stars appear here once you add real reviews (Content → Metaobjects → Customer review, then link them on the product).</p>
+{%- endif -%}
+{%- render 'external-rating', product: product -%}

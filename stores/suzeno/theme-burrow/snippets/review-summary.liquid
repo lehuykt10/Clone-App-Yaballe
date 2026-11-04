@@ -1,6 +1,7 @@
 {%- comment -%}
   Suzeno review summary: average stars + count, computed from the product's real
-  Customer review entries (metafield suzeno.reviews). Renders nothing when there are none.
+  Customer review entries (metafield suzeno.reviews), then the sourced outside rating if set.
+  Renders nothing when there are neither.
   Usage: {% render 'review-summary', product: product %}
 {%- endcomment -%}
 {%- liquid
@@ -33,3 +34,4 @@
 {%- elsif request.design_mode -%}
   <p style="font-size:1.3rem;opacity:.6;margin:.2rem 0">Review stars appear here once you add real reviews (Content → Metaobjects → Customer review, then link them on the product).</p>
 {%- endif -%}
+{%- render 'external-rating', product: product -%}

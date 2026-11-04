@@ -146,6 +146,9 @@ they are missing, ask the owner to connect Shopify in claude.ai → Settings →
   the GraphQL workflow (`graphql_schema` → `validate_graphql_codeblocks` →
   `graphql_mutation`). Mutations: `pageCreate`, `menuCreate`/`menuUpdate`,
   `productUpdate` (seo), `metafieldsSet`
+- Reviews and ratings: follow `references/reviews-and-ratings.md` (metaobject `<brand>_review`,
+  product metafields, the four files in `templates/reviews/`). Numbers on the page must
+  come from real reviews or a named outside source; never build a free-typed rating/count
 - Discounts: `create-discount` (confirm start date and audience with the owner)
 - Legal policies: generate in Admin → Settings → Policies (the owner does
   this), then edit them to fit the brand
@@ -186,6 +189,8 @@ migrating), test order, remove password page.
 | `references/beat-them-checklist.md` | Scoring rubric + targets + launch checklist |
 | `references/shopify-build.md` | Theme setup, CLI, section patterns, Shopify connector/GraphQL recipes |
 | `references/legal-guardrails.md` | What may and may not be copied |
+| `references/reviews-and-ratings.md` | Reviews without an app: rules (what may be shown), metaobject + metafield setup, owner steps in Vietnamese, tests |
+| `templates/reviews/*.liquid` | Review summary under the title, sourced outside rating ("4.8 from 1,240 ratings on AliExpress"), quotes under Add to cart, "What our customers say" section |
 | `references/brand-story-layout.md` | "Looks like a real brand" pattern (from doggypocket.com): 8 rules, page blueprint, tokens, copy rules, what NOT to copy |
 | `templates/brand-story/story-steps.liquid` | Section: image → step title → one line, ×3 (mobile stacked, desktop columns) |
 | `templates/brand-story/photo-grid.liquid` | Section: dark band, icon + heading, 2×2 / 4-up portrait photo grid |

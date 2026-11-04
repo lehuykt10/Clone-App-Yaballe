@@ -1,8 +1,8 @@
 {%- comment -%}
   Suzeno review cards: "What our customers say" with an auto-computed rating pill and
   photo cards (photo left, stars, quote, name, country, color/size, source).
-  Data: the product's real Customer review entries (metafield suzeno.reviews).
-  The whole section hides itself until at least one review is linked.
+  Data: the product's real Customer review entries (metafield suzeno.reviews) and, if set,
+  the sourced outside rating (snippet external-rating). Hidden until one of them exists.
 {%- endcomment -%}
 {%- liquid
   assign p = section.settings.product
@@ -16,21 +16,31 @@
     assign count = count | plus: 1
     assign total = total | plus: r.rating.value
   endfor
+  assign has_ext = false
+  if p.metafields.suzeno.ext_rating.value != blank and p.metafields.suzeno.ext_rating_count.value != blank and p.metafields.suzeno.ext_rating_source.value != blank
+    assign has_ext = true
+  endif
 -%}
-{%- if count > 0 -%}
+{%- if count > 0 or has_ext -%}
   {%- liquid
-    assign avg_x10 = total | times: 10 | divided_by: count
-    assign avg_int = avg_x10 | divided_by: 10
-    assign avg_dec = avg_x10 | modulo: 10
-    assign full = total | times: 1.0 | divided_by: count | round
+    if count > 0
+      assign avg_x10 = total | times: 10 | divided_by: count
+      assign avg_int = avg_x10 | divided_by: 10
+      assign avg_dec = avg_x10 | modulo: 10
+      assign full = total | times: 1.0 | divided_by: count | round
+    endif
   -%}
   <div id="reviews" class="rvc color-{{ section.settings.color_scheme }} gradient">
     <div class="page-width rvc__inner section-{{ section.id }}-padding">
       <h2 class="rvc__heading {{ section.settings.heading_size }}">{{ section.settings.heading | escape }}</h2>
+      {%- if count > 0 -%}
       <div class="rvc__pill">
         <span class="rvc__score">{{ avg_int }}.{{ avg_dec }} stars rating</span>
-        <span class="rvc__meta"><span class="rvc__pillstars" aria-hidden="true">{%- for i in (1..5) -%}{%- if i <= full -%}★{%- else -%}☆{%- endif -%}{%- endfor -%}</span><span>Based on {{ count }} review{% if count > 1 %}s{% endif %}</span></span>
+        <span class="rvc__meta"><span class="rvc__pillstars" aria-hidden="true">{%- for i in (1..5) -%}{%- if i <= full -%}★{%- else -%}☆{%- endif -%}{%- endfor -%}</span><span>Based on {{ count }} review{% if count > 1 %}s{% endif %} on Suzeno</span></span>
       </div>
+      {%- endif -%}
+      {%- if has_ext -%}<div class="rvc__ext">{% render 'external-rating', product: p %}</div>{%- endif -%}
+      {%- if count > 0 -%}
       <div class="rvc__grid">
         {%- for r in reviews limit: section.settings.max_reviews -%}
           {%- assign has_photo = false -%}
@@ -54,6 +64,7 @@
           </article>
         {%- endfor -%}
       </div>
+      {%- endif -%}
     </div>
   </div>
 {%- elsif request.design_mode -%}
@@ -69,6 +80,7 @@
     .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; }
   }
   .rvc__heading { margin: 0 0 2rem; }
+  .rvc__ext { margin-top: 1.4rem; }
   .rvc__pill { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 1.4rem; background: rgb(var(--color-button)); color: rgb(var(--color-button-text)); border-radius: 99rem; padding: .6rem 2.2rem .6rem .6rem; max-width: 100%; }
   .rvc__score { background: rgb(var(--color-background)); color: rgb(var(--color-foreground)); border-radius: 99rem; padding: .9rem 1.8rem; font-weight: 700; font-size: 1.6rem; }
   .rvc__meta { display: grid; line-height: 1.3; font-size: 1.4rem; }
