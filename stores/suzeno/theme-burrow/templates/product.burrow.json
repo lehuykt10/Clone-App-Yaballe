@@ -101,7 +101,7 @@
                     "settings": {
                         "heading": "Pet size & weight",
                         "icon": "paw_print",
-                        "content": "<p>Best for cats and small dogs that sit comfortably in the pouch, supported by your arms. Bigger or very wriggly pets may prefer a lap cuddle instead.</p>"
+                        "content": "<p>Fits cats and small dogs up to about <strong>6 kg (13 lb)</strong> that sit comfortably in the pouch, supported by your arms.</p><p>Bigger or very wriggly pets may prefer a lap cuddle instead.</p>"
                     }
                 },
                 "tab-safe": {
@@ -415,7 +415,7 @@
                     "type": "question",
                     "settings": {
                         "question": "Which pets is it for?",
-                        "answer": "<p>Cats and small dogs that sit comfortably in the pouch. Every pet is different, so start with short cuddle sessions at home and let them climb out whenever they want.</p>"
+                        "answer": "<p>Cats and small dogs up to about 6 kg (13 lb) that sit comfortably in the pouch. Every pet is different, so start with short cuddle sessions at home and let them climb out whenever they want.</p>"
                     }
                 },
                 "q-3": {
