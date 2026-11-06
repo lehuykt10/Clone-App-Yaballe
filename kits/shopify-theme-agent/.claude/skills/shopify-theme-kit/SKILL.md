@@ -65,6 +65,18 @@ code shown after signup).
 | `sections/comparison-table.liquid` | "Us vs typical alternatives" (never name a real competitor) |
 | `sections/benefits-grid.liquid` | 2–4 column benefits or numbered steps |
 | `sections/size-guide.liquid` | Size table, 4 editable columns (apparel, pet, rings, shoes) |
+| `sections/wave-feature.liquid` | Brand-colour band with a wavy top edge, framed photo, eyebrow line, heading with one circled word, optional button |
+| `sections/video-carousel.liquid` | Swipeable vertical videos (muted loop) with arrows and dots; hidden until a video is added |
+| `sections/review-cards.liquid` | "What our customers say": rating pill + photo cards from real reviews; hidden until there are reviews |
+| `sections/story-steps.liquid`, `sections/photo-grid.liquid` | Calm brand-story layout: 3 big step images; dark band with a 2×2 lifestyle grid |
+| `snippets/review-summary.liquid`, `snippets/review-quotes.liquid` | Stars + count under the title; review quotes under Add to cart (custom_liquid blocks) |
+| `snippets/delivery-timeline.liquid` | Ordered → Order ready → Delivered with dates by visitor country (edit the day ranges) |
+| `snippets/external-rating.liquid` | Optional: "★ 4.8 from N ratings on <source>", always names the source |
+
+**Standard one-product layout** (section order for product + home page, image rules,
+review rules, live-store workflow): `references/page-standard.md`. Reviews setup
+(metaobject `customer_review`, metafield `custom.reviews`):
+`shopify-competitor-clone/references/reviews-and-ratings.md`.
 
 Need something else (UGC video strip, before/after slider, ingredient list, bundle
 builder)? Start from Dawn sections first; for a new section copy
@@ -83,3 +95,4 @@ run theme check.
 | `templates/section-template.liquid` | Skeleton for new custom sections |
 | `references/brand-json.md` | Every brand.json key explained |
 | `references/design-system.md` | Palettes, font pairs, radius, contrast rules per brand mood |
+| `references/page-standard.md` | Proven one-product layout: product page and home section order, images, honest social proof, live-store workflow |

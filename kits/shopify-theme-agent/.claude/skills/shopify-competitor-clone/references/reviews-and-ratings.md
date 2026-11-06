@@ -22,7 +22,10 @@ unsourced number, do not build it; offer the sourced rating below instead.
 
 ## What the kit gives you
 
-| File (in `templates/reviews/`) | Install to | What it does |
+The four files ship inside `shopify-theme-kit/theme/` and are copied into the theme by
+`install_kit.py` (they are also in `templates/reviews/` here for reference).
+
+| File | Installed as | What it does |
 |---|---|---|
 | `review-summary.liquid` | `snippets/` | Stars + "4.7 · 12 reviews" under the product title, computed from real reviews; then the sourced outside rating |
 | `external-rating.liquid` | `snippets/` | "★ 4.8 from 1,240 ratings on AliExpress · See ratings"; hidden unless rating, count **and source** are filled |
@@ -37,19 +40,19 @@ On the home page, set the section's `product` setting to the product handle.
 
 ## One-time store setup (Admin GraphQL, via the Shopify connector)
 
-1. Metaobject definition `suzeno_review` (rename the prefix per brand, then search and
-   replace `suzeno` in the four files), storefront `PUBLIC_READ`, publishable:
+1. Metaobject definition `customer_review`, storefront `PUBLIC_READ`, publishable:
    fields `author` (single line, required), `location`, `rating` (integer 1–5, required),
    `body` (multi-line, required), `photo` (file, image), `color`, `size`,
    `source` (single line, required, choices: "Verified buyer",
    "Verified buyer · AliExpress", "Received a free product").
-2. Product metafield `suzeno.reviews`: `list.metaobject_reference` → that definition.
-3. Product metafields for the outside rating: `suzeno.ext_rating` (number_decimal 1–5),
-   `suzeno.ext_rating_count` (number_integer ≥ 1), `suzeno.ext_rating_source`
-   (single line), `suzeno.ext_rating_url` (url, optional). All storefront `PUBLIC_READ`.
+2. Product metafield `custom.reviews`: `list.metaobject_reference` → that definition.
+3. Optional, outside rating: product metafields `custom.ext_rating` (number_decimal 1–5),
+   `custom.ext_rating_count` (number_integer ≥ 1), `custom.ext_rating_source`
+   (single line), `custom.ext_rating_url` (url, optional). All storefront `PUBLIC_READ`.
+   Skip this step if the owner only wants their own customers' reviews.
 
 ```graphql
-mutation { metaobjectDefinitionCreate(definition: { type: "suzeno_review", name: "Customer review",
+mutation { metaobjectDefinitionCreate(definition: { type: "customer_review", name: "Customer review",
   displayNameKey: "author", access: { storefront: PUBLIC_READ }, capabilities: { publishable: { enabled: true } },
   fieldDefinitions: [
     { key: "author", name: "Name (first name + initial)", type: "single_line_text_field", required: true },

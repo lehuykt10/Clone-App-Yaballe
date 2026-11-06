@@ -181,6 +181,7 @@ migrating), test order, remove password page.
 | `references/beat-them-checklist.md` | Scoring rubric + targets + launch checklist |
 | `references/shopify-build.md` | Theme setup, CLI, section patterns, Shopify connector/GraphQL recipes |
 | `references/legal-guardrails.md` | What may and may not be copied |
+| `references/brand-story-layout.md` | "Looks like a real brand" pattern: 8 rules, page blueprint, tokens, copy rules, what NOT to copy |
 | `references/reviews-and-ratings.md` | Reviews without an app: rules (what may be shown), metaobject + metafield setup, owner steps in Vietnamese, tests |
 | `templates/reviews/*.liquid` | Review summary under the title, sourced outside rating ("4.8 from 1,240 ratings on AliExpress"), quotes under Add to cart, "What our customers say" section |
 | `templates/brand-brief.md` | Owner input form |

@@ -1,0 +1,143 @@
+{%- comment -%}
+  Photo grid (brand-story layout, see references/brand-story-layout.md §2 #10).
+  Dark band with an optional icon, heading, one line and a 2-column grid of
+  portrait photos. Use for lifestyle shots ("Made for moments like these") or
+  for REAL customer photos used with permission. Never label staged or AI images
+  as real customers or as "seen on" a platform.
+  Install to theme/sections/photo-grid.liquid.
+{%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .photo-grid {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .photo-grid {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} .photo-grid__head { align-items: center; display: flex; gap: 1.6rem; }
+  #shopify-section-{{ section.id }} .photo-grid__icon {
+    background: rgb(var(--color-foreground));
+    border-radius: 50%;
+    flex: 0 0 auto;
+    height: 6.4rem;
+    overflow: hidden;
+    width: 6.4rem;
+  }
+  #shopify-section-{{ section.id }} .photo-grid__icon img { height: 100%; object-fit: contain; padding: 1.4rem; width: 100%; }
+  #shopify-section-{{ section.id }} .photo-grid__heading { margin: 0; }
+  #shopify-section-{{ section.id }} .photo-grid__text { margin: 1.6rem 0 0; max-width: 48rem; opacity: 0.85; }
+  #shopify-section-{{ section.id }} .photo-grid__list {
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    list-style: none;
+    margin: 3.2rem 0 0;
+    padding: 0;
+  }
+  @media screen and (min-width: 990px) {
+    #shopify-section-{{ section.id }} .photo-grid__list {
+      gap: 2rem;
+      grid-template-columns: repeat({{ section.settings.columns_desktop }}, minmax(0, 1fr));
+    }
+  }
+  #shopify-section-{{ section.id }} .photo-grid__media {
+    aspect-ratio: 3 / 5;
+    border-radius: {{ section.settings.radius }}px;
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .photo-grid__media img,
+  #shopify-section-{{ section.id }} .photo-grid__media svg { display: block; height: 100%; object-fit: cover; width: 100%; }
+  #shopify-section-{{ section.id }} .photo-grid__caption { font-size: 1.4rem; margin: 0.8rem 0 0; opacity: 0.8; }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="photo-grid page-width">
+    <div class="photo-grid__head">
+      {%- if section.settings.icon != blank -%}
+        <div class="photo-grid__icon">
+          {{ section.settings.icon | image_url: width: 128 | image_tag: loading: 'lazy', alt: '' }}
+        </div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="photo-grid__heading {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+    {%- if section.settings.text != blank -%}
+      <p class="photo-grid__text">{{ section.settings.text }}</p>
+    {%- endif -%}
+    <ul class="photo-grid__list" role="list">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}>
+          <div class="photo-grid__media">
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 900
+                | image_tag: loading: 'lazy', widths: '300,450,600,900', sizes: '(min-width: 990px) 25vw, 50vw'
+              }}
+            {%- else -%}
+              {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+          {%- if block.settings.caption != blank -%}
+            <p class="photo-grid__caption">{{ block.settings.caption }}</p>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Photo grid",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "image_picker", "id": "icon", "label": "Icon (optional)" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Made for moments like these" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h0"
+    },
+    { "type": "text", "id": "text", "label": "One line", "default": "Cozy nights, family photos and lazy Sundays." },
+    { "type": "range", "id": "columns_desktop", "label": "Columns on desktop", "min": 2, "max": 4, "step": 1, "default": 4 },
+    { "type": "range", "id": "radius", "label": "Image corner radius", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 12 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-3" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 64 }
+  ],
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Photo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "caption", "label": "Caption (optional)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Photo grid",
+      "blocks": [
+        { "type": "photo" },
+        { "type": "photo" },
+        { "type": "photo" },
+        { "type": "photo" }
+      ]
+    }
+  ]
+}
+{% endschema %}

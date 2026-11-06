@@ -1,7 +1,7 @@
 {%- comment -%}
-  Suzeno review cards: "What our customers say" with an auto-computed rating pill and
+  Kit review cards: "What our customers say" with an auto-computed rating pill and
   photo cards (photo left, stars, quote, name, country, color/size, source).
-  Data: the product's real Customer review entries (metafield suzeno.reviews) and, if set,
+  Data: the product's real Customer review entries (metafield custom.reviews) and, if set,
   the sourced outside rating (snippet external-rating). Hidden until one of them exists.
 {%- endcomment -%}
 {%- liquid
@@ -9,7 +9,7 @@
   if p == blank
     assign p = product
   endif
-  assign reviews = p.metafields.suzeno.reviews.value
+  assign reviews = p.metafields.custom.reviews.value
   assign count = 0
   assign total = 0
   for r in reviews
@@ -17,7 +17,7 @@
     assign total = total | plus: r.rating.value
   endfor
   assign has_ext = false
-  if p.metafields.suzeno.ext_rating.value != blank and p.metafields.suzeno.ext_rating_count.value != blank and p.metafields.suzeno.ext_rating_source.value != blank
+  if p.metafields.custom.ext_rating.value != blank and p.metafields.custom.ext_rating_count.value != blank and p.metafields.custom.ext_rating_source.value != blank
     assign has_ext = true
   endif
 -%}

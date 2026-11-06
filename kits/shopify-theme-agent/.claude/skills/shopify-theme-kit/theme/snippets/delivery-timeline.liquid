@@ -1,0 +1,54 @@
+{%- comment -%}
+  Kit delivery timeline: Ordered → Order ready → Delivered, with dates estimated from
+  the visitor's country. Free shipping note below.
+  EDIT THE DAY RANGES BELOW (d1–d2) so they match brand.json delivery.rules and the
+  shipping policy word for word: default, US, CA/GB/AU, slow regions.
+  Usage: {% render 'delivery-timeline' %}
+{%- endcomment -%}
+{%- liquid
+  assign cc = localization.country.iso_code
+  assign key = ',' | append: cc | append: ','
+  assign d1 = 12
+  assign d2 = 25
+  if cc == 'US'
+    assign d1 = 9
+    assign d2 = 17
+  elsif ',CA,GB,AU,' contains key
+    assign d1 = 10
+    assign d2 = 20
+  elsif ',DZ,AO,BJ,BW,BF,BI,CM,CV,CF,TD,KM,CG,CD,CI,DJ,EG,GQ,ER,SZ,ET,GA,GM,GH,GN,GW,KE,LS,LR,LY,MG,MW,ML,MR,MU,YT,MA,MZ,NA,NE,NG,RE,RW,SH,ST,SN,SC,SL,SO,ZA,SS,SD,TZ,TG,TN,UG,EH,ZM,ZW,AC,TA,IO,TF,AR,BO,BR,CL,CO,EC,FK,GF,GY,PY,PE,SR,UY,VE,GS,' contains key
+    assign d1 = 15
+    assign d2 = 35
+  endif
+  assign now_s = 'now' | date: '%s' | plus: 0
+  assign r1 = 86400 | plus: now_s
+  assign r2 = 259200 | plus: now_s
+  assign f1 = d1 | times: 86400 | plus: now_s
+  assign f2 = d2 | times: 86400 | plus: now_s
+-%}
+<div class="dtl">
+  <ol class="dtl__steps" role="list">
+    <li class="dtl__step">
+      <span class="dtl__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 11.2a2 2 0 0 0 2 1.6h8.1a2 2 0 0 0 2-1.5L21 7H6"/><path d="M13 9v4M11 11h4"/></svg></span>
+      <b>{{ now_s | date: '%b %-d' }}</b><span>Ordered</span>
+    </li>
+    <li class="dtl__step">
+      <span class="dtl__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg></span>
+      <b>{{ r1 | date: '%b %-d' }} – {{ r2 | date: '%b %-d' }}</b><span>Order ready</span>
+    </li>
+    <li class="dtl__step">
+      <span class="dtl__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18v11H3zM2 6h20v4H2zM12 6v15"/><path d="M12 6c-1.5-3-5-3.5-5-1s3 1 5 1c2 0 5 1.5 5-1s-3.5-2-5 1"/></svg></span>
+      <b>{{ f1 | date: '%b %-d' }} – {{ f2 | date: '%b %-d' }}</b><span>Delivered</span>
+    </li>
+  </ol>
+  <p class="dtl__note">Free tracked shipping to {{ localization.country.name }} · All taxes &amp; duties included</p>
+</div>
+<style>
+  .dtl { margin: 1.8rem 0 .6rem; }
+  .dtl__steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); position: relative; text-align: center; }
+  .dtl__steps::before { content: ""; position: absolute; top: 2.2rem; left: 16%; right: 16%; height: 2px; background: rgb(var(--color-foreground)); }
+  .dtl__step { position: relative; display: grid; justify-items: center; gap: .2rem; font-size: 1.3rem; line-height: 1.3; }
+  .dtl__icon { width: 4.4rem; height: 4.4rem; border-radius: 50%; background: rgb(var(--color-foreground)); color: rgb(var(--color-background)); display: grid; place-items: center; margin-bottom: .6rem; }
+  .dtl__step b { font-weight: 700; }
+  .dtl__note { text-align: center; font-size: 1.3rem; opacity: .8; margin: 1.2rem 0 0; }
+</style>

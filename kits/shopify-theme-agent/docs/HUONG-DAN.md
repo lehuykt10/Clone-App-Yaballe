@@ -300,6 +300,19 @@ cho sản phẩm" (Agent dùng `references/reviews-and-ratings.md`). Có 2 cách
 Không có ô gõ số review/số sao tuỳ ý không kèm nguồn: luật FTC (Mỹ) phạt số đánh giá không có
 thật dù khách đến từ quảng cáo hay Instagram/TikTok organic.
 
+**Muốn trang chủ và trang sản phẩm theo "mẫu chuẩn" (1 sản phẩm)?** Nói với Claude "dựng trang
+theo mẫu chuẩn" (Agent dùng `shopify-theme-kit/references/page-standard.md`). Bộ kit đã có sẵn:
+- dải màu thương hiệu có sóng, ảnh trong khung bo, chữ khoanh tròn (**Wave feature**);
+- khung video dọc chạy ngang (**Video carousel**), tự ẩn khi chưa có video;
+- lịch giao hàng *Ordered → Order ready → Delivered* tính theo nước của khách;
+- sao đánh giá dưới tên sản phẩm, câu review dưới nút mua, khung **What our customers say**
+  (chỉ hiện khi có review thật);
+- lưới màu, How it works, FAQ, thanh **Buy now** dính dưới màn hình.
+
+Chuẩn bị trước: ảnh mỗi màu **cùng tỉ lệ 4:5**, rộng từ 1000 px; bảng size của nhà cung cấp; tải
+trọng/thông số thật; logo PNG nền trong + favicon vuông 512×512. Ảnh lifestyle không được in
+chữ, tên hay sao lên ảnh.
+
 **Bán thị trường không nói tiếng Anh?** Nói với Agent ở `/bat-dau` (ví dụ: bán ở Đức, tiếng Đức).
 Nội dung sẽ viết bằng ngôn ngữ đó.
 

@@ -1,12 +1,12 @@
 {%- comment -%}
-  Suzeno outside rating: "★ 4.8 from 1,240 ratings on AliExpress", typed by the owner in
-  Product → Metafields (suzeno.ext_rating, ext_rating_count, ext_rating_source, ext_rating_url).
+  Kit outside rating: "★ 4.8 from 1,240 ratings on AliExpress", typed by the owner in
+  Product → Metafields (custom.ext_rating, ext_rating_count, ext_rating_source, ext_rating_url).
   Always names the source; renders nothing unless rating, count and source are all filled.
   Use only the real rating of this same product on that platform.
   Usage: {% render 'external-rating', product: product %}
 {%- endcomment -%}
 {%- liquid
-  assign m = product.metafields.suzeno
+  assign m = product.metafields.custom
   assign er = m.ext_rating.value
   assign ec = m.ext_rating_count.value
   assign es = m.ext_rating_source.value

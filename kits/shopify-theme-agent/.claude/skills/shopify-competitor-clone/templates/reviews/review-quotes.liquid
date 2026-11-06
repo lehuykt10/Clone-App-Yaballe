@@ -1,10 +1,10 @@
 {%- comment -%}
-  Suzeno review quotes: a small swipeable carousel of up to 3 real reviews under the
-  Add to cart button (photo, quote, name, stars). Reads metafield suzeno.reviews.
+  Kit review quotes: a small swipeable carousel of up to 3 real reviews under the
+  Add to cart button (photo, quote, name, stars). Reads metafield custom.reviews.
   Renders nothing when there are no reviews.
   Usage: {% render 'review-quotes', product: product, id: block.id %}
 {%- endcomment -%}
-{%- assign reviews = product.metafields.suzeno.reviews.value -%}
+{%- assign reviews = product.metafields.custom.reviews.value -%}
 {%- if reviews.size > 0 -%}
   <div class="rq" id="rq-{{ id }}">
     <div class="rq__track" role="list">

@@ -1,0 +1,143 @@
+{%- comment -%}
+  Story steps (brand-story layout, see references/brand-story-layout.md §2 #9).
+  Each block = rounded image, step title, one line. One column on mobile,
+  up to 3 columns on desktop. Install to theme/sections/story-steps.liquid.
+{%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .story-steps {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .story-steps {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} .story-steps__list {
+    display: grid;
+    gap: 5.6rem;
+    grid-template-columns: minmax(0, 1fr);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  @media screen and (min-width: 990px) {
+    #shopify-section-{{ section.id }} .story-steps__list {
+      gap: 3.2rem;
+      grid-template-columns: repeat({{ section.settings.columns_desktop }}, minmax(0, 1fr));
+    }
+  }
+  #shopify-section-{{ section.id }} .story-steps__media {
+    aspect-ratio: {{ section.settings.image_ratio }};
+    background: rgba(var(--color-foreground), 0.04);
+    border-radius: {{ section.settings.radius }}px;
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .story-steps__media img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .story-steps__title { margin: 2.4rem 0 0.8rem; }
+  #shopify-section-{{ section.id }} .story-steps__text { margin: 0; max-width: 42rem; }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="story-steps page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="{{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    <ol class="story-steps__list" role="list">
+      {%- for block in section.blocks -%}
+        <li class="story-steps__item" {{ block.shopify_attributes }}>
+          <div class="story-steps__media">
+            {%- if block.settings.image != blank -%}
+              {%- liquid
+                if section.settings.columns_desktop == 1
+                  assign sizes = '(min-width: 1200px) 1100px, calc(100vw - 3.2rem)'
+                else
+                  assign sizes = '(min-width: 990px) calc(100vw / 3), calc(100vw - 3.2rem)'
+                endif
+              -%}
+              {{
+                block.settings.image
+                | image_url: width: 1500
+                | image_tag: loading: 'lazy', widths: '375,550,750,1100,1500', sizes: sizes
+              }}
+            {%- else -%}
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+          {%- if block.settings.title != blank -%}
+            <h3 class="story-steps__title h1">{{ block.settings.title }}</h3>
+          {%- endif -%}
+          {%- if block.settings.text != blank -%}
+            <p class="story-steps__text">{{ block.settings.text }}</p>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Story steps",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Heading (optional)" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h0"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image shape",
+      "options": [
+        { "value": "4 / 5", "label": "Portrait 4:5" },
+        { "value": "1 / 1", "label": "Square" },
+        { "value": "3 / 4", "label": "Portrait 3:4" }
+      ],
+      "default": "4 / 5"
+    },
+    { "type": "range", "id": "radius", "label": "Image corner radius", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 12 },
+    { "type": "range", "id": "columns_desktop", "label": "Columns on desktop", "min": 1, "max": 3, "step": 1, "default": 3 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Step title", "default": "Open the pouch" },
+        { "type": "text", "id": "text", "label": "One line", "default": "Describe this step in one short sentence." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story steps",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Open the pouch" } },
+        { "type": "step", "settings": { "title": "Settle them in" } },
+        { "type": "step", "settings": { "title": "Go together" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
