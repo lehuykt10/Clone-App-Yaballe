@@ -1,50 +1,59 @@
 {%- comment -%}
-  Outputs a CSS colour for a variant's first option value (used by bundle-picker),
-  or nothing when the option is not a colour (e.g. Size), so no chip is shown.
-  Order: Shopify's native swatch colour (Admin → product → option values) →
-  the name map below → nothing. Add your own colour names to the map.
+  Outputs a CSS colour for a variant's first option value (used by bundle-picker).
+  Order: Shopify's native option swatch colour (set in Admin) → name map below → grey.
+  Edit the map if you rename colours.
 {%- endcomment -%}
 {%- liquid
   assign value = variant.options.first
-  assign swatch = ''
+  assign swatch = null
   for option_value in variant.product.options_with_values.first.values
     if option_value.name == value and option_value.swatch.color
       assign swatch = option_value.swatch.color
     endif
   endfor
-  if swatch == ''
-    assign key = value | downcase | strip
+  if swatch == null
+    assign key = value | downcase
     case key
-      when 'black', 'jet black', 'midnight black', 'onyx'
-        assign swatch = '#1F1F1F'
-      when 'white', 'cloud white', 'snow', 'ivory', 'off white', 'cream'
-        assign swatch = '#FAFAF7'
-      when 'grey', 'gray', 'heather grey', 'charcoal', 'silver'
-        assign swatch = '#9A9A9A'
-      when 'beige', 'sand', 'khaki', 'nude', 'tan', 'camel'
-        assign swatch = '#D8C3A5'
-      when 'brown', 'walnut', 'chocolate', 'coffee', 'mocha'
-        assign swatch = '#5B3A29'
-      when 'wood', 'natural', 'natural wood', 'oak', 'natural oak', 'bamboo'
+      when 'olive', 'olive green', 'army green'
+        assign swatch = '#585235'
+      when 'dusty pink', 'dusty rose'
+        assign swatch = '#CE8077'
+      when 'burgundy', 'wine', 'wine red'
+        assign swatch = '#881319'
+      when 'cream', 'ivory', 'beige'
+        assign swatch = '#EEDCC6'
+      when 'heather grey', 'heather gray', 'grey', 'gray', 'light grey', 'light gray'
+        assign swatch = '#A9A9AB'
+      when 'sky blue', 'light blue', 'blue'
+        assign swatch = '#91BADA'
+      when 'natural oak', 'wood', 'natural wood', 'oak'
         assign swatch = '#C8A27A'
-      when 'red', 'burgundy', 'wine', 'cherry'
-        assign swatch = '#B3261E'
-      when 'pink', 'rose', 'blush', 'baby pink'
+      when 'cloud white', 'white'
+        assign swatch = '#FFFFFF'
+      when 'walnut', 'brown'
+        assign swatch = '#5B3A29'
+      when 'midnight black', 'black'
+        assign swatch = '#1F1F1F'
+      when 'forest green', 'green'
+        assign swatch = '#3F5A4A'
+      when 'honey yellow', 'yellow'
+        assign swatch = '#F2C230'
+      when 'blossom pink', 'pink'
         assign swatch = '#F4B6C2'
-      when 'orange', 'coral', 'peach', 'terracotta'
-        assign swatch = '#E07A4F'
-      when 'yellow', 'mustard', 'lemon'
-        assign swatch = '#F2C94C'
-      when 'gold', 'champagne'
-        assign swatch = '#C9A646'
-      when 'green', 'sage', 'olive', 'mint', 'forest green', 'emerald'
-        assign swatch = '#6E9B7A'
-      when 'blue', 'navy', 'sky blue', 'light blue', 'royal blue', 'denim'
-        assign swatch = '#3B5B8C'
-      when 'purple', 'lavender', 'lilac', 'violet'
-        assign swatch = '#9B87C5'
-      when 'clear', 'transparent'
-        assign swatch = 'linear-gradient(135deg, #fff 45%, #ddd 50%, #fff 55%)'
+      when 'holly wreath', 'christmas green'
+        assign swatch = '#2F5D3A'
+      when 'candy pink'
+        assign swatch = '#E8A3B4'
+      when 'santa red'
+        assign swatch = '#B3262E'
+      when 'christmas tree', 'dark green'
+        assign swatch = '#1E4A2E'
+      when 'tree green'
+        assign swatch = '#2E9E44'
+      when 'lemon yellow'
+        assign swatch = '#EEE48C'
+      else
+        assign swatch = '#CCCCCC'
     endcase
   endif
 -%}
