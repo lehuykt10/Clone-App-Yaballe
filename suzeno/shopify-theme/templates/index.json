@@ -44,15 +44,22 @@
         "acc-3": {
           "type": "accordion",
           "settings": {
-            "title": "Shipping",
-            "content": "<p>Free tracked shipping. Orders are packed within 1–3 business days and you get a tracking link by email as soon as your parcel ships.</p>"
+            "title": "Care",
+            "content": "<p>Rinse under the tap after muddy walks, or hand-wash in cool water with mild soap. Hang to dry. Don't tumble dry or iron.</p>"
           }
         },
         "acc-4": {
           "type": "accordion",
           "settings": {
+            "title": "Shipping",
+            "content": "<p>Free worldwide shipping with tracking. US orders usually arrive in 9–17 days; Canada, the UK and Australia in 10–20 days; most other countries in 12–25 days. All taxes and import duties are included, so there's nothing extra to pay on delivery. <a href=\"/pages/shipping-policy\">Full shipping policy</a></p>"
+          }
+        },
+        "acc-5": {
+          "type": "accordion",
+          "settings": {
             "title": "Our guarantee",
-            "content": "<p>Wrong size? Email us within 30 days of delivery and we'll help you swap it. If it arrives damaged or faulty, send a photo and we'll refund you or send a replacement.</p>"
+            "content": "<p>If it arrives damaged or faulty, send a photo to support@suzeno.com within 30 days and we'll refund you or send a replacement. Wrong size? Email us and we'll help.</p>"
           }
         }
       },
@@ -64,35 +71,37 @@
         "acc-1",
         "acc-2",
         "acc-3",
-        "acc-4"
+        "acc-4",
+        "acc-5"
       ],
       "settings": {
-        "stock_line": "SELLING FAST · BOOTS INCLUDED",
+        "stock_line": "BOOTS INCLUDED · 3 COLORS",
         "rating_text": "",
+        "notice": "",
         "bundle_heading": "Bundle & save",
         "show_timer": true,
-        "default_tier": 2,
-        "tier_1_qty": 1,
-        "tier_1_discount": 0,
-        "tier_1_label": "1 Raincoat",
-        "tier_1_badge": "",
-        "tier_2_qty": 2,
-        "tier_2_discount": 5,
-        "tier_2_label": "2 Raincoats",
-        "tier_2_badge": "MOST POPULAR",
-        "tier_3_qty": 3,
-        "tier_3_discount": 7,
-        "tier_3_label": "3 Raincoats",
-        "tier_3_badge": "BEST VALUE",
+        "default_tier": 1,
         "gift_text": "",
         "swatches": "Sky Blue:#9cc3ea\nCarrot Orange:#f47b20\nDino Green:#7a9a4a",
         "show_size_link": true,
-        "trust_1": "Free shipping",
-        "trust_2": "Secure checkout",
-        "trust_3": "30-day fit guarantee",
         "show_description": true,
         "sticky_label": "Add to cart",
-        "product": "suzeno-full-body-dog-raincoat"
+        "trust_1": "Free worldwide shipping",
+        "trust_2": "30-day guarantee",
+        "trust_3": "Taxes & duties included",
+        "tier_1_qty": 1,
+        "tier_1_discount": 0,
+        "tier_1_label": "1 Puddle Suit",
+        "tier_1_badge": "",
+        "tier_2_qty": 2,
+        "tier_2_discount": 5,
+        "tier_2_label": "2 Puddle Suits",
+        "tier_2_badge": "MOST POPULAR",
+        "tier_3_qty": 3,
+        "tier_3_discount": 7,
+        "tier_3_label": "3 Puddle Suits",
+        "tier_3_badge": "BEST VALUE",
+        "product": "puddle-suit"
       }
     },
     "band": {
@@ -108,10 +117,11 @@
       "type": "sz-story",
       "settings": {
         "image": "shopify://shop_images/suzeno-raincoat-carrot-wet-walks.jpg",
+        "image_right": false,
         "eyebrow": "Why dog parents switch",
         "heading": "Your dog stays dry. Your floors stay",
         "circled": "clean",
-        "text": "<p>Most dog raincoats only cover the back. The rain still soaks the belly, the legs splash through every puddle, and you spend the next 15 minutes drying a wet dog on the doormat.</p><p>Suzeno covers your dog from nose to tail. The hood has a clear face shield, and adjustable cuffs, a tail sleeve and snap-on boots close the gaps where water usually gets in. Reflective bands keep you both visible after dark.</p><p>Snap it on, walk, rinse it off, hang it to dry. That's the whole routine.</p>"
+        "text": "<p>Most dog raincoats only cover the back. The rain still soaks the belly, the legs splash through every puddle, and you spend the next 15 minutes drying a wet dog on the doormat.</p><p>The Puddle Suit covers your dog from nose to tail. The hood has a clear face shield, and adjustable cuffs, a tail sleeve and snap-on boots close the gaps where water usually gets in. Reflective bands keep you both visible after dark.</p><p>Snap it on, walk, rinse it off, hang it to dry. That's the whole routine.</p>"
       }
     },
     "hotspots": {
@@ -186,9 +196,95 @@
         "heading": "Covered from nose to tail"
       }
     },
+    "how": {
+      "type": "sz-steps",
+      "blocks": {
+        "s-1": {
+          "type": "item",
+          "settings": {
+            "title": "Front legs in",
+            "text": "Step the front legs through and pull the hood over the head."
+          }
+        },
+        "s-2": {
+          "type": "item",
+          "settings": {
+            "title": "Snap the chest",
+            "text": "Close the snap buttons under the chin and chest."
+          }
+        },
+        "s-3": {
+          "type": "item",
+          "settings": {
+            "title": "Legs, tail & boots",
+            "text": "Slip the back legs and tail into their sleeves, then snap on the boots."
+          }
+        }
+      },
+      "block_order": [
+        "s-1",
+        "s-2",
+        "s-3"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "On in under a minute",
+        "numbered": true,
+        "background": "sun-soft"
+      }
+    },
     "size": {
       "type": "sz-size-guide",
-      "settings": {}
+      "blocks": {
+        "r-1": {
+          "type": "row",
+          "settings": {
+            "label": "Back length",
+            "values": "20,25,30,35,40,45",
+            "unit": "length"
+          }
+        },
+        "r-2": {
+          "type": "row",
+          "settings": {
+            "label": "Chest",
+            "values": "32,37,42,47,52,57",
+            "unit": "length"
+          }
+        },
+        "r-3": {
+          "type": "row",
+          "settings": {
+            "label": "Neck",
+            "values": "27,29,32,35,38,41",
+            "unit": "length"
+          }
+        },
+        "r-4": {
+          "type": "row",
+          "settings": {
+            "label": "Dog weight",
+            "values": "0.5-1.5,1.5-2.5,2.5-4,4-6,6-7.5,7.5-10",
+            "unit": "weight"
+          }
+        }
+      },
+      "block_order": [
+        "r-1",
+        "r-2",
+        "r-3",
+        "r-4"
+      ],
+      "settings": {
+        "eyebrow": "Find the right fit",
+        "heading": "Size guide",
+        "intro": "",
+        "image": "",
+        "first_col": "Size",
+        "sizes": "XS,S,M,L,XL,XXL",
+        "measure": "<p><strong>Back length:</strong> base of the collar to the base of the tail. <strong>Chest:</strong> widest part of the ribcage, just behind the front legs. <strong>Neck:</strong> where the collar sits, with room for two fingers.</p>",
+        "tip": "Between sizes? Pick the bigger one. Back length matters most for a full-body suit."
+      }
     },
     "faq": {
       "type": "sz-faq-contact",
@@ -204,14 +300,14 @@
           "type": "question",
           "settings": {
             "question": "Does the face shield bother dogs?",
-            "answer": "<p>The clear shield sits in front of the face, not on it, so your dog can see normally. Let your dog wear the coat indoors for a few minutes the first time, with a treat.</p>"
+            "answer": "<p>The clear shield sits in front of the face, not on it, so your dog can see normally. Let your dog wear the suit indoors for a few minutes the first time, with a treat.</p>"
           }
         },
         "q-3": {
           "type": "question",
           "settings": {
-            "question": "Is it fully waterproof?",
-            "answer": "<p>The high-density outer fabric makes water bead off, and the cuffs, tail sleeve and snap-on boots close the usual gaps. Your dog comes home dry from nose to paws.</p>"
+            "question": "Is it waterproof?",
+            "answer": "<p>The high-density outer fabric makes water bead off, and the cuffs, tail sleeve and snap-on boots close the usual gaps.</p>"
           }
         },
         "q-4": {
@@ -232,14 +328,21 @@
           "type": "question",
           "settings": {
             "question": "When will my order arrive?",
-            "answer": "<p>We pack orders within 1–3 business days. You get a tracking link by email as soon as it ships.</p>"
+            "answer": "<p>US orders usually arrive in 9–17 days; Canada, the UK and Australia in 10–20 days; most other countries in 12–25 days. You get a tracking link by email as soon as it ships.</p>"
           }
         },
         "q-7": {
           "type": "question",
           "settings": {
-            "question": "What if it doesn't fit?",
-            "answer": "<p>Email us within 30 days of delivery and we'll help you swap it for another size.</p>"
+            "question": "Will I pay customs fees or taxes?",
+            "answer": "<p>No. Our prices include all taxes and import duties, so the price at checkout is the final price. If a carrier ever asks you for a fee, contact us before paying and we'll take care of it.</p>"
+          }
+        },
+        "q-8": {
+          "type": "question",
+          "settings": {
+            "question": "What if it doesn't fit or arrives damaged?",
+            "answer": "<p>Contact support@suzeno.com within 30 days of delivery. If it arrives damaged or faulty, we'll refund you or send a replacement. For a different size, email us and we'll help.</p>"
           }
         }
       },
@@ -250,7 +353,8 @@
         "q-4",
         "q-5",
         "q-6",
-        "q-7"
+        "q-7",
+        "q-8"
       ],
       "settings": {
         "heading": "Good to know",
@@ -271,6 +375,7 @@
     "band",
     "story",
     "hotspots",
+    "how",
     "size",
     "faq",
     "reviews"

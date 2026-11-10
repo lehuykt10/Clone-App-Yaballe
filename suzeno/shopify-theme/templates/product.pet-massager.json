@@ -1,0 +1,211 @@
+{
+  "sections": {
+    "main": {
+      "type": "sz-product",
+      "blocks": {
+        "perk-1": {
+          "type": "perk",
+          "settings": {
+            "text": "Soft kneading 'hands' for a relaxing back rub"
+          }
+        },
+        "perk-2": {
+          "type": "perk",
+          "settings": {
+            "text": "Cordless and rechargeable"
+          }
+        },
+        "perk-3": {
+          "type": "perk",
+          "settings": {
+            "text": "Strap on, press a button, relax together"
+          }
+        },
+        "perk-4": {
+          "type": "perk",
+          "settings": {
+            "text": "Use on the rug, the couch or their own bed"
+          }
+        },
+        "acc-1": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to use",
+            "content": "<p>Strap it on, press the button and let the soft kneading do the work during quiet time. Stay close and keep sessions short.</p>"
+          }
+        },
+        "acc-2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Safe use",
+            "content": "<ul><li>Always stay with your pet while the massager is on.</li><li>Keep sessions short and stop if your pet seems uncomfortable.</li></ul>"
+          }
+        },
+        "acc-3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Shipping",
+            "content": "<p>Free worldwide shipping with tracking. US orders usually arrive in 9–17 days; Canada, the UK and Australia in 10–20 days; most other countries in 12–25 days. All taxes and import duties are included, so there's nothing extra to pay on delivery. <a href=\"/pages/shipping-policy\">Full shipping policy</a></p>"
+          }
+        },
+        "acc-4": {
+          "type": "accordion",
+          "settings": {
+            "title": "Our guarantee",
+            "content": "<p>If it arrives damaged or faulty, send a photo to support@suzeno.com within 30 days and we'll refund you or send a replacement. Wrong size? Email us and we'll help.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "perk-1",
+        "perk-2",
+        "perk-3",
+        "perk-4",
+        "acc-1",
+        "acc-2",
+        "acc-3",
+        "acc-4"
+      ],
+      "settings": {
+        "stock_line": "",
+        "rating_text": "",
+        "notice": "",
+        "bundle_heading": "Choose your style",
+        "show_timer": false,
+        "default_tier": 1,
+        "gift_text": "",
+        "swatches": "Midnight Black:#1f1f1f\nForest Green:#2f5a3a",
+        "show_size_link": false,
+        "show_description": true,
+        "sticky_label": "Add to cart",
+        "trust_1": "Free worldwide shipping",
+        "trust_2": "30-day guarantee",
+        "trust_3": "Taxes & duties included",
+        "tier_1_qty": 1,
+        "tier_1_discount": 0,
+        "tier_1_label": "1 Massager",
+        "tier_1_badge": "",
+        "tier_2_qty": 0,
+        "tier_2_discount": 0,
+        "tier_2_label": "",
+        "tier_2_badge": "",
+        "tier_3_qty": 0,
+        "tier_3_discount": 0,
+        "tier_3_label": "",
+        "tier_3_badge": ""
+      }
+    },
+    "band": {
+      "type": "sz-band",
+      "settings": {
+        "before": "A good back rub,",
+        "circled": "anytime",
+        "after": "",
+        "text": "Calm moments together on the sofa."
+      }
+    },
+    "how": {
+      "type": "sz-steps",
+      "blocks": {
+        "s-1": {
+          "type": "item",
+          "settings": {
+            "title": "Strap on",
+            "text": "Fit it gently around your pet."
+          }
+        },
+        "s-2": {
+          "type": "item",
+          "settings": {
+            "title": "Press start",
+            "text": "Soft kneading begins."
+          }
+        },
+        "s-3": {
+          "type": "item",
+          "settings": {
+            "title": "Relax together",
+            "text": "Stay close and keep sessions short."
+          }
+        }
+      },
+      "block_order": [
+        "s-1",
+        "s-2",
+        "s-3"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "How it works",
+        "numbered": true,
+        "background": "sky-mist"
+      }
+    },
+    "faq": {
+      "type": "sz-faq-contact",
+      "blocks": {
+        "q-1": {
+          "type": "question",
+          "settings": {
+            "question": "Is it cordless?",
+            "answer": "<p>Yes. It's rechargeable, so it goes wherever your pet likes to rest.</p>"
+          }
+        },
+        "q-2": {
+          "type": "question",
+          "settings": {
+            "question": "How long should a session be?",
+            "answer": "<p>Keep sessions short and always stay close to your pet.</p>"
+          }
+        },
+        "q-3": {
+          "type": "question",
+          "settings": {
+            "question": "When will my order arrive?",
+            "answer": "<p>US orders usually arrive in 9–17 days; Canada, the UK and Australia in 10–20 days; most other countries in 12–25 days. You get a tracking link by email as soon as it ships.</p>"
+          }
+        },
+        "q-4": {
+          "type": "question",
+          "settings": {
+            "question": "Will I pay customs fees or taxes?",
+            "answer": "<p>No. Our prices include all taxes and import duties, so the price at checkout is the final price. If a carrier ever asks you for a fee, contact us before paying and we'll take care of it.</p>"
+          }
+        },
+        "q-5": {
+          "type": "question",
+          "settings": {
+            "question": "What if it doesn't fit or arrives damaged?",
+            "answer": "<p>Contact support@suzeno.com within 30 days of delivery. If it arrives damaged or faulty, we'll refund you or send a replacement. For a different size, email us and we'll help.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q-1",
+        "q-2",
+        "q-3",
+        "q-4",
+        "q-5"
+      ],
+      "settings": {
+        "heading": "Good to know",
+        "open_first": true,
+        "show_contact": true,
+        "tracking_url": "https://t.17track.net/en#nums="
+      }
+    },
+    "reviews": {
+      "type": "sz-testimonials",
+      "settings": {
+        "heading": "What our customers say"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "band",
+    "how",
+    "faq",
+    "reviews"
+  ]
+}

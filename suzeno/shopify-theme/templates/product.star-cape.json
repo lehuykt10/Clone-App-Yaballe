@@ -1,0 +1,278 @@
+{
+  "sections": {
+    "main": {
+      "type": "sz-product",
+      "blocks": {
+        "perk-1": {
+          "type": "perk",
+          "settings": {
+            "text": "Hooded tree cape with a gold star on top"
+          }
+        },
+        "perk-2": {
+          "type": "perk",
+          "settings": {
+            "text": "Ruffled layers and colorful pom-poms"
+          }
+        },
+        "perk-3": {
+          "type": "perk",
+          "settings": {
+            "text": "Easy drawstring tie at the neck"
+          }
+        },
+        "perk-4": {
+          "type": "perk",
+          "settings": {
+            "text": "Two festive colors: Tree Green and Santa Red"
+          }
+        },
+        "acc-1": {
+          "type": "accordion",
+          "settings": {
+            "title": "What's included",
+            "content": "<ul><li>1 hooded Christmas tree cape with a gold star, pom-poms and a drawstring neck tie</li><li>Gift box and props in the photos are not included</li></ul>"
+          }
+        },
+        "acc-2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Safe & comfy",
+            "content": "<ul><li>Dress-up is for supervised fun: photos, parties and short wear.</li><li>Pom-poms and decorations are not toys. Take the costume off if your pet tries to chew it.</li><li>Keep ties loose enough to fit two fingers underneath.</li></ul>"
+          }
+        },
+        "acc-3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Shipping & Christmas delivery",
+            "content": "<p>Free worldwide shipping with tracking. US orders usually arrive in 9–17 days; Canada, the UK and Australia in 10–20 days; most other countries in 12–25 days. All taxes and import duties are included, so there's nothing extra to pay on delivery. <a href=\"/pages/shipping-policy\">Full shipping policy</a></p>"
+          }
+        },
+        "acc-4": {
+          "type": "accordion",
+          "settings": {
+            "title": "Our guarantee",
+            "content": "<p>If it arrives damaged or faulty, send a photo to support@suzeno.com within 30 days and we'll refund you or send a replacement. Wrong size? Email us and we'll help.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "perk-1",
+        "perk-2",
+        "perk-3",
+        "perk-4",
+        "acc-1",
+        "acc-2",
+        "acc-3",
+        "acc-4"
+      ],
+      "settings": {
+        "stock_line": "FOR SMALL DOGS & CATS",
+        "rating_text": "",
+        "notice": "🎄 Christmas delivery: order by Dec 5 (US), Dec 2 (CA, UK, AU) or Nov 28 (other countries)",
+        "bundle_heading": "Bundle & save",
+        "show_timer": true,
+        "default_tier": 1,
+        "gift_text": "",
+        "swatches": "Tree Green:#2f6b3a\nSanta Red:#c8202f",
+        "show_size_link": true,
+        "show_description": true,
+        "sticky_label": "Add to cart",
+        "trust_1": "Free worldwide shipping",
+        "trust_2": "30-day guarantee",
+        "trust_3": "Taxes & duties included",
+        "tier_1_qty": 1,
+        "tier_1_discount": 0,
+        "tier_1_label": "1 Star Cape",
+        "tier_1_badge": "",
+        "tier_2_qty": 2,
+        "tier_2_discount": 5,
+        "tier_2_label": "2 Star Capes",
+        "tier_2_badge": "GIFT PICK",
+        "tier_3_qty": 0,
+        "tier_3_discount": 0,
+        "tier_3_label": "",
+        "tier_3_badge": ""
+      }
+    },
+    "band": {
+      "type": "sz-band",
+      "settings": {
+        "before": "Your pet, the little",
+        "circled": "Christmas tree",
+        "after": "of the house",
+        "text": "Holiday photos, family gatherings and Christmas parties."
+      }
+    },
+    "story": {
+      "type": "sz-story",
+      "settings": {
+        "image": "shopify://shop_images/tree-cape3.png",
+        "image_right": false,
+        "eyebrow": "Two pups, twice the cheer",
+        "heading": "Mix and",
+        "circled": "match",
+        "text": "<p>Got more than one furry friend? Dress them in Tree Green and Santa Red for the cutest holiday photo of the year. Choose 2 Star Capes and save $10.</p>"
+      }
+    },
+    "how": {
+      "type": "sz-steps",
+      "blocks": {
+        "s-1": {
+          "type": "item",
+          "settings": {
+            "title": "Weigh",
+            "text": "Pick the size that matches your pet's weight."
+          }
+        },
+        "s-2": {
+          "type": "item",
+          "settings": {
+            "title": "Hood on",
+            "text": "Slip the hood gently over your pet's head."
+          }
+        },
+        "s-3": {
+          "type": "item",
+          "settings": {
+            "title": "Tie the bow",
+            "text": "Tie the drawstring loosely at the neck."
+          }
+        },
+        "s-4": {
+          "type": "item",
+          "settings": {
+            "title": "Say cheese",
+            "text": "Treats ready: it's holiday photo time."
+          }
+        }
+      },
+      "block_order": [
+        "s-1",
+        "s-2",
+        "s-3",
+        "s-4"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "How to dress up",
+        "numbered": true,
+        "background": "sky-mist"
+      }
+    },
+    "size": {
+      "type": "sz-size-guide",
+      "blocks": {
+        "r-1": {
+          "type": "row",
+          "settings": {
+            "label": "Pet weight",
+            "values": "1.5-2.5,2.5-5,5-7.5",
+            "unit": "weight"
+          }
+        }
+      },
+      "block_order": [
+        "r-1"
+      ],
+      "settings": {
+        "eyebrow": "Find the right fit",
+        "heading": "Size guide",
+        "intro": "<p>Choose by your pet's weight.</p>",
+        "image": "",
+        "first_col": "Size",
+        "sizes": "S,M,L",
+        "measure": "",
+        "tip": "Between two sizes, or a fluffy coat? Choose the larger one."
+      }
+    },
+    "gift": {
+      "type": "sz-story",
+      "settings": {
+        "image": "shopify://shop_images/tree-cape1.png",
+        "image_right": true,
+        "eyebrow": "Easy gifting",
+        "heading": "A gift they'll love",
+        "circled": "unwrapping",
+        "text": "<p>Shopping for a dog lover? The Star Cape is a sweet stocking stuffer for pups and the people who adore them.</p>"
+      }
+    },
+    "faq": {
+      "type": "sz-faq-contact",
+      "blocks": {
+        "q-1": {
+          "type": "question",
+          "settings": {
+            "question": "What's included?",
+            "answer": "<p>One hooded Christmas tree cape with a gold star on top and colorful pom-poms.</p>"
+          }
+        },
+        "q-2": {
+          "type": "question",
+          "settings": {
+            "question": "How do I choose the size?",
+            "answer": "<p>Choose by your pet's weight: S for 1.5–2.5 kg, M for 2.5–5 kg and L for 5–7.5 kg. Between sizes, go up one.</p>"
+          }
+        },
+        "q-3": {
+          "type": "question",
+          "settings": {
+            "question": "Is it for dogs or cats?",
+            "answer": "<p>Both. It's made for small dogs and for cats who are comfortable wearing clothes.</p>"
+          }
+        },
+        "q-4": {
+          "type": "question",
+          "settings": {
+            "question": "Will it arrive before Christmas?",
+            "answer": "<p>To be safe, order by December 5 for the US, December 2 for Canada, the UK and Australia, and November 28 for other countries.</p>"
+          }
+        },
+        "q-5": {
+          "type": "question",
+          "settings": {
+            "question": "Will I pay customs fees or taxes?",
+            "answer": "<p>No. Our prices include all taxes and import duties, so the price at checkout is the final price. If a carrier ever asks you for a fee, contact us before paying and we'll take care of it.</p>"
+          }
+        },
+        "q-6": {
+          "type": "question",
+          "settings": {
+            "question": "What if it doesn't fit or arrives damaged?",
+            "answer": "<p>Contact support@suzeno.com within 30 days of delivery. If it arrives damaged or faulty, we'll refund you or send a replacement. For a different size, email us and we'll help.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q-1",
+        "q-2",
+        "q-3",
+        "q-4",
+        "q-5",
+        "q-6"
+      ],
+      "settings": {
+        "heading": "Good to know",
+        "open_first": true,
+        "show_contact": true,
+        "tracking_url": "https://t.17track.net/en#nums="
+      }
+    },
+    "reviews": {
+      "type": "sz-testimonials",
+      "settings": {
+        "heading": "What our customers say"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "band",
+    "story",
+    "how",
+    "size",
+    "gift",
+    "faq",
+    "reviews"
+  ]
+}

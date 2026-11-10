@@ -46,6 +46,7 @@
       {%- for block in section.blocks -%}{%- if block.type == 'perk' -%}<li {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</li>{%- endif -%}{%- endfor -%}
     </ul>
 
+    {%- if section.settings.notice != blank -%}<p class="notice-line">{{ section.settings.notice | escape }}</p>{%- endif -%}
     <div class="divider">{{ section.settings.bundle_heading | upcase | escape }}</div>
     {%- if section.settings.show_timer -%}<div class="timer-pill">Hurry! Offer expires in: <b data-cd-all>00:00:00</b> ⏰</div>{%- endif -%}
 
@@ -97,7 +98,13 @@
   </div>
 </div>
 
-<script type="application/json" data-product-json>{{ p | json }}</script>
+<script type="application/json" data-product-json>
+{"id": {{ p.id }}, "title": {{ p.title | json }}, "options": {{ p.options | json }}, "variants": [
+  {%- for v in p.variants -%}
+    {"id": {{ v.id }}, "title": {{ v.title | json }}, "options": {{ v.options | json }}, "price": {{ v.price }}, "compare_at_price": {{ v.compare_at_price | default: 0 }}, "available": {{ v.available | json }}, "featured_media": {%- if v.featured_media -%}{"id": {{ v.featured_media.id }}}{%- else -%}null{%- endif -%}}{% unless forloop.last %},{% endunless %}
+  {%- endfor -%}
+]}
+</script>
 <script type="application/json" data-config-json>
 {
   "tiers": [
@@ -137,6 +144,7 @@
     { "type": "product", "id": "product", "label": "Product", "info": "Leave empty on product pages. On the home page, choose the product to feature." },
     { "type": "text", "id": "stock_line", "label": "Stripe above the title", "default": "SELLING FAST · BOOTS INCLUDED" },
     { "type": "text", "id": "rating_text", "label": "Text next to the stars", "info": "Only show a rating you can back up with real reviews. Leave empty to hide." },
+    { "type": "text", "id": "notice", "label": "Notice line", "info": "For example a Christmas delivery cut-off. Leave empty to hide." },
     { "type": "header", "content": "Bundles" },
     { "type": "text", "id": "bundle_heading", "label": "Heading", "default": "Bundle & save" },
     { "type": "checkbox", "id": "show_timer", "label": "Show offer countdown", "default": true },

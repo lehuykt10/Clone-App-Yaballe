@@ -1,0 +1,344 @@
+{
+  "sections": {
+    "main": {
+      "type": "sz-product",
+      "blocks": {
+        "perk-1": {
+          "type": "perk",
+          "settings": {
+            "text": "Front pouch: your cat peeks out while you cuddle"
+          }
+        },
+        "perk-2": {
+          "type": "perk",
+          "settings": {
+            "text": "Four festive designs for photos, parties and cozy nights"
+          }
+        },
+        "perk-3": {
+          "type": "perk",
+          "settings": {
+            "text": "Soft, roomy fit with zip pockets"
+          }
+        },
+        "perk-4": {
+          "type": "perk",
+          "settings": {
+            "text": "A gift every cat lover will smile at"
+          }
+        },
+        "acc-1": {
+          "type": "accordion",
+          "settings": {
+            "title": "Details",
+            "content": "<ul><li>Front pet pouch with a soft, fluffy opening for your pet's head</li><li>Four festive designs: Holly Wreath, Candy Pink, Santa Red and Christmas Tree</li><li>Two zip side pockets and a zip chest pocket</li><li>Cozy hoodie with drawstring hood</li></ul>"
+          }
+        },
+        "acc-2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Safe cuddles",
+            "content": "<ul><li>Best for kittens, cats and small pets who sit comfortably in the pouch.</li><li>Always support your pet from below with your arms. The pouch is for cuddles, not hands-free carrying.</li><li>Never leave them in the pouch unattended or in the heat.</li></ul>"
+          }
+        },
+        "acc-3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Care",
+            "content": "<p>Turn inside out. Machine wash cold on a gentle cycle, or hand wash. Air-dry flat. Don't tumble dry, bleach or iron the decorations.</p>"
+          }
+        },
+        "acc-4": {
+          "type": "accordion",
+          "settings": {
+            "title": "Shipping & Christmas delivery",
+            "content": "<p>Free worldwide shipping with tracking. US orders usually arrive in 9–17 days; Canada, the UK and Australia in 10–20 days; most other countries in 12–25 days. All taxes and import duties are included, so there's nothing extra to pay on delivery. <a href=\"/pages/shipping-policy\">Full shipping policy</a></p>"
+          }
+        },
+        "acc-5": {
+          "type": "accordion",
+          "settings": {
+            "title": "Our guarantee",
+            "content": "<p>If it arrives damaged or faulty, send a photo to support@suzeno.com within 30 days and we'll refund you or send a replacement. Wrong size? Email us and we'll help.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "perk-1",
+        "perk-2",
+        "perk-3",
+        "perk-4",
+        "acc-1",
+        "acc-2",
+        "acc-3",
+        "acc-4",
+        "acc-5"
+      ],
+      "settings": {
+        "stock_line": "4 FESTIVE DESIGNS",
+        "rating_text": "",
+        "notice": "🎄 Christmas delivery: order by Dec 5 (US), Dec 2 (CA, UK, AU) or Nov 28 (other countries)",
+        "bundle_heading": "Bundle & save",
+        "show_timer": true,
+        "default_tier": 1,
+        "gift_text": "",
+        "swatches": "Holly Wreath:#2f6b3a\nCandy Pink:#f2a7bf\nSanta Red:#c8202f\nChristmas Tree:#1f5a36",
+        "show_size_link": true,
+        "show_description": true,
+        "sticky_label": "Add to cart",
+        "trust_1": "Free worldwide shipping",
+        "trust_2": "30-day guarantee",
+        "trust_3": "Taxes & duties included",
+        "tier_1_qty": 1,
+        "tier_1_discount": 0,
+        "tier_1_label": "1 Hoodie",
+        "tier_1_badge": "",
+        "tier_2_qty": 2,
+        "tier_2_discount": 5,
+        "tier_2_label": "2 Hoodies",
+        "tier_2_badge": "GIFT PICK",
+        "tier_3_qty": 0,
+        "tier_3_discount": 0,
+        "tier_3_label": "",
+        "tier_3_badge": ""
+      }
+    },
+    "band": {
+      "type": "sz-band",
+      "settings": {
+        "before": "Cuddles,",
+        "circled": "built in",
+        "after": "",
+        "text": "Your cat stays snug against you while you relax."
+      }
+    },
+    "how": {
+      "type": "sz-steps",
+      "blocks": {
+        "s-1": {
+          "type": "item",
+          "settings": {
+            "title": "Put it on",
+            "text": "Slip on your hoodie like any other."
+          }
+        },
+        "s-2": {
+          "type": "item",
+          "settings": {
+            "title": "Pet in",
+            "text": "Let your cat settle into the front pouch, supported by your arms."
+          }
+        },
+        "s-3": {
+          "type": "item",
+          "settings": {
+            "title": "Peek-a-boo",
+            "text": "Their head pops out of the fluffy opening, right under your chin."
+          }
+        },
+        "s-4": {
+          "type": "item",
+          "settings": {
+            "title": "Snap & share",
+            "text": "The cutest Christmas photo of the year."
+          }
+        }
+      },
+      "block_order": [
+        "s-1",
+        "s-2",
+        "s-3",
+        "s-4"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "How it works",
+        "numbered": true,
+        "background": "sky-mist"
+      }
+    },
+    "story": {
+      "type": "sz-story",
+      "settings": {
+        "image": "shopify://shop_images/10_Holiday_Lifestyle_Concepts.jpg",
+        "image_right": false,
+        "eyebrow": "Why you'll love it",
+        "heading": "Made for",
+        "circled": "photos",
+        "text": "<p>Festive designs that look great on camera, a roomy fleece-lined pouch, and two zip pockets for your phone and treats.</p><p>It's a warm holiday hoodie on its own, with or without a cat.</p>"
+      }
+    },
+    "size": {
+      "type": "sz-size-guide",
+      "blocks": {
+        "r-1": {
+          "type": "row",
+          "settings": {
+            "label": "Bust",
+            "values": "98,102,106,112,118,124,130",
+            "unit": "length"
+          }
+        },
+        "r-2": {
+          "type": "row",
+          "settings": {
+            "label": "Shoulder",
+            "values": "40,42,44,46,48,50,52",
+            "unit": "length"
+          }
+        },
+        "r-3": {
+          "type": "row",
+          "settings": {
+            "label": "Sleeve",
+            "values": "58,60,62,63,64,66,68",
+            "unit": "length"
+          }
+        },
+        "r-4": {
+          "type": "row",
+          "settings": {
+            "label": "Length",
+            "values": "63,65,67,69,71,73,75",
+            "unit": "length"
+          }
+        },
+        "r-5": {
+          "type": "row",
+          "settings": {
+            "label": "US size",
+            "values": "0,2,4,6,8–10,12,14",
+            "unit": "text"
+          }
+        },
+        "r-6": {
+          "type": "row",
+          "settings": {
+            "label": "UK size",
+            "values": "4,6,8,10,12–14,16,18",
+            "unit": "text"
+          }
+        },
+        "r-7": {
+          "type": "row",
+          "settings": {
+            "label": "EU size",
+            "values": "32,34,36,38,40–42,44,46",
+            "unit": "text"
+          }
+        }
+      },
+      "block_order": [
+        "r-1",
+        "r-2",
+        "r-3",
+        "r-4",
+        "r-5",
+        "r-6",
+        "r-7"
+      ],
+      "settings": {
+        "eyebrow": "Garment measurements",
+        "heading": "Size guide",
+        "intro": "<p>Relaxed, roomy fit to make space for your pet. Garment measurements, laid flat, may vary by 1–3 cm.</p>",
+        "image": "",
+        "first_col": "Size",
+        "sizes": "XXS,XS,S,M,L,XL,XXL",
+        "measure": "",
+        "tip": "Between sizes or carrying a bigger cat? Size up."
+      }
+    },
+    "faq": {
+      "type": "sz-faq-contact",
+      "blocks": {
+        "q-1": {
+          "type": "question",
+          "settings": {
+            "question": "How does the pet pouch work?",
+            "answer": "<p>There's a roomy pouch on the front with a soft, fluffy opening at chest height. Your cat sits in the pouch, supported by your arms, and pokes their head out.</p>"
+          }
+        },
+        "q-2": {
+          "type": "question",
+          "settings": {
+            "question": "What size should I choose?",
+            "answer": "<p>Pick your usual size: the hoodie has a relaxed, roomy fit. Between sizes, or carrying a bigger cat? Size up.</p>"
+          }
+        },
+        "q-3": {
+          "type": "question",
+          "settings": {
+            "question": "Which pets is it for?",
+            "answer": "<p>Best for kittens, cats and small pets who sit comfortably in the pouch.</p>"
+          }
+        },
+        "q-4": {
+          "type": "question",
+          "settings": {
+            "question": "Will it arrive before Christmas?",
+            "answer": "<p>To be safe, order by December 5 for the US, December 2 for Canada, the UK and Australia, and November 28 for other countries.</p>"
+          }
+        },
+        "q-5": {
+          "type": "question",
+          "settings": {
+            "question": "Is it only for pet owners?",
+            "answer": "<p>Not at all. It's a cozy, festive hoodie on its own, with two zip side pockets.</p>"
+          }
+        },
+        "q-6": {
+          "type": "question",
+          "settings": {
+            "question": "How do I wash it?",
+            "answer": "<p>Turn it inside out and machine wash cold on a gentle cycle, or hand wash. Air-dry flat.</p>"
+          }
+        },
+        "q-7": {
+          "type": "question",
+          "settings": {
+            "question": "Will I pay customs fees or taxes?",
+            "answer": "<p>No. Our prices include all taxes and import duties, so the price at checkout is the final price. If a carrier ever asks you for a fee, contact us before paying and we'll take care of it.</p>"
+          }
+        },
+        "q-8": {
+          "type": "question",
+          "settings": {
+            "question": "What if it doesn't fit or arrives damaged?",
+            "answer": "<p>Contact support@suzeno.com within 30 days of delivery. If it arrives damaged or faulty, we'll refund you or send a replacement. For a different size, email us and we'll help.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q-1",
+        "q-2",
+        "q-3",
+        "q-4",
+        "q-5",
+        "q-6",
+        "q-7",
+        "q-8"
+      ],
+      "settings": {
+        "heading": "Good to know",
+        "open_first": true,
+        "show_contact": true,
+        "tracking_url": "https://t.17track.net/en#nums="
+      }
+    },
+    "reviews": {
+      "type": "sz-testimonials",
+      "settings": {
+        "heading": "What our customers say"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "band",
+    "how",
+    "story",
+    "size",
+    "faq",
+    "reviews"
+  ]
+}

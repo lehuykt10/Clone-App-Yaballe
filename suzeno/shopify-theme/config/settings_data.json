@@ -2,7 +2,29 @@
   "current": {
     "logo": "shopify://shop_images/suzeno-logo.png",
     "logo_height": 30,
-    "support_email": "support@suzeno.com"
+    "support_email": "support@suzeno.com",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "show_announcement": true,
+          "announcement": "HOLIDAY DEALS END IN",
+          "show_countdown": true,
+          "marquee": "FREE WORLDWIDE SHIPPING | TAXES & DUTIES INCLUDED | 30-DAY GUARANTEE | ORDER BY DEC 5 FOR US CHRISTMAS DELIVERY",
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "show_newsletter": true,
+          "news_heading": "Join the Suzeno family",
+          "news_text": "Pet tips, new arrivals and members-only offers. No spam.",
+          "tagline": "Made for the pets who make us smile.",
+          "menu": "footer"
+        }
+      }
+    }
   },
   "presets": {
     "Default": {

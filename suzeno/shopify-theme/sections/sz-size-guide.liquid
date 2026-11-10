@@ -1,41 +1,70 @@
+{%- liquid
+  assign convertible = false
+  for block in section.blocks
+    if block.settings.unit == 'length' or block.settings.unit == 'weight'
+      assign convertible = true
+    endif
+  endfor
+-%}
 <section class="block sizing" id="size-guide">
   <div class="wrap">
-    <div style="text-align:center;display:grid;gap:8px"><span class="eyebrow">{{ section.settings.eyebrow | escape }}</span><h2>{{ section.settings.heading | escape }}</h2></div>
-    <div class="unit-toggle" role="group" aria-label="Units">
-      <button type="button" data-unit="in" aria-pressed="true">Inches / lb</button>
-      <button type="button" data-unit="cm" aria-pressed="false">cm / kg</button>
+    <div style="text-align:center;display:grid;gap:8px">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow | escape }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading | escape }}</h2>
+      {%- if section.settings.intro != blank -%}<div class="rte" style="max-width:60ch;justify-self:center">{{ section.settings.intro }}</div>{%- endif -%}
     </div>
-    <div class="table-scroll"><table data-size-table></table></div>
-    <div class="measure">
-      <div><b>Back length</b>From the base of the collar to the base of the tail.</div>
-      <div><b>Chest</b>Around the widest part of the ribcage, just behind the front legs.</div>
-      <div><b>Neck</b>Around the neck where the collar sits. Leave room for two fingers.</div>
-    </div>
+    {%- if section.settings.image != blank -%}
+      <div style="max-width:820px;width:100%;justify-self:center;border-radius:var(--r-lg);overflow:hidden">{{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400,800,1200', sizes: '(min-width: 860px) 820px, 100vw' }}</div>
+    {%- endif -%}
+    {%- if section.blocks.size > 0 -%}
+      {%- if convertible -%}
+      <div class="unit-toggle" role="group" aria-label="Units">
+        <button type="button" data-unit="in" aria-pressed="true">Inches / lb</button>
+        <button type="button" data-unit="cm" aria-pressed="false">cm / kg</button>
+      </div>
+      {%- endif -%}
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th scope="col">{{ section.settings.first_col | escape }}</th>
+            {%- assign sizes = section.settings.sizes | split: ',' -%}
+            {%- for s in sizes -%}<th scope="col">{{ s | strip | escape }}</th>{%- endfor -%}
+          </tr></thead>
+          <tbody>
+            {%- for block in section.blocks -%}
+              {%- assign vals = block.settings.values | split: ',' -%}
+              <tr {{ block.shopify_attributes }}>
+                <th scope="row">{{ block.settings.label | escape }}{% if block.settings.unit == 'length' %} <span data-u-len>(in)</span>{% elsif block.settings.unit == 'weight' %} <span data-u-wt>(lb)</span>{% endif %}</th>
+                {%- for v in vals -%}
+                  <td{% if block.settings.unit != 'text' %} data-{{ block.settings.unit }}="{{ v | strip | escape }}"{% endif %}>{{ v | strip | escape }}</td>
+                {%- endfor -%}
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+      </div>
+    {%- endif -%}
+    {%- if section.settings.measure != blank -%}<div class="tip" style="background:var(--paper);border:1px dashed var(--sky)"><div class="rte">{{ section.settings.measure }}</div></div>{%- endif -%}
     {%- if section.settings.tip != blank -%}<p class="tip">{{ section.settings.tip | escape }}</p>{%- endif -%}
   </div>
-  <script type="application/json" data-size-json>
-    {"sizes": {{ section.settings.sizes | split: ',' | json }}, "back": {{ section.settings.back | split: ',' | json }}, "chest": {{ section.settings.chest | split: ',' | json }}, "neck": {{ section.settings.neck | split: ',' | json }}, "kg": {{ section.settings.weight_kg | split: ',' | json }}}
-  </script>
+  {%- if convertible -%}
   <script>
     (function () {
       var sec = document.currentScript.closest('section');
-      var d = JSON.parse(sec.querySelector('[data-size-json]').textContent);
-      var t = sec.querySelector('[data-size-table]'), unit = 'in';
       var r1 = function (v) { return Math.round(v * 10) / 10; };
-      function len(v) { v = parseFloat(v); return unit === 'in' ? r1(v / 2.54) : v; }
-      function wt(s) { var p = String(s).split('-').map(parseFloat); return unit === 'in' ? p.map(function (x) { return r1(x * 2.2046); }).join('–') : p.join('–'); }
-      function row(label, arr, f) { return '<tr><th scope="row">' + label + '</th>' + arr.map(function (v) { return '<td>' + f(v) + '</td>'; }).join('') + '</tr>'; }
-      function draw() {
-        var L = unit === 'in' ? ['in', 'lb'] : ['cm', 'kg'];
-        t.innerHTML = '<thead><tr><th scope="col">Size</th>' + d.sizes.map(function (s) { return '<th scope="col">' + s.trim() + '</th>'; }).join('') + '</tr></thead><tbody>' +
-          row('Back length (' + L[0] + ')', d.back, len) + row('Chest (' + L[0] + ')', d.chest, len) + row('Neck (' + L[0] + ')', d.neck, len) + row('Dog weight (' + L[1] + ')', d.kg, wt) + '</tbody>';
+      function conv(str, f) { return String(str).split('-').map(function (x) { return r1(parseFloat(x) * f); }).join('–'); }
+      function draw(unit) {
+        sec.querySelectorAll('[data-length]').forEach(function (td) { td.textContent = unit === 'in' ? conv(td.dataset.length, 1 / 2.54) : td.dataset.length.replace('-', '–'); });
+        sec.querySelectorAll('[data-weight]').forEach(function (td) { td.textContent = unit === 'in' ? conv(td.dataset.weight, 2.2046) : td.dataset.weight.replace('-', '–'); });
+        sec.querySelectorAll('[data-u-len]').forEach(function (s) { s.textContent = unit === 'in' ? '(in)' : '(cm)'; });
+        sec.querySelectorAll('[data-u-wt]').forEach(function (s) { s.textContent = unit === 'in' ? '(lb)' : '(kg)'; });
       }
       sec.querySelectorAll('[data-unit]').forEach(function (b) {
-        b.addEventListener('click', function () { unit = b.dataset.unit; sec.querySelectorAll('[data-unit]').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); draw(); });
+        b.addEventListener('click', function () { sec.querySelectorAll('[data-unit]').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); draw(b.dataset.unit); });
       });
-      draw();
+      draw('in');
     })();
   </script>
+  {%- endif -%}
 </section>
 {% schema %}
 {
@@ -44,13 +73,24 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Small line", "default": "Find the right fit" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Size guide" },
-    { "type": "text", "id": "sizes", "label": "Sizes", "info": "Comma separated", "default": "XS,S,M,L,XL,XXL" },
-    { "type": "text", "id": "back", "label": "Back length in cm", "default": "20,25,30,35,40,45" },
-    { "type": "text", "id": "chest", "label": "Chest in cm", "default": "32,37,42,47,52,57" },
-    { "type": "text", "id": "neck", "label": "Neck in cm", "default": "27,29,32,35,38,41" },
-    { "type": "text", "id": "weight_kg", "label": "Dog weight in kg", "info": "Ranges like 0.5-1.5, comma separated", "default": "0.5-1.5,1.5-2.5,2.5-4,4-6,6-7.5,7.5-10" },
-    { "type": "text", "id": "tip", "label": "Tip", "default": "Between sizes? Pick the bigger one. Back length matters most for a full-body coat." }
+    { "type": "richtext", "id": "intro", "label": "Intro" },
+    { "type": "image_picker", "id": "image", "label": "Size chart image" },
+    { "type": "text", "id": "first_col", "label": "First column title", "default": "Size" },
+    { "type": "text", "id": "sizes", "label": "Sizes", "info": "Comma separated, e.g. XS,S,M,L", "default": "S,M,L" },
+    { "type": "richtext", "id": "measure", "label": "How to measure" },
+    { "type": "text", "id": "tip", "label": "Tip", "default": "Between sizes? Pick the bigger one." }
   ],
-  "presets": [ { "name": "Size guide" } ]
+  "blocks": [
+    { "type": "row", "name": "Table row", "settings": [
+      { "type": "text", "id": "label", "label": "Row label", "default": "Chest" },
+      { "type": "text", "id": "values", "label": "Values", "info": "Comma separated, one per size. Use cm or kg, ranges like 2.5-4.", "default": "40,45,50" },
+      { "type": "select", "id": "unit", "label": "Values are", "default": "length", "options": [
+        { "value": "length", "label": "Length in cm (shows inches too)" },
+        { "value": "weight", "label": "Weight in kg (shows lb too)" },
+        { "value": "text", "label": "Plain text" }
+      ] }
+    ] }
+  ],
+  "presets": [ { "name": "Size guide", "blocks": [ { "type": "row" } ] } ]
 }
 {% endschema %}
