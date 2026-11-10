@@ -1,0 +1,21 @@
+{%- capture circle -%}<svg viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M18 46 C14 18 70 6 112 8 C160 10 192 24 188 44 C184 66 130 76 90 74 C46 72 12 62 16 40 C19 26 40 16 70 12"/></svg>{%- endcapture -%}
+<div class="band" style="margin-top:44px">
+  <svg class="wave-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;top:-43px;left:0"><path class="soft" d="M0 60 C240 20 480 20 720 45 C960 70 1200 70 1440 30 L1440 90 L0 90 Z"/><path d="M0 75 C260 40 520 40 760 60 C1000 80 1220 78 1440 50 L1440 90 L0 90 Z"/></svg>
+  <div class="wrap">
+    <h2>{{ section.settings.before | escape }}{% if section.settings.circled != blank %} <span class="circle">{{ section.settings.circled | escape }}{{ circle }}</span>{% endif %}{% if section.settings.after != blank %} {{ section.settings.after | escape }}{% endif %}</h2>
+    {%- if section.settings.text != blank -%}<p>{{ section.settings.text | escape }}</p>{%- endif -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Red band headline",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "before", "label": "Text before circled word", "default": "Rainy walks," },
+    { "type": "text", "id": "circled", "label": "Circled word", "default": "sorted" },
+    { "type": "text", "id": "after", "label": "Text after circled word" },
+    { "type": "text", "id": "text", "label": "Small line", "default": "Dry dog in, dry dog out. No muddy belly, no towel wrestling." }
+  ],
+  "presets": [ { "name": "Red band headline" } ]
+}
+{% endschema %}

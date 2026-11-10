@@ -1,0 +1,278 @@
+{
+  "sections": {
+    "main": {
+      "type": "sz-product",
+      "blocks": {
+        "perk-1": {
+          "type": "perk",
+          "settings": {
+            "text": "Clear face-shield hood keeps rain off eyes and ears"
+          }
+        },
+        "perk-2": {
+          "type": "perk",
+          "settings": {
+            "text": "Covers back, belly, all 4 legs and the tail"
+          }
+        },
+        "perk-3": {
+          "type": "perk",
+          "settings": {
+            "text": "Removable snap-on boots with anti-slip soles"
+          }
+        },
+        "perk-4": {
+          "type": "perk",
+          "settings": {
+            "text": "Reflective trim for dark, rainy evenings"
+          }
+        },
+        "acc-1": {
+          "type": "accordion",
+          "settings": {
+            "title": "What's in the box",
+            "content": "<ul><li>1 full-body rain suit per set: hood with clear face shield, tail sleeve, adjustable cuffs and a leash D-ring</li><li>4 removable snap-on boots with anti-slip soles</li></ul>"
+          }
+        },
+        "acc-2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Sizing & fit",
+            "content": "<p>Measure your dog's back length from the base of the collar to the base of the tail, then check the size guide below. Between sizes, fluffy coat or deep chest? Size up.</p>"
+          }
+        },
+        "acc-3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Shipping",
+            "content": "<p>Free tracked shipping. Orders are packed within 1–3 business days and you get a tracking link by email as soon as your parcel ships.</p>"
+          }
+        },
+        "acc-4": {
+          "type": "accordion",
+          "settings": {
+            "title": "Our guarantee",
+            "content": "<p>Wrong size? Email us within 30 days of delivery and we'll help you swap it. If it arrives damaged or faulty, send a photo and we'll refund you or send a replacement.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "perk-1",
+        "perk-2",
+        "perk-3",
+        "perk-4",
+        "acc-1",
+        "acc-2",
+        "acc-3",
+        "acc-4"
+      ],
+      "settings": {
+        "stock_line": "SELLING FAST · BOOTS INCLUDED",
+        "rating_text": "",
+        "bundle_heading": "Bundle & save",
+        "show_timer": true,
+        "default_tier": 2,
+        "tier_1_qty": 1,
+        "tier_1_discount": 0,
+        "tier_1_label": "1 Raincoat",
+        "tier_1_badge": "",
+        "tier_2_qty": 2,
+        "tier_2_discount": 5,
+        "tier_2_label": "2 Raincoats",
+        "tier_2_badge": "MOST POPULAR",
+        "tier_3_qty": 3,
+        "tier_3_discount": 7,
+        "tier_3_label": "3 Raincoats",
+        "tier_3_badge": "BEST VALUE",
+        "gift_text": "",
+        "swatches": "Sky Blue:#9cc3ea\nCarrot Orange:#f47b20\nDino Green:#7a9a4a",
+        "show_size_link": true,
+        "trust_1": "Free shipping",
+        "trust_2": "Secure checkout",
+        "trust_3": "30-day fit guarantee",
+        "show_description": true,
+        "sticky_label": "Add to cart",
+        "product": "suzeno-full-body-dog-raincoat"
+      }
+    },
+    "band": {
+      "type": "sz-band",
+      "settings": {
+        "before": "Rainy walks,",
+        "circled": "sorted",
+        "after": "",
+        "text": "Dry dog in, dry dog out. No muddy belly, no towel wrestling."
+      }
+    },
+    "story": {
+      "type": "sz-story",
+      "settings": {
+        "image": "shopify://shop_images/suzeno-raincoat-carrot-wet-walks.jpg",
+        "eyebrow": "Why dog parents switch",
+        "heading": "Your dog stays dry. Your floors stay",
+        "circled": "clean",
+        "text": "<p>Most dog raincoats only cover the back. The rain still soaks the belly, the legs splash through every puddle, and you spend the next 15 minutes drying a wet dog on the doormat.</p><p>Suzeno covers your dog from nose to tail. The hood has a clear face shield, and adjustable cuffs, a tail sleeve and snap-on boots close the gaps where water usually gets in. Reflective bands keep you both visible after dark.</p><p>Snap it on, walk, rinse it off, hang it to dry. That's the whole routine.</p>"
+      }
+    },
+    "hotspots": {
+      "type": "sz-hotspots",
+      "blocks": {
+        "h-1": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Snug hood",
+            "x": 58,
+            "y": 12,
+            "text": "Elastic edge stays in place when your dog shakes."
+          }
+        },
+        "h-2": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Clear face shield",
+            "x": 73,
+            "y": 36,
+            "text": "Wide-view PVC shield keeps rain off the eyes and ears without blocking vision."
+          }
+        },
+        "h-3": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Tail sleeve",
+            "x": 32,
+            "y": 26,
+            "text": "Covers the tail so it doesn't drip water down the back."
+          }
+        },
+        "h-4": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Snap-button chest",
+            "x": 57,
+            "y": 65,
+            "text": "Opens at the front, so nothing gets pulled over the head. A D-ring holds the leash."
+          }
+        },
+        "h-5": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Adjustable cuffs",
+            "x": 49,
+            "y": 76,
+            "text": "Toggle cuffs keep wind and splash out. Reflective bands shine in headlights."
+          }
+        },
+        "h-6": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Removable boots",
+            "x": 69,
+            "y": 93,
+            "text": "Snap-on boots with anti-slip soles keep paws dry and clean."
+          }
+        }
+      },
+      "block_order": [
+        "h-1",
+        "h-2",
+        "h-3",
+        "h-4",
+        "h-5",
+        "h-6"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/suzeno-raincoat-sky-blue-hotspots.jpg",
+        "eyebrow": "Built for real rain",
+        "heading": "Covered from nose to tail"
+      }
+    },
+    "size": {
+      "type": "sz-size-guide",
+      "settings": {}
+    },
+    "faq": {
+      "type": "sz-faq-contact",
+      "blocks": {
+        "q-1": {
+          "type": "question",
+          "settings": {
+            "question": "What size should I get?",
+            "answer": "<p>Measure your dog's back length from the base of the collar to the base of the tail, then check the size guide. Between two sizes, choose the bigger one.</p>"
+          }
+        },
+        "q-2": {
+          "type": "question",
+          "settings": {
+            "question": "Does the face shield bother dogs?",
+            "answer": "<p>The clear shield sits in front of the face, not on it, so your dog can see normally. Let your dog wear the coat indoors for a few minutes the first time, with a treat.</p>"
+          }
+        },
+        "q-3": {
+          "type": "question",
+          "settings": {
+            "question": "Is it fully waterproof?",
+            "answer": "<p>The high-density outer fabric makes water bead off, and the cuffs, tail sleeve and snap-on boots close the usual gaps. Your dog comes home dry from nose to paws.</p>"
+          }
+        },
+        "q-4": {
+          "type": "question",
+          "settings": {
+            "question": "Can my dog wear it without the boots?",
+            "answer": "<p>Yes. The boots snap on and off, so you can leave them off for a lighter fit or for dogs still getting used to boots.</p>"
+          }
+        },
+        "q-5": {
+          "type": "question",
+          "settings": {
+            "question": "How do I clean it?",
+            "answer": "<p>Rinse it under the tap or hand-wash in cool water with mild soap, then hang it to dry. No tumble dryer.</p>"
+          }
+        },
+        "q-6": {
+          "type": "question",
+          "settings": {
+            "question": "When will my order arrive?",
+            "answer": "<p>We pack orders within 1–3 business days. You get a tracking link by email as soon as it ships.</p>"
+          }
+        },
+        "q-7": {
+          "type": "question",
+          "settings": {
+            "question": "What if it doesn't fit?",
+            "answer": "<p>Email us within 30 days of delivery and we'll help you swap it for another size.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q-1",
+        "q-2",
+        "q-3",
+        "q-4",
+        "q-5",
+        "q-6",
+        "q-7"
+      ],
+      "settings": {
+        "heading": "Good to know",
+        "open_first": true,
+        "show_contact": true,
+        "tracking_url": "https://t.17track.net/en#nums="
+      }
+    },
+    "reviews": {
+      "type": "sz-testimonials",
+      "settings": {
+        "heading": "What our customers say"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "band",
+    "story",
+    "hotspots",
+    "size",
+    "faq",
+    "reviews"
+  ]
+}

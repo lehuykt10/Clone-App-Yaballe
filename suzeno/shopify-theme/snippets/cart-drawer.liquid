@@ -1,0 +1,24 @@
+<div class="drawer right" id="cart" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <aside class="panel" aria-label="Cart">
+    <div class="panel-head"><h3>Your cart</h3><button class="icon-btn" data-close aria-label="Close cart">✕</button></div>
+    <div id="cartLines"></div>
+    <div class="totals">
+      <div class="r"><span>Subtotal</span><span id="cartTotal">{{ cart.total_price | money }}</span></div>
+      <p class="note">{{ settings.cart_note | escape }}</p>
+      <a class="cta" href="/checkout" id="checkoutBtn" style="text-align:center;text-decoration:none">Checkout</a>
+      <a class="note" href="{{ routes.cart_url }}">View cart</a>
+    </div>
+  </aside>
+</div>
+<div class="drawer" id="menu" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <nav class="panel" aria-label="Menu">
+    <div class="panel-head"><h3>Menu</h3><button class="icon-btn" data-close aria-label="Close menu">✕</button></div>
+    {%- for link in linklists['main-menu'].links -%}
+      <a class="nav-link" href="{{ link.url }}">{{ link.title | escape }}</a>
+    {%- endfor -%}
+    <a class="nav-link" href="{{ routes.cart_url }}">Cart</a>
+    {%- if shop.customer_accounts_enabled -%}<a class="nav-link" href="{{ routes.account_url }}">Account</a>{%- endif -%}
+  </nav>
+</div>

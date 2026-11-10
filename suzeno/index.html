@@ -142,6 +142,10 @@ button,input,textarea,select{font:inherit;color:inherit}
 .pick{display:grid;gap:6px}
 .pick label{font-size:13px;color:var(--ink-soft);font-weight:700;white-space:nowrap}
 .sizes{display:flex;flex-wrap:wrap;gap:6px}
+.swatches{display:flex;gap:8px}
+.swatch{width:30px;height:30px;border-radius:50%;background:var(--sw);border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line);cursor:pointer;padding:0}
+.swatch[aria-pressed="true"]{box-shadow:0 0 0 2.5px var(--sky-deep)}
+.pick-color{color:var(--ink);font-weight:800}
 .size{min-width:38px;padding:5px 8px;border:1.5px solid var(--line);border-radius:999px;background:#fff;font-weight:700;font-size:13px;cursor:pointer}
 .size[aria-pressed="true"]{border-color:var(--sky-deep);background:var(--sky-deep);color:#fff}
 .addons{display:grid;gap:2px;border-top:1px dashed var(--line);padding-top:8px}
@@ -194,7 +198,7 @@ section.block{padding-block:56px}
 .band p{font-weight:700;letter-spacing:.2em;font-size:12.5px;text-transform:uppercase;color:#fde3e6}
 .story{display:grid;gap:22px;align-items:center}
 @media (min-width:860px){.story{grid-template-columns:1fr 1fr;gap:48px}}
-.story .media{border-radius:28px;overflow:hidden;aspect-ratio:4/5;max-width:100%;outline:1px solid var(--sky);outline-offset:10px;margin:12px}
+.story .media{border-radius:28px;overflow:hidden;aspect-ratio:1/1;max-width:100%;outline:1px solid var(--sky);outline-offset:10px;margin:12px}
 .story h2{font-size:clamp(28px,6.5vw,40px)}
 .story .txt{display:grid;gap:14px;font-size:16px;color:var(--ink-soft);min-width:0}
 .story .txt h2{color:var(--ink)}
@@ -357,7 +361,7 @@ footer .wrap{padding-block:40px;display:grid;gap:22px;justify-items:center;text-
     </div>
 
     <div class="acc">
-      <details><summary>What's in the box?</summary><div class="ans"><ul><li>1 × Suzeno full-body raincoat per coat in your bundle (hood with clear face shield, tail sleeve, 4 elastic leg cuffs)</li><li>1 × FREE surprise gift per order</li><li>Paw boots only if you add them above</li></ul></div></details>
+      <details><summary>What's in the box?</summary><div class="ans"><ul><li>1 full-body rain suit per set in your bundle: hood with clear face shield, tail sleeve, adjustable cuffs and a leash D-ring</li><li>4 removable snap-on boots with anti-slip soles</li><li>1 FREE surprise gift per order</li></ul></div></details>
       <details><summary>Sizing &amp; fit</summary><div class="ans"><p>Measure your dog's back length (collar to base of tail) and chest. If your dog falls between two sizes, choose the bigger one. Fluffy coats and deep chests also go up a size.</p><button class="size-link" data-open-size>See the full size chart</button></div></details>
       <details><summary>Production &amp; shipping</summary><div class="ans"><p>Orders are packed within 1–3 business days. Delivery to the US usually takes 7–12 business days. You get a tracking number by email as soon as your parcel ships.</p></div></details>
       <details><summary>30-day fit guarantee</summary><div class="ans"><p>Wrong size? Message us within 30 days of delivery and we'll swap it for the right one. Unworn items can also be returned for a refund.</p></div></details>
@@ -383,7 +387,7 @@ footer .wrap{padding-block:40px;display:grid;gap:22px;justify-items:center;text-
       <span class="eyebrow">Why dog parents switch</span>
       <h2>Your dog stays dry.<br>Your floors stay <span class="circle" style="color:var(--sky-deep)">clean<svg viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M18 46 C14 18 70 6 112 8 C160 10 192 24 188 44 C184 66 130 76 90 74 C46 72 12 62 16 40 C19 26 40 16 70 12"/></svg></span></h2>
       <p>Most dog raincoats only cover the back. The rain still soaks the belly, the legs splash through every puddle, and you spend the next 15 minutes drying a wet dog on the doormat.</p>
-      <p>Suzeno covers your dog from nose to tail. The hood has a clear face shield so rain stays off the eyes and ears while your dog can still see everything. Four elastic leg cuffs and a tail sleeve close the gaps where water usually gets in.</p>
+      <p>Suzeno covers your dog from nose to tail. The hood has a clear face shield so rain stays off the eyes and ears while your dog can still see everything. Adjustable cuffs, a tail sleeve and snap-on boots close the gaps where water usually gets in, and reflective bands keep you both visible after dark.</p>
       <p>Snap it on in under a minute, walk, then rinse it off and hang it to dry. That's the whole routine.</p>
     </div>
   </div>
@@ -538,17 +542,30 @@ const STORE = {
   currency: "$",
   // Photos: put files in /assets and list them here. Missing ones show a labelled placeholder.
   photos: [
-    { src: "assets/raincoat-blue-hero.jpg", alt: "Small white dog running through puddles in the blue Suzeno raincoat" },
-    { src: "", label: "Photo 2", hint: "Side view on a dog: hood, body and tail sleeve" },
-    { src: "", label: "Photo 3", hint: "Close-up of the clear face shield" },
-    { src: "", label: "Photo 4", hint: "Belly and leg coverage, dog standing" },
-    { src: "", label: "Photo 5", hint: "Flat lay of the coat with size label" }
+    { src: "assets/shopify/suzeno-raincoat-sky-blue-wet-walks.jpg", alt: "White dog splashing through puddles in the Sky Blue Suzeno raincoat" },
+    { src: "assets/shopify/suzeno-raincoat-styles.jpg", alt: "Suzeno raincoat in Carrot Orange, Sky Blue and Dino Green" },
+    { src: "assets/shopify/suzeno-raincoat-box.jpg", alt: "Suzeno Pet Rain Suit box with the folded raincoat" },
+    { src: "assets/shopify/suzeno-raincoat-visor-reflective.jpg", alt: "Clear face shield and reflective trim on a night walk" },
+    { src: "assets/shopify/suzeno-raincoat-boots-2in1.jpg", alt: "2-in-1 design: rain suit with removable snap-on boots" },
+    { src: "assets/shopify/suzeno-raincoat-easy-on.jpg", alt: "Leash D-ring, adjustable cuffs and snap closures" },
+    { src: "assets/shopify/suzeno-raincoat-size-guide.jpg", alt: "Size guide from XS to XXL" },
+    { src: "assets/shopify/suzeno-raincoat-fabric.jpg", alt: "Water beading off the waterproof fabric" },
+    { src: "assets/shopify/suzeno-raincoat-carrot-orange.jpg", alt: "Dog in the Carrot Orange Suzeno raincoat" },
+    { src: "assets/shopify/suzeno-raincoat-carrot-wet-walks.jpg", alt: "Dog running through rain in the Carrot Orange raincoat" }
   ],
-  storyMedia: { src: "", label: "Lifestyle video or photo", hint: "Dog walking in the rain, owner holding the leash" },
+  // color name, swatch, and which photo (index above) to show when it is picked
+  colors: [
+    { name:"Sky Blue", swatch:"#9cc3ea", photo:0 },
+    { name:"Carrot Orange", swatch:"#f47b20", photo:8 },
+    { name:"Dino Green", swatch:"#7a9a4a", photo:1 }
+  ],
+  storyMedia: { src: "assets/shopify/suzeno-raincoat-carrot-wet-walks.jpg", alt: "Dog running through the rain in the Carrot Orange raincoat" },
+  hotspotPhoto: "assets/raincoat-blue-hero.jpg",
   perks: [
     "Clear face-shield hood keeps rain off eyes and ears",
     "Covers back, belly, all 4 legs and the tail",
-    "Snap buttons on the chest, on in under a minute"
+    "Removable snap-on boots with anti-slip soles",
+    "Reflective trim for dark, rainy evenings"
   ],
   sizes: ["XS","S","M","L","XL","XXL"],
   defaultSize: "S",
@@ -560,13 +577,12 @@ const STORE = {
     kg:    [[0.5,1.5],[1.5,2.5],[2.5,4],[4,6],[6,7.5],[7.5,10]]
   },
   bundles: [
-    { qty:1, name:"Buy 1 + Free Gift",  price:29.99, compare:42.99, tag:"" },
-    { qty:2, name:"Buy 2 + Free Gift",  price:49.99, compare:85.98, tag:"MOST POPULAR" },
-    { qty:3, name:"Buy 3 + Free Gift",  price:64.99, compare:128.97, tag:"BEST VALUE" }
+    { qty:1, name:"1 Raincoat",  price:29.99, compare:42.99, tag:"" },
+    { qty:2, name:"2 Raincoats", price:49.98, compare:85.98, tag:"MOST POPULAR" },
+    { qty:3, name:"3 Raincoats", price:68.97, compare:128.97, tag:"BEST VALUE" }
   ],
   defaultBundle: 1,
   addons: [
-    { id:"boots", icon:"🐾", name:"Waterproof paw boots (set of 4)", price:12.99 },
     { id:"protect", icon:"🛡️", name:"Shipping protection", price:2.99 }
   ],
   // SAMPLE content. Replace with real reviews from your customers before going live.
@@ -579,12 +595,13 @@ const STORE = {
   faq: [
     ["What size should I get?","Measure your dog's back length from collar to tail base and check the size guide on this page. Between two sizes, choose the bigger one."],
     ["Does the face shield bother dogs?","The shield sits in front of the face, not on it, and it is clear, so your dog can see normally. Let your dog wear the coat indoors for a few minutes the first time."],
-    ["Is it fully waterproof?","The outer fabric sheds rain and the cuffs and tail sleeve close the usual gaps. In very heavy downpours some water can still reach the paws, which is what the paw boots are for."],
+    ["Is it fully waterproof?","The high-density outer fabric makes water bead off, and the cuffs, tail sleeve and snap-on boots close the usual gaps. Your dog comes home dry from nose to paws."],
+    ["Can my dog wear it without the boots?","Yes. The boots snap on and off, so you can leave them off for a lighter fit or for dogs still getting used to boots."],
     ["How do I clean it?","Rinse it under the tap or hand-wash in cool water with mild soap, then hang it to dry. No tumble dryer."],
     ["When will my order arrive?","Most US orders arrive in 7–12 business days. You get a tracking link as soon as it ships."],
     ["Can I cancel or change my order?","Yes, within 12 hours of ordering. Send us a message with your order number."]
   ],
-  marquee: ["FREE SHIPPING","30% OFF TODAY","NOSE-TO-TAIL RAIN COVER","30-DAY FIT GUARANTEE","XS TO XXL"]
+  marquee: ["FREE SHIPPING","30% OFF TODAY","BOOTS INCLUDED","3 COLORS","30-DAY FIT GUARANTEE","XS TO XXL"]
 };
 
 /* ========================= helpers ========================= */
@@ -643,13 +660,14 @@ $("#tRail").innerHTML = STORE.reviews.map(r=>`
 
 /* anatomy diagram: pin positions are % of the hero photo */
 const PINS = [
-  { x:58, y:12, t:"Snug hood", d:"Elastic edge stays put when your dog shakes." },
-  { x:62, y:42, t:"Clear face shield", d:"Keeps rain off the eyes and ears. Your dog can still see everything." },
-  { x:27, y:28, t:"Tail sleeve", d:"Covers the tail so it doesn't drip water down the back." },
-  { x:57, y:65, t:"Snap-button chest", d:"Opens at the front, so you don't pull anything over the head." },
-  { x:47, y:78, t:"Elastic leg cuffs", d:"Yellow cuffs seal the legs and add visibility on grey days." }
+  { x:58, y:12, t:"Snug hood", d:"Elastic edge stays in place when your dog shakes." },
+  { x:73, y:36, t:"Clear face shield", d:"Wide-view PVC shield keeps rain off the eyes and ears without blocking vision." },
+  { x:32, y:26, t:"Tail sleeve", d:"Covers the tail so it doesn't drip water down the back." },
+  { x:57, y:65, t:"Snap-button chest", d:"Opens at the front, so nothing gets pulled over the head. A D-ring holds the leash." },
+  { x:49, y:76, t:"Adjustable cuffs", d:"Toggle cuffs keep wind and splash out. Reflective bands shine in headlights." },
+  { x:69, y:93, t:"Removable boots", d:"Snap-on boots with anti-slip soles keep paws dry and clean." }
 ];
-$("#diagram").innerHTML = `<img src="${esc(STORE.photos[0].src)}" alt="Suzeno raincoat with numbered features">` +
+$("#diagram").innerHTML = `<img src="${esc(STORE.hotspotPhoto)}" alt="Suzeno raincoat with numbered features">` +
   PINS.map((p,i)=>`<span class="pin" style="left:${p.x}%;top:${p.y}%">${i+1}</span>`).join("");
 $("#legend").innerHTML = PINS.map((p,i)=>`<li><span>${i+1}</span><div><b>${p.t}</b><p>${p.d}</p></div></li>`).join("");
 
@@ -677,15 +695,16 @@ modal.addEventListener("click",e=>{ if(e.target===modal) modal.hidden=true });
 /* ========================= bundles ========================= */
 const state = {
   bundle: STORE.defaultBundle,
-  picks: STORE.bundles.map(b=>Array(b.qty).fill(STORE.defaultSize)),
+  picks: STORE.bundles.map(b=>Array.from({length:b.qty},()=>({size:STORE.defaultSize,color:STORE.colors[0].name}))),
   addons: new Set()
 };
 function renderBundles(){
   $("#bundles").innerHTML = STORE.bundles.map((b,i)=>{
     const save=b.compare-b.price, pct=Math.round(save/b.compare*100), on=i===state.bundle;
-    const picks = state.picks[i].map((sz,k)=>`
-      <div class="pick"><label>${b.qty>1?`Coat ${k+1}`:"Size"}:</label>
-      <div class="sizes">${STORE.sizes.map(s=>`<button type="button" class="size" data-b="${i}" data-k="${k}" data-s="${s}" aria-pressed="${s===sz}">${s}</button>`).join("")}</div></div>`).join("");
+    const picks = state.picks[i].map((pk,k)=>`
+      <div class="pick"><label>${b.qty>1?`Coat ${k+1}`:"Your coat"}: <span class="pick-color">${esc(pk.color)}</span></label>
+      <div class="swatches">${STORE.colors.map(c=>`<button type="button" class="swatch" style="--sw:${c.swatch}" data-b="${i}" data-k="${k}" data-c="${esc(c.name)}" aria-pressed="${c.name===pk.color}" aria-label="${esc(c.name)}"></button>`).join("")}</div>
+      <div class="sizes">${STORE.sizes.map(s=>`<button type="button" class="size" data-b="${i}" data-k="${k}" data-s="${s}" aria-pressed="${s===pk.size}">${s}</button>`).join("")}</div></div>`).join("");
     const addons = STORE.addons.map(a=>`
       <label class="addon"><input type="checkbox" data-addon="${a.id}" ${state.addons.has(a.id)?"checked":""}>
       <span class="ico">${a.icon}</span><span>${esc(a.name)}</span><b>+${money(a.price)}</b></label>`).join("");
@@ -706,7 +725,9 @@ function cartPreviewTotal(){
 }
 $("#bundles").addEventListener("click",e=>{
   const sz=e.target.closest(".size");
-  if(sz){ state.picks[+sz.dataset.b][+sz.dataset.k]=sz.dataset.s; renderBundles(); return; }
+  if(sz){ state.picks[+sz.dataset.b][+sz.dataset.k].size=sz.dataset.s; renderBundles(); return; }
+  const sw=e.target.closest(".swatch");
+  if(sw){ state.picks[+sw.dataset.b][+sw.dataset.k].color=sw.dataset.c; const c=STORE.colors.find(x=>x.name===sw.dataset.c); if(c) go(c.photo); renderBundles(); return; }
   if(e.target.closest(".addon")) return;
   const card=e.target.closest("[data-pick]");
   if(card && +card.dataset.pick!==state.bundle){ state.bundle=+card.dataset.pick; renderBundles(); }
@@ -727,7 +748,7 @@ try{ cart=JSON.parse(localStorage.getItem("suzeno-cart")||"[]") }catch(e){ cart=
 const save=()=>{ try{ localStorage.setItem("suzeno-cart",JSON.stringify(cart)) }catch(e){} };
 function addToCart(){
   const b=STORE.bundles[state.bundle];
-  cart.push({ id:Date.now(), name:`Suzeno Raincoat · ${b.name}`, meta:`Blue · Sizes: ${state.picks[state.bundle].join(", ")}`, price:b.price });
+  cart.push({ id:Date.now(), name:`Suzeno Raincoat · ${b.name}`, meta:state.picks[state.bundle].map(pk=>`${pk.color} ${pk.size}`).join(" · "), price:b.price });
   STORE.addons.filter(a=>state.addons.has(a.id)).forEach(a=>cart.push({id:Date.now()+Math.random(),name:a.name,meta:"Add-on",price:a.price}));
   save(); renderCart(); openDrawer("#cart"); toast("Added to cart");
 }

@@ -1,0 +1,10 @@
+<div class="wrap narrow page-pad">
+  <h1 class="page-title">Activate your account</h1>
+  {%- form 'activate_customer_password', class: 'form-grid' -%}
+    {%- if form.errors -%}<p class="errors">{{ form.errors | default_errors }}</p>{%- endif -%}
+    <label for="ActPass">Password</label><input class="field" type="password" name="customer[password]" id="ActPass" autocomplete="new-password">
+    <label for="ActPass2">Confirm password</label><input class="field" type="password" name="customer[password_confirmation]" id="ActPass2" autocomplete="new-password">
+    <button class="btn dark" type="submit">Activate account</button>
+    <button class="btn sun" type="submit" name="decline">Decline invitation</button>
+  {%- endform -%}
+</div>

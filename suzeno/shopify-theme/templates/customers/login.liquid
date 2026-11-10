@@ -1,0 +1,19 @@
+<div class="wrap narrow page-pad">
+  <h1 class="page-title">Log in</h1>
+  {%- form 'customer_login', class: 'form-grid' -%}
+    {%- if form.errors -%}<p class="errors">{{ form.errors | default_errors }}</p>{%- endif -%}
+    <label for="LoginEmail">Email</label><input class="field" type="email" name="customer[email]" id="LoginEmail" autocomplete="email" required>
+    {%- if form.password_needed -%}<label for="LoginPassword">Password</label><input class="field" type="password" name="customer[password]" id="LoginPassword" autocomplete="current-password">{%- endif -%}
+    <button class="btn dark" type="submit">Sign in</button>
+    <a href="{{ routes.account_register_url }}">Create account</a>
+  {%- endform -%}
+  <h2 style="margin-top:32px;font-size:20px">Forgot your password?</h2>
+  {%- form 'recover_customer_password', class: 'form-grid' -%}
+    {%- if form.posted_successfully? -%}<p class="notice">We've sent you an email with a link to reset your password.</p>{%- endif -%}
+    <label for="RecoverEmail">Email</label><input class="field" type="email" name="email" id="RecoverEmail" autocomplete="email">
+    <button class="btn sun" type="submit">Send reset link</button>
+  {%- endform -%}
+  {%- if shop.checkout.guest_login -%}
+    {%- form 'guest_login' -%}<button class="btn sun" type="submit" style="margin-top:20px">Continue as guest</button>{%- endform -%}
+  {%- endif -%}
+</div>

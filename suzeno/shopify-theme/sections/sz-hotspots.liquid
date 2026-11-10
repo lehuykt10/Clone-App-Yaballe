@@ -1,0 +1,42 @@
+<section class="block anatomy">
+  <div class="wrap">
+    <div style="text-align:center;display:grid;gap:8px">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow | escape }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading | escape }}</h2>
+    </div>
+    <div class="diagram" style="aspect-ratio:auto">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '400,700,1000,1400', sizes: '(min-width: 860px) 820px, 100vw', style: 'height:auto' }}
+      {%- else -%}{{ 'product-1' | placeholder_svg_tag: 'ph' }}{%- endif -%}
+      {%- for block in section.blocks -%}
+        <span class="pin" style="left:{{ block.settings.x }}%;top:{{ block.settings.y }}%" {{ block.shopify_attributes }}>{{ forloop.index }}</span>
+      {%- endfor -%}
+    </div>
+    <ol class="legend">
+      {%- for block in section.blocks -%}
+        <li><span>{{ forloop.index }}</span><div><b>{{ block.settings.title | escape }}</b><p>{{ block.settings.text | escape }}</p></div></li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Feature hotspots",
+  "tag": "section",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "eyebrow", "label": "Small line", "default": "Built for real rain" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Covered from nose to tail" }
+  ],
+  "blocks": [
+    { "type": "hotspot", "name": "Hotspot", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "Feature" },
+      { "type": "textarea", "id": "text", "label": "Text" },
+      { "type": "range", "id": "x", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Position from left", "default": 50 },
+      { "type": "range", "id": "y", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Position from top", "default": 50 }
+    ] }
+  ],
+  "presets": [ { "name": "Feature hotspots", "blocks": [ { "type": "hotspot" }, { "type": "hotspot" } ] } ]
+}
+{% endschema %}

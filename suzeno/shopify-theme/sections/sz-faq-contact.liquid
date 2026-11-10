@@ -1,0 +1,54 @@
+<section class="block faq" id="faq">
+  <div class="wrap grid-2">
+    <div>
+      <h2>{{ section.settings.heading | escape }}</h2>
+      <div class="acc">
+        {%- for block in section.blocks -%}
+          <details {{ block.shopify_attributes }}{% if forloop.first and section.settings.open_first %} open{% endif %}><summary>{{ block.settings.question | escape }}</summary><div class="ans rte">{{ block.settings.answer }}</div></details>
+        {%- endfor -%}
+      </div>
+    </div>
+    <div style="display:grid;gap:18px;align-content:start">
+      {%- if section.settings.show_contact -%}
+        {%- form 'contact', class: 'card', id: 'SzContactForm' -%}
+          <h3>Contact us</h3>
+          <p>Questions about your order? Send us a message and we'll reply within 1 business day.</p>
+          {%- if form.posted_successfully? -%}<p class="status">Thanks! We got your message.</p>{%- endif -%}
+          {%- if form.errors -%}<p class="errors">{{ form.errors | default_errors }}</p>{%- endif -%}
+          <label class="sr" for="SzName">Name</label><input class="field" id="SzName" name="contact[name]" placeholder="Name" autocomplete="name">
+          <label class="sr" for="SzEmail">Email</label><input class="field" id="SzEmail" type="email" name="contact[email]" placeholder="Email" required autocomplete="email">
+          <label class="sr" for="SzOrder">Order number</label><input class="field" id="SzOrder" name="contact[order]" placeholder="Order number (optional)">
+          <label class="sr" for="SzMsg">Message</label><textarea class="field" id="SzMsg" name="contact[body]" placeholder="Your message" required></textarea>
+          <button class="btn sun" type="submit">Send message</button>
+          {%- if settings.support_email != blank -%}<p class="note">Or email us at <b class="mail">{{ settings.support_email }}</b></p>{%- endif -%}
+        {%- endform -%}
+      {%- endif -%}
+      {%- if section.settings.tracking_url != blank -%}
+        <form class="card" onsubmit="event.preventDefault();var v=this.querySelector('input').value.trim();if(v)window.open({{ section.settings.tracking_url | json }}+encodeURIComponent(v),'_blank','noopener');">
+          <h3>Track your order</h3>
+          <label class="sr" for="SzTrack">Tracking number</label><input class="field" id="SzTrack" placeholder="Tracking number" required>
+          <button class="btn dark" type="submit">Track package</button>
+        </form>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "FAQ and contact",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Good to know" },
+    { "type": "checkbox", "id": "open_first", "label": "Open first question", "default": true },
+    { "type": "checkbox", "id": "show_contact", "label": "Show contact form", "default": true },
+    { "type": "text", "id": "tracking_url", "label": "Tracking link", "info": "The tracking number is added to the end. Leave empty to hide.", "default": "https://t.17track.net/en#nums=" }
+  ],
+  "blocks": [
+    { "type": "question", "name": "Question", "settings": [
+      { "type": "text", "id": "question", "label": "Question", "default": "Question" },
+      { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Answer</p>" }
+    ] }
+  ],
+  "presets": [ { "name": "FAQ and contact", "blocks": [ { "type": "question" }, { "type": "question" } ] } ]
+}
+{% endschema %}

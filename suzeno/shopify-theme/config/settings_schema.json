@@ -1,0 +1,48 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Suzeno Raincoat",
+    "theme_version": "1.0.0",
+    "theme_author": "Suzeno",
+    "theme_documentation_url": "https://suzeno.com",
+    "theme_support_url": "https://suzeno.com/pages/contact"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo" },
+      { "type": "range", "id": "logo_height", "min": 20, "max": 60, "step": 2, "unit": "px", "label": "Logo height", "default": 30 },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" },
+      { "type": "text", "id": "support_email", "label": "Support email", "default": "support@suzeno.com" }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "color", "id": "color_brand", "label": "Brand red", "default": "#D7263D" },
+      { "type": "color", "id": "color_button", "label": "Buttons", "default": "#D7263D" },
+      { "type": "color", "id": "color_brand_tint", "label": "Brand tint", "default": "#F3C2C8" },
+      { "type": "color", "id": "color_blush", "label": "Soft panels", "default": "#FDECEC" },
+      { "type": "color", "id": "color_sand", "label": "Footer and notes", "default": "#EDE6DA" },
+      { "type": "color", "id": "color_pine", "label": "Dark green", "default": "#3F5A4A" },
+      { "type": "color", "id": "color_star", "label": "Stars", "default": "#F5B301" },
+      { "type": "color", "id": "color_paper", "label": "Background", "default": "#FAF7F2" },
+      { "type": "color", "id": "color_ink", "label": "Text", "default": "#2B2B28" },
+      { "type": "color", "id": "color_ink_soft", "label": "Secondary text", "default": "#64645D" }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      { "type": "text", "id": "cart_note", "label": "Line under the subtotal", "default": "Free shipping · taxes calculated at checkout" }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      { "type": "text", "id": "social_instagram", "label": "Instagram URL" },
+      { "type": "text", "id": "social_tiktok", "label": "TikTok URL" },
+      { "type": "text", "id": "social_facebook", "label": "Facebook URL" }
+    ]
+  }
+]
