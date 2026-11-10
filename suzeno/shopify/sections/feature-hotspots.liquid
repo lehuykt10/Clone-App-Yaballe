@@ -1,0 +1,101 @@
+{%- comment -%}
+  Suzeno feature hotspots: one photo with numbered pins and a matching numbered list.
+  Pin position = % from the left / top edge of the image. Falls back to the product's
+  featured image on a product page when no image is chosen.
+{%- endcomment -%}
+{%- liquid
+  assign img = section.settings.image
+  if img == blank and product != blank
+    assign img = product.featured_image
+  endif
+-%}
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="fh page-width section-{{ section.id }}-padding">
+    {%- if section.settings.eyebrow != blank -%}<p class="fh__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2 class="fh__heading {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="fh__grid">
+      <div class="fh__media">
+        {%- if img != blank -%}
+          {{ img | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '375,550,750,1100,1400', sizes: '(min-width: 990px) 55vw, calc(100vw - 3rem)', class: 'fh__img' }}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'fh__img placeholder-svg' }}
+        {%- endif -%}
+        {%- for block in section.blocks -%}
+          <span class="fh__pin" style="left: {{ block.settings.x }}%; top: {{ block.settings.y }}%;" aria-hidden="true" {{ block.shopify_attributes }}>{{ forloop.index }}</span>
+        {%- endfor -%}
+      </div>
+      <ol class="fh__list" role="list">
+        {%- for block in section.blocks -%}
+          <li class="fh__item">
+            <span class="fh__num" aria-hidden="true">{{ forloop.index }}</span>
+            <div>
+              <h3 class="fh__title">{{ block.settings.title | escape }}</h3>
+              {%- if block.settings.text != blank -%}<p class="fh__text">{{ block.settings.text | escape }}</p>{%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      </ol>
+    </div>
+  </div>
+</div>
+
+{%- style -%}
+  .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px; padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px; }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; }
+  }
+  .fh { text-align: center; }
+  .fh__eyebrow { margin: 0 0 1rem; font-size: 1.3rem; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; color: rgb(var(--color-button)); }
+  .fh__heading { margin: 0 0 3rem; }
+  .fh__grid { display: grid; gap: 3rem; grid-template-columns: minmax(0, 1fr); align-items: center; text-align: left; }
+  @media screen and (min-width: 990px) { .fh__grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 5rem; } }
+  .fh__media { position: relative; border-radius: var(--media-radius, 1.4rem); overflow: hidden; }
+  .fh__img { display: block; width: 100%; height: auto; }
+  .fh__pin {
+    position: absolute; transform: translate(-50%, -50%);
+    width: 3.2rem; height: 3.2rem; border-radius: 50%;
+    display: grid; place-items: center;
+    background: rgb(var(--color-button)); color: rgb(var(--color-button-text));
+    font-weight: 700; font-size: 1.4rem; border: .3rem solid #fff;
+    box-shadow: 0 0 0 0 rgba(var(--color-button), .55); animation: fh-pulse 2.4s infinite;
+  }
+  @keyframes fh-pulse { 70% { box-shadow: 0 0 0 1.2rem rgba(var(--color-button), 0); } 100% { box-shadow: 0 0 0 0 rgba(var(--color-button), 0); } }
+  @media (prefers-reduced-motion: reduce) { .fh__pin { animation: none; } }
+  .fh__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.2rem; }
+  .fh__item { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr); gap: 1.4rem; align-items: start; background: rgb(var(--color-background)); border: .1rem solid rgba(var(--color-foreground), .1); border-radius: var(--text-boxes-radius, 1.4rem); padding: 1.6rem; }
+  .fh__num { width: 3.2rem; height: 3.2rem; border-radius: 50%; display: grid; place-items: center; background: rgb(var(--color-button)); color: rgb(var(--color-button-text)); font-weight: 700; font-size: 1.4rem; }
+  .fh__title { margin: 0 0 .4rem; font-size: 1.7rem; }
+  .fh__text { margin: 0; font-size: 1.5rem; line-height: 1.5; }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "Feature hotspots",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty on a product page to use the product's main photo." },
+    { "type": "text", "id": "eyebrow", "default": "Built for real rain", "label": "Small line above the heading" },
+    { "type": "inline_richtext", "id": "heading", "default": "Covered from nose to tail", "label": "Heading" },
+    { "type": "select", "id": "heading_size", "default": "h1", "label": "Heading size",
+      "options": [ { "value": "h2", "label": "Small" }, { "value": "h1", "label": "Medium" }, { "value": "h0", "label": "Large" } ] },
+    { "type": "color_scheme", "id": "color_scheme", "default": "scheme-7", "label": "Color scheme" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48, "label": "Top padding" },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48, "label": "Bottom padding" }
+  ],
+  "blocks": [
+    {
+      "type": "hotspot",
+      "name": "Hotspot",
+      "settings": [
+        { "type": "text", "id": "title", "default": "Feature", "label": "Title" },
+        { "type": "textarea", "id": "text", "label": "Text" },
+        { "type": "range", "id": "x", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 50, "label": "Position from left" },
+        { "type": "range", "id": "y", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 50, "label": "Position from top" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Feature hotspots", "blocks": [ { "type": "hotspot" }, { "type": "hotspot" }, { "type": "hotspot" } ] } ]
+}
+{% endschema %}
