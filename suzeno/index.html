@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Suzeno Dog Raincoat</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Suzeno full-body dog raincoat with a clear face-shield hood. Covers back, belly, legs and tail so your dog comes home dry.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
+<style>
+/* Layout: single-product storefront, one 480px mobile column that widens to a 2-column product hero on desktop. Single light look by choice (storefront). */
+:root{
+  --sky:#a7c6e8;        /* raincoat blue */
+  --sky-deep:#4f7fb8;   /* headings on light, band bg */
+  --sky-mist:#eef4fb;   /* soft panels */
+  --sun:#f7bf2a;        /* yellow trim */
+  --sun-soft:#fff3c4;
+  --cta:#f5a21c;        /* add to cart */
+  --cta-ink:#ffffff;
+  --ink:#16243a;
+  --ink-soft:#4c5a70;
+  --line:#dbe5f1;
+  --paper:#ffffff;
+  --night:#121a26;
+  --ok:#2f9e6a;
+  --sale:#d64545;
+  --font-display:"Fredoka","Baloo 2","Arial Rounded MT Bold",system-ui,sans-serif;
+  --font-body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r-sm:8px; --r-md:14px; --r-lg:20px;
+  --gutter-l:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
+h1,h2,h3{font-family:var(--font-display);line-height:1.15;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sky-deep);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.narrow{max-width:640px}
+.eyebrow{font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--sky-deep)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---------- announcement ---------- */
+.promo{background:var(--sun-soft);border-bottom:1px solid #f1e3a6}
+.promo .wrap{display:flex;align-items:center;justify-content:center;gap:12px;padding-block:10px}
+.promo b{font-weight:800;font-size:13px;letter-spacing:.12em}
+.clock{display:flex;gap:6px;align-items:flex-start}
+.clock span{display:grid;justify-items:center;font-size:9px;font-weight:800;letter-spacing:.1em;color:var(--ink-soft)}
+.clock i{font-style:normal;background:var(--sky-deep);color:#fff;font-family:var(--font-display);font-size:17px;font-weight:600;min-width:34px;text-align:center;border-radius:7px;padding:2px 6px;font-variant-numeric:tabular-nums}
+.clock em{font-style:normal;font-weight:800;padding-top:3px}
+.marquee{background:var(--sky-deep);color:#fff;overflow:hidden;white-space:nowrap}
+.marquee div{display:inline-flex;gap:28px;padding-block:7px;animation:slide 26s linear infinite;font-size:12px;font-weight:800;letter-spacing:.16em}
+.marquee span::after{content:"✦";margin-left:28px;color:var(--sun)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- header ---------- */
+.head{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.head .wrap{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;padding-block:8px}
+.icon-btn{width:44px;height:44px;display:grid;place-items:center;background:none;border:0;cursor:pointer;position:relative;border-radius:10px}
+.icon-btn:hover{background:var(--sky-mist)}
+.icon-btn svg{width:24px;height:24px}
+.badge{position:absolute;top:4px;right:2px;background:var(--cta);color:#fff;font-size:11px;font-weight:800;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 4px}
+.logo{justify-self:center;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo .drop{width:26px;height:30px}
+.logo b{font-family:var(--font-display);font-weight:700;font-size:28px;letter-spacing:.02em;color:var(--sky-deep);text-shadow:2px 2px 0 var(--sun)}
+
+/* nav drawer */
+.drawer{position:fixed;inset:0;z-index:80;display:flex;pointer-events:none;visibility:hidden;transition:visibility 0s .3s}
+.drawer .scrim{position:absolute;inset:0;background:rgba(18,26,38,.45);opacity:0;transition:opacity .25s}
+.drawer .panel{position:relative;background:var(--paper);width:min(340px,86vw);height:100%;transform:translateX(-100%);transition:transform .28s ease;padding:calc(20px + env(safe-area-inset-top,0px)) 22px 24px calc(22px + env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:6px;overflow:auto}
+.drawer.right{justify-content:flex-end}
+.drawer.right .panel{transform:translateX(100%);padding:calc(20px + env(safe-area-inset-top,0px)) calc(22px + env(safe-area-inset-right,0px)) 24px 22px;width:min(400px,92vw)}
+.drawer.open{pointer-events:auto;visibility:visible;transition:none}
+.drawer.open .scrim{opacity:1}
+.drawer.open .panel{transform:none}
+.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.panel-head h3{font-size:22px}
+.nav-link{display:block;padding:12px 4px;border-bottom:1px solid var(--line);font-weight:700;text-decoration:none}
+
+/* ---------- product hero ---------- */
+.product{display:grid;gap:22px;padding-block:16px 8px}
+@media (min-width:900px){.product{grid-template-columns:1.05fr 1fr;gap:48px;align-items:start;padding-block:32px}.gallery{position:sticky;top:90px}}
+.gallery{min-width:0}
+.stage{position:relative;border-radius:var(--r-lg);overflow:hidden;background:var(--sky-mist);aspect-ratio:1/1;max-width:100%}
+.slides{display:flex;height:100%;transition:transform .35s ease}
+.slide{flex:0 0 100%;height:100%;display:grid;place-items:center}
+.slide img{width:100%;height:100%;object-fit:cover;object-position:60% 30%}
+.ph{width:100%;height:100%;display:grid;place-content:center;justify-items:center;gap:8px;text-align:center;padding:24px;color:var(--sky-deep);background:repeating-linear-gradient(135deg,var(--sky-mist) 0 14px,#e4eef9 14px 28px)}
+.ph svg{width:42px;height:42px;opacity:.8}
+.ph b{font-family:var(--font-display);font-size:18px}
+.ph small{font-size:13px;color:var(--ink-soft);max-width:28ch}
+.arrow{position:absolute;top:50%;translate:0 -50%;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.92);box-shadow:0 2px 8px rgba(22,36,58,.15);cursor:pointer;display:grid;place-items:center;font-size:18px}
+.arrow.prev{left:10px}.arrow.next{right:10px}
+.thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.thumb{flex:0 0 62px;height:62px;border-radius:10px;overflow:hidden;border:2px solid transparent;padding:0;cursor:pointer;background:var(--sky-mist)}
+.thumb[aria-current="true"]{border-color:var(--sky-deep)}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:60% 30%}
+.thumb .ph{padding:4px}.thumb .ph svg{width:20px;height:20px}.thumb .ph b,.thumb .ph small{display:none}
+
+.info{display:flex;flex-direction:column;gap:14px;min-width:0}
+.stock{background:var(--sky-deep);color:#fff;text-align:center;font-size:11.5px;font-weight:800;letter-spacing:.14em;border-radius:6px;padding:7px;background-image:repeating-linear-gradient(135deg,transparent 0 10px,rgba(255,255,255,.08) 10px 20px)}
+.rating{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-soft)}
+.stars{color:var(--sun);letter-spacing:2px;font-size:17px}
+.title{font-size:clamp(26px,6vw,34px);font-weight:700}
+.title sup{font-size:.45em}
+.perks{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+.perks li{display:flex;gap:10px;align-items:flex-start;font-weight:600}
+.perks li::before{content:"";flex:0 0 20px;height:20px;margin-top:1px;border-radius:50%;background:var(--sky) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3 3 7-7' fill='none' stroke='%2316243a' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat}
+.divider{display:flex;align-items:center;gap:12px;color:var(--sky-deep);font-weight:800;font-size:12px;letter-spacing:.24em}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.timer-pill{align-self:center;display:flex;gap:8px;align-items:center;background:var(--sky-mist);border-radius:999px;padding:8px 16px;font-size:14px}
+.timer-pill b{font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em}
+
+/* bundles */
+.bundles{display:grid;gap:12px;border:0;padding:0;margin:0}
+.bundle{border:2px solid var(--line);border-radius:var(--r-md);overflow:hidden;background:var(--paper);cursor:pointer;transition:border-color .15s, box-shadow .15s}
+.bundle.on{border-color:var(--sky-deep);box-shadow:0 6px 18px rgba(79,127,184,.18)}
+.bundle .tag{background:var(--sky-deep);color:#fff;text-align:center;font-size:11.5px;font-weight:800;letter-spacing:.16em;padding:5px}
+.bundle .tag.best{background:var(--ink)}
+.b-top{display:grid;grid-template-columns:22px 1fr auto;gap:12px;align-items:start;padding:14px 16px}
+.radio{width:22px;height:22px;border-radius:50%;border:2px solid #9fb3cc;margin-top:2px;display:grid;place-items:center}
+.bundle.on .radio{border-color:var(--sky-deep)}
+.bundle.on .radio::after{content:"";width:11px;height:11px;border-radius:50%;background:var(--sky-deep)}
+.b-name{font-weight:800;font-size:16px}
+.b-save{font-size:14px;color:var(--ink-soft)}
+.b-save strong{color:var(--ink)}
+.chip-save{display:inline-block;margin-top:4px;background:var(--sky-mist);color:var(--sky-deep);font-size:12px;font-weight:800;padding:2px 8px;border-radius:6px}
+.b-price{text-align:right;font-weight:800;font-size:17px;font-variant-numeric:tabular-nums}
+.b-price s{display:block;font-weight:600;font-size:13px;color:#93a0b3}
+.b-body{padding:0 16px 14px 50px;display:grid;gap:10px}
+.bundle:not(.on) .b-body{display:none}
+.pick{display:grid;gap:6px}
+.pick label{font-size:13px;color:var(--ink-soft);font-weight:700;white-space:nowrap}
+.sizes{display:flex;flex-wrap:wrap;gap:6px}
+.size{min-width:38px;padding:5px 8px;border:1.5px solid var(--line);border-radius:999px;background:var(--paper);font-weight:700;font-size:13px;cursor:pointer}
+.size[aria-pressed="true"]{border-color:var(--sky-deep);background:var(--sky-deep);color:#fff}
+.addons{display:grid;gap:2px;border-top:1px dashed var(--line);padding-top:8px}
+.addon{display:grid;grid-template-columns:20px 34px 1fr auto;gap:10px;align-items:center;font-size:14px;padding:6px 0;cursor:pointer}
+.addon input{width:18px;height:18px;accent-color:var(--sky-deep);margin:0}
+.addon .ico{width:34px;height:34px;border-radius:8px;background:var(--sky-mist);display:grid;place-items:center;font-size:18px}
+.addon b{font-variant-numeric:tabular-nums}
+.gift{display:flex;align-items:center;gap:10px;background:var(--sky-mist);padding:10px 16px;font-weight:800;font-size:14px;border-top:1px solid var(--line)}
+.gift span{flex:1}
+.gift em{font-style:normal;color:var(--ok)}
+.size-link{background:none;border:0;padding:0;color:var(--sky-deep);font-weight:800;text-decoration:underline;cursor:pointer;font-size:14px;justify-self:start}
+
+.cta{display:block;width:100%;border:0;border-radius:12px;background:var(--cta);color:var(--cta-ink);font-family:var(--font-display);font-weight:600;font-size:20px;letter-spacing:.02em;padding:15px;cursor:pointer;box-shadow:0 4px 0 #d9860b;transition:transform .08s}
+.cta:active{transform:translateY(2px);box-shadow:0 2px 0 #d9860b}
+.cta small{display:block;font-family:var(--font-body);font-size:12px;font-weight:700;opacity:.9}
+
+/* mini reviews */
+.rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:thin}
+.mini{flex:0 0 84%;scroll-snap-align:start;border:1px solid var(--line);border-radius:var(--r-md);padding:14px;display:grid;grid-template-columns:44px 1fr;gap:10px;font-size:14px;min-width:0}
+.avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;background:var(--sky-deep)}
+.mini .who{display:flex;gap:6px;align-items:center;font-weight:800;flex-wrap:wrap}
+.mini .stars{font-size:13px}
+.sample{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--sale);border:1px solid currentColor;border-radius:4px;padding:0 4px}
+
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.trust div{border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 6px;text-align:center;font-size:12.5px;color:var(--ink-soft);display:grid;justify-items:center;gap:4px}
+.trust svg{width:24px;height:24px;color:var(--sky-deep)}
+
+/* accordions */
+.acc{border-top:1px solid var(--line)}
+.acc details{border-bottom:1px solid var(--line)}
+.acc summary{list-style:none;display:flex;justify-content:space-between;gap:12px;padding:16px 2px;font-weight:800;cursor:pointer}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";color:var(--sky-deep);font-size:22px;line-height:1;font-weight:600}
+.acc details[open] summary::after{content:"–"}
+.acc .ans{padding:0 2px 16px;color:var(--ink-soft);display:grid;gap:8px}
+.acc ul{margin:0;padding-left:18px}
+
+/* ---------- story sections ---------- */
+section.block{padding-block:56px}
+.band{background:var(--sky-deep);color:#fff;text-align:center}
+.band .wrap{padding-block:44px;display:grid;gap:10px}
+.band h2{font-size:clamp(38px,11vw,72px);font-weight:700;text-transform:uppercase;line-height:.95;color:#fff;text-shadow:3px 3px 0 var(--sun)}
+.band p{font-weight:800;letter-spacing:.2em;font-size:12.5px;text-transform:uppercase;color:#e6effa}
+.story{display:grid;gap:22px;align-items:center}
+@media (min-width:860px){.story{grid-template-columns:1fr 1fr;gap:48px}}
+.story .media{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/5;max-width:100%}
+.story h2{font-size:clamp(28px,6.5vw,40px)}
+.story .txt{display:grid;gap:14px;font-size:16px;color:var(--ink-soft);min-width:0}
+.story .txt h2{color:var(--ink)}
+
+.anatomy{background:var(--sky-mist)}
+.anatomy .wrap{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
+.anatomy h2{font-size:clamp(28px,6.5vw,40px);text-align:center;color:var(--sky-deep)}
+.diagram{position:relative;border-radius:var(--r-lg);overflow:hidden;max-width:820px;width:100%;justify-self:center;aspect-ratio:1200/790;background:var(--paper)}
+.diagram img{width:100%;height:100%;object-fit:cover;display:block}
+.pin{position:absolute;translate:-50% -50%;width:28px;height:28px;border-radius:50%;background:var(--sun);color:var(--ink);font-weight:800;display:grid;place-items:center;font-size:14px;border:3px solid #fff;box-shadow:0 0 0 0 rgba(247,191,42,.7);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 12px rgba(247,191,42,0)}100%{box-shadow:0 0 0 0 rgba(247,191,42,0)}}
+.legend{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));max-width:820px;width:100%;justify-self:center}
+.legend li{display:grid;grid-template-columns:28px 1fr;gap:12px;background:var(--paper);border-radius:var(--r-md);padding:14px;min-width:0}
+.legend li span{width:28px;height:28px;border-radius:50%;background:var(--sun);display:grid;place-items:center;font-weight:800;font-size:14px}
+.legend b{display:block}
+.legend p{font-size:14px;color:var(--ink-soft)}
+
+/* size guide */
+.sizing .wrap{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+.sizing h2{font-size:clamp(28px,6.5vw,40px);text-align:center}
+.unit-toggle{justify-self:center;display:inline-flex;background:var(--sky-mist);border-radius:999px;padding:4px}
+.unit-toggle button{border:0;background:none;border-radius:999px;padding:6px 18px;font-weight:800;cursor:pointer}
+.unit-toggle button[aria-pressed="true"]{background:var(--sky-deep);color:#fff}
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-md);max-width:820px;width:100%;justify-self:center}
+table{border-collapse:collapse;width:100%;min-width:520px;font-variant-numeric:tabular-nums;font-size:14px}
+th,td{padding:11px 10px;text-align:center;border-bottom:1px solid var(--line)}
+thead th{background:var(--sky-deep);color:#fff;font-family:var(--font-display);font-weight:600;font-size:16px}
+tbody th{text-align:left;font-weight:800;background:var(--sky-mist);white-space:nowrap}
+tbody tr:last-child>*{border-bottom:0}
+.measure{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));max-width:820px;width:100%;justify-self:center}
+.measure div{border:1px dashed var(--sky);border-radius:var(--r-md);padding:14px;font-size:14px;color:var(--ink-soft)}
+.measure b{color:var(--ink);display:block;font-family:var(--font-display);font-size:17px;font-weight:600}
+.tip{max-width:820px;width:100%;justify-self:center;background:var(--sun-soft);border-radius:var(--r-md);padding:12px 16px;font-size:14px}
+
+/* faq + forms */
+.faq h2,.center-h{font-size:clamp(28px,6.5vw,38px);text-align:center;text-transform:uppercase;margin-bottom:22px}
+.card{border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 18px;display:grid;gap:12px}
+.card h3{font-size:26px;text-align:center;text-transform:uppercase}
+.card > p{text-align:center;color:var(--ink-soft);font-size:14px}
+.field{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:13px 14px;background:var(--paper);font-size:15px}
+.field:focus{outline:none;border-color:var(--sky-deep)}
+textarea.field{min-height:120px;resize:vertical}
+.btn{border:0;border-radius:10px;padding:14px;font-weight:800;cursor:pointer;font-size:15px}
+.btn.sun{background:var(--sun-soft);color:var(--ink);border:1.5px solid var(--sun)}
+.btn.dark{background:var(--ink);color:#fff}
+.note{font-size:13px;color:var(--ink-soft);text-align:center}
+.status{font-size:14px;font-weight:700;text-align:center;color:var(--ok)}
+.grid-2{display:grid;gap:18px}
+@media (min-width:860px){.grid-2{grid-template-columns:1.2fr 1fr;align-items:start}}
+
+/* testimonials */
+.reviews-head{display:grid;justify-items:center;gap:8px;margin-bottom:20px;text-align:center}
+.reviews-head .note{max-width:52ch}
+.t-rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+.t-card{flex:0 0 min(290px,80%);scroll-snap-align:start;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.t-card .ph{aspect-ratio:4/5;height:auto}
+.t-card .body{padding:14px;display:grid;gap:6px;font-size:14px}
+.t-card .who{font-weight:800;display:flex;gap:6px;align-items:center}
+
+/* newsletter + footer */
+.news{background:var(--night);color:#fff;text-align:center}
+.news .wrap{padding-block:52px;display:grid;gap:14px;justify-items:center}
+.news h2{font-size:clamp(28px,7vw,40px);text-transform:uppercase}
+.news p{color:#c4cede;max-width:44ch}
+.news form{display:flex;gap:8px;width:100%;max-width:440px}
+.news .field{flex:1;min-width:0;border-color:#2b3647}
+.news .btn{background:var(--sun);color:var(--ink);padding-inline:22px}
+.news small{color:#8e9bb0;font-size:12px;max-width:52ch}
+footer{background:#f6f8fb}
+footer .wrap{padding-block:40px;display:grid;gap:22px;justify-items:center;text-align:center}
+.links{display:grid;grid-template-columns:repeat(3,auto);gap:14px 28px;font-size:14px}
+.links a{text-decoration:none;color:var(--ink-soft)}
+.links a:hover{color:var(--ink);text-decoration:underline}
+.copy{font-size:12px;color:#8e9bb0}
+.mail{font-size:14px;user-select:all}
+
+/* sticky bar */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:10px var(--gutter-r) calc(10px + env(safe-area-inset-bottom,0px)) var(--gutter-l)}
+.sticky .row{max-width:640px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.sticky .cta{font-size:17px;padding:12px}
+.cur{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800}
+
+/* cart */
+.line{display:grid;grid-template-columns:64px 1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.line img{width:64px;height:64px;border-radius:10px;object-fit:cover;object-position:60% 30%}
+.line .meta{color:var(--ink-soft);font-size:13px}
+.line button{background:none;border:0;color:var(--sale);font-size:12px;font-weight:800;cursor:pointer;padding:0;justify-self:start}
+.empty{padding:40px 0;text-align:center;color:var(--ink-soft)}
+.totals{margin-top:auto;display:grid;gap:10px;padding-top:14px}
+.totals .r{display:flex;justify-content:space-between;font-weight:800;font-size:17px}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:16px;background:rgba(18,26,38,.5)}
+.modal .box{background:var(--paper);border-radius:var(--r-lg);max-width:640px;width:100%;max-height:85vh;overflow:auto;padding:20px;display:grid;gap:14px}
+.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));translate:-50% 0;background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-weight:700;font-size:14px;z-index:95;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<!-- ============ ANNOUNCEMENT ============ -->
+<div class="promo">
+  <div class="wrap">
+    <b>RAINY SEASON SALE ENDS IN:</b>
+    <div class="clock" aria-live="off">
+      <span><i id="cH">00</i>HRS</span><em>:</em>
+      <span><i id="cM">00</i>MINS</span><em>:</em>
+      <span><i id="cS">00</i>SECS</span>
+    </div>
+  </div>
+</div>
+<div class="marquee" aria-hidden="true"><div id="marquee"></div></div>
+
+<!-- ============ HEADER ============ -->
+<header class="head">
+  <div class="wrap">
+    <button class="icon-btn" id="menuBtn" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a class="logo" href="#top" aria-label="Suzeno home">
+      <svg class="drop" viewBox="0 0 26 30" aria-hidden="true"><path d="M13 1C9 8 3 13.5 3 19.5a10 10 0 0 0 20 0C23 13.5 17 8 13 1z" fill="#a7c6e8" stroke="#4f7fb8" stroke-width="2"/><circle cx="9.5" cy="19" r="1.6" fill="#16243a"/><circle cx="16.5" cy="19" r="1.6" fill="#16243a"/><path d="M11 23c1.2 1 2.8 1 4 0" stroke="#16243a" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+      <b>Suzeno</b>
+    </a>
+    <button class="icon-btn" id="cartBtn" aria-label="Open cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <span class="badge" id="cartCount" hidden>0</span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+<!-- ============ PRODUCT ============ -->
+<div class="wrap product">
+  <div class="gallery">
+    <div class="stage">
+      <div class="slides" id="slides"></div>
+      <button class="arrow prev" id="prev" aria-label="Previous photo">‹</button>
+      <button class="arrow next" id="next" aria-label="Next photo">›</button>
+    </div>
+    <div class="thumbs" id="thumbs" role="tablist" aria-label="Product photos"></div>
+  </div>
+
+  <div class="info">
+    <div class="stock" id="stockLine">SELLING FAST · LOW STOCK ON XS &amp; S</div>
+    <div class="rating"><span class="stars" aria-hidden="true">★★★★★</span><span id="ratingText"></span></div>
+    <h1 class="title">Suzeno<sup>™</sup> Full-Body Dog Raincoat</h1>
+    <ul class="perks" id="perks"></ul>
+
+    <div class="divider">BUNDLE &amp; SAVE</div>
+    <div class="timer-pill">Hurry! Offer expires in: <b id="offerTimer">00:00:00</b> ⏰</div>
+
+    <div class="bundles" id="bundles" role="radiogroup" aria-label="Choose a bundle"></div>
+
+    <button class="size-link" data-open-size>📏 Not sure which size? Open the size guide</button>
+
+    <button class="cta" id="addBtn">Add to cart<small id="addSub"></small></button>
+
+    <div class="rail" id="miniReviews"></div>
+
+    <div class="trust">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h11v9H2zM13 10h4l3 3v3h-7z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>Free shipping</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Secure checkout</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>30-day fit guarantee</div>
+    </div>
+
+    <div class="acc">
+      <details><summary>What's in the box?</summary><div class="ans"><ul><li>1 × Suzeno full-body raincoat per coat in your bundle (hood with clear face shield, tail sleeve, 4 elastic leg cuffs)</li><li>1 × FREE surprise gift per order</li><li>Paw boots only if you add them above</li></ul></div></details>
+      <details><summary>Sizing &amp; fit</summary><div class="ans"><p>Measure your dog's back length (collar to base of tail) and chest. If your dog falls between two sizes, choose the bigger one. Fluffy coats and deep chests also go up a size.</p><button class="size-link" data-open-size>See the full size chart</button></div></details>
+      <details><summary>Production &amp; shipping</summary><div class="ans"><p>Orders are packed within 1–3 business days. Delivery to the US usually takes 7–12 business days. You get a tracking number by email as soon as your parcel ships.</p></div></details>
+      <details><summary>30-day fit guarantee</summary><div class="ans"><p>Wrong size? Message us within 30 days of delivery and we'll swap it for the right one. Unworn items can also be returned for a refund.</p></div></details>
+      <details><summary>Questions about your order?</summary><div class="ans"><p>Use the contact form further down this page or email <b class="mail">support@suzeno.com</b>. We reply within 24–72 hours.</p></div></details>
+    </div>
+  </div>
+</div>
+
+<!-- ============ BAND ============ -->
+<div class="band">
+  <div class="wrap">
+    <h2>Rainy walks.<br>Sorted.</h2>
+    <p>Dry dog in, dry dog out. No muddy belly, no towel wrestling.</p>
+  </div>
+</div>
+
+<!-- ============ STORY ============ -->
+<section class="block">
+  <div class="wrap story">
+    <div class="media" id="storyMedia"></div>
+    <div class="txt">
+      <span class="eyebrow">Why dog parents switch</span>
+      <h2>Your dog stays dry.<br>Your floors stay clean.</h2>
+      <p>Most dog raincoats only cover the back. The rain still soaks the belly, the legs splash through every puddle, and you spend the next 15 minutes drying a wet dog on the doormat.</p>
+      <p>Suzeno covers your dog from nose to tail. The hood has a clear face shield so rain stays off the eyes and ears while your dog can still see everything. Four elastic leg cuffs and a tail sleeve close the gaps where water usually gets in.</p>
+      <p>Snap it on in under a minute, walk, then rinse it off and hang it to dry. That's the whole routine.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANATOMY ============ -->
+<section class="block anatomy">
+  <div class="wrap">
+    <div style="text-align:center;display:grid;gap:8px"><span class="eyebrow">Built for real rain</span><h2>Covered from nose to tail</h2></div>
+    <div class="diagram" id="diagram"></div>
+    <ol class="legend" id="legend"></ol>
+  </div>
+</section>
+
+<!-- ============ SIZE GUIDE ============ -->
+<section class="block sizing" id="size-guide">
+  <div class="wrap">
+    <div style="text-align:center;display:grid;gap:8px"><span class="eyebrow">Find the right fit</span><h2>Size guide</h2></div>
+    <div class="unit-toggle" role="group" aria-label="Units">
+      <button data-unit="in" aria-pressed="true">Inches / lb</button>
+      <button data-unit="cm" aria-pressed="false">cm / kg</button>
+    </div>
+    <div class="table-scroll"><table id="sizeTable"></table></div>
+    <div class="measure">
+      <div><b>Back length</b>From the base of the collar to the base of the tail.</div>
+      <div><b>Chest</b>Around the widest part of the ribcage, just behind the front legs.</div>
+      <div><b>Neck</b>Around the neck where the collar sits. Leave room for two fingers.</div>
+    </div>
+    <p class="tip"><b>Between sizes?</b> Pick the bigger one. Back length matters most for a full-body coat.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ + CONTACT ============ -->
+<section class="block faq" id="faq">
+  <div class="wrap grid-2">
+    <div>
+      <h2>Frequently asked questions</h2>
+      <div class="acc" id="faqList"></div>
+    </div>
+    <div style="display:grid;gap:18px">
+      <form class="card" id="contactForm" novalidate>
+        <h3>Contact us</h3>
+        <p>Questions about your order? Send us a message and we'll reply within 24–72 hours.</p>
+        <label class="sr" for="cName">Name</label><input class="field" id="cName" placeholder="Name" required>
+        <label class="sr" for="cEmail">Email</label><input class="field" id="cEmail" type="email" placeholder="Email" required>
+        <label class="sr" for="cOrder">Order number</label><input class="field" id="cOrder" placeholder="Order number (optional)">
+        <label class="sr" for="cMsg">Message</label><textarea class="field" id="cMsg" placeholder="Your message" required></textarea>
+        <button class="btn sun" type="submit">Send message</button>
+        <p class="status" id="contactStatus" hidden></p>
+        <p class="note">Or email us directly at <b class="mail">support@suzeno.com</b></p>
+      </form>
+      <form class="card" id="trackForm" novalidate>
+        <h3>Track your order</h3>
+        <label class="sr" for="tNum">Tracking number</label><input class="field" id="tNum" placeholder="Tracking number" required>
+        <button class="btn dark" type="submit">Track package</button>
+        <p class="note" id="trackStatus" hidden></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="block" id="reviews" style="padding-top:0">
+  <div class="wrap">
+    <div class="reviews-head">
+      <h2 class="center-h" style="margin:0">Testimonials</h2>
+      <div class="rating"><span class="stars" aria-hidden="true">★★★★★</span><span id="ratingText2"></span></div>
+    </div>
+    <div class="t-rail" id="tRail"></div>
+  </div>
+</section>
+</main>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="news">
+  <div class="wrap">
+    <h2>Join the pack</h2>
+    <p>New colors, restocks and members-only offers before anyone else. No spam.</p>
+    <form id="newsForm" novalidate>
+      <label class="sr" for="nEmail">Email</label>
+      <input class="field" id="nEmail" type="email" placeholder="Your email" required>
+      <button class="btn" type="submit">Join</button>
+    </form>
+    <p class="status" id="newsStatus" hidden style="color:var(--sun)"></p>
+    <small>By subscribing you agree to receive marketing emails from Suzeno. Unsubscribe anytime.</small>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><b>Suzeno</b></a>
+    <nav class="links" aria-label="Policies">
+      <a href="#faq">Shipping</a><a href="#faq">Returns &amp; Refunds</a><a href="#faq">Contact</a>
+      <a href="#faq">Privacy Policy</a><a href="#faq">Terms of Service</a><a href="#faq">Legal Notice</a>
+    </nav>
+    <span class="mail">support@suzeno.com</span>
+    <span class="copy">© 2026 Suzeno · suzeno.com</span>
+  </div>
+</footer>
+
+<!-- sticky add to cart -->
+<div class="sticky">
+  <div class="row">
+    <span class="cur">🇺🇸 USD</span>
+    <button class="cta" id="stickyAdd">Add to cart</button>
+  </div>
+</div>
+
+<!-- menu drawer -->
+<div class="drawer" id="menu" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <nav class="panel" aria-label="Menu">
+    <div class="panel-head"><h3>Menu</h3><button class="icon-btn" data-close aria-label="Close menu">✕</button></div>
+    <a class="nav-link" href="#top" data-close>Shop the raincoat</a>
+    <a class="nav-link" href="#size-guide" data-close>Size guide</a>
+    <a class="nav-link" href="#reviews" data-close>Reviews</a>
+    <a class="nav-link" href="#faq" data-close>FAQ &amp; contact</a>
+  </nav>
+</div>
+
+<!-- cart drawer -->
+<div class="drawer right" id="cart" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <aside class="panel" aria-label="Cart">
+    <div class="panel-head"><h3>Your cart</h3><button class="icon-btn" data-close aria-label="Close cart">✕</button></div>
+    <div id="cartLines"></div>
+    <div class="totals">
+      <div class="r"><span>Subtotal</span><span id="cartTotal">$0.00</span></div>
+      <p class="note">Free shipping · taxes calculated at checkout</p>
+      <button class="cta" id="checkoutBtn">Checkout</button>
+      <p class="note" id="checkoutNote" hidden>Demo store: checkout goes live once this page is connected to Shopify.</p>
+    </div>
+  </aside>
+</div>
+
+<!-- size modal -->
+<div class="modal" id="sizeModal" hidden>
+  <div class="box" role="dialog" aria-modal="true" aria-labelledby="smTitle">
+    <div class="panel-head"><h3 id="smTitle">Size guide</h3><button class="icon-btn" id="smClose" aria-label="Close size guide">✕</button></div>
+    <div class="table-scroll"><table id="sizeTableModal"></table></div>
+    <p class="tip"><b>Between sizes?</b> Pick the bigger one.</p>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* =========================================================
+   STORE CONFIG — edit this block to change prices, photos,
+   copy and reviews. Everything on the page is built from it.
+   ========================================================= */
+const STORE = {
+  currency: "$",
+  // Photos: put files in /assets and list them here. Missing ones show a labelled placeholder.
+  photos: [
+    { src: "assets/raincoat-blue-hero.jpg", alt: "Small white dog running through puddles in the blue Suzeno raincoat" },
+    { src: "", label: "Photo 2", hint: "Side view on a dog: hood, body and tail sleeve" },
+    { src: "", label: "Photo 3", hint: "Close-up of the clear face shield" },
+    { src: "", label: "Photo 4", hint: "Belly and leg coverage, dog standing" },
+    { src: "", label: "Photo 5", hint: "Flat lay of the coat with size label" }
+  ],
+  storyMedia: { src: "", label: "Lifestyle video or photo", hint: "Dog walking in the rain, owner holding the leash" },
+  perks: [
+    "Clear face-shield hood keeps rain off eyes and ears",
+    "Covers back, belly, all 4 legs and the tail",
+    "Snap buttons on the chest, on in under a minute"
+  ],
+  sizes: ["XS","S","M","L","XL","XXL"],
+  defaultSize: "S",
+  // size chart from the factory sheet (cm and kg). Inches and lb are calculated.
+  sizeChart: {
+    back:  [20,25,30,35,40,45],
+    chest: [32,37,42,47,52,57],
+    neck:  [27,29,32,35,38,41],
+    kg:    [[0.5,1.5],[1.5,2.5],[2.5,4],[4,6],[6,7.5],[7.5,10]]
+  },
+  bundles: [
+    { qty:1, name:"Buy 1 + Free Gift",  price:29.99, compare:42.99, tag:"" },
+    { qty:2, name:"Buy 2 + Free Gift",  price:49.99, compare:85.98, tag:"MOST POPULAR" },
+    { qty:3, name:"Buy 3 + Free Gift",  price:64.99, compare:128.97, tag:"BEST VALUE" }
+  ],
+  defaultBundle: 1,
+  addons: [
+    { id:"boots", icon:"🐾", name:"Waterproof paw boots (set of 4)", price:12.99 },
+    { id:"protect", icon:"🛡️", name:"Shipping protection", price:2.99 }
+  ],
+  // SAMPLE content. Replace with real reviews from your customers before going live.
+  rating: { score:"4.9", count:0 },
+  reviews: [
+    { name:"Customer name", initial:"A", text:"Short real quote from a customer about how dry their dog stayed.", photoHint:"Customer photo of their dog in the coat" },
+    { name:"Customer name", initial:"B", text:"Real quote about fit, e.g. which size they picked for which breed.", photoHint:"Dog wearing the hood with face shield" },
+    { name:"Customer name", initial:"C", text:"Real quote about how fast it goes on, or the muddy-paws problem it solved.", photoHint:"Dog on a rainy walk" }
+  ],
+  faq: [
+    ["What size should I get?","Measure your dog's back length from collar to tail base and check the size guide on this page. Between two sizes, choose the bigger one."],
+    ["Does the face shield bother dogs?","The shield sits in front of the face, not on it, and it is clear, so your dog can see normally. Let your dog wear the coat indoors for a few minutes the first time."],
+    ["Is it fully waterproof?","The outer fabric sheds rain and the cuffs and tail sleeve close the usual gaps. In very heavy downpours some water can still reach the paws, which is what the paw boots are for."],
+    ["How do I clean it?","Rinse it under the tap or hand-wash in cool water with mild soap, then hang it to dry. No tumble dryer."],
+    ["When will my order arrive?","Most US orders arrive in 7–12 business days. You get a tracking link as soon as it ships."],
+    ["Can I cancel or change my order?","Yes, within 12 hours of ordering. Send us a message with your order number."]
+  ],
+  marquee: ["FREE SHIPPING","30% OFF TODAY","NOSE-TO-TAIL RAIN COVER","30-DAY FIT GUARANTEE","XS TO XXL"]
+};
+
+/* ========================= helpers ========================= */
+const $ = s => document.querySelector(s);
+const money = n => STORE.currency + n.toFixed(2);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const camSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.6"/><path d="M8.5 6l1.4-2h4.2l1.4 2"/></svg>';
+const media = (m, cls="") => m.src
+  ? `<img class="${cls}" src="${esc(m.src)}" alt="${esc(m.alt||"")}" loading="lazy">`
+  : `<div class="ph ${cls}">${camSvg}<b>${esc(m.label||"Your photo")}</b><small>${esc(m.hint||"")}</small></div>`;
+let toastT;
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),2200)}
+
+/* ========================= countdown (resets at local midnight) ========================= */
+function tick(){
+  const now=new Date(), end=new Date(now); end.setHours(24,0,0,0);
+  let s=Math.max(0,Math.floor((end-now)/1000));
+  const h=String(Math.floor(s/3600)).padStart(2,"0"), m=String(Math.floor(s%3600/60)).padStart(2,"0"), sec=String(s%60).padStart(2,"0");
+  $("#cH").textContent=h;$("#cM").textContent=m;$("#cS").textContent=sec;
+  $("#offerTimer").textContent=`${h}:${m}:${sec}`;
+}
+tick(); setInterval(tick,1000);
+$("#marquee").innerHTML = [...STORE.marquee,...STORE.marquee].map(t=>`<span>${t}</span>`).join("");
+
+/* ========================= gallery ========================= */
+let slide=0;
+$("#slides").innerHTML = STORE.photos.map(p=>`<div class="slide">${media(p)}</div>`).join("");
+$("#thumbs").innerHTML = STORE.photos.map((p,i)=>`<button class="thumb" role="tab" aria-label="Photo ${i+1}" data-i="${i}">${media(p)}</button>`).join("");
+function go(i){
+  slide=(i+STORE.photos.length)%STORE.photos.length;
+  $("#slides").style.transform=`translateX(-${slide*100}%)`;
+  document.querySelectorAll(".thumb").forEach((t,k)=>t.setAttribute("aria-current",k===slide));
+}
+$("#prev").onclick=()=>go(slide-1); $("#next").onclick=()=>go(slide+1);
+$("#thumbs").onclick=e=>{const b=e.target.closest(".thumb"); if(b) go(+b.dataset.i)};
+let sx=null; const stage=$(".stage");
+stage.addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});
+stage.addEventListener("touchend",e=>{if(sx===null)return;const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40)go(slide+(d<0?1:-1));sx=null});
+go(0);
+
+/* ========================= copy blocks ========================= */
+$("#perks").innerHTML = STORE.perks.map(p=>`<li>${esc(p)}</li>`).join("");
+const rt = STORE.rating.count ? `${STORE.rating.score} out of 5 · Based on ${STORE.rating.count} reviews` : `${STORE.rating.score} out of 5 · Sample rating, replace with real reviews`;
+$("#ratingText").textContent = rt; $("#ratingText2").textContent = rt;
+$("#storyMedia").innerHTML = media(STORE.storyMedia);
+$("#storyMedia").firstElementChild.style.cssText="width:100%;height:100%;object-fit:cover";
+
+$("#faqList").innerHTML = STORE.faq.map(([q,a])=>`<details><summary>${esc(q)}</summary><div class="ans"><p>${esc(a)}</p></div></details>`).join("");
+
+$("#miniReviews").innerHTML = STORE.reviews.map(r=>`
+  <div class="mini"><div class="avatar">${esc(r.initial)}</div>
+  <div><div class="who"><span class="stars">★★★★★</span>${esc(r.name)} <span class="sample">SAMPLE</span></div><p>${esc(r.text)}</p></div></div>`).join("");
+$("#tRail").innerHTML = STORE.reviews.map(r=>`
+  <article class="t-card">${media({src:r.photo||"",label:"Customer photo",hint:r.photoHint})}
+  <div class="body"><span class="stars">★★★★★</span><div class="who">${esc(r.name)} <span class="sample">SAMPLE</span></div><p>${esc(r.text)}</p></div></article>`).join("");
+
+/* anatomy diagram: pin positions are % of the hero photo */
+const PINS = [
+  { x:58, y:12, t:"Snug hood", d:"Elastic edge stays put when your dog shakes." },
+  { x:62, y:42, t:"Clear face shield", d:"Keeps rain off the eyes and ears. Your dog can still see everything." },
+  { x:27, y:28, t:"Tail sleeve", d:"Covers the tail so it doesn't drip water down the back." },
+  { x:57, y:65, t:"Snap-button chest", d:"Opens at the front, so you don't pull anything over the head." },
+  { x:47, y:78, t:"Elastic leg cuffs", d:"Yellow cuffs seal the legs and add visibility on grey days." }
+];
+$("#diagram").innerHTML = `<img src="${esc(STORE.photos[0].src)}" alt="Suzeno raincoat with numbered features">` +
+  PINS.map((p,i)=>`<span class="pin" style="left:${p.x}%;top:${p.y}%">${i+1}</span>`).join("");
+$("#legend").innerHTML = PINS.map((p,i)=>`<li><span>${i+1}</span><div><b>${p.t}</b><p>${p.d}</p></div></li>`).join("");
+
+/* ========================= size chart ========================= */
+let unit="in";
+function chartHTML(){
+  const c=STORE.sizeChart, inch=v=>(v/2.54).toFixed(1), lb=v=>Math.round(v*2.2046*10)/10;
+  const row=(label,arr,f)=>`<tr><th scope="row">${label}</th>${arr.map(v=>`<td>${f(v)}</td>`).join("")}</tr>`;
+  const L = unit==="in" ? ["in","lb"] : ["cm","kg"];
+  const len = v => unit==="in" ? inch(v) : v;
+  const wt = ([a,b]) => unit==="in" ? `${lb(a)}–${lb(b)}` : `${a}–${b}`;
+  return `<thead><tr><th scope="col">Size</th>${STORE.sizes.map(s=>`<th scope="col">${s}</th>`).join("")}</tr></thead><tbody>
+    ${row(`Back length (${L[0]})`,c.back,len)}${row(`Chest (${L[0]})`,c.chest,len)}${row(`Neck (${L[0]})`,c.neck,len)}${row(`Dog weight (${L[1]})`,c.kg,wt)}</tbody>`;
+}
+function drawCharts(){ $("#sizeTable").innerHTML=chartHTML(); $("#sizeTableModal").innerHTML=chartHTML(); }
+document.querySelectorAll("[data-unit]").forEach(b=>b.onclick=()=>{
+  unit=b.dataset.unit; document.querySelectorAll("[data-unit]").forEach(x=>x.setAttribute("aria-pressed",x===b)); drawCharts();
+});
+drawCharts();
+const modal=$("#sizeModal");
+document.addEventListener("click",e=>{ if(e.target.closest("[data-open-size]")){ modal.hidden=false; $("#smClose").focus(); }});
+$("#smClose").onclick=()=>modal.hidden=true;
+modal.addEventListener("click",e=>{ if(e.target===modal) modal.hidden=true });
+
+/* ========================= bundles ========================= */
+const state = {
+  bundle: STORE.defaultBundle,
+  picks: STORE.bundles.map(b=>Array(b.qty).fill(STORE.defaultSize)),
+  addons: new Set()
+};
+function renderBundles(){
+  $("#bundles").innerHTML = STORE.bundles.map((b,i)=>{
+    const save=b.compare-b.price, pct=Math.round(save/b.compare*100), on=i===state.bundle;
+    const picks = state.picks[i].map((sz,k)=>`
+      <div class="pick"><label>${b.qty>1?`Coat ${k+1}`:"Size"}:</label>
+      <div class="sizes">${STORE.sizes.map(s=>`<button type="button" class="size" data-b="${i}" data-k="${k}" data-s="${s}" aria-pressed="${s===sz}">${s}</button>`).join("")}</div></div>`).join("");
+    const addons = STORE.addons.map(a=>`
+      <label class="addon"><input type="checkbox" data-addon="${a.id}" ${state.addons.has(a.id)?"checked":""}>
+      <span class="ico">${a.icon}</span><span>${esc(a.name)}</span><b>+${money(a.price)}</b></label>`).join("");
+    return `<div class="bundle ${on?"on":""}" role="radio" aria-checked="${on}" tabindex="0" data-pick="${i}">
+      ${b.tag?`<div class="tag ${b.tag==="BEST VALUE"?"best":""}">${b.tag}</div>`:""}
+      <div class="b-top"><span class="radio"></span>
+        <div><div class="b-name">${esc(b.name)}</div><div class="b-save">You save <strong>${money(save)}</strong></div><span class="chip-save">Save ${pct}%</span></div>
+        <div class="b-price">${money(b.price)}<s>${money(b.compare)}</s></div></div>
+      <div class="b-body">${picks}<div class="addons">${addons}</div></div>
+      <div class="gift"><span>🎁 + FREE surprise gift</span><em>FREE</em></div>
+    </div>`;
+  }).join("");
+  const total = cartPreviewTotal();
+  $("#addSub").textContent = `${money(total)} · ${STORE.bundles[state.bundle].qty} coat${STORE.bundles[state.bundle].qty>1?"s":""} · free shipping`;
+}
+function cartPreviewTotal(){
+  return STORE.bundles[state.bundle].price + STORE.addons.filter(a=>state.addons.has(a.id)).reduce((s,a)=>s+a.price,0);
+}
+$("#bundles").addEventListener("click",e=>{
+  const sz=e.target.closest(".size");
+  if(sz){ state.picks[+sz.dataset.b][+sz.dataset.k]=sz.dataset.s; renderBundles(); return; }
+  if(e.target.closest(".addon")) return;
+  const card=e.target.closest("[data-pick]");
+  if(card && +card.dataset.pick!==state.bundle){ state.bundle=+card.dataset.pick; renderBundles(); }
+});
+$("#bundles").addEventListener("change",e=>{
+  const a=e.target.dataset.addon; if(!a) return;
+  e.target.checked?state.addons.add(a):state.addons.delete(a); renderBundles();
+});
+$("#bundles").addEventListener("keydown",e=>{
+  const card=e.target.closest("[data-pick]");
+  if(card && (e.key==="Enter"||e.key===" ") && e.target===card){ e.preventDefault(); state.bundle=+card.dataset.pick; renderBundles(); }
+});
+renderBundles();
+
+/* ========================= cart ========================= */
+let cart=[];
+try{ cart=JSON.parse(localStorage.getItem("suzeno-cart")||"[]") }catch(e){ cart=[] }
+const save=()=>{ try{ localStorage.setItem("suzeno-cart",JSON.stringify(cart)) }catch(e){} };
+function addToCart(){
+  const b=STORE.bundles[state.bundle];
+  cart.push({ id:Date.now(), name:`Suzeno Raincoat · ${b.name}`, meta:`Blue · Sizes: ${state.picks[state.bundle].join(", ")}`, price:b.price });
+  STORE.addons.filter(a=>state.addons.has(a.id)).forEach(a=>cart.push({id:Date.now()+Math.random(),name:a.name,meta:"Add-on",price:a.price}));
+  save(); renderCart(); openDrawer("#cart"); toast("Added to cart");
+}
+function renderCart(){
+  const n=cart.length; const badge=$("#cartCount"); badge.hidden=!n; badge.textContent=n;
+  $("#cartLines").innerHTML = n ? cart.map(l=>`<div class="line"><img src="${esc(STORE.photos[0].src)}" alt=""><div><b>${esc(l.name)}</b><div class="meta">${esc(l.meta)}</div><button data-rm="${l.id}">Remove</button></div><b>${money(l.price)}</b></div>`).join("")
+    : `<p class="empty">Your cart is empty.<br>Your dog's raincoat is one tap away.</p>`;
+  $("#cartTotal").textContent = money(cart.reduce((s,l)=>s+l.price,0));
+}
+$("#cartLines").onclick=e=>{const id=e.target.dataset.rm; if(!id)return; cart=cart.filter(l=>String(l.id)!==id); save(); renderCart();};
+$("#addBtn").onclick=addToCart;
+$("#stickyAdd").onclick=()=>{ document.querySelector(".info").scrollIntoView({behavior:"smooth"}); setTimeout(addToCart,350) };
+$("#checkoutBtn").onclick=()=>{ $("#checkoutNote").hidden=false };
+renderCart();
+
+/* drawers */
+function openDrawer(id){ const d=$(id); d.classList.add("open"); d.setAttribute("aria-hidden","false"); }
+function closeDrawer(d){ d.classList.remove("open"); d.setAttribute("aria-hidden","true"); }
+$("#menuBtn").onclick=()=>openDrawer("#menu"); $("#cartBtn").onclick=()=>openDrawer("#cart");
+document.querySelectorAll(".drawer").forEach(d=>d.addEventListener("click",e=>{ if(e.target.closest("[data-close]")) closeDrawer(d) }));
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ document.querySelectorAll(".drawer.open").forEach(closeDrawer); modal.hidden=true; }});
+
+/* forms (front-end only until a backend/Shopify is connected) */
+function okEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) }
+$("#contactForm").onsubmit=e=>{ e.preventDefault(); const st=$("#contactStatus"); st.hidden=false;
+  if(!$("#cName").value.trim()||!okEmail($("#cEmail").value)||!$("#cMsg").value.trim()){ st.style.color="var(--sale)"; st.textContent="Add your name, a valid email and a message."; return; }
+  st.style.color=""; st.textContent="Thanks! Your message is ready. (Demo: connect a form service to deliver it.)"; e.target.reset(); };
+$("#trackForm").onsubmit=e=>{ e.preventDefault(); const st=$("#trackStatus"); st.hidden=false;
+  st.textContent = $("#tNum").value.trim() ? "Tracking lookup connects once the store is live on Shopify." : "Enter the tracking number from your shipping email."; };
+$("#newsForm").onsubmit=e=>{ e.preventDefault(); const st=$("#newsStatus"); st.hidden=false;
+  st.textContent = okEmail($("#nEmail").value) ? "You're in the pack! 🐾" : "Enter a valid email address."; };
+</script>
+</body>
+</html>
