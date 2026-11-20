@@ -7,7 +7,12 @@ Dùng trong **một cuộc trò chuyện ChatGPT duy nhất** để mọi ảnh 
 
 ## BƯỚC 0: Đính kèm ảnh tham chiếu + dán prompt khóa sản phẩm
 
-Đính kèm 4 ảnh NCC: (1) mũ xanh nhạt gấp phẳng, (2) mũ xanh denim, (3) mũ hồng, (4) ảnh 2 cô gái đeo mũ (chế độ lộ mắt + chế độ che mắt). **Không** đính kèm ảnh "Cold and Hot therapy" của NCC (nhãn bị đảo ngược và có chữ "migraines").
+Đính kèm **5 ảnh** theo thứ tự:
+1–3. Ba ảnh mũ gấp phẳng **chụp thật** (xanh nhạt, xanh denim, hồng). Dùng nguyên ảnh.
+4. `ref-images/ref-4a-blackout-lying.jpg` (đã cắt bỏ tiêu đề và nhãn sai "Thermal/Cold therapy… migraines").
+5. `ref-images/ref-4b-see-through-coffee.jpg` và `ref-images/ref-5-blackout-front.jpg` (đã cắt bỏ logo BAOZHIK và chữ Trung).
+
+**Không** đính kèm ảnh gốc có chữ, logo hay nhãn. ChatGPT dễ chép lại chữ và logo vào ảnh mới.
 
 ```
 I'm building product photos for my brand Zenligo. The attached photos show the exact product.
@@ -35,6 +40,14 @@ STYLE LOCK (all images):
 - Real-looking adults (25–55), relaxed, natural skin texture, no exaggerated smiles, no celebrities.
 - NO text, letters, logos or watermarks in the image unless I explicitly ask for them.
 - Square 1:1, high resolution, product clearly visible and sharp.
+
+REFERENCE PRIORITY:
+- The flat-lay photos are REAL product photos: they are the ground truth for fabric, color and
+  embroidery. The embroidery is real thread stitching, tone-on-tone and slightly raised
+  (white thread on Sky Blue, pale-blue thread on Denim Blue, pale-pink thread on Rose Pink),
+  NOT a bold white print.
+- The worn photos are AI mock-ups from the supplier: use them ONLY to understand the shape and
+  how the cap sits on the head in each mode. Ignore their flat white printed look.
 
 Reply "Locked" and wait for my first image request.
 ```
