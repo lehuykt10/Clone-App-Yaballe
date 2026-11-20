@@ -195,3 +195,58 @@ the eye opening must be goggle-shaped / remove the strap / remove any text / rem
 - Người mẫu AI chỉ dùng làm ảnh minh họa, không trình bày như khách hàng thật hay review.
 - Khi có hàng mẫu, thay dần bằng ảnh và video thật (nhất là ảnh 2, 9, 10).
 - Nếu bán nhiều màu, tạo variant màu trong Shopify và gắn ảnh 10 hoặc ảnh riêng của từng màu.
+
+---
+
+## PHỤ LỤC: Ánh sáng "chân thật" kiểu UGC (cho ảnh keyframe video Reels)
+
+Tham chiếu: reel herbtantra (Migraine Go Cap). Ánh sáng ban ngày qua rèm mỏng, chụp bằng camera trước điện thoại, không có đèn studio.
+
+### Khóa phong cách UGC (dán thêm vào cuối prompt ảnh)
+```
+UGC REALISM LOCK — this must look like a real iPhone front-camera selfie, NOT a studio or
+stock photo:
+- Light: soft overcast daylight from one window to the side, filtered through a sheer white
+  curtain. Neutral-cool white balance. Gentle falloff into soft shadows on the far side of the
+  face. No studio lights, no rim light, no golden-hour glow, no dramatic contrast.
+- Camera: iPhone front camera at arm's length, slightly above eye level, 24–26 mm wide-angle,
+  vertical 9:16, face close and filling the upper-middle frame, slightly off-center.
+  Deep focus like a phone (background only mildly soft), no cinematic bokeh.
+- Image quality: slight phone noise in the shadows, mild smartphone HDR, a touch of motion
+  softness, imperfect framing.
+- Person: real-looking, no or minimal makeup, visible skin texture and pores, slightly messy
+  hair, tired-but-calm natural expression, not posing, not smiling for the camera.
+- Setting: an ordinary lived-in room: plain off-white wall, a rumpled grey fleece blanket,
+  a muted dusty-rose pillow, nothing styled or perfect.
+- NO text, captions, stickers, logos or UI elements in the image.
+```
+
+### Ví dụ 1: Blackout mode (giống khung hình tham chiếu)
+```
+Vertical 9:16. A woman in her late 20s lying on a sofa under a grey fleece blanket, head on a
+dusty-rose pillow, filming herself with her phone. She wears the Calm Cap in Denim Blue in
+BLACKOUT MODE, eye panel down, only her nose, lips and chin visible, relaxed, one hand resting
+near her cheek. [UGC REALISM LOCK]
+```
+
+### Ví dụ 2: See-through mode (góc "tôi vẫn phải làm việc", điểm khác biệt của Zenligo)
+```
+Vertical 9:16. Same woman, same sofa and light, now half sitting up, eye panel flipped up so
+her eyes look straight into the phone camera through the goggle-shaped opening, a laptop
+glowing softly at the bottom edge of the frame. Calm, slightly tired, a hint of a smile.
+[UGC REALISM LOCK]
+```
+
+### Mẹo
+- Có thể đính kèm ảnh chụp màn hình reel kèm câu: *"Use this screenshot ONLY as a reference for
+  lighting, camera angle and mood. Do not copy the person, the product, the text or any brand."*
+- Nếu ảnh vẫn "quá đẹp", gửi tiếp: *"Make it less polished: flatter light, more phone noise, less
+  perfect skin, more ordinary room."*
+- Ảnh ra quá ấm hoặc vàng thì gửi: *"cooler, neutral daylight white balance"*.
+- Hậu kỳ (CapCut/Lightroom): giảm độ nét 10–15, thêm grain 10–20, giảm saturation một chút.
+- Dùng ảnh này làm keyframe cho video Seedance/Wan (skill viral-video-recreation).
+
+### Không chép từ reel đối thủ
+- Hook "I hated taking medicines… until I found this" là tuyên bố y tế. Zenligo không dùng.
+  Thay bằng: *"My heavy-head days used to mean lying in the dark. Now I can still see my screen."*
+- Không trình bày người mẫu AI như khách hàng thật; gắn nhãn nội dung AI khi nền tảng yêu cầu.
