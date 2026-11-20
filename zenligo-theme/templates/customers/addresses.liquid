@@ -1,0 +1,26 @@
+<div class="wrap narrow page-pad">
+  <p><a href="{{ routes.account_url }}">← Back to account</a></p>
+  <h1 class="page-title">Addresses</h1>
+  {%- paginate customer.addresses by 10 -%}
+    {%- for address in customer.addresses -%}
+      <div class="card" style="margin-bottom:12px">{%- if address == customer.default_address -%}<b>Default</b>{%- endif -%}{{ address | format_address }}
+        <form method="post" action="{{ routes.account_addresses_url }}/{{ address.id }}"><input type="hidden" name="_method" value="delete"><button class="btn sun" type="submit">Delete</button></form>
+      </div>
+    {%- endfor -%}
+  {%- endpaginate -%}
+  <h2 style="margin:24px 0 12px;font-size:20px">Add a new address</h2>
+  {%- form 'customer_address', customer.new_address, class: 'form-grid' -%}
+    {%- if form.errors -%}<p class="errors">{{ form.errors | default_errors }}</p>{%- endif -%}
+    <input class="field" name="address[first_name]" placeholder="First name" autocomplete="given-name">
+    <input class="field" name="address[last_name]" placeholder="Last name" autocomplete="family-name">
+    <input class="field" name="address[address1]" placeholder="Address" autocomplete="address-line1">
+    <input class="field" name="address[address2]" placeholder="Apartment, suite" autocomplete="address-line2">
+    <input class="field" name="address[city]" placeholder="City" autocomplete="address-level2">
+    <select class="field" name="address[country]" autocomplete="country">{{ all_country_option_tags }}</select>
+    <input class="field" name="address[province]" placeholder="State / province" autocomplete="address-level1">
+    <input class="field" name="address[zip]" placeholder="ZIP / postal code" autocomplete="postal-code">
+    <input class="field" name="address[phone]" placeholder="Phone" autocomplete="tel">
+    <label><input type="checkbox" name="address[default]" value="1"> Set as default</label>
+    <button class="btn dark" type="submit">Add address</button>
+  {%- endform -%}
+</div>

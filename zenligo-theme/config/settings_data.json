@@ -1,0 +1,43 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "logo_height": 30,
+    "support_email": "support@zenligo.com",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "show_announcement": true,
+          "announcement": "HOLIDAY GIFTING · ORDER BY DEC 5 FOR US CHRISTMAS DELIVERY",
+          "show_countdown": false,
+          "marquee": "COLD OR WARM · ONE CAP | BLACKOUT + SEE-THROUGH MODES | FREE SHIPPING OVER $50 | 30-DAY RETURNS",
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "show_newsletter": true,
+          "news_heading": "Calm notes from Zenligo",
+          "news_text": "Screen-life relief tips, new arrivals and subscriber-only offers. No spam.",
+          "tagline": "Calm tools for screen-heavy lives.",
+          "menu": "footer"
+        }
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "logo_height": 30,
+      "support_email": "support@zenligo.com"
+    }
+  }
+}

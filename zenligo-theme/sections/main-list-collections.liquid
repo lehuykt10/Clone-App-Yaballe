@@ -1,0 +1,9 @@
+<div class="wrap page-pad">
+  <h1 class="page-title">Collections</h1>
+  <div class="grid-cards">
+    {%- for c in collections -%}
+      <a class="pcard" href="{{ c.url }}"><div class="pimg">{%- if c.featured_image -%}{{ c.featured_image | image_url: width: 600 | image_tag: loading: 'lazy' }}{%- endif -%}</div><b>{{ c.title | escape }}</b></a>
+    {%- endfor -%}
+  </div>
+</div>
+{% schema %}{ "name": "Collections list", "settings": [] }{% endschema %}

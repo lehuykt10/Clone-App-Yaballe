@@ -1,0 +1,97 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "sz-product",
+      "blocks": {
+        "acc-5": {
+          "type": "accordion",
+          "settings": {
+            "title": "Shipping",
+            "content": "<p>Every order ships with tracking. Most US, UK, Canada and Australia orders arrive in 7–12 business days. You'll get a tracking link by email as soon as your order ships. <a href=\"/policies/shipping-policy\">Full shipping policy</a></p>"
+          }
+        },
+        "acc-6": {
+          "type": "accordion",
+          "settings": {
+            "title": "Returns",
+            "content": "<p>Changed your mind? Return it within 30 days of delivery. If it arrives damaged or faulty, email a photo to support@zenligo.com and we'll send a replacement or refund you. <a href=\"/policies/refund-policy\">Refund policy</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "acc-5",
+        "acc-6"
+      ],
+      "settings": {
+        "stock_line": "",
+        "rating_text": "",
+        "notice": "",
+        "bundle_heading": "Choose your pack",
+        "show_timer": false,
+        "default_tier": 2,
+        "gift_text": "",
+        "swatches": "Calm Blue:#6f8fd0",
+        "show_size_link": false,
+        "show_description": true,
+        "sticky_label": "Add to cart",
+        "trust_1": "Free shipping over $50",
+        "trust_2": "Secure checkout",
+        "trust_3": "30-day returns",
+        "tier_1_qty": 1,
+        "tier_1_discount": 0,
+        "tier_1_label": "1 item",
+        "tier_1_badge": "",
+        "tier_2_qty": 2,
+        "tier_2_discount": 7.5,
+        "tier_2_label": "2 items",
+        "tier_2_badge": "",
+        "tier_3_qty": 0,
+        "tier_3_discount": 0,
+        "tier_3_label": "",
+        "tier_3_badge": ""
+      }
+    },
+    "faq": {
+      "type": "sz-faq-contact",
+      "blocks": {
+        "q-7": {
+          "type": "question",
+          "settings": {
+            "question": "When will my order arrive?",
+            "answer": "<p>Most US, UK, Canada and Australia orders arrive in 7–12 business days. You'll get a tracking link by email as soon as it ships.</p>"
+          }
+        },
+        "q-8": {
+          "type": "question",
+          "settings": {
+            "question": "What if I'm not happy with it?",
+            "answer": "<p>Contact support@zenligo.com within 30 days of delivery and we'll help with a return. If it arrives damaged or faulty, we'll replace it or refund you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q-7",
+        "q-8"
+      ],
+      "settings": {
+        "heading": "Good to know",
+        "open_first": true,
+        "show_contact": true,
+        "tracking_url": "https://t.17track.net/en#nums="
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faq"
+  ]
+}

@@ -1,0 +1,431 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "sz-product",
+      "blocks": {
+        "perk-1": {
+          "type": "perk",
+          "settings": {
+            "text": "360° cold or warm comfort: forehead, temples, eyes and the back of your head"
+          }
+        },
+        "perk-2": {
+          "type": "perk",
+          "settings": {
+            "text": "2-in-1: pull down for total darkness, flip up to see your screen"
+          }
+        },
+        "perk-3": {
+          "type": "perk",
+          "settings": {
+            "text": "Soft stretch fabric with a ponytail opening. No straps, no Velcro"
+          }
+        },
+        "acc-1": {
+          "type": "accordion",
+          "settings": {
+            "title": "What's in the box",
+            "content": "<ul><li>1 × Zenligo Calm Cap with built-in gel panels</li><li>1 × quick-start card</li></ul>"
+          }
+        },
+        "acc-2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Size & fit",
+            "content": "<p>One size, stretch fabric. Laid flat it measures 16.5 cm across the top, 22.5 cm across the bottom and 17 cm tall, and it stretches to fit most adult heads. There's an opening at the top for a ponytail or bun.</p>"
+          }
+        },
+        "acc-3": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to chill or warm it",
+            "content": "<p><strong>Cold:</strong> refrigerate for 1–2 hours for a gentle chill, or freeze for 30–60 minutes for a stronger one. If it feels too cold, let it rest for a minute first.</p><p><strong>Warm:</strong> follow the heating instructions on the quick-start card.</p>"
+          }
+        },
+        "acc-4": {
+          "type": "accordion",
+          "settings": {
+            "title": "Care",
+            "content": "<p>Wipe the surface with a damp cloth and let it air-dry. Don't machine-wash or tumble-dry the gel cap.</p>"
+          }
+        },
+        "acc-5": {
+          "type": "accordion",
+          "settings": {
+            "title": "Shipping",
+            "content": "<p>Every order ships with tracking. Most US, UK, Canada and Australia orders arrive in 7–12 business days. You'll get a tracking link by email as soon as your order ships. <a href=\"/policies/shipping-policy\">Full shipping policy</a></p>"
+          }
+        },
+        "acc-6": {
+          "type": "accordion",
+          "settings": {
+            "title": "Returns",
+            "content": "<p>Changed your mind? Return it within 30 days of delivery. If it arrives damaged or faulty, email a photo to support@zenligo.com and we'll send a replacement or refund you. <a href=\"/policies/refund-policy\">Refund policy</a></p>"
+          }
+        },
+        "acc-7": {
+          "type": "accordion",
+          "settings": {
+            "title": "Safety",
+            "content": "<p>For comfort and relaxation only. The Calm Cap is not intended to diagnose, treat, cure or prevent any disease. Use for up to 20 minutes at a time, don't apply to broken or irritated skin, and supervise children. If you have frequent or severe headaches, talk to a healthcare professional.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "perk-1",
+        "perk-2",
+        "perk-3",
+        "acc-1",
+        "acc-2",
+        "acc-3",
+        "acc-4",
+        "acc-5",
+        "acc-6",
+        "acc-7"
+      ],
+      "settings": {
+        "stock_line": "COLD OR WARM · 2-IN-1",
+        "rating_text": "",
+        "notice": "🎄 Order by Dec 5 for estimated US Christmas delivery.",
+        "bundle_heading": "Choose your pack",
+        "show_timer": false,
+        "default_tier": 2,
+        "gift_text": "",
+        "swatches": "Calm Blue:#6f8fd0",
+        "show_size_link": false,
+        "show_description": false,
+        "sticky_label": "Add to cart",
+        "trust_1": "Free shipping over $50",
+        "trust_2": "Secure checkout",
+        "trust_3": "30-day returns",
+        "tier_1_qty": 1,
+        "tier_1_discount": 0,
+        "tier_1_label": "1 Calm Cap",
+        "tier_1_badge": "",
+        "tier_2_qty": 2,
+        "tier_2_discount": 7.5,
+        "tier_2_label": "2 Calm Caps · one for you, one to gift",
+        "tier_2_badge": "GIFT PACK",
+        "tier_3_qty": 0,
+        "tier_3_discount": 0,
+        "tier_3_label": "",
+        "tier_3_badge": "",
+        "product": "calm-cap"
+      }
+    },
+    "band": {
+      "type": "sz-band",
+      "settings": {
+        "before": "Heavy-head days,",
+        "circled": "softened",
+        "after": "",
+        "text": "Cool comfort for your whole head. Eyes open when you need them."
+      }
+    },
+    "story": {
+      "type": "sz-story",
+      "settings": {
+        "image_right": false,
+        "eyebrow": "Why we made it",
+        "heading": "Rest your head. Keep your",
+        "circled": "day",
+        "text": "<p>Most ice packs slide off, cover one spot, and leave you lying still in the dark until they warm up.</p><p>The Calm Cap wraps soft gel all the way around your head: forehead, temples, eyes and the back of the neck line. Pull the eye panel down for total darkness. Flip it up and the cool stays on while you answer emails, watch the kids or finish your coffee.</p><p>Chill it, slip it on, breathe out. That's it.</p>"
+      }
+    },
+    "modes": {
+      "type": "sz-steps",
+      "blocks": {
+        "m-1": {
+          "type": "item",
+          "settings": {
+            "title": "🌙 Blackout mode",
+            "text": "Pull the cap all the way down. Total darkness for lying down, a quiet nap or a few minutes to yourself."
+          }
+        },
+        "m-2": {
+          "type": "item",
+          "settings": {
+            "title": "👀 See-through mode",
+            "text": "Flip the eye panel up. Keep the cool on while you work, scroll or keep an eye on the kids."
+          }
+        }
+      },
+      "block_order": [
+        "m-1",
+        "m-2"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "Two modes, one cap",
+        "numbered": false,
+        "background": "sky-mist"
+      }
+    },
+    "hotspots": {
+      "type": "sz-hotspots",
+      "blocks": {
+        "h-1": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Flip-up eye panel",
+            "x": 50,
+            "y": 55,
+            "text": "Pull down for total darkness, flip up to see. The cool stays on either way."
+          }
+        },
+        "h-2": {
+          "type": "hotspot",
+          "settings": {
+            "title": "360° gel panels",
+            "x": 30,
+            "y": 40,
+            "text": "Soft gel wraps your forehead, temples and the back of your head."
+          }
+        },
+        "h-3": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Ponytail opening",
+            "x": 50,
+            "y": 8,
+            "text": "Room for a bun or ponytail, so the cap sits flat."
+          }
+        },
+        "h-4": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Stretch fabric",
+            "x": 75,
+            "y": 45,
+            "text": "Soft, stretchy cover that hugs your head without straps or Velcro."
+          }
+        }
+      },
+      "block_order": [
+        "h-1",
+        "h-2",
+        "h-3",
+        "h-4"
+      ],
+      "settings": {
+        "eyebrow": "Designed for real days",
+        "heading": "Every detail, explained"
+      }
+    },
+    "hotcold": {
+      "type": "sz-steps",
+      "blocks": {
+        "c-1": {
+          "type": "item",
+          "settings": {
+            "title": "❄️ Cold",
+            "text": "Refrigerate 1–2 hours (or freeze 30–60 minutes). Feels great on tense, heavy-head days, puffy mornings and the morning after a long night."
+          }
+        },
+        "c-2": {
+          "type": "item",
+          "settings": {
+            "title": "🔥 Warm",
+            "text": "Warm it following the quick-start card. Feels great for tight, tired muscles and winding down before bed."
+          }
+        }
+      },
+      "block_order": [
+        "c-1",
+        "c-2"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "Hot or cold, your call",
+        "numbered": false,
+        "background": "paper"
+      }
+    },
+    "days": {
+      "type": "sz-steps",
+      "blocks": {
+        "d-1": {
+          "type": "item",
+          "settings": {
+            "title": "Long screen days",
+            "text": "When the day ends with a heavy head and tired eyes."
+          }
+        },
+        "d-2": {
+          "type": "item",
+          "settings": {
+            "title": "\"I still have to work\"",
+            "text": "Cool comfort with your eyes free to see the screen."
+          }
+        },
+        "d-3": {
+          "type": "item",
+          "settings": {
+            "title": "Quiet, dark naps",
+            "text": "Instant blackout, anywhere."
+          }
+        },
+        "d-4": {
+          "type": "item",
+          "settings": {
+            "title": "Puffy mornings",
+            "text": "A cool start before the day begins."
+          }
+        }
+      },
+      "block_order": [
+        "d-1",
+        "d-2",
+        "d-3",
+        "d-4"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "Made for days like these",
+        "numbered": false,
+        "background": "sun-soft"
+      }
+    },
+    "how": {
+      "type": "sz-steps",
+      "blocks": {
+        "s-1": {
+          "type": "item",
+          "settings": {
+            "title": "Chill or warm",
+            "text": "Fridge for a gentle chill, freezer for a stronger one, or warm it."
+          }
+        },
+        "s-2": {
+          "type": "item",
+          "settings": {
+            "title": "Slip it on",
+            "text": "Pull it over your head. Eye panel down for darkness, up to see."
+          }
+        },
+        "s-3": {
+          "type": "item",
+          "settings": {
+            "title": "Relax 15–20 min",
+            "text": "Breathe out. Re-chill between sessions and repeat when you need it."
+          }
+        }
+      },
+      "block_order": [
+        "s-1",
+        "s-2",
+        "s-3"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "Calm in three steps",
+        "numbered": true,
+        "background": "paper"
+      }
+    },
+    "faq": {
+      "type": "sz-faq-contact",
+      "blocks": {
+        "q-1": {
+          "type": "question",
+          "settings": {
+            "question": "How long does it stay cold?",
+            "answer": "<p>Each session lasts about 15–20 minutes. Re-chill it between uses. Many people keep it in the fridge so it's always ready.</p>"
+          }
+        },
+        "q-2": {
+          "type": "question",
+          "settings": {
+            "question": "Can I see while wearing it?",
+            "answer": "<p>Yes. Flip the eye panel up and you can read, type or watch a screen while the rest of the cap keeps cooling.</p>"
+          }
+        },
+        "q-3": {
+          "type": "question",
+          "settings": {
+            "question": "Is it too cold straight from the freezer?",
+            "answer": "<p>It can be. For a gentler chill, use the fridge, or let it rest for a minute before putting it on.</p>"
+          }
+        },
+        "q-4": {
+          "type": "question",
+          "settings": {
+            "question": "Will it fit me?",
+            "answer": "<p>It's one size with stretch fabric and fits most adult heads. There's an opening at the top for a ponytail or bun.</p>"
+          }
+        },
+        "q-5": {
+          "type": "question",
+          "settings": {
+            "question": "Can I sleep in it?",
+            "answer": "<p>It's made for short relaxation sessions of up to 20 minutes. Take it off before you fall asleep for the night.</p>"
+          }
+        },
+        "q-6": {
+          "type": "question",
+          "settings": {
+            "question": "How do I clean it?",
+            "answer": "<p>Wipe it with a damp cloth and let it air-dry. Don't machine-wash or tumble-dry it.</p>"
+          }
+        },
+        "q-7": {
+          "type": "question",
+          "settings": {
+            "question": "When will my order arrive?",
+            "answer": "<p>Most US, UK, Canada and Australia orders arrive in 7–12 business days. You'll get a tracking link by email as soon as it ships.</p>"
+          }
+        },
+        "q-8": {
+          "type": "question",
+          "settings": {
+            "question": "What if I'm not happy with it?",
+            "answer": "<p>Contact support@zenligo.com within 30 days of delivery and we'll help with a return. If it arrives damaged or faulty, we'll replace it or refund you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q-1",
+        "q-2",
+        "q-3",
+        "q-4",
+        "q-5",
+        "q-6",
+        "q-7",
+        "q-8"
+      ],
+      "settings": {
+        "heading": "Good to know",
+        "open_first": true,
+        "show_contact": true,
+        "tracking_url": "https://t.17track.net/en#nums="
+      }
+    },
+    "reviews": {
+      "type": "sz-testimonials",
+      "settings": {
+        "heading": "What our customers say"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "band",
+    "story",
+    "modes",
+    "hotspots",
+    "hotcold",
+    "days",
+    "how",
+    "faq",
+    "reviews"
+  ]
+}
