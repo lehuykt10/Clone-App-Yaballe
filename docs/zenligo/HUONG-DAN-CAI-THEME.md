@@ -20,7 +20,7 @@ Products → Add product:
 | Price | $34.99 · Compare-at: **để trống** (không dùng giá gạch ảo) |
 | Theme template | `product.calm-cap` |
 | Vendor | Zenligo |
-| Weight | điền cân nặng thật (gel ~300–400 g) để tính ship |
+| Weight | **0.82 kg** (gross theo NCC: net 710 g, gross 819 g, hộp màu 28.5×21×3.3 cm) để Shopify tính ship đúng |
 | Media | thứ tự gợi ý: GIF kéo mũ lên-xuống → nền trắng → Blackout → See-through → nóng/lạnh → kích thước → hộp |
 
 ## Bước 3 — Giảm giá gói 2 cái (bắt buộc)
