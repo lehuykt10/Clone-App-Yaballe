@@ -1,0 +1,8 @@
+page_name,domain,start_date,end_date,ad_url,text,countries
+Example Store A,example-a.com,2026-10-05,,https://www.facebook.com/ads/library/?id=EXAMPLE1,"My heavy-head days are finally quieter",US
+Example Store A,example-a.com,2026-11-01,,https://www.facebook.com/ads/library/?id=EXAMPLE2,"POV: you still have to work",US
+Example Store A,example-a.com,2026-11-19,,https://www.facebook.com/ads/library/?id=EXAMPLE3,"The gift she didn't know she needed","US,CA"
+Example Store A,example-a.com,2026-11-20,,https://www.facebook.com/ads/library/?id=EXAMPLE4,"Cool cap, warm cap",US
+Example Store B,example-b.shop,2026-11-15,,https://www.facebook.com/ads/library/?id=EXAMPLE5,"New drop",US
+Example Store B,example-b.shop,2026-11-16,,https://www.facebook.com/ads/library/?id=EXAMPLE6,"New drop 2",US
+Example Store B,example-b.shop,2026-11-17,,https://www.facebook.com/ads/library/?id=EXAMPLE7,"New drop 3",US
