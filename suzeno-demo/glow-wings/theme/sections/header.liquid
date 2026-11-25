@@ -1,0 +1,55 @@
+{%- if section.settings.show_announcement -%}
+<div class="promo">
+  <div class="wrap">
+    <b>{{ section.settings.announcement | escape }}</b>
+    {%- if section.settings.show_countdown -%}
+    <div class="clock" aria-hidden="true">
+      <span><i data-cd-h>00</i>HRS</span><em>:</em>
+      <span><i data-cd-m>00</i>MINS</span><em>:</em>
+      <span><i data-cd-s>00</i>SECS</span>
+    </div>
+    {%- endif -%}
+  </div>
+</div>
+{%- endif -%}
+{%- if section.settings.marquee != blank -%}
+  {%- assign items = section.settings.marquee | split: '|' -%}
+  <div class="marquee" aria-hidden="true"><div>
+    {%- for i in (1..2) -%}{%- for t in items -%}<span>{{ t | strip | escape }}</span>{%- endfor -%}{%- endfor -%}
+  </div></div>
+{%- endif -%}
+<header class="head">
+  <div class="wrap">
+    <button class="icon-btn" id="menuBtn" data-open="#menu" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a class="logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }} home">
+      {%- if settings.logo != blank -%}
+        {{ settings.logo | image_url: width: 400 | image_tag: alt: shop.name }}
+      {%- else -%}
+        <b style="font-family:var(--font-display);font-size:28px;color:var(--ink)">{{ shop.name }}</b>
+      {%- endif -%}
+    </a>
+    <nav class="desk" aria-label="Main">
+      {%- for link in section.settings.menu.links -%}<a href="{{ link.url }}">{{ link.title | escape }}</a>{%- endfor -%}
+    </nav>
+    <a class="icon-btn" href="{{ routes.cart_url }}" data-open="#cart" aria-label="Open cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <span class="badge" id="cartCount"{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+    </a>
+  </div>
+</header>
+<style>.logo img{display:block;height:{{ settings.logo_height }}px;width:auto}</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "checkbox", "id": "show_announcement", "label": "Show announcement bar", "default": true },
+    { "type": "text", "id": "announcement", "label": "Announcement", "default": "RAINY SEASON SALE ENDS IN" },
+    { "type": "checkbox", "id": "show_countdown", "label": "Show countdown (resets at midnight)", "default": true },
+    { "type": "text", "id": "marquee", "label": "Scrolling text", "info": "Separate items with |", "default": "FREE SHIPPING | BOOTS INCLUDED | 3 COLORS | 30-DAY FIT GUARANTEE | XS TO XXL" },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
+  ]
+}
+{% endschema %}

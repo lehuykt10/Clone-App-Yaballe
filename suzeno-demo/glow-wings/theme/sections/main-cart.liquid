@@ -1,0 +1,35 @@
+<div class="wrap narrow page-pad">
+  <h1 class="page-title">Your cart</h1>
+  {%- if cart.item_count > 0 -%}
+    <form action="{{ routes.cart_url }}" method="post" novalidate>
+      <div class="cart-table">
+        {%- for item in cart.items -%}
+          <div class="cart-row">
+            {%- if item.image -%}{{ item.image | image_url: width: 160, height: 160, crop: 'center' | image_tag: alt: item.title }}{%- else -%}<span></span>{%- endif -%}
+            <div>
+              <a href="{{ item.url }}"><b>{{ item.product.title | escape }}</b></a>
+              {%- unless item.product.has_only_default_variant -%}<div class="note" style="text-align:left">{{ item.variant.title | escape }}</div>{%- endunless -%}
+              {%- for d in item.line_level_discount_allocations -%}<div class="note" style="text-align:left;color:var(--ok)">{{ d.discount_application.title | escape }} (−{{ d.amount | money }})</div>{%- endfor -%}
+              <label class="sr" for="Qty-{{ item.key }}">Quantity</label>
+              <input class="field" style="width:76px;padding:8px" type="number" id="Qty-{{ item.key }}" name="updates[]" value="{{ item.quantity }}" min="0">
+              <a class="note" href="{{ item.url_to_remove }}">Remove</a>
+            </div>
+            <b>{{ item.final_line_price | money }}</b>
+          </div>
+        {%- endfor -%}
+      </div>
+      <div class="cart-foot">
+        {%- for d in cart.cart_level_discount_applications -%}<span class="note" style="color:var(--ok)">{{ d.title | escape }} −{{ d.total_allocated_amount | money }}</span>{%- endfor -%}
+        <b style="font-size:20px">Subtotal {{ cart.total_price | money }}</b>
+        <span class="note">{{ settings.cart_note | escape }}</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
+          <button class="btn sun" type="submit" name="update">Update cart</button>
+          <button class="cta" type="submit" name="checkout" style="width:auto;padding-inline:36px">Checkout</button>
+        </div>
+      </div>
+    </form>
+  {%- else -%}
+    <p class="notice">Your cart is empty. <a href="{{ routes.all_products_collection_url }}">Continue shopping</a></p>
+  {%- endif -%}
+</div>
+{% schema %}{ "name": "Cart", "settings": [] }{% endschema %}

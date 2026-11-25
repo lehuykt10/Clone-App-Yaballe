@@ -1,0 +1,11 @@
+<div class="wrap narrow page-pad">
+  <h1 class="page-title">My account</h1>
+  <p><a href="{{ routes.account_logout_url }}">Log out</a> · <a href="{{ routes.account_addresses_url }}">Addresses ({{ customer.addresses_count }})</a></p>
+  <h2 style="margin:24px 0 12px;font-size:20px">Order history</h2>
+  {%- paginate customer.orders by 20 -%}
+    {%- for order in customer.orders -%}
+      <div class="cart-row" style="grid-template-columns:1fr auto auto"><a href="{{ order.customer_url }}"><b>{{ order.name }}</b></a><span>{{ order.created_at | date: '%B %-d, %Y' }} · {{ order.fulfillment_status_label }}</span><b>{{ order.total_price | money }}</b></div>
+    {%- else -%}<p class="notice">You haven't placed any orders yet.</p>{%- endfor -%}
+    {%- if paginate.pages > 1 -%}<nav class="pagination">{{ paginate | default_pagination }}</nav>{%- endif -%}
+  {%- endpaginate -%}
+</div>
