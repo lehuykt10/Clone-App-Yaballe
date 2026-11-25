@@ -1,5 +1,7 @@
 # Ad Library Scout: tìm sản phẩm winning trên Meta Ad Library
 
+**Bản web (không cần cài đặt):** https://claude.ai/artifact/AHFLBQNShF8NFA6QcqLwMa (mã nguồn: `web/ad-library-scout.html`). Bản web nhận JSON từ Graph API Explorer hoặc CSV nhập tay; bản dòng lệnh bên dưới dùng khi cần lấy hàng nghìn quảng cáo.
+
 Tool dòng lệnh (Python 3.9+, không cần cài thêm thư viện) để:
 1. Lấy các quảng cáo **đang chạy trong N ngày gần nhất** theo từ khóa, qua **Meta Ad Library API chính thức**.
 2. Gom quảng cáo theo **nhà quảng cáo / domain store**.

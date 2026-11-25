@@ -1,0 +1,500 @@
+<title>Ad Library Scout</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one working column — tool on top (input → assumptions → ranked results), step-by-step guide below. */
+:root{
+  --bg:#F2F4F6; --surface:#FFFFFF; --sunk:#E8ECF0; --ink:#14181F; --muted:#5A6372; --line:#D5DBE3;
+  --accent:#1F5FBF; --accent-ink:#FFFFFF;
+  --good:#127A55; --good-bg:#DDF3E8; --warn:#9A5B00; --warn-bg:#FCEFD6; --low:#5A6372; --low-bg:#E6EAEF;
+  --danger:#B42318;
+  --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1318; --surface:#171C23; --sunk:#1F262F; --ink:#E7ECF2; --muted:#9AA5B4; --line:#2C3541;
+  --accent:#6EA2F2; --accent-ink:#0B1220;
+  --good:#5BD0A0; --good-bg:#13352A; --warn:#F1B85A; --warn-bg:#3A2A10; --low:#9AA5B4; --low-bg:#242C36;
+  --danger:#F2867B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1318; --surface:#171C23; --sunk:#1F262F; --ink:#E7ECF2; --muted:#9AA5B4; --line:#2C3541;
+  --accent:#6EA2F2; --accent-ink:#0B1220;
+  --good:#5BD0A0; --good-bg:#13352A; --warn:#F1B85A; --warn-bg:#3A2A10; --low:#9AA5B4; --low-bg:#242C36;
+  --danger:#F2867B; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body)}
+.wrap{max-width:1180px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+h1,h2,h3{line-height:1.2;text-wrap:balance;margin:0}
+h1{font-size:clamp(26px,4vw,34px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:20px;font-weight:700}
+h3{font-size:16px;font-weight:600}
+p{margin:0}
+a{color:var(--accent)}
+code,.mono{font-family:var(--f-mono);font-size:.88em}
+.lede{color:var(--muted);max-width:70ch;margin-top:6px}
+.note{color:var(--muted);font-size:13px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px;min-width:0}
+.grid2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:20px}
+@media (max-width:860px){.grid2{grid-template-columns:1fr}}
+label{font-weight:600;font-size:13px;display:grid;gap:5px}
+input,textarea,select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 10px;width:100%;min-width:0}
+textarea{font-family:var(--f-mono);font-size:12.5px;min-height:120px;resize:vertical}
+input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+button{font:inherit;font-weight:600;border-radius:8px;padding:9px 14px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+button:hover{border-color:var(--accent)}
+.status{font-size:13px;color:var(--muted)}
+.status.err{color:var(--danger)}
+.badge-sample{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--warn-bg);color:var(--warn);border-radius:6px;padding:2px 8px}
+.query{background:var(--sunk);border-radius:8px;padding:10px 12px;font-family:var(--f-mono);font-size:12px;overflow-x:auto;white-space:pre-wrap;word-break:break-all}
+.disclaimer{background:var(--warn-bg);color:var(--ink);border-radius:8px;padding:10px 12px;font-size:13px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:900px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;background:var(--sunk);position:sticky;top:0}
+td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.score{display:inline-grid;place-items:center;min-width:42px;padding:3px 8px;border-radius:999px;font-family:var(--f-mono);font-weight:600}
+.s-good{background:var(--good-bg);color:var(--good)} .s-warn{background:var(--warn-bg);color:var(--warn)} .s-low{background:var(--low-bg);color:var(--low)}
+details.more summary{cursor:pointer;color:var(--accent);font-size:13px}
+details.more ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px;max-width:60ch}
+.kpis{display:flex;flex-wrap:wrap;gap:18px;font-size:13px;color:var(--muted)}
+.kpis b{color:var(--ink);font-family:var(--f-mono);font-size:15px}
+.steps{display:grid;gap:14px;counter-reset:s}
+.step{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:start}
+.step::before{counter-increment:s;content:counter(s);width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:700;font-family:var(--f-mono)}
+.step ol,.step ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.legend div{background:var(--sunk);border-radius:8px;padding:10px 12px;font-size:13px}
+.legend b{display:block;font-family:var(--f-mono);font-size:16px}
+.copy-ok{color:var(--good);font-size:13px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Ad Library Scout</h1>
+    <p class="lede">Tìm store đang có sản phẩm winning trên Meta Ad Library: gom quảng cáo theo store, chấm điểm 0–100 dựa trên số ads đang chạy, số ngày chạy, creative mới và reach, rồi ước tính chi tiêu và số đơn.</p>
+  </header>
+
+  <!-- 1. Query builder + data input -->
+  <section class="grid2">
+    <div class="panel" aria-labelledby="qb-h">
+      <h2 id="qb-h">Tạo câu truy vấn</h2>
+      <p class="note">Điền từ khóa, bấm <b>Copy</b> rồi dán vào Graph API Explorer (xem hướng dẫn bước 3 bên dưới).</p>
+      <label for="q-terms">Từ khóa
+        <input id="q-terms" value="migraine cap" autocomplete="off">
+      </label>
+      <div class="fields">
+        <label for="q-countries">Quốc gia (EU)
+          <input id="q-countries" value="DE,FR,NL,SE,IT,ES" autocomplete="off">
+        </label>
+        <label for="q-days">Trong N ngày
+          <input id="q-days" type="number" min="1" max="365" value="30">
+        </label>
+        <label for="q-limit">Ads mỗi trang
+          <input id="q-limit" type="number" min="25" max="500" value="200">
+        </label>
+      </div>
+      <div class="query" id="q-out" aria-live="polite"></div>
+      <div class="row">
+        <button class="primary" id="q-copy" type="button">Copy truy vấn cho Explorer</button>
+        <span id="q-copied" class="copy-ok" hidden>Đã copy</span>
+      </div>
+      <p class="note">Gõ <code>EU</code> ở ô quốc gia để lấy cả 27 nước EU. API chỉ trả quảng cáo thương mại chạy ở EU.</p>
+    </div>
+
+    <div class="panel" aria-labelledby="in-h">
+      <h2 id="in-h">Nạp dữ liệu</h2>
+      <label for="in-text">Dán JSON từ Explorer / file raw.json, hoặc CSV nhập tay
+        <textarea id="in-text" placeholder='{"data":[ ... ], "paging": { ... }}'></textarea>
+      </label>
+      <div class="row">
+        <button class="primary" id="in-add" type="button">Thêm vào dữ liệu</button>
+        <label for="in-file" style="display:inline-flex;font-weight:600">
+          <input id="in-file" type="file" accept=".json,.csv,.txt" style="width:auto">
+        </label>
+      </div>
+      <div class="row">
+        <button id="in-sample" type="button">Nạp dữ liệu mẫu</button>
+        <button id="in-clear" type="button">Xóa dữ liệu</button>
+      </div>
+      <p id="in-status" class="status" role="status"></p>
+    </div>
+  </section>
+
+  <!-- 2. Assumptions -->
+  <section class="panel" aria-labelledby="as-h">
+    <h2 id="as-h">Giả định ước tính</h2>
+    <div class="fields">
+      <label for="a-aov">AOV (USD)<input id="a-aov" type="number" step="1" value="40"></label>
+      <label for="a-cpm-low">CPM thấp<input id="a-cpm-low" type="number" step="0.5" value="6"></label>
+      <label for="a-cpm-high">CPM cao<input id="a-cpm-high" type="number" step="0.5" value="12"></label>
+      <label for="a-freq">Tần suất<input id="a-freq" type="number" step="0.1" value="1.4"></label>
+      <label for="a-roas-low">ROAS thấp<input id="a-roas-low" type="number" step="0.1" value="1.2"></label>
+      <label for="a-roas-high">ROAS cao<input id="a-roas-high" type="number" step="0.1" value="2.5"></label>
+      <label for="a-dpa-low">$/ad/ngày thấp<input id="a-dpa-low" type="number" step="1" value="10"></label>
+      <label for="a-dpa-high">$/ad/ngày cao<input id="a-dpa-high" type="number" step="1" value="50"></label>
+      <label for="a-min">Tối thiểu ads đang chạy<input id="a-min" type="number" min="1" step="1" value="3"></label>
+    </div>
+    <p class="disclaimer"><b>Đây là ước tính, không phải số thật.</b> Meta không công bố chi tiêu của quảng cáo thương mại. Chi tiêu = reach EU × tần suất × CPM; khi không có reach (CSV nhập tay) thì = số ads × số ngày × $/ad/ngày. Số đơn = chi tiêu × ROAS ÷ AOV. Dùng các con số này để <b>so sánh các store với nhau</b>.</p>
+  </section>
+
+  <!-- 3. Results -->
+  <section class="panel" aria-labelledby="rs-h">
+    <div class="row" style="justify-content:space-between">
+      <h2 id="rs-h">Kết quả <span id="rs-sample" class="badge-sample" hidden>Dữ liệu mẫu, không phải store thật</span></h2>
+      <div class="row">
+        <button id="rs-copy" type="button">Copy CSV (dán vào Google Sheets)</button>
+        <span id="rs-copied" class="copy-ok" hidden>Đã copy</span>
+      </div>
+    </div>
+    <div class="kpis" id="rs-kpis"></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th><th>Điểm</th><th>Store</th><th>Ads đang chạy</th><th>Ngày chạy</th><th>Ads mới 7 ngày</th>
+          <th>Reach EU</th><th>Quốc gia</th><th>Chi tiêu ước tính</th><th>/ngày</th><th>Đơn ước tính</th>
+        </tr></thead>
+        <tbody id="rs-body"></tbody>
+      </table>
+    </div>
+    <div class="legend" aria-label="Cách tính điểm">
+      <div><b>30</b>Số ads đang chạy (30 ads = tối đa)</div>
+      <div><b>25</b>Đã chạy ≥ 30 ngày: thường đang có lãi</div>
+      <div><b>20</b>Ads mới trong 7 ngày: đang scale</div>
+      <div><b>15</b>Reach EU (1 triệu = tối đa)</div>
+      <div><b>10</b>Số quốc gia (≥ 5 = tối đa)</div>
+    </div>
+    <p class="note"><span class="score s-good">≥60</span> nghiên cứu ngay · <span class="score s-warn">40–59</span> đang test/đang lên · <span class="score s-low">&lt;40</span> mới hoặc nhỏ</p>
+  </section>
+
+  <!-- 4. Guide -->
+  <section class="panel" aria-labelledby="gd-h">
+    <h2 id="gd-h">Hướng dẫn từng bước</h2>
+    <div class="steps">
+      <div class="step"><div>
+        <h3>Xác minh danh tính để dùng Ad Library API (một lần)</h3>
+        <ol>
+          <li>Mở <a href="https://www.facebook.com/ID" target="_blank" rel="noopener">facebook.com/ID</a>, đăng nhập Facebook cá nhân.</li>
+          <li>Làm theo hướng dẫn xác minh (giấy tờ tùy thân, xác nhận vị trí). Thường mất từ vài phút đến 1–2 ngày.</li>
+        </ol>
+      </div></div>
+      <div class="step"><div>
+        <h3>Tạo app trên Meta for Developers (một lần)</h3>
+        <ol>
+          <li>Vào <a href="https://developers.facebook.com/apps" target="_blank" rel="noopener">developers.facebook.com/apps</a> → <b>Create App</b>.</li>
+          <li>Chọn mục đích <b>Other</b> → loại app <b>Business</b> → đặt tên, ví dụ "Zenligo Research" → Create.</li>
+          <li>Không cần thêm sản phẩm nào cho app. Chỉ cần app tồn tại để lấy token.</li>
+        </ol>
+      </div></div>
+      <div class="step"><div>
+        <h3>Lấy dữ liệu bằng Graph API Explorer (không cần cài đặt)</h3>
+        <ol>
+          <li>Mở <a href="https://developers.facebook.com/tools/explorer/" target="_blank" rel="noopener">Graph API Explorer</a>.</li>
+          <li>Ở ô <b>Meta App</b>, chọn app vừa tạo → bấm <b>Generate Access Token</b> → đồng ý.</li>
+          <li>Ở phần <b>Tạo câu truy vấn</b> trên trang này, nhập từ khóa → bấm <b>Copy truy vấn cho Explorer</b>.</li>
+          <li>Trong Explorer, xóa ô đường dẫn sau <code>graph.facebook.com/vXX.X/</code>, dán truy vấn vào → bấm <b>Submit</b>.</li>
+          <li>Kết quả JSON hiện ở khung bên phải. Bấm vào khung → <kbd>Ctrl</kbd>+<kbd>A</kbd> → <kbd>Ctrl</kbd>+<kbd>C</kbd>.</li>
+          <li>Nếu cuối kết quả có <code>"paging": { "next": ... }</code>, nghĩa là còn trang sau. Copy đường dẫn <code>next</code>, mở ở tab mới để lấy trang tiếp theo.</li>
+        </ol>
+        <p class="note" style="margin-top:6px">Token từ Explorer hết hạn sau khoảng 1–2 giờ. Khi gặp lỗi "Session has expired", bấm Generate Access Token lại. Không gửi token cho người khác.</p>
+      </div></div>
+      <div class="step"><div>
+        <h3>Dán dữ liệu vào trang này</h3>
+        <ol>
+          <li>Dán JSON vào ô <b>Nạp dữ liệu</b> → bấm <b>Thêm vào dữ liệu</b>. Lặp lại với từng trang; quảng cáo trùng sẽ tự bị loại.</li>
+          <li>Có thể chạy nhiều từ khóa (ví dụ "migraine cap", "headache hat", "ice head wrap"), rồi dán tất cả vào để so sánh chung.</li>
+          <li>Bấm <b>Nạp dữ liệu mẫu</b> nếu chỉ muốn xem tool hoạt động thế nào.</li>
+        </ol>
+      </div></div>
+      <div class="step"><div>
+        <h3>Chỉnh giả định và đọc kết quả</h3>
+        <ul>
+          <li><b>AOV:</b> xem giá bán trên store đối thủ (giá gói phổ biến nhất).</li>
+          <li><b>CPM:</b> EU khoảng $6–12; nếu bạn đang ước tính cho Mỹ, dùng $12–25.</li>
+          <li><b>Tối thiểu ads đang chạy:</b> tăng lên 5–10 để chỉ xem store đang chạy mạnh.</li>
+          <li>Bấm <b>Xem thêm</b> ở mỗi dòng để đọc nội dung quảng cáo và mở link từng quảng cáo.</li>
+          <li><b>Copy CSV</b> rồi dán vào Google Sheets để lưu và theo dõi theo tuần.</li>
+        </ul>
+      </div></div>
+      <div class="step"><div>
+        <h3>Thêm quảng cáo ở Mỹ (nhập tay)</h3>
+        <ol>
+          <li>Mở <a href="https://www.facebook.com/ads/library/" target="_blank" rel="noopener">Ad Library</a> → Country: United States → Ad category: All ads → tìm theo từ khóa hoặc tên store.</li>
+          <li>Ghi mỗi quảng cáo một dòng theo mẫu CSV dưới đây, rồi dán vào ô <b>Nạp dữ liệu</b>.</li>
+        </ol>
+        <div class="query" style="margin-top:8px">page_name,domain,start_date,end_date,ad_url,text,countries
+Store X,storex.com,2026-10-05,,https://www.facebook.com/ads/library/?id=...,"Câu đầu của quảng cáo",US</div>
+        <p class="note" style="margin-top:6px"><code>start_date</code> = ngày "Started running on…" · để trống <code>end_date</code> nếu quảng cáo còn chạy. Không dùng bot cào website Ad Library: vi phạm điều khoản Meta.</p>
+      </div></div>
+      <div class="step"><div>
+        <h3>Lấy số lượng lớn bằng dòng lệnh (tùy chọn)</h3>
+        <p>Khi cần hàng nghìn quảng cáo, dùng bản Python trong repo: thư mục <code>tools/ads_library_scout/</code>. Nó tự lật trang, tự gộp nhiều từ khóa, rồi xuất file <code>raw.json</code>; dán hoặc tải file đó lên trang này.</p>
+        <div class="query" style="margin-top:8px">export META_ACCESS_TOKEN="..."
+python3 tools/ads_library_scout/scout.py fetch --terms "migraine cap" "headache hat" --countries EU --out raw.json</div>
+      </div></div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var FIELDS = ["id","page_id","page_name","ad_creation_time","ad_delivery_start_time","ad_delivery_stop_time",
+    "ad_creative_bodies","ad_creative_link_captions","ad_creative_link_titles","ad_snapshot_url",
+    "publisher_platforms","languages","eu_total_reach","target_locations","age_country_gender_reach_breakdown"];
+  var EU = ["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE"];
+  var DAY = 86400000;
+  var store = { ads: [], ids: new Set(), sample: false };
+
+  function today(){ var d = new Date(); return Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()); }
+  function iso(t){ return new Date(t).toISOString().slice(0,10); }
+  function parseDate(v){
+    if(!v) return null;
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(v));
+    return m ? Date.UTC(+m[1], +m[2]-1, +m[3]) : null;
+  }
+  function esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  function money(x){ return "$" + Math.round(x).toLocaleString("en-US"); }
+  function num(x){ return Math.round(x).toLocaleString("en-US"); }
+
+  /* ---------- query builder ---------- */
+  function countriesList(){
+    var v = $("q-countries").value.trim().toUpperCase();
+    return v === "EU" ? EU : v.split(",").map(function(s){ return s.trim(); }).filter(Boolean);
+  }
+  function buildQuery(){
+    var days = Math.max(1, +$("q-days").value || 30);
+    var params = [
+      ["search_terms", $("q-terms").value.trim()],
+      ["search_type", "KEYWORD_UNORDERED"],
+      ["ad_type", "ALL"],
+      ["ad_reached_countries", JSON.stringify(countriesList())],
+      ["ad_active_status", "ACTIVE"],
+      ["ad_delivery_date_min", iso(today() - days*DAY)],
+      ["fields", FIELDS.join(",")],
+      ["limit", String(Math.min(500, Math.max(25, +$("q-limit").value || 200)))]
+    ];
+    return "ads_archive?" + params.map(function(p){ return p[0] + "=" + encodeURIComponent(p[1]); }).join("&");
+  }
+  function renderQuery(){ $("q-out").textContent = buildQuery(); }
+  ["q-terms","q-countries","q-days","q-limit"].forEach(function(id){ $(id).addEventListener("input", renderQuery); });
+
+  function copyText(text, okEl, fallbackEl){
+    var show = function(){ okEl.hidden = false; setTimeout(function(){ okEl.hidden = true; }, 1800); };
+    var fallback = function(){
+      if(!fallbackEl) return;
+      var r = document.createRange(); r.selectNodeContents(fallbackEl);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    };
+    try {
+      navigator.clipboard.writeText(text).then(show, fallback);
+    } catch(e){ fallback(); }
+  }
+  $("q-copy").addEventListener("click", function(){ copyText(buildQuery(), $("q-copied"), $("q-out")); });
+
+  /* ---------- input parsing ---------- */
+  function parseCSV(text){
+    var rows = [], row = [], cell = "", q = false;
+    for (var i = 0; i < text.length; i++){
+      var c = text[i];
+      if (q){
+        if (c === '"'){ if (text[i+1] === '"'){ cell += '"'; i++; } else q = false; }
+        else cell += c;
+      } else if (c === '"') q = true;
+      else if (c === ","){ row.push(cell); cell = ""; }
+      else if (c === "\n" || c === "\r"){
+        if (c === "\r" && text[i+1] === "\n") i++;
+        row.push(cell); cell = ""; if (row.some(function(x){ return x.trim(); })) rows.push(row); row = [];
+      } else cell += c;
+    }
+    row.push(cell); if (row.some(function(x){ return x.trim(); })) rows.push(row);
+    if (!rows.length) return [];
+    var head = rows[0].map(function(h){ return h.trim().toLowerCase().replace(/^﻿/, ""); });
+    if (head.indexOf("page_name") < 0 || head.indexOf("start_date") < 0) throw new Error("CSV cần các cột page_name, domain, start_date, end_date, ad_url, text, countries.");
+    return rows.slice(1).map(function(r, i){
+      var o = {}; head.forEach(function(h, k){ o[h] = (r[k] || "").trim(); });
+      return {
+        id: "manual-" + (o.ad_url || (o.page_name + "-" + o.start_date + "-" + i)),
+        page_name: o.page_name,
+        ad_creative_link_captions: o.domain ? [o.domain] : [],
+        ad_delivery_start_time: o.start_date || null,
+        ad_delivery_stop_time: o.end_date || null,
+        ad_snapshot_url: o.ad_url || "",
+        ad_creative_bodies: o.text ? [o.text] : [],
+        target_locations: (o.countries || "").split(",").map(function(c){ return c.trim(); }).filter(Boolean).map(function(c){ return { name: c }; })
+      };
+    });
+  }
+  function parseInput(text){
+    text = text.trim();
+    if (!text) throw new Error("Chưa có dữ liệu để thêm.");
+    if (text[0] === "{" || text[0] === "["){
+      var j = JSON.parse(text);
+      if (j && j.error) throw new Error("API trả lỗi: " + (j.error.message || "không rõ") + ". Kiểm tra lại token hoặc truy vấn.");
+      var ads = Array.isArray(j) ? j : (j.data || []);
+      if (!Array.isArray(ads)) throw new Error("Không tìm thấy danh sách quảng cáo trong JSON.");
+      return ads;
+    }
+    return parseCSV(text);
+  }
+  function addAds(ads, isSample){
+    if (store.sample && !isSample){ store.ads = []; store.ids = new Set(); store.sample = false; }
+    var added = 0;
+    ads.forEach(function(ad){
+      var id = ad.id || JSON.stringify(ad).slice(0, 200);
+      if (store.ids.has(id)) return;
+      store.ids.add(id); store.ads.push(ad); added++;
+    });
+    if (isSample) store.sample = true;
+    return added;
+  }
+  function setStatus(msg, err){ var s = $("in-status"); s.textContent = msg; s.className = "status" + (err ? " err" : ""); }
+  $("in-add").addEventListener("click", function(){
+    try {
+      var ads = parseInput($("in-text").value);
+      var n = addAds(ads, false);
+      setStatus("Đã thêm " + n + " quảng cáo mới (" + (ads.length - n) + " trùng). Tổng: " + store.ads.length + ".");
+      $("in-text").value = "";
+      render();
+    } catch(e){ setStatus(e.message.indexOf("JSON") >= 0 && e instanceof SyntaxError ? "JSON không hợp lệ. Hãy copy toàn bộ kết quả trong Explorer (Ctrl+A)." : e.message, true); }
+  });
+  $("in-file").addEventListener("change", function(e){
+    var f = e.target.files && e.target.files[0]; if (!f) return;
+    var r = new FileReader();
+    r.onload = function(){ $("in-text").value = r.result; $("in-add").click(); e.target.value = ""; };
+    r.readAsText(f);
+  });
+  $("in-clear").addEventListener("click", function(){ store = { ads: [], ids: new Set(), sample: false }; setStatus("Đã xóa dữ liệu."); render(); });
+  $("in-sample").addEventListener("click", function(){ store = { ads: [], ids: new Set(), sample: false }; addAds(sampleAds(), true); setStatus("Đang hiển thị dữ liệu mẫu."); render(); });
+
+  /* ---------- analysis (same model as tools/ads_library_scout/analyze.py) ---------- */
+  var DOMAIN_RE = /^(?:https?:\/\/)?(?:www\.)?([a-z0-9-]+(?:\.[a-z0-9-]+)+)(?:\/.*)?$/;
+  function domainOf(ad){
+    var caps = ad.ad_creative_link_captions || [];
+    for (var i = 0; i < caps.length; i++){ var m = DOMAIN_RE.exec(String(caps[i]).trim().toLowerCase()); if (m) return m[1]; }
+    return "";
+  }
+  function countriesOf(ad){
+    var out = new Set();
+    (ad.age_country_gender_reach_breakdown || []).forEach(function(r){ if (r.country) out.add(r.country); });
+    if (!out.size) (ad.target_locations || []).forEach(function(l){ if (!l.excluded && l.name) out.add(l.name); });
+    return out;
+  }
+  function assumptions(){
+    var v = function(id, d){ var x = parseFloat($(id).value); return isFinite(x) && x > 0 ? x : d; };
+    return { aov: v("a-aov",40), cpmLow: v("a-cpm-low",6), cpmHigh: v("a-cpm-high",12), freq: v("a-freq",1.4),
+      roasLow: v("a-roas-low",1.2), roasHigh: v("a-roas-high",2.5), dpaLow: v("a-dpa-low",10), dpaHigh: v("a-dpa-high",50),
+      minActive: Math.max(1, Math.round(v("a-min",3))) };
+  }
+  function analyze(ads, a, now){
+    var groups = {};
+    ads.forEach(function(ad){
+      var dom = domainOf(ad), page = ad.page_name || "(không rõ trang)";
+      var key = dom || ("page:" + (ad.page_id || page));
+      (groups[key] = groups[key] || { key: key, page: page, domain: dom, ads: [] }).ads.push(ad);
+    });
+    var out = Object.keys(groups).map(function(k){
+      var g = groups[k];
+      var active = g.ads.filter(function(ad){ var s = parseDate(ad.ad_delivery_stop_time); return s === null || s >= now; });
+      var starts = (active.length ? active : g.ads).map(function(ad){ return parseDate(ad.ad_delivery_start_time); }).filter(function(x){ return x !== null; });
+      g.active = active.length; g.total = g.ads.length;
+      g.days = starts.length ? Math.round((now - Math.min.apply(null, starts)) / DAY) : 0;
+      g.fresh = starts.filter(function(s){ return (now - s) / DAY <= 7; }).length;
+      g.reach = g.ads.reduce(function(s, ad){ return s + (parseInt(ad.eu_total_reach, 10) || 0); }, 0);
+      var cs = new Set(), texts = [], links = [];
+      g.ads.forEach(function(ad){
+        countriesOf(ad).forEach(function(c){ cs.add(c); });
+        (ad.ad_creative_bodies || []).forEach(function(b){ var t = String(b).replace(/\s+/g, " ").trim().slice(0, 160); if (t && texts.indexOf(t) < 0 && texts.length < 3) texts.push(t); });
+        if (ad.ad_snapshot_url && links.length < 5) links.push(ad.ad_snapshot_url);
+      });
+      g.countries = Array.from(cs).sort(); g.texts = texts; g.links = links;
+      if (g.reach > 0){
+        var imp = g.reach * a.freq;
+        g.spendLow = imp / 1000 * a.cpmLow; g.spendHigh = imp / 1000 * a.cpmHigh; g.method = "reach";
+      } else {
+        var adDays = 0;
+        g.ads.forEach(function(ad){
+          var s = parseDate(ad.ad_delivery_start_time); if (s === null) return;
+          var e = parseDate(ad.ad_delivery_stop_time); e = e === null ? now : Math.min(e, now);
+          adDays += Math.max(1, Math.round((e - s) / DAY));
+        });
+        g.spendLow = adDays * a.dpaLow; g.spendHigh = adDays * a.dpaHigh; g.method = "ads × ngày";
+      }
+      var d = Math.max(1, g.days);
+      g.dailyLow = g.spendLow / d; g.dailyHigh = g.spendHigh / d;
+      g.ordersLow = Math.floor(g.spendLow * a.roasLow / a.aov); g.ordersHigh = Math.floor(g.spendHigh * a.roasHigh / a.aov);
+      g.score = Math.round(Math.min(g.active, 30) / 30 * 30 + Math.min(g.days, 30) / 30 * 25 + Math.min(g.fresh, 5) / 5 * 20
+        + Math.min(Math.log10(g.reach + 1) / 6, 1) * 15 + Math.min(g.countries.length, 5) / 5 * 10);
+      return g;
+    }).filter(function(g){ return g.active >= a.minActive; });
+    out.sort(function(x, y){ return (y.score - x.score) || (y.active - x.active) || (y.reach - x.reach); });
+    return out;
+  }
+
+  /* ---------- render ---------- */
+  var lastGroups = [];
+  function scoreClass(s){ return s >= 60 ? "s-good" : s >= 40 ? "s-warn" : "s-low"; }
+  function render(){
+    var a = assumptions(), now = today();
+    var groups = lastGroups = analyze(store.ads, a, now);
+    $("rs-sample").hidden = !store.sample;
+    $("rs-kpis").innerHTML = store.ads.length
+      ? "<span>Quảng cáo: <b>" + num(store.ads.length) + "</b></span><span>Store đạt ngưỡng: <b>" + groups.length + "</b></span><span>Điểm ≥ 60: <b>" + groups.filter(function(g){ return g.score >= 60; }).length + "</b></span>"
+      : "<span>Chưa có dữ liệu. Làm theo hướng dẫn bên dưới hoặc bấm <b>Nạp dữ liệu mẫu</b>.</span>";
+    if (!groups.length){
+      $("rs-body").innerHTML = '<tr><td colspan="11" class="note">' + (store.ads.length ? "Không store nào có từ " + a.minActive + " ads đang chạy trở lên. Giảm ô \"Tối thiểu ads đang chạy\"." : "Bảng sẽ hiện các store xếp theo điểm sau khi bạn nạp dữ liệu.") + "</td></tr>";
+      return;
+    }
+    $("rs-body").innerHTML = groups.slice(0, 200).map(function(g, i){
+      var more = (g.texts.length || g.links.length)
+        ? '<details class="more"><summary>Xem thêm</summary><ul>' + g.texts.map(function(t){ return "<li>“" + esc(t) + "”</li>"; }).join("")
+          + g.links.slice(0, 3).map(function(u, k){ return '<li><a href="' + esc(u) + '" target="_blank" rel="noopener">Mở quảng cáo ' + (k + 1) + "</a></li>"; }).join("") + "</ul></details>"
+        : "";
+      return "<tr><td class=num>" + (i + 1) + '</td><td><span class="score ' + scoreClass(g.score) + '">' + g.score + "</span></td>"
+        + "<td><b>" + esc(g.page) + '</b><div class="note">' + esc(g.domain || "không rõ domain") + "</div>" + more + "</td>"
+        + "<td class=num>" + g.active + " / " + g.total + "</td><td class=num>" + g.days + "</td><td class=num>" + g.fresh + "</td>"
+        + "<td class=num>" + num(g.reach) + "</td><td>" + esc(g.countries.join(", ") || "-") + "</td>"
+        + "<td class=num>" + money(g.spendLow) + "–" + money(g.spendHigh) + '<div class="note">' + g.method + "</div></td>"
+        + "<td class=num>" + money(g.dailyLow) + "–" + money(g.dailyHigh) + "</td>"
+        + "<td class=num>" + num(g.ordersLow) + "–" + num(g.ordersHigh) + "</td></tr>";
+    }).join("");
+  }
+  document.querySelectorAll('[id^="a-"]').forEach(function(el){ el.addEventListener("input", render); });
+
+  $("rs-copy").addEventListener("click", function(){
+    var q = function(s){ s = String(s == null ? "" : s); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+    var rows = [["rank","score","store","domain","active_ads","total_ads","days_running","new_last_7d","eu_reach","countries","spend_method","spend_low_usd","spend_high_usd","daily_low_usd","daily_high_usd","orders_low","orders_high","sample_text","ad_links"]];
+    lastGroups.forEach(function(g, i){
+      rows.push([i + 1, g.score, g.page, g.domain, g.active, g.total, g.days, g.fresh, g.reach, g.countries.join(" "), g.method,
+        Math.round(g.spendLow), Math.round(g.spendHigh), Math.round(g.dailyLow), Math.round(g.dailyHigh), g.ordersLow, g.ordersHigh, g.texts.join(" | "), g.links.join(" ")]);
+    });
+    copyText(rows.map(function(r){ return r.map(q).join(","); }).join("\n"), $("rs-copied"), null);
+  });
+
+  /* ---------- sample data (fictional stores, clearly labelled) ---------- */
+  function sampleAds(){
+    var now = today(), ads = [], n = 0;
+    function mk(page, dom, ago, reach, cs, text){
+      ads.push({ id: "sample-" + (++n), page_id: page, page_name: page, ad_creative_link_captions: [dom],
+        ad_delivery_start_time: iso(now - ago * DAY), ad_delivery_stop_time: null, eu_total_reach: reach,
+        ad_creative_bodies: [text], ad_snapshot_url: "", publisher_platforms: ["facebook","instagram"],
+        age_country_gender_reach_breakdown: cs.map(function(c){ return { country: c }; }) });
+    }
+    for (var i = 0; i < 14; i++) mk("Example Calm Co", "EXAMPLECALM.COM", i < 4 ? 3 + i : 20 + i * 3, 60000 + i * 4000, ["DE","FR","NL","SE"], ["Cool comfort for heavy-head days","Flip it up, keep working","The gift for the screen-tired"][i % 3]);
+    for (var j = 0; j < 6; j++) mk("Example Head Lab", "examplehead.shop", 9 + j * 2, 9000 + j * 1500, ["DE","IT"], "New: 2-in-1 cooling hood");
+    for (var k = 0; k < 4; k++) mk("Example Newcomer", "newcomer.example", 2 + k, 800, ["FR"], "Just launched");
+    return ads;
+  }
+
+  renderQuery();
+  addAds(sampleAds(), true);
+  setStatus("Đang hiển thị dữ liệu mẫu. Dán dữ liệu thật để thay thế.");
+  render();
+})();
+</script>
