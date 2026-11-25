@@ -10,8 +10,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from ads_library import AdLibraryError, build_url, fetch_ads  # noqa: E402
-from analyze import (Assumptions, ads_from_manual_csv, analyze, domain_of,  # noqa: E402
-                     write_csv, write_markdown)
+from analyze import (Assumptions, ads_from_library_text, ads_from_manual_csv, analyze,  # noqa: E402
+                     domain_of, us_library_url, write_csv, write_markdown)
 
 TODAY = date(2026, 11, 23)
 
@@ -100,6 +100,77 @@ class AnalyzeTests(unittest.TestCase):
             write_csv([g], Path(tmp) / "r.csv")
             write_markdown([g], Path(tmp) / "r.md", Assumptions(), today=TODAY)
             self.assertIn("usshop.com", (Path(tmp) / "r.md").read_text(encoding="utf-8"))
+
+
+LIBRARY_TEXT = """Filters
+Active
+Library ID: 1234567890123
+Started running on Oct 5, 2026
+Platforms
+This ad has multiple versions
+See summary details
+Cool Head Co
+Sponsored
+My heavy-head days are quieter now
+COOLHEAD.COM
+Cool comfort cap
+Shop now
+3 ads use this creative and text
+Active
+Library ID: 2234567890123
+Started running on Nov 20, 2026
+Platforms
+See ad details
+Cool Head Co
+Sponsored
+Flip it up and keep working
+coolhead.com
+Shop now
+Inactive
+Library ID: 3234567890123
+Sep 1, 2026 - Oct 10, 2026
+Platforms
+See ad details
+Old Brand
+Sponsored
+Last season's offer
+oldbrand.store
+Shop now
+"""
+
+
+class LibraryTextTests(unittest.TestCase):
+    def test_parse_cards(self):
+        ads = ads_from_library_text(LIBRARY_TEXT)
+        self.assertEqual(len(ads), 3 + 1 + 1)
+        first = ads[0]
+        self.assertEqual(first["page_name"], "Cool Head Co")
+        self.assertEqual(first["ad_creative_link_captions"], ["coolhead.com"])
+        self.assertEqual(first["ad_delivery_start_time"], "2026-10-05")
+        self.assertIsNone(first["ad_delivery_stop_time"])
+        self.assertEqual(first["ad_creative_bodies"], ["My heavy-head days are quieter now"])
+        self.assertEqual(first["ad_snapshot_url"], "https://www.facebook.com/ads/library/?id=1234567890123")
+        self.assertEqual(first["target_locations"], [{"name": "US"}])
+        old = ads[-1]
+        self.assertEqual((old["ad_delivery_start_time"], old["ad_delivery_stop_time"]), ("2026-09-01", "2026-10-10"))
+
+    def test_analysis_of_library_text(self):
+        groups = analyze(ads_from_library_text(LIBRARY_TEXT), Assumptions(), today=TODAY)
+        self.assertEqual([g.key for g in groups], ["coolhead.com"])
+        g = groups[0]
+        self.assertEqual((g.active_ads, g.days_running, g.new_last_7d), (4, 49, 1))
+        self.assertEqual(g.spend_method, "ads x days")
+
+    def test_vietnamese_dates(self):
+        text = "Đang hoạt động\nID thư viện: 9234567890123\nBắt đầu chạy vào 5 thg 10, 2026\nShop VN\nĐược tài trợ\nXin chào\nshopvn.com\n"
+        ad = ads_from_library_text(text)[0]
+        self.assertEqual((ad["page_name"], ad["ad_delivery_start_time"]), ("Shop VN", "2026-10-05"))
+
+    def test_us_link(self):
+        url = us_library_url("migraine cap", days=30, today=TODAY)
+        q = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
+        self.assertEqual((q["country"], q["q"], q["active_status"]), (["US"], ["migraine cap"], ["active"]))
+        self.assertEqual(q["start_date[min]"], [d(30)])
 
 
 class FakeResponse(io.BytesIO):

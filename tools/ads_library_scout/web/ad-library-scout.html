@@ -25,6 +25,7 @@
   --good:#5BD0A0; --good-bg:#13352A; --warn:#F1B85A; --warn-bg:#3A2A10; --low:#9AA5B4; --low-bg:#242C36;
   --danger:#F2867B; color-scheme:dark}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body)}
 .wrap{max-width:1180px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
 h1,h2,h3{line-height:1.2;text-wrap:balance;margin:0}
@@ -36,7 +37,7 @@ a{color:var(--accent)}
 code,.mono{font-family:var(--f-mono);font-size:.88em}
 .lede{color:var(--muted);max-width:70ch;margin-top:6px}
 .note{color:var(--muted);font-size:13px}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px;min-width:0}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px;align-content:start;min-width:0}
 .grid2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:20px}
 @media (max-width:860px){.grid2{grid-template-columns:1fr}}
 label{font-weight:600;font-size:13px;display:grid;gap:5px}
@@ -72,6 +73,15 @@ details.more ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px;max-width:
 .legend div{background:var(--sunk);border-radius:8px;padding:10px 12px;font-size:13px}
 .legend b{display:block;font-family:var(--f-mono);font-size:16px}
 .copy-ok{color:var(--good);font-size:13px}
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;background:var(--sunk);border-radius:9px;padding:4px;justify-self:start}
+.seg-opt{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;padding:6px 12px;border-radius:7px;cursor:pointer}
+.seg-opt input{width:auto;margin:0;accent-color:var(--accent)}
+.seg-opt:has(input:checked){background:var(--surface);box-shadow:0 0 0 1px var(--line)}
+.grid-us{display:grid;gap:14px}
+.btn-link{display:inline-block;justify-self:start;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;border-radius:8px;padding:9px 14px}
+.btn-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mini-steps{margin:0;padding-left:20px;display:grid;gap:4px;font-size:14px}
+kbd{font-family:var(--f-mono);font-size:12px;background:var(--sunk);border:1px solid var(--line);border-radius:4px;padding:0 4px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
@@ -85,10 +95,32 @@ details.more ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px;max-width:
   <section class="grid2">
     <div class="panel" aria-labelledby="qb-h">
       <h2 id="qb-h">Tạo câu truy vấn</h2>
-      <p class="note">Điền từ khóa, bấm <b>Copy</b> rồi dán vào Graph API Explorer (xem hướng dẫn bước 3 bên dưới).</p>
+      <div class="seg" role="radiogroup" aria-label="Thị trường">
+        <label class="seg-opt"><input type="radio" name="q-market" id="q-market-eu" value="eu" checked> EU · qua API</label>
+        <label class="seg-opt"><input type="radio" name="q-market" id="q-market-us" value="us"> Mỹ · qua website</label>
+      </div>
       <label for="q-terms">Từ khóa
         <input id="q-terms" value="migraine cap" autocomplete="off">
       </label>
+      <div id="q-us" class="grid-us" hidden>
+        <div class="fields">
+          <label for="q-us-country">Quốc gia
+            <input id="q-us-country" value="US" autocomplete="off">
+          </label>
+          <label for="q-us-days">Trong N ngày
+            <input id="q-us-days" type="number" min="1" max="365" value="30">
+          </label>
+        </div>
+        <a class="btn-link" id="q-us-link" href="https://www.facebook.com/ads/library/" target="_blank" rel="noopener">Mở Ad Library (Mỹ) với từ khóa này ↗</a>
+        <ol class="mini-steps">
+          <li>Trên trang vừa mở, cuộn xuống vài lần để tải thêm quảng cáo.</li>
+          <li>Bấm vào vùng trống → <kbd>Ctrl</kbd>+<kbd>A</kbd> → <kbd>Ctrl</kbd>+<kbd>C</kbd> (Mac: <kbd>⌘</kbd>).</li>
+          <li>Dán vào ô <b>Nạp dữ liệu</b> → <b>Thêm vào dữ liệu</b>. Tool tự tách từng quảng cáo.</li>
+        </ol>
+        <p class="note">API của Meta không trả quảng cáo thương mại ở Mỹ, nên dữ liệu Mỹ lấy bằng cách copy trang kết quả. Để Facebook ở tiếng Anh sẽ tách chính xác nhất.</p>
+      </div>
+      <div id="q-eu" class="grid-us">
+      <p class="note">Điền từ khóa, bấm <b>Copy</b> rồi dán vào Graph API Explorer (xem hướng dẫn bước 3 bên dưới).</p>
       <div class="fields">
         <label for="q-countries">Quốc gia (EU)
           <input id="q-countries" value="DE,FR,NL,SE,IT,ES" autocomplete="off">
@@ -106,11 +138,12 @@ details.more ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px;max-width:
         <span id="q-copied" class="copy-ok" hidden>Đã copy</span>
       </div>
       <p class="note">Gõ <code>EU</code> ở ô quốc gia để lấy cả 27 nước EU. API chỉ trả quảng cáo thương mại chạy ở EU.</p>
+      </div>
     </div>
 
     <div class="panel" aria-labelledby="in-h">
       <h2 id="in-h">Nạp dữ liệu</h2>
-      <label for="in-text">Dán JSON từ Explorer / file raw.json, hoặc CSV nhập tay
+      <label for="in-text">Dán JSON từ Explorer, nội dung copy từ trang Ad Library (Mỹ), file raw.json hoặc CSV nhập tay
         <textarea id="in-text" placeholder='{"data":[ ... ], "paging": { ... }}'></textarea>
       </label>
       <div class="row">
@@ -123,6 +156,9 @@ details.more ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px;max-width:
         <button id="in-sample" type="button">Nạp dữ liệu mẫu</button>
         <button id="in-clear" type="button">Xóa dữ liệu</button>
       </div>
+      <label for="in-country" style="max-width:260px">Quốc gia gắn cho dữ liệu copy từ website
+        <input id="in-country" value="US" autocomplete="off">
+      </label>
       <p id="in-status" class="status" role="status"></p>
     </div>
   </section>
@@ -223,11 +259,15 @@ details.more ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px;max-width:
         </ul>
       </div></div>
       <div class="step"><div>
-        <h3>Thêm quảng cáo ở Mỹ (nhập tay)</h3>
+        <h3>Thêm quảng cáo ở Mỹ</h3>
         <ol>
-          <li>Mở <a href="https://www.facebook.com/ads/library/" target="_blank" rel="noopener">Ad Library</a> → Country: United States → Ad category: All ads → tìm theo từ khóa hoặc tên store.</li>
-          <li>Ghi mỗi quảng cáo một dòng theo mẫu CSV dưới đây, rồi dán vào ô <b>Nạp dữ liệu</b>.</li>
+          <li>Ở phần <b>Tạo câu truy vấn</b>, chọn <b>Mỹ · qua website</b> → nhập từ khóa → bấm <b>Mở Ad Library (Mỹ)</b>. Link đã lọc sẵn quảng cáo đang chạy trong N ngày qua.</li>
+          <li>Cuộn xuống vài lần để trang tải thêm quảng cáo (khoảng 30–100 quảng cáo là đủ để so sánh).</li>
+          <li><kbd>Ctrl</kbd>+<kbd>A</kbd> → <kbd>Ctrl</kbd>+<kbd>C</kbd>, rồi dán vào ô <b>Nạp dữ liệu</b> → <b>Thêm vào dữ liệu</b>. Tool đọc Library ID, ngày bắt đầu, tên trang, domain, câu đầu quảng cáo và dòng "N ads use this creative" (tính là N quảng cáo).</li>
+          <li>Dữ liệu Mỹ không có reach, nên chi tiêu được ước tính theo số ads × số ngày × $/ad/ngày. Với Mỹ nên đặt $/ad/ngày khoảng 20–100.</li>
+          <li>Nếu Facebook đang để tiếng Việt và tool báo không tách được, đổi Facebook sang tiếng Anh rồi copy lại.</li>
         </ol>
+        <p class="note" style="margin-top:6px">Cách thay thế: ghi tay mỗi quảng cáo một dòng theo mẫu CSV dưới đây.</p>
         <div class="query" style="margin-top:8px">page_name,domain,start_date,end_date,ad_url,text,countries
 Store X,storex.com,2026-10-05,,https://www.facebook.com/ads/library/?id=...,"Câu đầu của quảng cáo",US</div>
         <p class="note" style="margin-top:6px"><code>start_date</code> = ngày "Started running on…" · để trống <code>end_date</code> nếu quảng cáo còn chạy. Không dùng bot cào website Ad Library: vi phạm điều khoản Meta.</p>
@@ -282,8 +322,22 @@ python3 tools/ads_library_scout/scout.py fetch --terms "migraine cap" "headache 
     ];
     return "ads_archive?" + params.map(function(p){ return p[0] + "=" + encodeURIComponent(p[1]); }).join("&");
   }
-  function renderQuery(){ $("q-out").textContent = buildQuery(); }
-  ["q-terms","q-countries","q-days","q-limit"].forEach(function(id){ $(id).addEventListener("input", renderQuery); });
+  function usLink(){
+    var days = Math.max(1, +$("q-us-days").value || 30);
+    var params = [["active_status","active"],["ad_type","all"],["country",($("q-us-country").value.trim() || "US").toUpperCase()],
+      ["is_targeted_country","false"],["media_type","all"],["q",$("q-terms").value.trim()],
+      ["search_type","keyword_unordered"],["start_date[min]", iso(today() - days*DAY)]];
+    return "https://www.facebook.com/ads/library/?" + params.map(function(p){ return encodeURIComponent(p[0]) + "=" + encodeURIComponent(p[1]); }).join("&");
+  }
+  function renderQuery(){
+    var us = $("q-market-us").checked;
+    $("q-us").hidden = !us; $("q-eu").hidden = us;
+    $("q-out").textContent = buildQuery();
+    $("q-us-link").href = usLink();
+    if (us) $("in-country").value = ($("q-us-country").value.trim() || "US").toUpperCase();
+  }
+  ["q-terms","q-countries","q-days","q-limit","q-us-country","q-us-days"].forEach(function(id){ $(id).addEventListener("input", renderQuery); });
+  ["q-market-eu","q-market-us"].forEach(function(id){ $(id).addEventListener("change", renderQuery); });
 
   function copyText(text, okEl, fallbackEl){
     var show = function(){ okEl.hidden = false; setTimeout(function(){ okEl.hidden = true; }, 1800); };
@@ -331,9 +385,49 @@ python3 tools/ads_library_scout/scout.py fetch --terms "migraine cap" "headache 
       };
     });
   }
+  var MONTHS = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+  function cardDates(chunk){
+    var head = chunk.slice(0, 300), out = [], m;
+    var en = /\b([A-Z][a-z]{2})[a-z]*\.?\s+(\d{1,2}),\s+(\d{4})/g;
+    while ((m = en.exec(head))){ var mo = MONTHS[m[1].toLowerCase()]; if (mo) out.push(Date.UTC(+m[3], mo - 1, +m[2])); }
+    if (!out.length){
+      var vi = /\b(\d{1,2})\s+(?:thg|tháng)\s+(\d{1,2}),?\s+(\d{4})/gi;
+      while ((m = vi.exec(head))) out.push(Date.UTC(+m[3], +m[2] - 1, +m[1]));
+    }
+    return out;
+  }
+  function parseLibraryText(text, country){
+    var parts = text.split(/(?:Library ID|ID thư viện)\s*:?\s*(\d{6,})/i), ads = [];
+    for (var i = 1; i < parts.length; i += 2){
+      var id = parts[i], chunk = parts[i + 1] || "", prev = (parts[i - 1] || "").slice(-120);
+      var st = prev.match(/(Inactive|Không hoạt động|Active|Đang hoạt động)/gi);
+      var inactive = !!st && /inactive|không/i.test(st[st.length - 1]);
+      var ds = cardDates(chunk), start = ds.length ? ds[0] : null;
+      var stop = inactive ? (ds.length > 1 ? ds[1] : start) : null;
+      var lines = chunk.split(/\r?\n/).map(function(l){ return l.trim(); }).filter(Boolean);
+      var si = -1; for (var k = 0; k < lines.length; k++){ if (/^(Sponsored|Được tài trợ)$/i.test(lines[k])){ si = k; break; } }
+      var page = si > 0 ? lines[si - 1] : "", body = si >= 0 && lines[si + 1] ? lines[si + 1] : "";
+      var dom = ""; for (var j = 0; j < lines.length; j++){ var low = lines[j].toLowerCase(); if (DOMAIN_RE.test(low) && low.indexOf("facebook.com") < 0){ dom = low; break; } }
+      var cm = /(\d+)\s+(?:ads? use this creative|quảng cáo dùng)/i.exec(chunk), copies = cm ? Math.max(1, +cm[1]) : 1;
+      for (var c = 0; c < copies; c++){
+        ads.push({ id: "lib-" + id + (c ? "-" + (c + 1) : ""), page_name: page,
+          ad_creative_link_captions: dom ? [dom] : [],
+          ad_delivery_start_time: start !== null ? iso(start) : null, ad_delivery_stop_time: stop !== null ? iso(stop) : null,
+          ad_snapshot_url: "https://www.facebook.com/ads/library/?id=" + id,
+          ad_creative_bodies: body ? [body] : [], target_locations: country ? [{ name: country }] : [] });
+      }
+    }
+    return ads;
+  }
   function parseInput(text){
     text = text.trim();
     if (!text) throw new Error("Chưa có dữ liệu để thêm.");
+    if (/Library ID|ID thư viện/i.test(text) && text[0] !== "{" && text[0] !== "["){
+      var lib = parseLibraryText(text, ($("in-country").value.trim() || "US").toUpperCase());
+      if (!lib.length) throw new Error("Không tách được quảng cáo nào. Đổi Facebook sang tiếng Anh rồi copy lại trang kết quả.");
+      if (!lib.some(function(a){ return a.ad_delivery_start_time; })) throw new Error("Không đọc được ngày bắt đầu. Đổi Facebook sang tiếng Anh rồi copy lại.");
+      return lib;
+    }
     if (text[0] === "{" || text[0] === "["){
       var j = JSON.parse(text);
       if (j && j.error) throw new Error("API trả lỗi: " + (j.error.message || "không rõ") + ". Kiểm tra lại token hoặc truy vấn.");

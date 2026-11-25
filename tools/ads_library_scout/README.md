@@ -56,7 +56,20 @@ Báo cáo được lưu trong thư mục `ad-scout-reports/`.
 
 **Gợi ý đọc:** ≥ 60 là đáng nghiên cứu ngay · 40–59 là đang test hoặc đang lên · < 40 là mới hoặc nhỏ.
 
-## 4. Nhập tay quảng cáo Mỹ (hoặc bất kỳ nước nào)
+## 4a. Quảng cáo Mỹ: copy trang kết quả Ad Library (nhanh nhất)
+```bash
+# In link Ad Library đã lọc sẵn: đang chạy, Mỹ, 30 ngày, từ khóa
+python3 tools/ads_library_scout/scout.py us-link --terms "migraine cap" "headache hat"
+```
+1. Mở link, cuộn xuống vài lần để tải thêm quảng cáo.
+2. `Ctrl+A` → `Ctrl+C`, dán vào file `us.txt`. Nên để Facebook ở tiếng Anh.
+3. Phân tích:
+```bash
+python3 tools/ads_library_scout/scout.py analyze --library-text us.txt --country US --aov 35 --daily-per-ad-low 20 --daily-per-ad-high 100
+```
+Tool đọc Library ID, trạng thái, ngày bắt đầu (và ngày kết thúc nếu quảng cáo đã dừng), tên trang, domain, câu đầu quảng cáo, và dòng "N ads use this creative and text" (tính là N quảng cáo). Bản web làm được việc tương tự: chọn **Mỹ · qua website**.
+
+## 4b. Nhập tay quảng cáo (bất kỳ nước nào)
 Mở https://www.facebook.com/ads/library, lọc *Active ads*, và ghi lại theo mẫu `examples/manual_ads_example.csv`:
 
 | Cột | Ví dụ |

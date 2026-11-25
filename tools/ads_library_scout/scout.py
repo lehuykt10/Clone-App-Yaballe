@@ -16,7 +16,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from ads_library import EU_COUNTRIES, AdLibraryError, fetch_ads  # noqa: E402
-from analyze import Assumptions, ads_from_manual_csv, analyze, write_csv, write_markdown  # noqa: E402
+from analyze import (Assumptions, ads_from_library_text, ads_from_manual_csv, analyze,  # noqa: E402
+                     us_library_url, write_csv, write_markdown)
 
 
 def _countries(value):
@@ -90,9 +91,17 @@ def main(argv=None):
         else:
             _add_assumption_args(p)
 
+    p = sub.add_parser("us-link", help="in link Ad Library website (Mỹ) cho từ khóa")
+    p.add_argument("--terms", nargs="+", required=True)
+    p.add_argument("--days", type=int, default=30)
+    p.add_argument("--country", default="US")
+
     p = sub.add_parser("analyze")
     p.add_argument("--raw", nargs="*", default=[], help="file JSON từ lệnh fetch")
     p.add_argument("--manual", nargs="*", default=[], help="file CSV ads tự sưu tầm (xem README)")
+    p.add_argument("--library-text", nargs="*", default=[],
+                   help="file .txt: nội dung copy (Ctrl+A) từ trang kết quả Ad Library, ví dụ thị trường Mỹ")
+    p.add_argument("--country", default="US", help="quốc gia của --library-text")
     _add_assumption_args(p)
 
     args = ap.parse_args(argv)
@@ -102,6 +111,9 @@ def main(argv=None):
             Path(args.out).parent.mkdir(parents=True, exist_ok=True)
             Path(args.out).write_text(json.dumps(ads, ensure_ascii=False, indent=1), encoding="utf-8")
             print(f"Đã lưu {len(ads)} ads vào {args.out}")
+        elif args.cmd == "us-link":
+            for t in args.terms:
+                print(f"{t}: {us_library_url(t, args.days, args.country)}")
         elif args.cmd == "run":
             ads = _fetch(args)
             _report(ads, args, "-".join(t.replace(" ", "_") for t in args.terms)[:60])
@@ -111,8 +123,10 @@ def main(argv=None):
                 ads.extend(json.loads(Path(f).read_text(encoding="utf-8")))
             for f in args.manual:
                 ads.extend(ads_from_manual_csv(f))
+            for f in args.library_text:
+                ads.extend(ads_from_library_text(Path(f).read_text(encoding="utf-8"), args.country))
             if not ads:
-                ap.error("cần ít nhất một --raw hoặc --manual")
+                ap.error("cần ít nhất một --raw, --manual hoặc --library-text")
             _report(ads, args, "analysis")
     except AdLibraryError as e:
         print(f"Lỗi: {e}", file=sys.stderr)

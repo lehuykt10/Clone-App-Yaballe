@@ -8,8 +8,9 @@ comparing advertisers, not as real figures.
 import csv
 import math
 import re
+import urllib.parse
 from dataclasses import dataclass, field
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 
 @dataclass
@@ -197,6 +198,79 @@ def ads_from_manual_csv(path):
                 "target_locations": [{"name": c.strip()} for c in row.get("countries", "").split(",") if c.strip()],
             })
     return ads
+
+
+# ---------------------------------------------------------------- Ad Library website text (US)
+
+MONTHS = {m: i + 1 for i, m in enumerate(
+    ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"])}
+ID_SPLIT_RE = re.compile(r"(?:Library ID|ID thư viện)\s*:?\s*(\d{6,})", re.I)
+EN_DATE_RE = re.compile(r"\b([A-Z][a-z]{2})[a-z]*\.?\s+(\d{1,2}),\s+(\d{4})")
+VI_DATE_RE = re.compile(r"\b(\d{1,2})\s+(?:thg|tháng)\s+(\d{1,2}),?\s+(\d{4})", re.I)
+STATUS_RE = re.compile(r"(Inactive|Không hoạt động|Active|Đang hoạt động)", re.I)
+SPONSORED_RE = re.compile(r"^(Sponsored|Được tài trợ)$", re.I)
+COPIES_RE = re.compile(r"(\d+)\s+(?:ads? use this creative|quảng cáo dùng)", re.I)
+
+
+def _card_dates(chunk):
+    head = chunk[:300]
+    found = []
+    for m in EN_DATE_RE.finditer(head):
+        mon = MONTHS.get(m.group(1).lower())
+        if mon:
+            found.append(date(int(m.group(3)), mon, int(m.group(2))))
+    if not found:
+        for m in VI_DATE_RE.finditer(head):
+            found.append(date(int(m.group(3)), int(m.group(2)), int(m.group(1))))
+    return found
+
+
+def ads_from_library_text(text, country="US"):
+    """Parse text copied (Ctrl+A, Ctrl+C) from the Ad Library website results page.
+
+    Works best with Facebook set to English. Each card gives: Library ID, status,
+    start date (and end date for inactive ads), page name, domain, first line of text
+    and "N ads use this creative and text" (counted as N ads).
+    """
+    parts = ID_SPLIT_RE.split(text)
+    ads = []
+    for i in range(1, len(parts), 2):
+        lib_id, chunk, prev = parts[i], parts[i + 1] if i + 1 < len(parts) else "", parts[i - 1]
+        statuses = STATUS_RE.findall(prev[-120:])
+        inactive = bool(statuses) and statuses[-1].lower() in ("inactive", "không hoạt động")
+        dates = _card_dates(chunk)
+        start = dates[0] if dates else None
+        stop = dates[1] if inactive and len(dates) > 1 else (start if inactive else None)
+        lines = [l.strip() for l in chunk.splitlines() if l.strip()]
+        si = next((k for k, l in enumerate(lines) if SPONSORED_RE.match(l)), -1)
+        page = lines[si - 1] if si > 0 else ""
+        body = lines[si + 1] if 0 <= si < len(lines) - 1 else ""
+        dom = next((l.lower() for l in lines
+                    if DOMAIN_RE.match(l.lower()) and "facebook.com" not in l.lower()), "")
+        m = COPIES_RE.search(chunk)
+        copies = max(1, int(m.group(1))) if m else 1
+        for k in range(copies):
+            ads.append({
+                "id": f"lib-{lib_id}" + (f"-{k + 1}" if k else ""),
+                "page_name": page,
+                "ad_creative_link_captions": [dom] if dom else [],
+                "ad_delivery_start_time": start.isoformat() if start else None,
+                "ad_delivery_stop_time": stop.isoformat() if stop else None,
+                "ad_snapshot_url": f"https://www.facebook.com/ads/library/?id={lib_id}",
+                "ad_creative_bodies": [body] if body else [],
+                "target_locations": [{"name": country}] if country else [],
+            })
+    return ads
+
+
+def us_library_url(search_terms, days=30, country="US", today=None):
+    """Ad Library website search for active ads in a country (for markets the API doesn't cover)."""
+    today = today or date.today()
+    params = [("active_status", "active"), ("ad_type", "all"), ("country", country),
+              ("is_targeted_country", "false"), ("media_type", "all"), ("q", search_terms),
+              ("search_type", "keyword_unordered"),
+              ("start_date[min]", (today - timedelta(days=days)).isoformat())]
+    return "https://www.facebook.com/ads/library/?" + urllib.parse.urlencode(params)
 
 
 # ---------------------------------------------------------------- output
