@@ -1,5 +1,7 @@
 # Suzeno · Glow Wings Night Walk Light: hướng dẫn đưa lên website
 
+> **Đã làm sẵn trên suzeno.com (25/11/2026):** sản phẩm `glow-wings-light` (trạng thái **Draft**, 6 kiểu, $26.95, template `glow-wings`, nặng 0.25 kg, giá vốn $3.62) và 2 discount tự động: *Glow Wings bundle: $4.50 off each (2+)* và *$7 off each (3+)*. Bỏ qua Bước 2 và Bước 4 bên dưới; chỉ cần làm Bước 1, Bước 3, gắn ảnh rồi chuyển sản phẩm sang **Active**.
+
 - Bản xem trước: https://claude.ai/artifact/4pzPSQ48vQqEUKbWdijQjr
 - `suzeno-theme-glow-wings.zip`: theme Suzeno hiện tại (`suzeno · product pages DRAFT v2`) cộng thêm template `product.glow-wings.json`
 - `suzeno-glow-wings-images.zip`: 7 ảnh đã đặt tên sẵn
@@ -47,7 +49,7 @@ Theme chỉ **hiển thị** giá gói. Để giá lúc thanh toán khớp, tạ
 
 Shopify chỉ áp **một** discount tự động có lợi nhất cho mỗi sản phẩm, nên mua 3 cái sẽ nhận $7/cái.
 
-## Bước 5: Điền chỗ tô vàng
+## Bước 5: Thông số (đã điền)
 Trong theme editor (Customize → chọn trang Glow Wings), sửa các accordion và FAQ đang ghi `⟨XÁC NHẬN VỚI NCC⟩`:
 - có kèm cáp sạc không,
 - loại pin, thời gian sạc, thời gian sáng mỗi lần sạc,

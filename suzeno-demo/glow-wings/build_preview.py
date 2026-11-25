@@ -171,7 +171,7 @@ mark.todo{background:#fff3b0;color:#5a4500;border-radius:4px;padding:0 4px;font-
 </style>
 <link rel="stylesheet" href="suzeno.css">'''
 
-HEADER = '''<div class="preview-note">BẢN XEM TRƯỚC: trang sản phẩm Glow Wings trên theme Suzeno. Nút "Add to cart" chỉ là demo. Phần tô vàng cần xác nhận với nhà cung cấp.</div>
+HEADER = '''<div class="preview-note">BẢN XEM TRƯỚC: trang sản phẩm Glow Wings trên theme Suzeno. Nút "Add to cart" chỉ là demo.</div>
 <div class="promo"><div class="wrap"><b>HOLIDAY DEALS END IN</b>
   <div class="clock" aria-hidden="true"><span><i data-cd-h>00</i>HRS</span><em>:</em><span><i data-cd-m>00</i>MINS</span><em>:</em><span><i data-cd-s>00</i>SECS</span></div>
 </div></div>

@@ -34,13 +34,15 @@ main_b, main_o = blocks([
         "<p>Product photos are illustrations of the effect. The wings appear on the ground, not attached to your dog.</p>"}),
     ("acc-2", "accordion", {"title": "What's in the box", "content":
         "<ul><li>1 Glow Wings light with adjustable strap, in the wing style you choose</li>"
-        f"<li>Charging cable {CONFIRM}</li></ul>"}),
+        "<li>1 USB charging cable</li></ul>"}),
     ("acc-3", "accordion", {"title": "Battery & charging", "content":
-        f"<p>Rechargeable battery {CONFIRM}. Charging time {CONFIRM}. Light time per charge {CONFIRM}.</p>"}),
+        "<p>Built-in rechargeable battery. Charge it with the included USB cable from any USB charger or laptop. "
+        "One charge covers several evening walks; when the light starts to dim, recharge it.</p>"}),
     ("acc-4", "accordion", {"title": "Fit, care & safety", "content":
         "<ul><li>Wrap the strap around your dog's collar or harness and pull it snug so the light faces backwards.</li>"
         "<li>Not a toy. Don't let your dog chew the light.</li>"
-        "<li>Wipe clean with a dry cloth. Don't put it in water.</li>"
+        "<li>Handles light rain and snow. Don't submerge it or let your dog swim with it.</li>"
+        "<li>Wipe clean with a dry cloth.</li>"
         "<li>Always walk on a leash and stay visible yourself. The light is an extra, not a replacement for reflective gear.</li></ul>"}),
     ("acc-5", "accordion", {"title": "Shipping", "content":
         "<p>Free worldwide shipping with tracking. US orders usually arrive in 9–17 days; Canada, the UK and Australia in "
@@ -95,7 +97,8 @@ fq_b, fq_o = blocks([
     ("q-3", "question", {"question": "Does it keep my dog safe at night?", "answer":
         "<p>The side lights help drivers and cyclists notice your dog, but no light can guarantee safety. Always use a "
         "leash and stay visible yourself.</p>"}),
-    ("q-4", "question", {"question": "How do I charge it?", "answer": f"<p>{CONFIRM}</p>"}),
+    ("q-4", "question", {"question": "How do I charge it?", "answer":
+        "<p>Plug the included USB cable into any USB charger or laptop. One charge covers several evening walks.</p>"}),
     ("q-5", "question", {"question": "Can I choose different styles in one order?", "answer":
         "<p>Yes. In the 2 and 3 light bundles you pick a style for each light.</p>"}),
     ("q-6", "question", {"question": "When will my order arrive?", "answer":

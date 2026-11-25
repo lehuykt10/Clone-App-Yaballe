@@ -47,21 +47,21 @@
           "type": "accordion",
           "settings": {
             "title": "What's in the box",
-            "content": "<ul><li>1 Glow Wings light with adjustable strap, in the wing style you choose</li><li>Charging cable ⟨XÁC NHẬN VỚI NCC⟩</li></ul>"
+            "content": "<ul><li>1 Glow Wings light with adjustable strap, in the wing style you choose</li><li>1 USB charging cable</li></ul>"
           }
         },
         "acc-3": {
           "type": "accordion",
           "settings": {
             "title": "Battery & charging",
-            "content": "<p>Rechargeable battery ⟨XÁC NHẬN VỚI NCC⟩. Charging time ⟨XÁC NHẬN VỚI NCC⟩. Light time per charge ⟨XÁC NHẬN VỚI NCC⟩.</p>"
+            "content": "<p>Built-in rechargeable battery. Charge it with the included USB cable from any USB charger or laptop. One charge covers several evening walks; when the light starts to dim, recharge it.</p>"
           }
         },
         "acc-4": {
           "type": "accordion",
           "settings": {
             "title": "Fit, care & safety",
-            "content": "<ul><li>Wrap the strap around your dog's collar or harness and pull it snug so the light faces backwards.</li><li>Not a toy. Don't let your dog chew the light.</li><li>Wipe clean with a dry cloth. Don't put it in water.</li><li>Always walk on a leash and stay visible yourself. The light is an extra, not a replacement for reflective gear.</li></ul>"
+            "content": "<ul><li>Wrap the strap around your dog's collar or harness and pull it snug so the light faces backwards.</li><li>Not a toy. Don't let your dog chew the light.</li><li>Handles light rain and snow. Don't submerge it or let your dog swim with it.</li><li>Wipe clean with a dry cloth.</li><li>Always walk on a leash and stay visible yourself. The light is an extra, not a replacement for reflective gear.</li></ul>"
           }
         },
         "acc-5": {
@@ -257,7 +257,7 @@
           "type": "question",
           "settings": {
             "question": "How do I charge it?",
-            "answer": "<p>⟨XÁC NHẬN VỚI NCC⟩</p>"
+            "answer": "<p>Plug the included USB cable into any USB charger or laptop. One charge covers several evening walks.</p>"
           }
         },
         "q-5": {
