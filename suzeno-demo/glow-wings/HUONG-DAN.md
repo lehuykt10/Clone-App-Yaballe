@@ -27,7 +27,7 @@ Products → Add product:
 | Option | Tên option: **Style** (bắt buộc đúng tên để hiện ô chọn màu) |
 | Variants | Rainbow Butterfly · Golden Fairy · Pink Dragon · Purple Dragon · Pink Heart Angel · White Angel |
 | Ảnh từng variant | Gắn đúng ảnh cho từng variant (khi khách chọn kiểu, ảnh tự đổi) |
-| Weight | cân nặng thật có hộp (hỏi nhà cung cấp) |
+| Weight | **0.25 kg** (theo trang 1688: 250 g; hỏi lại NCC đây là cân nặng có hộp hay chưa) |
 | URL handle | `glow-wings-light` |
 | Theme template | `product.glow-wings` (chỉ hiện sau Bước 3) |
 
@@ -64,3 +64,13 @@ Trong theme editor (Customize → chọn trang Glow Wings), sửa các accordion
 ## Lưu ý về theme Suzeno hiện tại
 - Header đang bật **đồng hồ đếm ngược tự reset lúc 0 giờ** ("Holiday deals end in"). Đây là cài đặt sẵn của store; nếu ưu đãi không thật sự hết hạn, nên tắt để tránh rủi ro quảng cáo gây hiểu lầm. Trang Glow Wings đã tắt đồng hồ riêng của trang sản phẩm.
 - Trong zip, tôi đã sửa lỗi CSS `.band` thiếu dấu `;` (dải tiêu đề không nhận đúng màu chữ). Nếu dùng Cách B, lỗi này vẫn còn trên theme đang chạy.
+
+## Chính sách của nhà cung cấp (từ mục 购买须知 trên trang 1688)
+| # | NCC ghi | Ảnh hưởng tới Suzeno |
+|---|---|---|
+| 1 | Không nhận trả hàng/hoàn tiền; chỉ đổi khi lỗi chất lượng | Khách đổi ý hoặc không thích: Suzeno tự chịu |
+| 2 | Một phần ảnh là **ảnh mạng**, hàng thật theo ảnh thực tế; xin ảnh thật qua chat | Xác nhận ảnh đẹp không phải hàng thật → phải có ảnh/video thật trước khi chạy ads |
+| 3 | Không hoàn tiền vì "không giống ảnh mạng" | Nếu khách đòi hoàn vì khác ảnh, Suzeno chịu 100% |
+| 4 | Hàng vỡ phải báo trong 3 ngày làm việc sau khi nhận | Kiểm hàng ngay khi nhận (nếu nhập lô) |
+| 5 | Sản phẩm **không có bản quyền/bằng sáng chế**, người bán tự kiểm tra | Tự kiểm tra bằng sáng chế/nhãn hiệu ở Mỹ trước khi bán |
+| 6 | Giá chưa gồm thuế | Không ảnh hưởng nhiều khi dropship |
