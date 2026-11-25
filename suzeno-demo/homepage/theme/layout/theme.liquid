@@ -36,6 +36,7 @@
     }
   </style>
   {{ 'suzeno.css' | asset_url | stylesheet_tag }}
+  {{ 'sz-home.css' | asset_url | stylesheet_tag }}
   <script>
     window.SZ = {
       moneyFormat: {{ shop.money_format | json }},

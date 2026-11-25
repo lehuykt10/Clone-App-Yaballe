@@ -67,7 +67,9 @@ RENDER = {"sz-hero": hero, "sz-product-grid": grid, "sz-story": story,
 def main():
     OUT.mkdir(exist_ok=True)
     shutil.copy(ROOT / "theme/assets/suzeno.css", OUT / "suzeno.css")
+    shutil.copy(ROOT / "theme/assets/sz-home.css", OUT / "sz-home.css")
     head = gw.HEAD.replace("<title>Glow Wings Preview</title>", "<title>Suzeno Homepage Preview</title>")
+    head += '\n<link rel="stylesheet" href="sz-home.css">'
     header = gw.HEADER.replace("trang sản phẩm Glow Wings trên theme Suzeno. Nút \"Add to cart\" chỉ là demo.",
                                "trang chủ mới của Suzeno. Các nút chỉ là demo; giá và ảnh lấy từ store ngày 25/11/2026.")
     marquee_items = "FREE WORLDWIDE SHIPPING | TAXES & DUTIES INCLUDED | 30-DAY GUARANTEE | ORDER BY DEC 5 FOR US CHRISTMAS DELIVERY".split("|")

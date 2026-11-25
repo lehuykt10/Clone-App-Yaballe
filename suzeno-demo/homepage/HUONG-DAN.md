@@ -15,7 +15,9 @@
 | 6 | FAQ and contact | 5 câu hỏi chung (hạn Giáng sinh Dec 5, thời gian giao, thuế, đổi trả, gói giảm giá) + form liên hệ + tra cứu đơn | |
 
 Code mới: `sections/sz-hero.liquid`, `sections/sz-product-grid.liquid`, thêm nút cho `sections/sz-story.liquid`,
-nâng cấp `snippets/product-card.liquid` (nhãn + ảnh thứ 2, trang collection cũng được dùng), CSS cuối `assets/suzeno.css`.
+nâng cấp `snippets/product-card.liquid` (nhãn + ảnh thứ 2, trang collection cũng được dùng), CSS riêng `assets/sz-home.css` (nạp trong `layout/theme.liquid`; `suzeno.css` giữ nguyên).
+
+> **Đã tải lên Shopify (25/11/2026):** theme **"suzeno · homepage (review this)"** (chưa publish) = bản sao theme đang chạy + 7 file trên, đã đối chiếu checksum. Chỉ cần Preview rồi Publish; không cần tải zip.
 
 ## Cài đặt
 1. Online Store → Themes → **Add theme → Upload zip file** → `suzeno-theme-homepage.zip`.
