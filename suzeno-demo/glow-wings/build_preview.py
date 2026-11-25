@@ -22,7 +22,7 @@ PRODUCT = {
                    "them, with a side light that helps others spot your dog after dark.</p>",
     "styles": [("Rainbow Butterfly", "rainbow-butterfly"), ("Golden Fairy", "golden-fairy"), ("Pink Dragon", "pink-dragon"),
                ("Purple Dragon", "purple-dragon"), ("Pink Heart Angel", "pink-heart-angel"), ("White Angel", "white-angel")],
-    "price": 2695,
+    "price": 3695,
 }
 CIRCLE = ('<svg viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M18 46 C14 18 70 6 112 8 '
           'C160 10 192 24 188 44 C184 66 130 76 90 74 C46 72 12 62 16 40 C19 26 40 16 70 12"/></svg>')

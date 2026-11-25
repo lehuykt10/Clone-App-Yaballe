@@ -1,6 +1,6 @@
 # Suzeno · Glow Wings Night Walk Light: hướng dẫn đưa lên website
 
-> **Đã làm sẵn trên suzeno.com (25/11/2026):** sản phẩm `glow-wings-light` (trạng thái **Draft**, 6 kiểu, $26.95, template `glow-wings`, nặng 0.25 kg, giá vốn $3.62) và 2 discount tự động: *Glow Wings bundle: $4.50 off each (2+)* và *$7 off each (3+)*. Bỏ qua Bước 2 và Bước 4 bên dưới; chỉ cần làm Bước 1, Bước 3, gắn ảnh rồi chuyển sản phẩm sang **Active**.
+> **Đã làm sẵn trên suzeno.com (25/11/2026):** sản phẩm `glow-wings-light` (trạng thái **Draft**, 6 kiểu, $36.95, template `glow-wings`, nặng 0.25 kg, giá vốn $3.62) và 2 discount tự động: *Glow Wings bundle: $4.50 off each (2+)* và *$7 off each (3+)*. Ảnh đã tải lên Files và đã gắn vào sản phẩm + từng kiểu (25/11). Chỉ còn Bước 3 (tải theme zip, publish) rồi chuyển sản phẩm sang **Active**.
 
 - Bản xem trước: https://claude.ai/artifact/4pzPSQ48vQqEUKbWdijQjr
 - `suzeno-theme-glow-wings.zip`: theme Suzeno hiện tại (`suzeno · product pages DRAFT v2`) cộng thêm template `product.glow-wings.json`
@@ -25,7 +25,7 @@ Products → Add product:
 | Title | Glow Wings Night Walk Light |
 | Description | A small light that wraps around your dog's collar and projects glowing wings onto the path around them, with a side light that helps others spot your dog after dark. |
 | Media | 6 ảnh kiểu cánh + ảnh thiết bị (`light-device`) |
-| Price | $26.95 (đề xuất) · Compare-at: **để trống** |
+| Price | **$36.95** · Compare-at: **để trống** |
 | Option | Tên option: **Style** (bắt buộc đúng tên để hiện ô chọn màu) |
 | Variants | Rainbow Butterfly · Golden Fairy · Pink Dragon · Purple Dragon · Pink Heart Angel · White Angel |
 | Ảnh từng variant | Gắn đúng ảnh cho từng variant (khi khách chọn kiểu, ảnh tự đổi) |
@@ -44,8 +44,8 @@ Online Store → Themes → ⋯ → **Edit code** → thư mục `templates` →
 Theme chỉ **hiển thị** giá gói. Để giá lúc thanh toán khớp, tạo 2 discount tự động:
 | Gói | Discount |
 |---|---|
-| 2 lights | Amount off products · **$4.50 off each** · Minimum quantity 2 · áp dụng Glow Wings → $44.90 |
-| 3 lights | **$7.00 off each** · Minimum quantity 3 → $59.85 |
+| 2 lights | Amount off products · **$4.50 off each** · Minimum quantity 2 · áp dụng Glow Wings → $64.90 |
+| 3 lights | **$7.00 off each** · Minimum quantity 3 → $89.85 |
 
 Shopify chỉ áp **một** discount tự động có lợi nhất cho mỗi sản phẩm, nên mua 3 cái sẽ nhận $7/cái.
 
