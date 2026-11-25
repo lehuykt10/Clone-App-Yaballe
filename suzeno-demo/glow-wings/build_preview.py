@@ -17,7 +17,7 @@ OUT = ROOT / "preview"
 e = html.escape
 
 PRODUCT = {
-    "id": 1, "title": "Glow Wings Night Walk Light",
+    "id": 1, "title": "Glow Wings",
     "description": "<p>A small light that wraps around your dog's collar and projects glowing wings onto the path around "
                    "them, with a side light that helps others spot your dog after dark.</p>",
     "styles": [("Rainbow Butterfly", "rainbow-butterfly"), ("Golden Fairy", "golden-fairy"), ("Pink Dragon", "pink-dragon"),

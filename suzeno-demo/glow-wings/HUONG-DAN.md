@@ -1,6 +1,6 @@
-# Suzeno · Glow Wings Night Walk Light: hướng dẫn đưa lên website
+# Suzeno · Glow Wings: hướng dẫn đưa lên website
 
-> **Đã làm sẵn trên suzeno.com (25/11/2026):** sản phẩm `glow-wings-light` (trạng thái **Draft**, 6 kiểu, $36.95, template `glow-wings`, nặng 0.25 kg, giá vốn $3.62) và 2 discount tự động: *Glow Wings bundle: $4.50 off each (2+)* và *$7 off each (3+)*. Ảnh đã tải lên Files và đã gắn vào sản phẩm + từng kiểu (25/11). Chỉ còn Bước 3 (tải theme zip, publish) rồi chuyển sản phẩm sang **Active**.
+> **Đã làm sẵn trên suzeno.com (25/11/2026):** sản phẩm `glow-wings` (tên **Glow Wings**) (trạng thái **Draft**, 6 kiểu, $36.95, template `glow-wings`, nặng 0.25 kg, giá vốn $3.62) và 2 discount tự động: *Glow Wings bundle: $4.50 off each (2+)* và *$7 off each (3+)*. Ảnh đã tải lên Files và đã gắn vào sản phẩm + từng kiểu (25/11). Chỉ còn Bước 3 (tải theme zip, publish) rồi chuyển sản phẩm sang **Active**.
 
 - Bản xem trước: https://claude.ai/artifact/4pzPSQ48vQqEUKbWdijQjr
 - `suzeno-theme-glow-wings.zip`: theme Suzeno hiện tại (`suzeno · product pages DRAFT v2`) cộng thêm template `product.glow-wings.json`
@@ -22,7 +22,7 @@ Shopify Admin → **Content → Files → Upload files** → chọn 7 ảnh tron
 Products → Add product:
 | Trường | Giá trị |
 |---|---|
-| Title | Glow Wings Night Walk Light |
+| Title | Glow Wings |
 | Description | A small light that wraps around your dog's collar and projects glowing wings onto the path around them, with a side light that helps others spot your dog after dark. |
 | Media | 6 ảnh kiểu cánh + ảnh thiết bị (`light-device`) |
 | Price | **$36.95** · Compare-at: **để trống** |
@@ -30,7 +30,7 @@ Products → Add product:
 | Variants | Rainbow Butterfly · Golden Fairy · Pink Dragon · Purple Dragon · Pink Heart Angel · White Angel |
 | Ảnh từng variant | Gắn đúng ảnh cho từng variant (khi khách chọn kiểu, ảnh tự đổi) |
 | Weight | **0.25 kg** (theo trang 1688: 250 g; hỏi lại NCC đây là cân nặng có hộp hay chưa) |
-| URL handle | `glow-wings-light` |
+| URL handle | `glow-wings` (link: suzeno.com/products/glow-wings) |
 | Theme template | `product.glow-wings` (chỉ hiện sau Bước 3) |
 
 ## Bước 3: Đưa template lên theme (chọn 1 trong 2 cách)

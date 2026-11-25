@@ -8,8 +8,8 @@ Cách dùng: mở chat mới có skill **hollywood-fashion-shorts**. Đính kèm
 Dùng skill hollywood-fashion-shorts để viết kịch bản video ngắn và prompt ảnh/video cho sản phẩm dưới đây.
 
 ## BRAND & SẢN PHẨM
-- Brand: Suzeno (suzeno.com), thương hiệu đồ thú cưng. Trang sản phẩm: suzeno.com/products/glow-wings-light
-- Tên: Glow Wings Night Walk Light
+- Brand: Suzeno (suzeno.com), thương hiệu đồ thú cưng. Trang sản phẩm: suzeno.com/products/glow-wings
+- Tên: Glow Wings
 - Sản phẩm THẬT là gì (bắt buộc đúng):
   • Một đèn nhỏ hình trụ màu đen, gắn vào vòng cổ chó bằng dây quấn nylon đen có khóa kim loại (xem ảnh light-device đính kèm).
   • Một đầu có thấu kính chiếu; hai bên có dải đèn nhỏ phát sáng.
