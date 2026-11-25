@@ -1,0 +1,19 @@
+{%- doc -%}
+  Product card for grids.
+  @param {product} product
+  @param {string} [badge] - small label on the image
+  @param {boolean} [second_image] - show the second photo on hover
+{%- enddoc -%}
+<a class="pcard" href="{{ product.url }}">
+  <div class="pimg">
+    {%- if product.featured_media -%}
+      {{ product.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300,450,600', sizes: '(min-width: 860px) 25vw, 50vw', alt: product.featured_media.alt | default: product.title }}
+      {%- if second_image and product.media.size > 1 -%}
+        {{ product.media[1] | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300,450,600', sizes: '(min-width: 860px) 25vw, 50vw', alt: '', class: 'pimg-alt' }}
+      {%- endif -%}
+    {%- else -%}{{ 'product-1' | placeholder_svg_tag: 'ph' }}{%- endif -%}
+    {%- if badge != blank -%}<span class="pbadge">{{ badge | escape }}</span>{%- endif -%}
+  </div>
+  <b>{{ product.title | escape }}</b>
+  <span class="pp">{% if product.price_varies %}From {% endif %}{{ product.price | money }}{% if product.compare_at_price > product.price %}<s>{{ product.compare_at_price | money }}</s>{% endif %}</span>
+</a>
