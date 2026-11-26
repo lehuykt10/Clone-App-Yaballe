@@ -1,0 +1,39 @@
+<section class="block" style="background:var(--{{ section.settings.background }})">
+  <div class="wrap" style="display:grid;gap:24px">
+    <div style="text-align:center;display:grid;gap:8px">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow | escape }}</span>{%- endif -%}
+      <h2 style="font-size:clamp(28px,6.5vw,40px)">{{ section.settings.heading | escape }}</h2>
+    </div>
+    <ol class="steps" role="list" style="--cols:{{ section.blocks.size | at_most: 4 }}">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}>
+          {%- if section.settings.numbered -%}<span class="step-n">{{ forloop.index }}</span>{%- endif -%}
+          <b>{{ block.settings.title | escape }}</b>
+          <p>{{ block.settings.text | escape }}</p>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Steps or benefits",
+  "tag": "div",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small line" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How it works" },
+    { "type": "checkbox", "id": "numbered", "label": "Number the items", "info": "Use for steps that happen in order.", "default": true },
+    { "type": "select", "id": "background", "label": "Background", "default": "paper", "options": [
+      { "value": "paper", "label": "Cream" }, { "value": "sky-mist", "label": "Blush" }, { "value": "sun-soft", "label": "Sand" }
+    ] }
+  ],
+  "blocks": [
+    { "type": "item", "name": "Item", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "Title" },
+      { "type": "textarea", "id": "text", "label": "Text" }
+    ] }
+  ],
+  "presets": [ { "name": "Steps or benefits", "blocks": [ { "type": "item" }, { "type": "item" }, { "type": "item" } ] } ]
+}
+{% endschema %}

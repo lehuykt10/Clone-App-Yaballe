@@ -1,0 +1,48 @@
+{%- assign sz_lang = template.suffix | split: '-' | last -%}{%- if request.locale.iso_code == 'es' -%}{%- assign sz_lang = 'es' -%}{%- endif -%}
+{%- liquid
+  assign t_cart = 'Your cart'
+  assign t_close_cart = 'Close cart'
+  assign t_sub = 'Subtotal'
+  assign t_note = settings.cart_note
+  assign t_checkout = 'Checkout'
+  assign t_view = 'View cart'
+  assign t_menu = 'Menu'
+  assign t_close_menu = 'Close menu'
+  assign t_cart_link = 'Cart'
+  assign t_account = 'Account'
+  if sz_lang == 'es'
+    assign t_cart = 'Tu carrito'
+    assign t_close_cart = 'Cerrar carrito'
+    assign t_note = settings.cart_note_es | default: settings.cart_note
+    assign t_checkout = 'Pagar'
+    assign t_view = 'Ver carrito'
+    assign t_menu = 'Menú'
+    assign t_close_menu = 'Cerrar menú'
+    assign t_cart_link = 'Carrito'
+    assign t_account = 'Cuenta'
+  endif
+-%}
+<div class="drawer right" id="cart" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <aside class="panel" aria-label="{{ t_cart | escape }}">
+    <div class="panel-head"><h3>{{ t_cart | escape }}</h3><button class="icon-btn" data-close aria-label="{{ t_close_cart | escape }}">✕</button></div>
+    <div id="cartLines"></div>
+    <div class="totals">
+      <div class="r"><span>{{ t_sub | escape }}</span><span id="cartTotal">{{ cart.total_price | money }}</span></div>
+      <p class="note">{{ t_note | escape }}</p>
+      <a class="cta" href="/checkout" id="checkoutBtn" style="text-align:center;text-decoration:none">{{ t_checkout | escape }}</a>
+      <a class="note" href="{{ routes.cart_url }}">{{ t_view | escape }}</a>
+    </div>
+  </aside>
+</div>
+<div class="drawer" id="menu" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <nav class="panel" aria-label="{{ t_menu | escape }}">
+    <div class="panel-head"><h3>{{ t_menu | escape }}</h3><button class="icon-btn" data-close aria-label="{{ t_close_menu | escape }}">✕</button></div>
+    {%- for link in linklists['main-menu'].links -%}
+      <a class="nav-link" href="{{ link.url }}">{{ link.title | escape }}</a>
+    {%- endfor -%}
+    <a class="nav-link" href="{{ routes.cart_url }}">{{ t_cart_link | escape }}</a>
+    {%- if shop.customer_accounts_enabled -%}<a class="nav-link" href="{{ routes.account_url }}">{{ t_account | escape }}</a>{%- endif -%}
+  </nav>
+</div>

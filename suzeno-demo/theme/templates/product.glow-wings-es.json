@@ -1,0 +1,350 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "sz-product",
+      "blocks": {
+        "perk-1": {
+          "type": "perk",
+          "settings": {
+            "text": "Proyecta alas brillantes en el suelo alrededor de tu perro"
+          }
+        },
+        "perk-2": {
+          "type": "perk",
+          "settings": {
+            "text": "La luz lateral ayuda a autos y ciclistas a ver a tu perro de noche"
+          }
+        },
+        "perk-3": {
+          "type": "perk",
+          "settings": {
+            "text": "Correa ajustable para la mayoría de collares y arneses"
+          }
+        },
+        "perk-4": {
+          "type": "perk",
+          "settings": {
+            "text": "6 estilos: mariposas, dragones y ángeles"
+          }
+        },
+        "acc-1": {
+          "type": "accordion",
+          "settings": {
+            "title": "Cómo se ve en la vida real",
+            "content": "<p>La luz proyecta el diseño de alas en el suelo, al lado y detrás de tu perro. Se ve más brillante sobre superficies oscuras y lisas como caminos, banquetas y nieve, y más suave sobre el pasto o bajo luces de calle muy fuertes.</p><p>Las fotos del producto son ilustraciones del efecto. Las alas aparecen en el suelo, no pegadas a tu perro.</p>"
+          }
+        },
+        "acc-2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Qué incluye",
+            "content": "<ul><li>1 luz Glow Wings con correa ajustable, en el estilo que elijas</li><li>1 cable de carga USB</li></ul>"
+          }
+        },
+        "acc-3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Batería y carga",
+            "content": "<p>Batería recargable integrada. Cárgala con el cable USB incluido en cualquier cargador USB o laptop. Una carga alcanza para varios paseos nocturnos; cuando la luz empiece a bajar, vuelve a cargarla.</p>"
+          }
+        },
+        "acc-4": {
+          "type": "accordion",
+          "settings": {
+            "title": "Ajuste, cuidado y seguridad",
+            "content": "<ul><li>Enrolla la correa en el collar o arnés de tu perro y ajústala para que la luz apunte hacia atrás.</li><li>No es un juguete. No dejes que tu perro muerda la luz.</li><li>Resiste lluvia ligera y nieve. No la sumerjas ni dejes que tu perro nade con ella.</li><li>Límpiala con un paño seco.</li><li>Siempre pasea con correa y mantente visible tú también. La luz es un extra, no reemplaza el equipo reflectante.</li></ul>"
+          }
+        },
+        "acc-5": {
+          "type": "accordion",
+          "settings": {
+            "title": "Envío",
+            "content": "<p>Envío gratis a todo el mundo con seguimiento. Los pedidos a EE. UU. suelen llegar en 9–17 días; a Canadá, el Reino Unido y Australia en 10–20 días; a la mayoría de los demás países en 12–25 días. Todos los impuestos y aranceles están incluidos, así que no pagas nada extra al recibir. <a href=\"/pages/shipping-policy\">Política de envío completa</a></p>"
+          }
+        },
+        "acc-6": {
+          "type": "accordion",
+          "settings": {
+            "title": "Nuestra garantía",
+            "content": "<p>Si llega dañado o con fallas, envía una foto a support@suzeno.com dentro de los 30 días y te devolvemos el dinero o te enviamos un reemplazo.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "perk-1",
+        "perk-2",
+        "perk-3",
+        "perk-4",
+        "acc-1",
+        "acc-2",
+        "acc-3",
+        "acc-4",
+        "acc-5",
+        "acc-6"
+      ],
+      "settings": {
+        "stock_line": "6 ESTILOS DE ALAS · PARA LA MAYORÍA DE COLLARES",
+        "rating_text": "",
+        "notice": "",
+        "bundle_heading": "Ahorra en paquete",
+        "show_timer": false,
+        "default_tier": 2,
+        "gift_text": "",
+        "swatches": "Rainbow Butterfly:#b48cf0\nGolden Fairy:#f2b94b\nPink Dragon:#ff3fa4\nPurple Dragon:#9b4dff\nPink Heart Angel:#ff8fc2\nWhite Angel:#e3e8f0",
+        "show_size_link": false,
+        "show_description": false,
+        "sticky_label": "Agregar al carrito",
+        "trust_1": "Envío gratis a todo el mundo",
+        "trust_2": "Garantía de 30 días",
+        "trust_3": "Impuestos y aranceles incluidos",
+        "tier_1_qty": 1,
+        "tier_1_discount": 0,
+        "tier_1_label": "1 luz Glow Wings",
+        "tier_1_badge": "",
+        "tier_2_qty": 2,
+        "tier_2_discount": 4.5,
+        "tier_2_label": "2 luces · combina estilos",
+        "tier_2_badge": "PARA 2 PERROS",
+        "tier_3_qty": 3,
+        "tier_3_discount": 7,
+        "tier_3_label": "3 luces · combina estilos",
+        "tier_3_badge": "MEJOR PRECIO",
+        "label_add": "Agregar al carrito",
+        "label_sold_out": "Agotado",
+        "label_timer": "¡Date prisa! La oferta termina en:",
+        "label_size_link": "📏 ¿No sabes qué talla? Abre la guía de tallas",
+        "label_description": "Descripción",
+        "label_you_save": "Ahorras",
+        "label_save": "Ahorra",
+        "label_item": "Artículo",
+        "label_your_pick": "Tu elección",
+        "label_item_one": "artículo",
+        "label_item_other": "artículos",
+        "label_free": "GRATIS",
+        "label_sold_out_error": "Uno de tus artículos está agotado. Elige otro estilo."
+      }
+    },
+    "band": {
+      "type": "sz-band",
+      "settings": {
+        "before": "Paseos nocturnos",
+        "circled": "mágicos",
+        "after": "",
+        "text": "Alas brillantes en el camino. Una luz lateral que ayuda a los conductores a verte."
+      }
+    },
+    "story": {
+      "type": "sz-story",
+      "settings": {
+        "image": "shopify://shop_images/suzeno-glow-wings-golden-fairy.jpg",
+        "image_right": false,
+        "eyebrow": "Por qué les encanta",
+        "heading": "Oscurece temprano, pero tu perro sigue",
+        "circled": "brillando",
+        "text": "<p>Desde noviembre, casi todos los paseos son de noche. Tu perro desaparece en la oscuridad y cada auto parece pasar demasiado cerca.</p><p>Glow Wings se enrolla en el collar y proyecta un par de alas brillantes en el camino alrededor de tu perro, mientras una luz a cada lado ayuda a que los demás los vean. Elige mariposas, dragones o ángeles.</p><p>Colócala, enciéndela y a caminar. Tu paseo nocturno se convierte en la mejor foto del día.</p>"
+      }
+    },
+    "hotspots": {
+      "type": "sz-hotspots",
+      "blocks": {
+        "h-1": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Lente de proyección",
+            "x": 26,
+            "y": 62,
+            "text": "Proyecta el diseño de alas hacia abajo y atrás, sobre el suelo."
+          }
+        },
+        "h-2": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Luz lateral",
+            "x": 45,
+            "y": 83,
+            "text": "Brilla a ambos lados para que tu perro se vea mejor."
+          }
+        },
+        "h-3": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Correa ajustable",
+            "x": 64,
+            "y": 58,
+            "text": "Se enrolla en la mayoría de collares y correas de arnés."
+          }
+        },
+        "h-4": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Hebilla metálica",
+            "x": 31,
+            "y": 22,
+            "text": "Mantiene la correa firme para que la luz siga apuntando hacia atrás."
+          }
+        }
+      },
+      "block_order": [
+        "h-1",
+        "h-2",
+        "h-3",
+        "h-4"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/suzeno-glow-wings-light-device.jpg",
+        "eyebrow": "Pequeña luz, gran efecto",
+        "heading": "Cómo funciona Glow Wings"
+      }
+    },
+    "how": {
+      "type": "sz-steps",
+      "blocks": {
+        "s-1": {
+          "type": "item",
+          "settings": {
+            "title": "Colócala",
+            "text": "Enrolla la correa en el collar con el lente hacia atrás."
+          }
+        },
+        "s-2": {
+          "type": "item",
+          "settings": {
+            "title": "Enciéndela",
+            "text": "Presiona el botón. Las alas aparecen en el suelo detrás de tu perro."
+          }
+        },
+        "s-3": {
+          "type": "item",
+          "settings": {
+            "title": "Camina y brilla",
+            "text": "Se ve mejor en caminos oscuros, banquetas y nieve. Apágala al llegar a casa."
+          }
+        }
+      },
+      "block_order": [
+        "s-1",
+        "s-2",
+        "s-3"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "Lista en 10 segundos",
+        "numbered": true,
+        "background": "sun-soft"
+      }
+    },
+    "faq": {
+      "type": "sz-faq-contact",
+      "blocks": {
+        "q-1": {
+          "type": "question",
+          "settings": {
+            "question": "¿Se verá como en las fotos?",
+            "answer": "<p>Las fotos muestran el efecto. En la vida real, las alas se proyectan en el suelo alrededor de tu perro. Se ven más brillantes sobre superficies oscuras y lisas, y más suaves sobre el pasto o bajo luces de calle.</p>"
+          }
+        },
+        "q-2": {
+          "type": "question",
+          "settings": {
+            "question": "¿Le queda al collar de mi perro?",
+            "answer": "<p>La correa ajustable se enrolla en la mayoría de collares y correas de arnés. Funciona para perros pequeños y grandes.</p>"
+          }
+        },
+        "q-3": {
+          "type": "question",
+          "settings": {
+            "question": "¿Mantiene seguro a mi perro de noche?",
+            "answer": "<p>Las luces laterales ayudan a conductores y ciclistas a ver a tu perro, pero ninguna luz garantiza la seguridad. Siempre usa correa y mantente visible tú también.</p>"
+          }
+        },
+        "q-4": {
+          "type": "question",
+          "settings": {
+            "question": "¿Cómo la cargo?",
+            "answer": "<p>Conecta el cable USB incluido a cualquier cargador USB o laptop. Una carga alcanza para varios paseos nocturnos.</p>"
+          }
+        },
+        "q-5": {
+          "type": "question",
+          "settings": {
+            "question": "¿Puedo elegir estilos diferentes en un mismo pedido?",
+            "answer": "<p>Sí. En los paquetes de 2 y 3 luces eliges un estilo para cada luz.</p>"
+          }
+        },
+        "q-6": {
+          "type": "question",
+          "settings": {
+            "question": "¿Cuándo llega mi pedido?",
+            "answer": "<p>Los pedidos a EE. UU. suelen llegar en 9–17 días; a Canadá, el Reino Unido y Australia en 10–20 días; a la mayoría de los demás países en 12–25 días. Recibes un enlace de seguimiento por correo en cuanto se envía.</p>"
+          }
+        },
+        "q-7": {
+          "type": "question",
+          "settings": {
+            "question": "¿Tendré que pagar aduana o impuestos?",
+            "answer": "<p>No. Nuestros precios incluyen todos los impuestos y aranceles, así que el precio al pagar es el precio final.</p>"
+          }
+        },
+        "q-8": {
+          "type": "question",
+          "settings": {
+            "question": "¿Qué pasa si llega dañado o no funciona?",
+            "answer": "<p>Escríbenos a support@suzeno.com dentro de los 30 días posteriores a la entrega y te devolvemos el dinero o te enviamos un reemplazo.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q-1",
+        "q-2",
+        "q-3",
+        "q-4",
+        "q-5",
+        "q-6",
+        "q-7",
+        "q-8"
+      ],
+      "settings": {
+        "heading": "Bueno saber",
+        "open_first": true,
+        "show_contact": true,
+        "tracking_url": "https://t.17track.net/es#nums=",
+        "label_contact": "Contáctanos",
+        "label_contact_text": "¿Preguntas sobre tu pedido? Envíanos un mensaje y te respondemos en 1 día hábil.",
+        "label_name": "Nombre",
+        "label_email": "Correo electrónico",
+        "label_order": "Número de pedido (opcional)",
+        "label_message": "Tu mensaje",
+        "label_send": "Enviar mensaje",
+        "label_thanks": "¡Gracias! Recibimos tu mensaje.",
+        "label_email_us": "O escríbenos a",
+        "label_track": "Rastrea tu pedido",
+        "label_tracking_number": "Número de rastreo",
+        "label_track_button": "Rastrear paquete"
+      }
+    },
+    "reviews": {
+      "type": "sz-testimonials",
+      "settings": {
+        "heading": "Lo que dicen nuestros clientes"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "band",
+    "story",
+    "hotspots",
+    "how",
+    "faq",
+    "reviews"
+  ]
+}

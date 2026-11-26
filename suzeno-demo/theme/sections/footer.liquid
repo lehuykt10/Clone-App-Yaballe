@@ -1,0 +1,82 @@
+{%- assign sz_lang = template.suffix | split: '-' | last -%}{%- if request.locale.iso_code == 'es' -%}{%- assign sz_lang = 'es' -%}{%- endif -%}
+{%- liquid
+  assign t_head = section.settings.news_heading
+  assign t_text = section.settings.news_text
+  assign t_tag = section.settings.tagline
+  assign t_join = 'Join'
+  assign t_ph = 'Your email'
+  assign t_ok = "You're in! Check your inbox."
+  assign t_consent = 'By subscribing you agree to receive marketing emails from ' | append: shop.name | append: '. Unsubscribe anytime.'
+  if sz_lang == 'es'
+    assign t_head = section.settings.news_heading_es | default: t_head
+    assign t_text = section.settings.news_text_es | default: t_text
+    assign t_tag = section.settings.tagline_es | default: t_tag
+    assign t_join = 'Unirme'
+    assign t_ph = 'Tu correo'
+    assign t_ok = '¡Listo! Revisa tu bandeja de entrada.'
+    assign t_consent = 'Al suscribirte aceptas recibir correos de marketing de ' | append: shop.name | append: '. Puedes darte de baja cuando quieras.'
+  endif
+-%}
+{%- if section.settings.show_newsletter -%}
+<section class="news">
+  <div class="wrap">
+    <h2>{{ t_head | escape }}</h2>
+    <p>{{ t_text | escape }}</p>
+    {%- form 'customer', id: 'NewsletterForm', class: 'news-form' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      {%- if form.posted_successfully? -%}
+        <p class="status" style="color:#fff">{{ t_ok | escape }}</p>
+      {%- else -%}
+        <div style="display:flex;gap:8px;width:100%;max-width:440px">
+          <label class="sr" for="NewsletterEmail">Email</label>
+          <input class="field" id="NewsletterEmail" type="email" name="contact[email]" placeholder="{{ t_ph | escape }}" required autocomplete="email" style="flex:1;min-width:0;background:#fff">
+          <button class="btn" type="submit" style="background:var(--paper);color:var(--night);padding-inline:22px">{{ t_join | escape }}</button>
+        </div>
+        {%- if form.errors -%}<p class="errors">{{ form.errors | default_errors }}</p>{%- endif -%}
+      {%- endif -%}
+    {%- endform -%}
+    <small>{{ t_consent | escape }}</small>
+  </div>
+</section>
+{%- endif -%}
+<footer>
+  <div class="wrap">
+    <a class="logo" href="{{ routes.root_url }}">
+      {%- if settings.logo != blank -%}{{ settings.logo | image_url: width: 400 | image_tag: alt: shop.name }}{%- else -%}<b>{{ shop.name }}</b>{%- endif -%}
+    </a>
+    {%- if t_tag != blank -%}<p class="note" style="max-width:46ch">{{ t_tag | escape }}</p>{%- endif -%}
+    <nav class="links" aria-label="Footer">
+      {%- for link in section.settings.menu.links -%}<a href="{{ link.url }}">{{ link.title | escape }}</a>{%- endfor -%}
+    </nav>
+    {%- if settings.support_email != blank -%}<span class="mail">{{ settings.support_email }}</span>{%- endif -%}
+    <div class="links" style="grid-template-columns:repeat(3,auto)">
+      {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" target="_blank" rel="noopener">Instagram</a>{%- endif -%}
+      {%- if settings.social_tiktok != blank -%}<a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener">TikTok</a>{%- endif -%}
+      {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" target="_blank" rel="noopener">Facebook</a>{%- endif -%}
+    </div>
+    {%- if shop.enabled_payment_types.size > 0 -%}
+      <ul class="pay" role="list" style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;list-style:none;padding:0;margin:0">
+        {%- for type in shop.enabled_payment_types -%}<li>{{ type | payment_type_svg_tag: class: 'pay-icon' }}</li>{%- endfor -%}
+      </ul>
+      <style>.pay-icon{height:24px;width:38px}</style>
+    {%- endif -%}
+    <span class="copy">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }} · {{ powered_by_link }}</span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "checkbox", "id": "show_newsletter", "label": "Show newsletter", "default": true },
+    { "type": "text", "id": "news_heading", "label": "Newsletter heading", "default": "Join the Suzeno family" },
+    { "type": "text", "id": "news_text", "label": "Newsletter text", "default": "Pet tips, new arrivals and members-only offers. No spam." },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Made for the pets who make us smile." },
+    { "type": "link_list", "id": "menu", "label": "Footer menu", "default": "footer" },
+    { "type": "header", "content": "Spanish pages", "info": "Shown on templates whose name ends in -es." },
+    { "type": "text", "id": "news_heading_es", "label": "Newsletter heading (Spanish)", "default": "Únete a la familia Suzeno" },
+    { "type": "text", "id": "news_text_es", "label": "Newsletter text (Spanish)", "default": "Consejos para mascotas, novedades y ofertas exclusivas. Sin spam." },
+    { "type": "text", "id": "tagline_es", "label": "Tagline (Spanish)", "default": "Hecho para las mascotas que nos hacen sonreír." }
+  ]
+}
+{% endschema %}
